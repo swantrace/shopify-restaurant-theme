@@ -1,0 +1,8 @@
+{
+  "name": "datomar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:zdnblueme/Datomar.git",
+  "author": "Qixuan Hong <frederickhong.5@gmail.com>",
+  "license": "MIT"
+}
