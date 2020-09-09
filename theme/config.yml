@@ -1,0 +1,5 @@
+development:
+  password: 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
+  theme_id: '111216820377'
+  store: https://datomar-theme-dev.myshopify.com
+  timeout: 10000s
