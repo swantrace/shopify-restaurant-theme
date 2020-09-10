@@ -1,0 +1,66 @@
+{% schema %}
+{
+  "name": {
+    "en": ""
+  },
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": {
+        "en": "Section Width"
+      },
+      "default": "full",
+      "options": [
+        {
+          "label": {
+            "en": "Container Width"
+          },
+          "value": "container"
+        },
+        {
+          "label": {
+            "en": "Full Width"
+          },
+          "value": "full"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_mobile",
+      "label":{
+        "en": "Disable on mobile"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_tablet",
+      "label":{
+        "en": "Disable on tablet"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_desktop",
+      "label":{
+        "en": "Disable on desktop"
+      },
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en": ""
+      },
+      "category": {
+        "en": ""
+      }
+    }
+  ]
+}
+{% endschema %}

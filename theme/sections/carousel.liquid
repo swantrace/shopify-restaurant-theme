@@ -1,0 +1,240 @@
+{% schema %}
+{
+  "name": {
+    "en": "Carousel"
+  },
+  "class": "index-section index-section--carousel",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": {
+        "en": "Section Width"
+      },
+      "default": "full",
+      "options": [
+        {
+          "label": {
+            "en": "Container Width"
+          },
+          "value": "container"
+        },
+        {
+          "label": {
+            "en": "Full Width"
+          },
+          "value": "full"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_mobile",
+      "label":{
+        "en": "Disable on mobile"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_tablet",
+      "label":{
+        "en": "Disable on tablet"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_desktop",
+      "label":{
+        "en": "Disable on desktop"
+      },
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": {
+        "en": "Image Slide"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "en": "Image"
+          }
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "en": "Title"
+          }
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": {
+            "en": "Subtitle"
+          }
+        },
+        {
+          "type": "text",
+          "id": "first_button_label",
+          "label": {
+            "en": "First Button label"
+          }
+        },
+        {
+          "type": "url",
+          "id": "first_button_link",
+          "label": {
+            "en": "First Button link"
+          }
+        },
+        {
+          "type": "text",
+          "id": "second_button_label",
+          "label": {
+            "en": "Second Button label"
+          }
+        },
+        {
+          "type": "url",
+          "id": "second_button_link",
+          "label": {
+            "en": "Second Button link"
+          }
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "en": "Content alignment"
+          },
+          "default": "center",
+          "options":[
+            {
+              "label": {
+                "en": "Left"
+              },
+              "value": "left"
+            },
+            {
+              "label": {
+                "en": "Center"
+              },
+              "value": "center"
+            },
+            {
+              "label": {
+                "en": "Right"
+              },
+              "value": "right"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": {
+        "en": "Video Slide"
+      },
+      "settings": [
+        {
+          "type": "video_url",
+          "id": "video",
+          "label": {
+            "en": "Video"
+          },
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "en": "Title"
+          }
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": {
+            "en": "Subtitle"
+          }
+        },
+        {
+          "type": "text",
+          "id": "first_button_label",
+          "label": {
+            "en": "First Button label"
+          }
+        },
+        {
+          "type": "url",
+          "id": "first_button_link",
+          "label": {
+            "en": "First Button link"
+          }
+        },
+        {
+          "type": "text",
+          "id": "second_button_label",
+          "label": {
+            "en": "Second Button label"
+          }
+        },
+        {
+          "type": "url",
+          "id": "second_button_link",
+          "label": {
+            "en": "Second Button link"
+          }
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "en": "Content alignment"
+          },
+          "default": "center",
+          "options":[
+            {
+              "label": {
+                "en": "Left"
+              },
+              "value": "left"
+            },
+            {
+              "label": {
+                "en": "Center"
+              },
+              "value": "center"
+            },
+            {
+              "label": {
+                "en": "Right"
+              },
+              "value": "right"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en": "Carousel"
+      },
+      "category": {
+        "en": "Image"
+      }
+    }
+  ]
+}
+{% endschema %}
