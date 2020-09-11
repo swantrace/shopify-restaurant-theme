@@ -1,30 +1,15 @@
 {% schema %}
 {
   "name": {
-    "en": ""
+    "en": "Masonry gallery"
   },
-  "class": "index-section index-section--",
+  "class": "index-section index-section--masonry",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "bg-img",
-      "label": {
-        "en": "Background image"
-      }
-    },
-    {
-      "type": "color",
-      "id": "color_bg",
-      "label": {
-        "en": "Background color"
-      },
-      "default": "#3a3a3a"
-    },
     {
       "type": "select",
       "id": "section_width",
       "label": {
-        "en": "Section Width"
+        "en": "Section width"
       },
       "default": "full",
       "options": [
@@ -65,15 +50,46 @@
         "en": "Disable on desktop"
       },
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "section-title",
+      "label": {
+        "en": "Title"
+        }
+    },
+    {
+      "type": "text",
+      "id": "section-subtitle",
+      "label": {
+        "en": "Subtitle"
+        }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": {
+        "en": "Image"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "en": "Image"
+          }
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": {
-        "en": ""
+        "en": "Masonry gallery"
       },
       "category": {
-        "en": ""
+        "en": "Image"
       }
     }
   ]

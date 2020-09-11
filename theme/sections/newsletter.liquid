@@ -1,18 +1,18 @@
 {% schema %}
 {
   "name": {
-    "en": ""
+    "en": "Newsletter"
   },
-  "class": "index-section index-section--",
+  "class": "index-section index-section--newsletter",
   "settings": [
-    {
+        {
       "type": "image_picker",
       "id": "bg-img",
       "label": {
         "en": "Background image"
       }
     },
-    {
+        {
       "type": "color",
       "id": "color_bg",
       "label": {
@@ -65,15 +65,49 @@
         "en": "Disable on desktop"
       },
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": {
+        "en": "Heading"
+      },
+      "default": {
+        "en": "Subscribe to our newsletter"
+      }
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": {
+        "en": "Subheading"
+      },
+      "default": {
+        "en": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
+      }
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": {
+        "en": "Button text"
+      }
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": {
+        "en": "Button link"
+      }
     }
   ],
   "presets": [
     {
       "name": {
-        "en": ""
+        "en": "Newsletter"
       },
       "category": {
-        "en": ""
+        "en": "Promotional"
       }
     }
   ]

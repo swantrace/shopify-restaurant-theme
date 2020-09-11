@@ -1,9 +1,9 @@
 {% schema %}
 {
   "name": {
-    "en": ""
+    "en": "Custom HTML"
   },
-  "class": "index-section index-section--",
+  "class": "index-section index-section--custom-html",
   "settings": [
     {
       "type": "image_picker",
@@ -65,15 +65,25 @@
         "en": "Disable on desktop"
       },
       "default": false
+    },
+    {
+      "type": "html",
+      "id": "custom-html",
+      "label": {
+        "en": "Custom HTML"
+      },
+      "default": {
+        "en": "<p>new products and sales.</p>"
+      }
     }
   ],
   "presets": [
     {
       "name": {
-        "en": ""
+        "en": "Custom HTML"
       },
       "category": {
-        "en": ""
+        "en": "text"
       }
     }
   ]

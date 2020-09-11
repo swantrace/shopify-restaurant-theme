@@ -1,0 +1,149 @@
+{% schema %}
+{
+   "name":{
+      "en":"Featured Products"
+   },
+   "class":"index-section index-section--featured-products",
+   "max_blocks":4,
+   "settings":[
+      {
+         "type":"image_picker",
+         "id":"bg-img",
+         "label":{
+            "en":"Background image"
+         }
+      },
+      {
+         "type":"color",
+         "id":"color_bg",
+         "label":{
+            "en":"Background color"
+         },
+         "default":"#3a3a3a"
+      },
+      {
+         "type":"select",
+         "id":"section_width",
+         "label":{
+            "en":"Section Width"
+         },
+         "default":"full",
+         "options":[
+            {
+               "label":{
+                  "en":"Container Width"
+               },
+               "value":"container"
+            },
+            {
+               "label":{
+                  "en":"Full Width"
+               },
+               "value":"full"
+            }
+         ]
+      },
+      {
+         "type":"checkbox",
+         "id":"disable_on_mobile",
+         "label":{
+            "en":"Disable on mobile"
+         },
+         "default":false
+      },
+      {
+         "type":"checkbox",
+         "id":"disable_on_tablet",
+         "label":{
+            "en":"Disable on tablet"
+         },
+         "default":false
+      },
+      {
+         "type":"checkbox",
+         "id":"disable_on_desktop",
+         "label":{
+            "en":"Disable on desktop"
+         },
+         "default":false
+      },
+      {
+         "type":"select",
+         "id":"style",
+         "label":{
+            "en":"Choose a style for mobile"
+         },
+         "default":"styleA",
+         "options":[
+            {
+               "label":{
+                  "en":"Style A"
+               },
+               "value":"styleA"
+            },
+            {
+               "label":{
+                  "en":"Style B"
+               },
+               "value":"styleB"
+            }
+         ]
+      },
+              {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "en": "Content alignment"
+          },
+          "default": "center",
+          "options":[
+            {
+              "label": {
+                "en": "Left"
+              },
+              "value": "left"
+            },
+            {
+              "label": {
+                "en": "Center"
+              },
+              "value": "center"
+            },
+            {
+              "label": {
+                "en": "Right"
+              },
+              "value": "right"
+            }
+          ]
+        }
+   ],
+   "blocks":[
+      {
+         "type":"product",
+         "name":{
+            "en":"product"
+         },
+         "settings":[
+            {
+               "type":"product",
+               "id":"featured_product",
+               "label":{
+                  "en":"Product"
+               }
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":{
+            "en":"Featured Products"
+         },
+         "category":{
+            "en":"Product"
+         }
+      }
+   ]
+}
+{% endschema %}
