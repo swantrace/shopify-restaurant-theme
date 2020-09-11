@@ -1,18 +1,18 @@
 {% schema %}
 {
   "name": {
-    "en": "Newsletter"
+    "en": "Header"
   },
-  "class": "index-section index-section--newsletter",
+  "class": "index-section index-section--header",
   "settings": [
-        {
+    {
       "type": "image_picker",
       "id": "img_bg",
       "label": {
         "en": "Background image"
       }
     },
-        {
+    {
       "type": "color",
       "id": "color_bg",
       "label": {
@@ -67,48 +67,41 @@
       "default": false
     },
     {
-      "type": "text",
-      "id": "section_title",
+      "type": "radio",
+      "id": "align_logo",
       "label": {
-        "en": "Heading"
+        "en": "Logo alignment"
       },
-      "default": {
-        "en": "Subscribe to our newsletter"
+      "default": "left",
+      "options": [
+        {
+          "label": {
+            "en": "Left"
+          },
+          "value": "left"
+        },
+        {
+          "label": {
+            "en": "Centered"
+          },
+          "value": "center"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": {
+        "en": "Logo image"
       }
     },
     {
-      "type": "richtext",
-      "id": "subheading",
+      "type": "link_list",
+      "id": "main_linklist",
       "label": {
-        "en": "Subheading"
+        "en": "Menu"
       },
-      "default": {
-        "en": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
-      }
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": {
-        "en": "Button text"
-      }
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": {
-        "en": "Button link"
-      }
-    }
-  ],
-  "presets": [
-    {
-      "name": {
-        "en": "Newsletter"
-      },
-      "category": {
-        "en": "Promotional"
-      }
+      "default": "main-menu"
     }
   ]
 }

@@ -1,0 +1,187 @@
+{% schema %}
+{
+  "name": {
+    "en": "Footer"
+  },
+  "class": "index-section index-section--footer",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img_bg",
+      "label": {
+        "en": "Background image"
+      }
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": {
+        "en": "Background color"
+      },
+      "default": "#3a3a3a"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": {
+        "en": "Section Width"
+      },
+      "default": "full",
+      "options": [
+        {
+          "label": {
+            "en": "Container Width"
+          },
+          "value": "container"
+        },
+        {
+          "label": {
+            "en": "Full Width"
+          },
+          "value": "full"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_mobile",
+      "label":{
+        "en": "Disable on mobile"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_tablet",
+      "label":{
+        "en": "Disable on tablet"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_desktop",
+      "label":{
+        "en": "Disable on desktop"
+      },
+      "default": false
+    }
+  ],
+  "blocks":  [
+    {
+      "type": "image_picker",
+      "name": {
+        "en": "Footer logo"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "footer_logo",
+          "label": {
+            "en": "Footer logo"
+          }
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": {
+        "en": "Navigation menu"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "en": "Heading"
+          },
+          "default": {
+            "en": "Quick links"
+          }
+        },
+        {
+          "type": "link_list",
+          "id": "footer_menu",
+          "label": {
+            "en": "Menu"
+          },
+          "default": "footer"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "name": {
+        "en": "Custom HTML"
+      },
+      "settings": [
+        {
+          "type": "html",
+          "id": "footer_custom_html",
+          "label": {
+            "en": "Custom HTML"
+          }
+        }
+      ]
+    },
+    {
+      "type": "social_icons",
+      "name": {
+        "en": "Social icons"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "social_facebook_link",
+          "label": {
+            "en": "Facebook"
+          }
+        },
+        {
+          "type": "text",
+          "id": "social_pinterest_link",
+          "label": {
+            "en": "Pinterest"
+          }
+        },
+        {
+          "type": "text",
+          "id": "social_instagram_link",
+          "label": {
+            "en": "Instagram"
+          }
+        },
+        {
+          "type": "text",
+          "id": "social_tumblr_link",
+          "label": {
+            "en": "Tumblr"
+          }
+        },
+        {
+          "type": "text",
+          "id": "social_snapchat_link",
+          "label": {
+            "en": "Snapchat"
+          }
+        },
+        {
+          "type": "text",
+          "id": "social_youtube_link",
+          "label": {
+            "en": "Youtube"
+          }
+        },
+        {
+          "type": "text",
+          "id": "social_vimeo_link",
+          "label": {
+            "en": "Vimeo"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

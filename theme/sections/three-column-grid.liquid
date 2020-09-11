@@ -1,0 +1,155 @@
+{% schema %}
+{
+  "name": {
+    "en": "Three columns"
+  },
+  "class": "index-section index-section--three-columns",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img_bg",
+      "label": {
+        "en": "Background image"
+      }
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": {
+        "en": "Background color"
+      },
+      "default": "#3a3a3a"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": {
+        "en": "Section Width"
+      },
+      "default": "full",
+      "options": [
+        {
+          "label": {
+            "en": "Container Width"
+          },
+          "value": "container"
+        },
+        {
+          "label": {
+            "en": "Full Width"
+          },
+          "value": "full"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_mobile",
+      "label":{
+        "en": "Disable on mobile"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_tablet",
+      "label":{
+        "en": "Disable on tablet"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_on_desktop",
+      "label":{
+        "en": "Disable on desktop"
+      },
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": {
+        "en": "Column"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "en": "Image"
+          }
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "en": "Title"
+          }
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": {
+            "en": "Description"
+          }
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": {
+            "en": "Button label"
+          }
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": {
+            "en": "Button link"
+          }
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "en": "Content alignment"
+          },
+          "default": "center",
+          "options":[
+            {
+              "label": {
+                "en": "Left"
+              },
+              "value": "left"
+            },
+            {
+              "label": {
+                "en": "Center"
+              },
+              "value": "center"
+            },
+            {
+              "label": {
+                "en": "Right"
+              },
+              "value": "right"
+            }
+          ]
+        }
+      ]
+    }
+  ], 
+  "presets": [
+    {
+      "name": {
+        "en": "Three columns"
+      },
+      "category": {
+        "en": "image"
+      }
+    }
+  ]
+}
+{% endschema %}

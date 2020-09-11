@@ -1,18 +1,19 @@
 {% schema %}
 {
   "name": {
-    "en": "Newsletter"
+    "en": "Featured collections"
   },
-  "class": "index-section index-section--newsletter",
+  "class": "index-section index-section--featured-collections",
+  "max_blocks": 4,
   "settings": [
-        {
+    {
       "type": "image_picker",
       "id": "img_bg",
       "label": {
         "en": "Background image"
       }
     },
-        {
+    {
       "type": "color",
       "id": "color_bg",
       "label": {
@@ -65,49 +66,32 @@
         "en": "Disable on desktop"
       },
       "default": false
-    },
+    }
+  ],
+  "blocks": [
     {
-      "type": "text",
-      "id": "section_title",
-      "label": {
-        "en": "Heading"
+      "type": "featured_collection",
+      "name": {
+        "en": "Collection"
       },
-      "default": {
-        "en": "Subscribe to our newsletter"
-      }
-    },
-    {
-      "type": "richtext",
-      "id": "subheading",
-      "label": {
-        "en": "Subheading"
-      },
-      "default": {
-        "en": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
-      }
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": {
-        "en": "Button text"
-      }
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": {
-        "en": "Button link"
-      }
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": {
+            "en": "Collection"
+          }
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": {
-        "en": "Newsletter"
+        "en": "Featured collections"
       },
       "category": {
-        "en": "Promotional"
+        "en": "Collection"
       }
     }
   ]

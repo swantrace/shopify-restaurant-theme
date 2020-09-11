@@ -1,10 +1,25 @@
 {% schema %}
 {
   "name": {
-    "en": "Image with text"
+    "en": "Featured product"
   },
-  "class": "index-section index-section--image-with-text",
+  "class": "index-section index-section--featured-product",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "img_bg",
+      "label": {
+        "en": "Background image"
+      }
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": {
+        "en": "Background color"
+      },
+      "default": "#3a3a3a"
+    },
     {
       "type": "select",
       "id": "section_width",
@@ -15,13 +30,13 @@
       "options": [
         {
           "label": {
-            "en": "Container width"
+            "en": "Container Width"
           },
           "value": "container"
         },
         {
           "label": {
-            "en": "Full width"
+            "en": "Full Width"
           },
           "value": "full"
         }
@@ -52,33 +67,39 @@
       "default": false
     },
     {
-      "type": "select",
-      "id": "style",
+      "type": "product",
+      "id": "featured_product",
       "label": {
-        "en": "Choose a style"
-      },
-      "default": "styleA",
-      "options": [
-        {
-          "label": {
-            "en": "Style A"
-          },
-          "value": "styleA"
-        },
-        {
-          "label": {
-            "en": "Style B"
-          },
-          "value": "styleB"
-        }
-      ]
+        "en": "Product"
+      }
     },
     {
-      "type": "image_picker",
-      "id": "image",
-      "label": {
-        "en": "Image"
-      }
+      "type":"select",
+      "id":"style",
+      "label":{
+        "en":"Choose a style for desktop"
+      },
+      "default":"styleA",
+      "options":[
+        {
+          "label":{
+            "en":"Style A"
+          },
+          "value":"styleA"
+        },
+        {
+          "label":{
+            "en":"Style B"
+          },
+          "value":"styleB"
+        },
+        {
+          "label":{
+            "en":"Style C"
+          },
+          "value":"styleC"
+        }
+      ]
     },
     {
       "type": "select",
@@ -101,48 +122,6 @@
           "value": "right"
         }
       ]
-    },
-    {
-      "type": "text",
-      "id": "first_button_label",
-      "label": {
-        "en": "First Button label"
-      }
-    },
-    {
-      "type": "url",
-      "id": "first_button_link",
-      "label": {
-        "en": "First Button link"
-      }
-    },
-    {
-      "type": "text",
-      "id": "second_button_label",
-      "label": {
-        "en": "Second Button label"
-      }
-    },
-    {
-      "type": "url",
-      "id": "second_button_link",
-      "label": {
-        "en": "Second Button link"
-      }
-    },
-    {
-      "type": "text",
-      "id": "header",
-      "label": {
-        "en": "Header"
-      }
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": {
-        "en": "Text"
-      }
     },
     {
       "type": "select",
@@ -176,10 +155,10 @@
   "presets": [
     {
       "name": {
-        "en": "Image with text"
+        "en": "Featured product"
       },
       "category": {
-        "en": "image"
+        "en": "Product"
       }
     }
   ]

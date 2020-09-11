@@ -1,10 +1,25 @@
 {% schema %}
 {
   "name": {
-    "en": "Image with text"
+    "en": "Store hours"
   },
-  "class": "index-section index-section--image-with-text",
+  "class": "index-section index-section--store-hours",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "img_bg",
+      "label": {
+        "en": "Background image"
+      }
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": {
+        "en": "Background color"
+      },
+      "default": "#3a3a3a"
+    },
     {
       "type": "select",
       "id": "section_width",
@@ -15,13 +30,13 @@
       "options": [
         {
           "label": {
-            "en": "Container width"
+            "en": "Container Width"
           },
           "value": "container"
         },
         {
           "label": {
-            "en": "Full width"
+            "en": "Full Width"
           },
           "value": "full"
         }
@@ -52,39 +67,32 @@
       "default": false
     },
     {
-      "type": "select",
-      "id": "style",
-      "label": {
-        "en": "Choose a style"
+      "type":"select",
+      "id":"style",
+      "label":{
+        "en":"Choose a style for desktop"
       },
-      "default": "styleA",
-      "options": [
+      "default":"styleA",
+      "options":[
         {
-          "label": {
-            "en": "Style A"
+          "label":{
+            "en":"Style A"
           },
-          "value": "styleA"
+          "value":"styleA"
         },
         {
-          "label": {
-            "en": "Style B"
+          "label":{
+            "en":"Style B"
           },
-          "value": "styleB"
+          "value":"styleB"
         }
       ]
     },
     {
-      "type": "image_picker",
-      "id": "image",
-      "label": {
-        "en": "Image"
-      }
-    },
-    {
       "type": "select",
-      "id": "image_position",
+      "id": "map_position",
       "label": {
-        "en": "Image position"
+        "en": "Map position"
       },
       "default": "left",
       "options": [
@@ -101,48 +109,6 @@
           "value": "right"
         }
       ]
-    },
-    {
-      "type": "text",
-      "id": "first_button_label",
-      "label": {
-        "en": "First Button label"
-      }
-    },
-    {
-      "type": "url",
-      "id": "first_button_link",
-      "label": {
-        "en": "First Button link"
-      }
-    },
-    {
-      "type": "text",
-      "id": "second_button_label",
-      "label": {
-        "en": "Second Button label"
-      }
-    },
-    {
-      "type": "url",
-      "id": "second_button_link",
-      "label": {
-        "en": "Second Button link"
-      }
-    },
-    {
-      "type": "text",
-      "id": "header",
-      "label": {
-        "en": "Header"
-      }
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": {
-        "en": "Text"
-      }
     },
     {
       "type": "select",
@@ -176,10 +142,10 @@
   "presets": [
     {
       "name": {
-        "en": "Image with text"
+        "en": "Store hours"
       },
       "category": {
-        "en": "image"
+        "en": "text"
       }
     }
   ]

@@ -80,7 +80,7 @@
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
 
-  {% comment %} {% section 'header' %} {% endcomment %}
+  {% section 'header' %}
 
   <main class="wrapper main-content" role="main">
     <div class="grid">
@@ -96,7 +96,7 @@
     </div>
   </main>
 
-  {% comment %} {% section 'footer' %} {% endcomment %}
+  {% section 'footer' %}
 
   {% comment %} {%- if request.page_type == 'index' -%}
     <p id="slideshow-info" class="visually-hidden" aria-hidden="true">
