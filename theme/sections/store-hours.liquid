@@ -6,6 +6,12 @@
   "class": "index-section index-section--store-hours",
   "settings": [
     {
+      "type": "header",
+      "content": {
+        "en": "Background"
+      }
+    },
+    {
       "type": "image_picker",
       "id": "img_bg",
       "label": {
@@ -19,6 +25,12 @@
         "en": "Background color"
       },
       "default": "#3a3a3a"
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Layout"
+      }
     },
     {
       "type": "select",
@@ -89,6 +101,34 @@
       ]
     },
     {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "en": "Title"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "email_enabled",
+      "label": {
+        "en": "Display email"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "phone_enabled",
+      "label": {
+        "en": "Display phone number"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "location_enabled",
+      "label": {
+        "en": "Display location"
+      }
+    },
+    {
       "type": "select",
       "id": "map_position",
       "label": {
@@ -137,6 +177,20 @@
           "value": "right"
         }
       ]
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": {
+        "en": "Button label"
+      }
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": {
+        "en": "Button link"
+      }
     }
   ],
   "presets": [
