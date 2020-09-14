@@ -1,0 +1,49 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+
+    <!-- Basic page needs ================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    {% if settings.favicon %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+    {% endif %}
+
+    <!-- Title and description ================================================== -->
+    <title>
+    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    <!-- Helpers ================================================== -->
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_primary }}">
+
+    {{ 'theme.scss' | asset_url | stylesheet_tag }}
+
+
+
+    <!-- Header hook for plugins ================================================== -->
+    {{ content_for_header }}
+
+    <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
+
+    {% comment %}
+      If you store has customer accounts disabled, you can remove the following JS file
+    {% endcomment %}
+    {% if request.page_type contains 'customers/' %}
+      {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    {% endif %}
+
+  </head>
+
+  <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
+      {{ content_for_layout }}
+      {{ 'theme.min.js' | asset_url | script_tag }}
+  </body>
+</html>

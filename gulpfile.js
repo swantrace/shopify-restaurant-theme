@@ -8,6 +8,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+const json = require('@rollup/plugin-json');
 
 function compileSass() {
   return gulp
@@ -25,7 +27,19 @@ function compileJavascript() {
   return gulp
     .src('./src/scripts/index.js')
     .pipe(sourcemaps.init())
-    .pipe(rollup({ plugins: [nodeResolve(), babel()] }, { format: 'umd' }))
+    .pipe(
+      rollup(
+        {
+          plugins: [
+            commonjs(),
+            json(),
+            nodeResolve({ browser: true }),
+            babel(),
+          ],
+        },
+        { format: 'umd' }
+      )
+    )
     .pipe(sourcemaps.write())
     .pipe(rename('theme.js'))
     .pipe(gulp.dest('theme/assets/'))
