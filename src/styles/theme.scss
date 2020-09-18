@@ -1,3 +1,59 @@
-// Your variable overrides
-
+@import './custom';
 @import './bootstrap/bootstrap.scss';
+
+.index-section.index-section--carousel .carousel-indicators li {
+  background-color: transparent !important;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAAsUlEQVQ4ja3VzQ3CMAwF4Ecm6CYcvAAjMAJMBhuwAgPYh27CBkGqStU28U9In5SDJeuTJVsKcs7uY+YrMw+R3gQnInID8ALwFpHB6zfBGXvM5TmCquAO+8VFq6CChdACdDAX3YBBzEQXsBFT0dSBVdETM/dg64wALu5htyYR0RPA/YjpiOgzTdiJLhjWW/4T3WDY32EjWmAF2IBWsSoYQFVMBQ3UxEywgrrYlEO/gJzxBe3e0l0Of8UeAAAAAElFTkSuQmCC');
+  width: 15px;
+  height: 15px;
+  margin-left: 8px;
+  margin-right: 8px;
+  background-size: cover;
+}
+
+.index-section.index-section--testimonials #resp-dots .glider-dot {
+  background-color: transparent !important;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAAsUlEQVQ4ja3VzQ3CMAwF4Ecm6CYcvAAjMAJMBhuwAgPYh27CBkGqStU28U9In5SDJeuTJVsKcs7uY+YrMw+R3gQnInID8ALwFpHB6zfBGXvM5TmCquAO+8VFq6CChdACdDAX3YBBzEQXsBFT0dSBVdETM/dg64wALu5htyYR0RPA/YjpiOgzTdiJLhjWW/4T3WDY32EjWmAF2IBWsSoYQFVMBQ3UxEywgrrYlEO/gJzxBe3e0l0Of8UeAAAAAElFTkSuQmCC');
+  width: 15px;
+  height: 15px;
+  margin-left: 8px;
+  margin-right: 8px;
+  background-size: cover;
+}
+
+.index-section.index-section--carousel .carousel-indicators li.active {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAUCAYAAABvVQZ0AAAACXBIWXMAAAsSAAALEgHS3X78AAAAZ0lEQVQ4ja3UWwrAIAxE0cGVdSldmjud0p9i6SPRXEHwQw6EJCPb4ZW0pf4loF3S+eglbICcAWegEJyFfsEV6BNchV7BCvQAq9ANJKALbCIPWibeAHw08KHF1wlfdDyC8HAcwDi2bR3zoLv0BjQX5gAAAABJRU5ErkJggg==');
+}
+
+.index-section.index-section--testimonials #resp-dots .glider-dot.active {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAUCAYAAABvVQZ0AAAACXBIWXMAAAsSAAALEgHS3X78AAAAZ0lEQVQ4ja3UWwrAIAxE0cGVdSldmjud0p9i6SPRXEHwQw6EJCPb4ZW0pf4loF3S+eglbICcAWegEJyFfsEV6BNchV7BCvQAq9ANJKALbCIPWibeAHw08KHF1wlfdDyC8HAcwDi2bR3zoLv0BjQX5gAAAABJRU5ErkJggg==');
+}
+
+#top-logo img {
+  width: 120px;
+}
+
+#top-logo {
+  padding: 60px 0 20px;
+}
+
+#top-navigation #navigation-icons > li {
+  padding: 0;
+}
+
+#main-header {
+  margin-bottom: 18px;
+}
+
+.carousel-caption.d-none.d-md-block {
+  padding-bottom: 139px;
+}
+
+#gallery .img-fluid {
+  width: 100%;
+  padding: 2px;
+}
+
+footer .fab {
+  font-size: 35px;
+}

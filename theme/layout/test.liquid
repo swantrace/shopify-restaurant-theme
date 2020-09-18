@@ -23,7 +23,9 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="{{ settings.color_primary }}">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+    
     {{ 'theme.scss' | asset_url | stylesheet_tag }}
 
 
@@ -44,6 +46,8 @@
 
   <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
       {{ content_for_layout }}
+      <script src="https://kit.fontawesome.com/c4aa682ed0.js" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
       {{ 'theme.min.js' | asset_url | script_tag }}
   </body>
 </html>
