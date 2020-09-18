@@ -1,9 +1,29 @@
+<div class="container newsletter-block">
+    <div class="row align-items-center justify-content-between border-white" style="margin: 0;border: 1px solid white;padding-top: 30px;padding-bottom: 30px;">
+        <div class="col">
+            <h5 class="text-gray1 font-weight-light">Get the latest updates</h5>
+            <p class="text-gray1 font-weight-light">
+                <small>Lorem ipsum dolor sit amet. consecteduer adipi-text</small>
+            </p>
+        </div>
+        <div class="col">
+            <form class="form-inline" method="post">
+                <div class="form-group" style="border-bottom: 1px solid white;"><input class="form-control border-white border-0 bg-black" name="email" placeholder="Your Email" type="email"></div>
+                <div class="form-group">
+                    <button class="btn btn-white" type="submit">LEARN MORE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 {% schema %}
 {
   "name": {
     "en": "Newsletter"
   },
-  "class": "index-section index-section--newsletter",
+  "class": "index-section index-section--newsletter py-sm-30",
+  "tag": "section",
   "settings": [
     {
       "type": "header",
@@ -96,32 +116,32 @@
       },
       "default": {
         "en": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
-      }
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": {
-        "en": "Button text"
-      }
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": {
-        "en": "Button link"
-      }
-    }
-  ],
-  "presets": [
-    {
-      "name": {
-        "en": "Newsletter"
-      },
-      "category": {
-        "en": "Promotional"
-      }
-    }
-  ]
-}
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "type": "text",
+                                                                  "id": "button_label",
+                                                                  "label": {
+                                                                    "en": "Button text"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "type": "url",
+                                                                  "id": "button_link",
+                                                                  "label": {
+                                                                    "en": "Button link"
+                                                                  }
+                                                                }
+                                                              ],
+                                                              "presets": [
+                                                                {
+                                                                  "name": {
+                                                                    "en": "Newsletter"
+                                                                  },
+                                                                  "category": {
+                                                                    "en": "Promotional"
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
 {% endschema %}

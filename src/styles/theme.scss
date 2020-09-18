@@ -4,8 +4,8 @@
 .index-section.index-section--carousel .carousel-indicators li {
   background-color: transparent !important;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAAsUlEQVQ4ja3VzQ3CMAwF4Ecm6CYcvAAjMAJMBhuwAgPYh27CBkGqStU28U9In5SDJeuTJVsKcs7uY+YrMw+R3gQnInID8ALwFpHB6zfBGXvM5TmCquAO+8VFq6CChdACdDAX3YBBzEQXsBFT0dSBVdETM/dg64wALu5htyYR0RPA/YjpiOgzTdiJLhjWW/4T3WDY32EjWmAF2IBWsSoYQFVMBQ3UxEywgrrYlEO/gJzxBe3e0l0Of8UeAAAAAElFTkSuQmCC');
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   margin-left: 8px;
   margin-right: 8px;
   background-size: cover;
@@ -14,8 +14,8 @@
 .index-section.index-section--testimonials #resp-dots .glider-dot {
   background-color: transparent !important;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAAsUlEQVQ4ja3VzQ3CMAwF4Ecm6CYcvAAjMAJMBhuwAgPYh27CBkGqStU28U9In5SDJeuTJVsKcs7uY+YrMw+R3gQnInID8ALwFpHB6zfBGXvM5TmCquAO+8VFq6CChdACdDAX3YBBzEQXsBFT0dSBVdETM/dg64wALu5htyYR0RPA/YjpiOgzTdiJLhjWW/4T3WDY32EjWmAF2IBWsSoYQFVMBQ3UxEywgrrYlEO/gJzxBe3e0l0Of8UeAAAAAElFTkSuQmCC');
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   margin-left: 8px;
   margin-right: 8px;
   background-size: cover;
@@ -41,10 +41,6 @@
   padding: 0;
 }
 
-#main-header {
-  margin-bottom: 18px;
-}
-
 .carousel-caption.d-none.d-md-block {
   padding-bottom: 139px;
 }
@@ -56,4 +52,14 @@
 
 footer .fab {
   font-size: 35px;
+}
+
+/********image section *********/
+
+/********video section *********/
+
+/********Newsletter Section *********/
+.newsletter-block {
+  background-color: black;
+  padding: 20px;
 }

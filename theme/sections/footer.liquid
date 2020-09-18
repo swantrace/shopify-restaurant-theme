@@ -1,9 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-12 col-md-3">
+            <img class="d-xl-flex lazyload" src="{{ 'logo.png' | asset_img_url: '300x' }} " data-src="{{ img_url }}" data-widths="[120, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" data-sizes="auto" alt="{{ shop.name | escape }}" itemprop="logo">
+        </div>
+        <div class="col col-12 col-md-2">
+            <ul style="list-style: none;">
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <li>MENU</li>
+                <li>RESERVATION</li>
+                <li>CONTACT</li>
+                <li>204-555-5555</li>
+            </ul>
+        </div>
+        <div class="col col-12 col-md-5"></div>
+        <div class="col col-12 col-md-2">
+            <a href="#">
+                <i class="fab fa-facebook text-gray2 mr-4"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-instagram text-gray2 mr-4"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-twitter text-gray2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="bg-gray2">
+    <small class="text-gray4 py-10 d-block text-center w-100">@2020 LOGO Restaurant. All Rights Reserved</small>
+</div>
+
 {% schema %}
 {
   "name": {
     "en": "Footer"
   },
-  "class": "index-section index-section--footer",
+  "class": "index-section index-section--footer pt-30 bg-gray1",
+  "tag": "footer",
   "max_blocks": 4,
   "settings": [
     {

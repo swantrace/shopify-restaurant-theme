@@ -8,12 +8,18 @@ $h3-font-size: $font-size-base * 2.6; // carousels' subtitles
 $h4-font-size: $font-size-base * 2.2; // all the sections' titles and products' names
 $h5-font-size: $font-size-base * 1.875; // prices
 $h6-font-size: $font-size-base * 1.5625; // titles within sections such as featured products
-$font-family-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-  Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$font-family-sans-serif: 'Lato',
+  -applerow carousel-caption h-100 align-items-center justify-content-center-system,
+  BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+  sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+  'Noto Color Emoji' !default;
 
 $enable-rounded: false;
 $enable-responsive-font-sizes: true;
+
+$font-weight-light: 200;
+$font-weight-normal: 300;
+$headings-font-weight: 300;
 
 $white: #fff;
 $black: #000;
@@ -177,20 +183,22 @@ $sizes: (
   100: 100%,
 );
 
-$grid-breakpoints: (
-  xs: 0,
-  sm: 540px,
-  md: 740px,
-  lg: 980px,
-  xl: 1260px,
-);
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 540px,
+//   md: 740px,
+//   lg: 980px,
+//   xl: 1260px,
+//   // xll: 1824px,
+// );
 
-$container-max-widths: (
-  sm: 541px,
-  md: 778px,
-  lg: 1025px,
-  xl: 1230px,
-);
+// $container-max-widths: (
+//   sm: 541px,
+//   md: 778px,
+//   lg: 1025px,
+//   xl: 1230px,
+//   // xll: 1230px,
+// );
 
 .btn {
   letter-spacing: 0.2rem;

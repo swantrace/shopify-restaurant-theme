@@ -1,9 +1,68 @@
+<div class="container">
+    <div class="row" id="top-logo" style="padding: 60px 0 20px;">
+        <div class="col text-center">
+            <img class="logo__image lazyload" src="{{ 'logo.png' | asset_img_url: '300x' }} " data-src="{{ img_url }}" data-widths="[120, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" data-sizes="auto" alt="{{ shop.name | escape }}" itemprop="logo">
+        </div>
+    </div>
+    <div class="row" id="top-navigation">
+        <div class="col">
+            <nav class="navbar navbar-light navbar-expand-md">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" data-target="#navcol-1" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse row justify-content-center" id="navcol-1">
+                        <ul class="nav navbar-nav col-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">ABOUT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">MENU</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">RESERVATION</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">CONTACT</a>
+                            </li>
+                        </ul>
+                        <div class="navbar-text">
+                            <span class="text-center mr-6">204-555-5555</span>
+                        </div>
+                        <ul class="nav navbar-nav col-auto" id="navigation-icons">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">
+                                    <i class="far fa-user"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
 {% schema %}
 {
   "name": {
     "en": "Header"
   },
   "class": "index-section index-section--header",
+  "tag": "header",
   "settings": [
     {
       "type": "header",
