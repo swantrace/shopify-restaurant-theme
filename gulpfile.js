@@ -12,15 +12,18 @@ const commonjs = require('@rollup/plugin-commonjs');
 const json = require('@rollup/plugin-json');
 
 function compileSass() {
-  return gulp
-    .src('./src/styles/theme.scss')
-    .pipe(sass({ outputStyle: 'compressed' }))
-    .on('error', sass.logError)
-    .pipe(autoprefixer())
-    .pipe(rename('theme.scss.liquid'))
-    .pipe(replace('"{{', '{{'))
-    .pipe(replace('}}"', '}}'))
-    .pipe(gulp.dest('theme/assets/'));
+  return (
+    gulp
+      .src('./src/styles/theme.scss')
+      // .pipe(sass({ outputStyle: 'compressed' }))
+      .pipe(sass())
+      .on('error', sass.logError)
+      .pipe(autoprefixer())
+      .pipe(rename('theme.scss.liquid'))
+      .pipe(replace('"{{', '{{'))
+      .pipe(replace('}}"', '}}'))
+      .pipe(gulp.dest('theme/assets/'))
+  );
 }
 
 function compileJavascript() {
