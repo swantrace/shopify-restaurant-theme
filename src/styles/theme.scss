@@ -1,6 +1,7 @@
 @import './custom';
 @import './bootstrap/bootstrap.scss';
 @import './sections/header.scss';
+@import './sections/masonry-gallery';
 
 .index-section.index-section--carousel .carousel-indicators li {
   background-color: transparent !important;
@@ -61,10 +62,9 @@ footer .fab {
   padding: 20px;
 }
 
-
 /********Featured Products *********/
-.index-section--featured-collections{
-  .collection-title{
+.index-section--featured-collections {
+  .collection-title {
     position: absolute;
     top: 50%;
     left: 50%;
