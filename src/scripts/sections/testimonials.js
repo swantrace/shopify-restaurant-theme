@@ -1,6 +1,7 @@
 import Glider from 'glider-js';
 // code for testimonials
-window.addEventListener('load', function () {
+window.addEventListener('load', function setupTestimonialSlider() {
+  // eslint-disable-next-line no-new
   new Glider(document.querySelector('.glider'), {
     // Mobile-first defaults
     slidesToShow: 1,

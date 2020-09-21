@@ -2,7 +2,7 @@ import { useRef, useCallback, useEffect, useMemo } from 'haunted';
 
 export function useDebouncedCallback(
   func,
-  wait,
+  rawWait,
   options = { leading: false, trailing: true }
 ) {
   const lastCallTime = useRef(undefined);
@@ -17,15 +17,15 @@ export function useDebouncedCallback(
 
   // Bypass `requestAnimationFrame` by explicitly setting `wait=0`.
   const useRAF =
-    !wait &&
-    wait !== 0 &&
+    !rawWait &&
+    rawWait !== 0 &&
     typeof window !== 'undefined' &&
     typeof window.requestAnimationFrame === 'function';
 
   if (typeof func !== 'function') {
     throw new TypeError('Expected a function');
   }
-  wait = Number(wait) || 0;
+  const wait = Number(rawWait) || 0;
   const leading = !!options.leading;
   const trailing = 'trailing' in options ? !!options.trailing : true;
   const maxing = 'maxWait' in options;
@@ -37,19 +37,20 @@ export function useDebouncedCallback(
     const args = lastArgs.current;
     const thisArg = lastThis.current;
 
-    lastArgs.current = lastThis.current = undefined;
+    lastThis.current = undefined;
+    lastArgs.current = undefined;
     lastInvokeTime.current = time;
     result.current = funcRef.current.apply(thisArg, args);
     return result.current;
   }, []);
 
   const startTimer = useCallback(
-    (pendingFunc, wait) => {
+    (pendingFunc, timeout) => {
       if (useRAF) {
         window.cancelAnimationFrame(timerId.current);
         return window.requestAnimationFrame(pendingFunc);
       }
-      return setTimeout(pendingFunc, wait);
+      return setTimeout(pendingFunc, timeout);
     },
     [useRAF]
   );
@@ -60,6 +61,7 @@ export function useDebouncedCallback(
         return window.cancelAnimationFrame(id);
       }
       clearTimeout(id);
+      return true;
     },
     [useRAF]
   );
@@ -106,7 +108,8 @@ export function useDebouncedCallback(
       if (trailing && lastArgs.current) {
         return invokeFunc(time);
       }
-      lastArgs.current = lastThis.current = undefined;
+      lastThis.current = undefined;
+      lastArgs.current = undefined;
       return result.current;
     },
     [invokeFunc, trailing]
@@ -119,6 +122,7 @@ export function useDebouncedCallback(
     }
     // Restart the timer.
     timerId.current = startTimer(timerExpired, remainingWait(time));
+    return true;
   }, [remainingWait, shouldInvoke, startTimer, trailingEdge]);
 
   const leadingEdge = useCallback(
@@ -138,14 +142,17 @@ export function useDebouncedCallback(
       cancelTimer(timerId.current);
     }
     lastInvokeTime.current = 0;
-    lastArgs.current = lastCallTime.current = lastThis.current = timerId.current = undefined;
+    timerId.current = undefined;
+    lastThis.current = undefined;
+    lastCallTime.current = undefined;
+    lastArgs.current = undefined;
   }, [cancelTimer]);
 
-  const flush = useCallback(() => {
-    return timerId.current === undefined
-      ? result.current
-      : trailingEdge(Date.now());
-  }, [trailingEdge]);
+  const flush = useCallback(
+    () =>
+      timerId.current === undefined ? result.current : trailingEdge(Date.now()),
+    [trailingEdge]
+  );
 
   useEffect(() => {
     mounted.current = true;
@@ -189,9 +196,7 @@ export function useDebouncedCallback(
     ]
   );
 
-  const pending = useCallback(() => {
-    return timerId.current !== undefined;
-  }, []);
+  const pending = useCallback(() => timerId.current !== undefined, []);
 
   const debouncedState = useMemo(
     () => ({
@@ -205,3 +210,5 @@ export function useDebouncedCallback(
 
   return debouncedState;
 }
+
+export default { useDebouncedCallback };

@@ -1,37 +1,36 @@
-import { toggleClass, removeClass } from '../helper.js';
+import { toggleClass, removeClass } from '../helper';
 
-document.addEventListener('click', function (event) {
-  const target = event.target;
+document.addEventListener('click', (event) => {
+  const { target } = event;
   if (target.closest('.dropdown-menu')) {
-    console.log('prevent dropdown menu from closing');
     event.stopPropagation();
   }
   // class="navbar-toggler" data-trigger="#navbar_main"
   if (target.closest('.navbar-toggler[data-trigger]')) {
     event.preventDefault();
     event.stopPropagation();
-    const offcanvas_id = target
+    const offcanvasId = target
       .closest('.navbar-toggler[data-trigger]')
       .getAttribute('data-trigger');
-    const offcanvas = document.querySelector(offcanvas_id);
+    const offcanvas = document.querySelector(offcanvasId);
     if (offcanvas) {
       toggleClass(offcanvas, 'show');
     }
     toggleClass(document.body, 'offcanvas-active');
-    const screen_overlay = document.querySelector('.screen-overlay');
-    if (screen_overlay) {
-      toggleClass(screen_overlay, 'show');
+    const screenOverlay = document.querySelector('.screen-overlay');
+    if (screenOverlay) {
+      toggleClass(screenOverlay, 'show');
     }
   }
 
   if (target.closest('.btn-close, .screen-overlay')) {
-    const screen_overlay = document.querySelector('.screen-overlay');
-    if (screen_overlay) {
-      removeClass(screen_overlay, 'show');
+    const screenOverlay = document.querySelector('.screen-overlay');
+    if (screenOverlay) {
+      removeClass(screenOverlay, 'show');
     }
-    const mobile_offcanvas = document.querySelector('.mobile-offcanvas');
-    if (mobile_offcanvas) {
-      removeClass(mobile_offcanvas, 'show');
+    const mobileOffcanvas = document.querySelector('.mobile-offcanvas');
+    if (mobileOffcanvas) {
+      removeClass(mobileOffcanvas, 'show');
     }
     removeClass(document.body, 'offcanvas-active');
   }

@@ -1,11 +1,4 @@
-import {
-  html,
-  component,
-  useState,
-  useEffect,
-  useReducer,
-  useMemo,
-} from 'haunted';
+import { html, component, useState } from 'haunted';
 import { useDebouncedCallback } from './custom-hooks';
 import { getPredictiveSearchResults } from '../ajaxapis';
 
@@ -14,16 +7,13 @@ function predictiveSearch() {
   const [results, setResults] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const debounced = useDebouncedCallback((q) => {
-    getPredictiveSearchResults(q).then(function (response) {
+  const debounced = useDebouncedCallback(() => {
+    getPredictiveSearchResults(q).then(function setValue(response) {
       setLoading(false);
       if (response.message) {
         setResults({});
       } else {
-        const {
-          resources: { results },
-        } = response;
-        setResults(results);
+        setResults(response.resources.results);
       }
     });
   }, 500);
