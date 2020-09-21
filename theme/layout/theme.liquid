@@ -46,7 +46,7 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
-
+  <predictive-search></predictive-search>
   {% section 'header' %}
 
   {{ content_for_layout }}

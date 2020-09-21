@@ -8,6 +8,8 @@
   "dependencies": {
     "axios": "^0.20.0",
     "bootstrap.native": "^3.0.9",
+    "haunted": "^4.7.0",
+    "lodash": "^4.17.20",
     "macy": "^2.5.1"
   },
   "devDependencies": {

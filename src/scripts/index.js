@@ -1,10 +1,11 @@
 import BSN from 'bootstrap.native';
-import ajaxAPICreator from './ajaxapi';
+import apis from './ajaxapis';
 import './sections/testimonials';
 import './sections/header';
 import './sections/masonry-gallery';
+import './components/predictive-search';
 
 window.datomar = {
   BSN,
-  api: ajaxAPICreator({}),
+  apis,
 };
