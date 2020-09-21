@@ -1,3 +1,4 @@
+import Glider from 'glider-js';
 // code for testimonials
 window.addEventListener('load', function () {
   new Glider(document.querySelector('.glider'), {

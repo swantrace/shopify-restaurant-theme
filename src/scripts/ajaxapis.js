@@ -5,18 +5,20 @@ const instance = Axios.create({
   headers: { 'X-Requested-With': 'XMLHttpRequest' },
 });
 const ajaxTemplateFunc = (url, method = 'get', data = {}) => {
+  const encoded = encodeURI(url);
   let request;
+
   if (method == 'get') {
     if (isEmpty(data)) {
-      request = instance.get(url);
+      request = instance.get(encoded);
     } else {
-      request = instance.get(url, data);
+      request = instance.get(encoded, data);
     }
   } else {
     if (isEmpty(data)) {
-      request = instance.post(url);
+      request = instance.post(encoded);
     } else {
-      request = instance.post(url, data);
+      request = instance.post(encoded, data);
     }
   }
   return request
