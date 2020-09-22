@@ -1,6 +1,6 @@
 import Macy from 'macy';
 
-const macyInstance = Macy({
+Macy({
   container: '.index-section--masonry .images-wrapper',
   columns: 3,
   breakAt: {
