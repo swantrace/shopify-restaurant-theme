@@ -46,7 +46,7 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
-  <predictive-search></predictive-search>
+
   {% section 'header' %}
 
   {{ content_for_layout }}
@@ -55,6 +55,6 @@
 
   <script src="https://kit.fontawesome.com/c4aa682ed0.js" crossorigin="anonymous"></script>
 
-  {{ 'theme.min.js' | asset_url | script_tag }}
+  {{ 'theme.js' | asset_url | script_tag }}
 </body>
 </html>

@@ -1,0 +1,8 @@
+<predictive-search></predictive-search>
+{% form 'product', product %}
+<add-to-cart-form-inputs
+  data-product="{{ product | json |escape }}" 
+  data-selected-or-first-available-variant="{{ product.selected_or_first_available_variant.id }}"
+  data-options-with-values="{{ product.options_with_values | json | escape }}">
+</add-to-cart-form-inputs>
+{% endform %}
