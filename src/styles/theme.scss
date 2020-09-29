@@ -3,6 +3,33 @@
 @import './sections/header.scss';
 @import './sections/masonry-gallery';
 
+// global style
+@include media-breakpoint-only(xs) {
+  .disable_on_mobile {
+    display: none;
+  }
+}
+@include media-breakpoint-only(sm) {
+  .disable_on_mobile {
+    display: none;
+  }
+}
+@include media-breakpoint-only(md) {
+  .disable_on_tablet {
+    display: none;
+  }
+}
+@include media-breakpoint-only(lg) {
+  .disable_on_desktop {
+    display: none;
+  }
+}
+@include media-breakpoint-only(xl) {
+  .disable_on_desktop {
+    display: none;
+  }
+}
+
 .index-section.index-section--carousel .carousel-indicators li {
   background-color: transparent !important;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAAsUlEQVQ4ja3VzQ3CMAwF4Ecm6CYcvAAjMAJMBhuwAgPYh27CBkGqStU28U9In5SDJeuTJVsKcs7uY+YrMw+R3gQnInID8ALwFpHB6zfBGXvM5TmCquAO+8VFq6CChdACdDAX3YBBzEQXsBFT0dSBVdETM/dg64wALu5htyYR0RPA/YjpiOgzTdiJLhjWW/4T3WDY32EjWmAF2IBWsSoYQFVMBQ3UxEywgrrYlEO/gJzxBe3e0l0Of8UeAAAAAElFTkSuQmCC');

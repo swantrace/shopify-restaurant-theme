@@ -1,10 +1,29 @@
-{{ section.settings.custom-html }}
+<div class="
+    section-inner-wrapper
+    {% if section.settings.section_width == 'container' %}container{% endif %}
+    {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+    {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+    {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+    {{ section.settings.custom_classes }}">
+  {{ section.settings.custom-html }}
+</div>
+<style>
+  .index-section--custom-html .section-inner-wrapper{
+    background-color: {{ section.settings.color_bg }};
+    {% if section.settings.img_bg != blank %}
+    background-image: url("{{ section.settings.img_bg | img_url }}");
+    {% endif %}
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+
 {% schema %}
 {
   "name": {
     "en": "Custom HTML"
   },
-  "class": "index-section index-section--custom-html py-sm-30",
+  "class": "index-section index-section--custom-html",
   "settings": [
     {
       "type": "header",
@@ -25,7 +44,7 @@
       "label": {
         "en": "Background color"
       },
-      "default": "#3a3a3a"
+      "default": "rgba(0,0,0,0)"
     },
     {
       "type": "header",
@@ -80,6 +99,13 @@
       "default": false
     },
     {
+      "type": "text",
+      "id": "custom_classes",
+      "label": {
+        "en": "Custom class names assigned to inner wrapper div"
+      }
+    },
+    {
       "type": "html",
       "id": "custom-html",
       "label": {
@@ -87,18 +113,18 @@
       },
       "default": {
         "en": "<p>new products and sales.</p>"
-      }
-    }
-  ],
-  "presets": [
-    {
-      "name": {
-        "en": "Custom HTML"
-      },
-      "category": {
-        "en": "text"
-      }
-    }
-  ]
-}
+                  }
+                }
+              ],
+              "presets": [
+                {
+                  "name": {
+                    "en": "Custom HTML"
+                  },
+                  "category": {
+                    "en": "text"
+                  }
+                }
+              ]
+            }
 {% endschema %}
