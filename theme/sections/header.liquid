@@ -1,111 +1,89 @@
 {% assign links = linklists[section.settings.nav_menu].links %}
 <div class="
-  section-inner-wrapper
-  {% if section.settings.section_width == 'container' %}container{% endif %}
-  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
-  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
-  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-  {{ section.settings.custom_classes }}
-   {% if section.settings.style_for_desktop == 'styleA'%}style_for_desktop_a{% else %}style_for_desktop_b{% endif %}
-  {% if section.settings.style_for_mobile == 'styleA'%}style_for_mobile_a{% else %}style_for_mobile_b{% endif %}">
-  <div
-    {% if section.settings.style_for_desktop == 'styleA' %}
-    class="float-md-left row justify-content-between justify-content-md-center"
-    {% else %}
-    class="pt-md-30 pb-md-10 row justify-content-between justify-content-md-center"
-    {% endif %} 
-    id="top-logo"
-  >
-    <div class="text-center float-left float-md-none col col-auto">
-      <img 
-        alt="Datomar Theme Dev" 
-        class="logo__image lazyautosizes ls-is-cached lazyloaded" 
-        data-sizes="auto" 
-        data-src="" 
-        data-widths="[120, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" 
-        itemprop="logo" 
-        sizes="120px" 
-        src="{{ section.settings.logo_img | img_url }}" 
-      />
-    </div>
-    <button class="d-block d-md-none navbar-toggler border-0 navbar navbar-light col col-auto" data-trigger="#navbar_main">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-  <div 
-    {% if section.settings.style_for_desktop == 'styleA' %}
-    class="float-right"
-    {% else %}
-    class=""
-    {% endif %} 
-    id="top-navigation"
-  >
-    <nav class="navbar navbar-light navbar-expand-md mobile-offcanvas" id="navbar_main">
-      <div class="container-fluid bg-white">
-        <div class="mx-md-auto" id="navcol">
-          <ul class="nav navbar-nav">
-            {% for link in links %}
-              {% if link.links != blank %}
-                {% assign first_level_index = forloop.index %}
-                <li class="nav-item dropdown has-megamenu">
-                  <a class="nav-link dropdown-toggle first-level-nav-link{% if link.child_active %} active{% endif %}" data-toggle="dropdown" href="{{ link.url }}">{{ link.title | escape }}</a>
-                  <div class="dropdown-menu megamenu" tabindex="0">
-                    <div class="row">
-                      {% for sublink in link.links %}
-                        {% if sublink.links != blank %}
-                        {% assign second_level_index = forloop.index %}
-                          <div class="col-md-2">
-                            <div class="col-megamenu">
-                              <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.title | escape }}</a>
-                              <ul class="list-unstyled">
-                                {% for subsublink in sublink.links %}
-                                  <li>
-                                    <a href="{{ subsublink.url }}">{{ subsublink.title | escape }}</a>
-                                  </li>
-                                {% endfor %}
-                              </ul>
-                            </div>
-                          </div>
-                        {% else %}
-                          <div class="col-md-2">
-                            <div class="col-megamenu">
-                              <img class="img-fluid" src="{{ sublink.object.featured_image | img_url }}">
-                              <h6 class="product-title">{{ sublink.object.title }}</h6>
-                              <h4 class="product-price">{{ sublink.object.price | money }}</h4>
-                              <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}"></a>
-                            </div>
-                          </div>
-                        {% endif %}
-                      {% endfor %}
-                    </div>
-                  </div>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  <a class="nav-link{% if link.active %} active{% endif %} first-level-nav-link" href="{{ link.url }}">{{ link.title | escape }}</a>
-                </li>
-              {% endif %}
-            {% endfor %}
-            <li class="navbar-text">
-              <span class="navbar-text d-flex align-items-center">204-555-5555</span>
-            </li>
-            <li class="nav-item d-flex">
-              <a class="nav-link active" href="#">
-                <i aria-hidden="true" class="far fa-user"></i>
-              </a>
-              <a class="nav-link" href="#">
-                <i aria-hidden="true" class="fas fa-shopping-cart"></i>
-              </a>
-              <a class="nav-link" href="#">
-                <i aria-hidden="true" class="fa fa-search"></i>
-              </a>
-            </li>
-          </ul>
+                                                                                  section-inner-wrapper
+                                                                                  {% if section.settings.section_width == 'container' %}container{% endif %}
+                                                                                  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+                                                                                  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+                                                                                  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+                                                                                  {{ section.settings.custom_classes }}
+                                                                                   {% if section.settings.style_for_desktop == 'styleA'%}style_for_desktop_a{% else %}style_for_desktop_b{% endif %}
+                                                                                  {% if section.settings.style_for_mobile == 'styleA'%}style_for_mobile_a{% else %}style_for_mobile_b{% endif %}">
+    <div {% if section.settings.style_for_desktop == 'styleA' %} class="float-md-left row justify-content-between justify-content-md-center" {% else %} class="pt-md-30 pb-md-10 row justify-content-between justify-content-md-center" {% endif %} id="top-logo">
+        <div class="text-center float-left float-md-none col col-auto">
+            <img alt="Datomar Theme Dev" class="logo__image lazyautosizes ls-is-cached lazyloaded" data-sizes="auto" data-src="" data-widths="[120, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" itemprop="logo" sizes="120px" src="{{ section.settings.logo_img | img_url }}"/>
         </div>
-      </div>
-    </nav>
-  </div>
+        <button class="d-block d-md-none navbar-toggler border-0 navbar navbar-light col col-auto" data-trigger="#navbar_main">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div {% if section.settings.style_for_desktop == 'styleA' %} class="float-right" {% else %} class="" {% endif %} id="top-navigation">
+        <nav class="navbar navbar-light navbar-expand-md mobile-offcanvas" id="navbar_main">
+            <div class="container-fluid bg-white">
+                <div class="mx-md-auto" id="navcol">
+                    <ul class="nav navbar-nav">
+                        {% for link in links %}
+                            {% if link.links != blank %}
+                                {% assign first_level_index = forloop.index %}
+                                <li class="nav-item dropdown has-megamenu">
+                                    <a class="nav-link dropdown-toggle first-level-nav-link{% if link.child_active %} active{% endif %}" data-toggle="dropdown" href="{{ link.url }}">{{ link.title | escape }}</a>
+                                    <div class="dropdown-menu megamenu" tabindex="0">
+                                        <div class="row">
+                                            {% for sublink in link.links %}
+                                                {% if sublink.links != blank %}
+                                                    {% assign second_level_index = forloop.index %}
+                                                    <div class="col-md-2">
+                                                        <div class="col-megamenu">
+                                                            <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.title | escape }}</a>
+                                                            <ul class="list-unstyled">
+                                                                {% for subsublink in sublink.links %}
+                                                                    <li>
+                                                                        <a href="{{ subsublink.url }}">{{ subsublink.title | escape }}</a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="col-md-2">
+                                                        <div class="col-megamenu">
+                                                            <img class="img-fluid" src="{{ sublink.object.featured_image | img_url }}">
+                                                            <h6 class="product-title">{{ sublink.object.title }}</h6>
+                                                            <h4 class="product-price">{{ sublink.object.price | money }}</h4>
+                                                            <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}"></a>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link{% if link.active %} active{% endif %} first-level-nav-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        <li class="nav-item d-flex">
+                            <a class="nav-link active" href="#">
+                                <i aria-hidden="true" class="fas fa-phone"></i>
+                            </a>
+                            <a class="nav-link active" href="#">
+                                <i aria-hidden="true" class="far fa-user"></i>
+                            </a>
+                            <a class="nav-link" href="#">
+                                <i aria-hidden="true" class="fas fa-shopping-cart"></i>
+                            </a>
+                            <a class="nav-link" href="#">
+                                <i aria-hidden="true" class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
 </div>
 <style>
   .static-section-header .section-inner-wrapper{
