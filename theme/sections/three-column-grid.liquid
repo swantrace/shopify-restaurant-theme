@@ -1,14 +1,14 @@
 <div class="
-  section-inner-wrapper
-  {% if section.settings.section_width == 'container' %}container{%else %}container-fluid{% endif %}
-  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
-  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
-  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-  py-sm-30
-  {{ section.settings.custom_classes }}">
+                          section-inner-wrapper
+                          {% if section.settings.section_width == 'container' %}container{%else %}container-fluid{% endif %}
+                          {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+                          {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+                          {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+                          py-sm-30
+                          {{ section.settings.custom_classes }}">
     <div class="row">
         <div class="col col-12 col-sm-4">
-            <div class="card" style="border: none;"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
+            <div class="card"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
                 <div class="card-body">
                     <h6 class="card-title my-10">H3 Header Needs To Go Here</h6>
                     <p class="card-text mb-20">
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="col col-12 col-sm-4">
-            <div class="card" style="border: none;"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
+            <div class="card"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
                 <div class="card-body">
                     <h6 class="card-title my-10">H3 Header Needs To Go Here</h6>
                     <p class="card-text mb-20">
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="col col-12 col-sm-4">
-            <div class="card" style="border: none;"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
+            <div class="card"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
                 <div class="card-body">
                     <h6 class="card-title my-10">H3 Header Needs To Go Here</h6>
                     <p class="card-text mb-20">
@@ -51,6 +51,11 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  .card{
+    border: none;
+  }
+
 </style>
 
 {% schema %}

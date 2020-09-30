@@ -1,13 +1,21 @@
-<div class="row no-gutters bg-gray5">
-  <div class="col col-12 col-md-4 order-2"><img class="img-fluid" src="https://picsum.photos/id/1060/1200/1028"></div>
-  <div class="col col-12 col-md-8 order-1">
-    <div class="p-20">
-      <h4 class="text-white mb-lg-10">Head needs to be here</h4>
-      <p class="text-white">
-        <small>Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;</small>
-      </p>
-      <form>
-        <!-- <select class="form-control mb-5 py-4 pl-4 bg-gray2 border-0">
+<div class="
+                                                          section-inner-wrapper
+                                                          {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
+                                                          {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+                                                          {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+                                                          {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+                                                          py-sm-30
+                                                          {{ section.settings.custom_classes }}">
+    <div class="row no-gutters bg-gray5">
+        <div class="col col-12 col-md-4 order-2"><img class="img-fluid" src="https://picsum.photos/id/1060/1200/1028"></div>
+        <div class="col col-12 col-md-8 order-1">
+            <div class="p-20">
+                <h4 class="text-white mb-lg-10">Head needs to be here</h4>
+                <p class="text-white">
+                    <small>Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;</small>
+                </p>
+                <form>
+                    <!-- <select class="form-control mb-5 py-4 pl-4 bg-gray2 border-0">
                   <optgroup label="This is a group">
                       <option selected="" value="12">Selection 1</option>
                       <option value="13">This is item 2</option>
@@ -21,12 +29,12 @@
                       <option value="14">This is item 3</option>
                   </optgroup>
               </select><input class="form-control mb-5 py-4 pl-4 bg-gray2 border-0" type="number"> -->
-        <div class="form-row justify-content-between">
-          <div class="col">
-            <button class="btn btn-white" type="button">LEARN MORE</button>
-            <button class="btn btn-black" type="button">LEARN MORE</button>
-          </div>
-          <!-- <div class="col col-auto">
+                    <div class="form-row justify-content-between">
+                        <div class="col">
+                            <button class="btn btn-white" type="button">LEARN MORE</button>
+                            <button class="btn btn-black" type="button">LEARN MORE</button>
+                        </div>
+                        <!-- <div class="col col-auto">
             <div class="btn-group align-self-center h-100" role="group">
               <button class="btn btn-primary p-0 pr-3" style="background: none;color: gray;font-size: 0.6rem;border: none;" type="button">
                 <i class="fa fa-list pr-2"></i>Detail</button>
@@ -34,10 +42,11 @@
                 <i class="fa fa-share-alt pr-2"></i>Share</button>
             </div>
           </div> -->
+                    </div>
+                </form>
+            </div>
         </div>
-      </form>
     </div>
-  </div>
 </div>
 {% schema %}
 {

@@ -55,6 +55,8 @@ $input-btn-padding-x: 1.6rem;
 $input-btn-padding-y-lg: 1.35rem;
 $input-btn-padding-x-lg: 1.8rem;
 
+$btn-font-weight: 400 !default;
+
 $spacer: 2px;
 $spacers: (
   0: 0,
@@ -183,27 +185,18 @@ $sizes: (
   100: 100%,
 );
 
-// $grid-breakpoints: (
-//   xs: 0,
-//   sm: 540px,
-//   md: 740px,
-//   lg: 980px,
-//   xl: 1260px,
-//   // xll: 1824px,
-// );
-
-// $container-max-widths: (
-//   sm: 541px,
-//   md: 778px,
-//   lg: 1025px,
-//   xl: 1230px,
-//   // xll: 1230px,
-// );
-
 .btn {
   letter-spacing: 0.2rem;
 }
 
 .btn.btn-lg {
   letter-spacing: 0.2475rem;
+}
+
+/******** Header *************/
+$navbar-nav-link-padding-x: 1rem !default;
+.navbar-nav {
+  .nav-link {
+    font-weight: 400;
+  }
 }

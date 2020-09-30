@@ -1,12 +1,12 @@
 <div class="
-  section-inner-wrapper
-  {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
-  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
-  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
-  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-  py-sm-30
-  {{ section.settings.custom_classes }}">
-    <div class="row align-items-center justify-content-between border-white" style="margin: 0;border: 1px solid white;padding-top: 30px;padding-bottom: 30px;">
+                                          section-inner-wrapper
+                                          {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
+                                          {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+                                          {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+                                          {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+                                          py-sm-30
+                                          {{ section.settings.custom_classes }}">
+    <div class="row align-items-center justify-content-between border-white newsletter-block">
         <div class="col">
             <h5 class="text-gray1 font-weight-light">Get the latest updates</h5>
             <p class="text-gray1 font-weight-light">
@@ -15,7 +15,7 @@
         </div>
         <div class="col">
             <form class="form-inline" method="post">
-                <div class="form-group" style="border-bottom: 1px solid white;"><input class="form-control border-white border-0 bg-black" name="email" placeholder="Your Email" type="email"></div>
+                <div class="form-group"><input class="form-control border-white border-0 bg-black" name="email" placeholder="Your Email" type="email"></div>
                 <div class="form-group">
                     <button class="btn btn-white" type="submit">LEARN MORE</button>
                 </div>
@@ -132,32 +132,32 @@
       },
       "default": {
         "en": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
-        }
-      },
-      {
-        "type": "text",
-        "id": "button_label",
-        "label": {
-          "en": "Button text"
-        }
-      },
-      {
-        "type": "url",
-        "id": "button_link",
-        "label": {
-          "en": "Button link"
-        }
-      }
-    ],
-    "presets": [
-      {
-        "name": {
-          "en": "Newsletter"
-        },
-        "category": {
-          "en": "Promotional"
-        }
-      }
-    ]
-  }
+                            }
+                          },
+                          {
+                            "type": "text",
+                            "id": "button_label",
+                            "label": {
+                              "en": "Button text"
+                            }
+                          },
+                          {
+                            "type": "url",
+                            "id": "button_link",
+                            "label": {
+                              "en": "Button link"
+                            }
+                          }
+                        ],
+                        "presets": [
+                          {
+                            "name": {
+                              "en": "Newsletter"
+                            },
+                            "category": {
+                              "en": "Promotional"
+                            }
+                          }
+                        ]
+                      }
 {% endschema %}

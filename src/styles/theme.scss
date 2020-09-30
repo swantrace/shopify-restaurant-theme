@@ -30,6 +30,21 @@
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  letter-spacing: 0.2rem;
+}
+
 .index-section.index-section--carousel .carousel-indicators li {
   background-color: transparent !important;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAAsUlEQVQ4ja3VzQ3CMAwF4Ecm6CYcvAAjMAJMBhuwAgPYh27CBkGqStU28U9In5SDJeuTJVsKcs7uY+YrMw+R3gQnInID8ALwFpHB6zfBGXvM5TmCquAO+8VFq6CChdACdDAX3YBBzEQXsBFT0dSBVdETM/dg64wALu5htyYR0RPA/YjpiOgzTdiJLhjWW/4T3WDY32EjWmAF2IBWsSoYQFVMBQ3UxEywgrrYlEO/gJzxBe3e0l0Of8UeAAAAAElFTkSuQmCC');
@@ -79,22 +94,42 @@ footer .fab {
   font-size: 35px;
 }
 
-/********image section *********/
+/******** global settings *********/
 
-/********video section *********/
-
-/********Newsletter Section *********/
-.newsletter-block {
-  background-color: black;
-  padding: 20px;
+.btn.btn-transparent:hover,
+.btn-white:hover {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
 }
 
-/********Featured Products *********/
+.btn.btn-black:hover {
+  background-color: #fff;
+  border-color: #000;
+  color: #000;
+}
+
+/******** Image section *********/
+
+/******** Video section *********/
+
+/******** Newsletter Section *********/
+.newsletter-block {
+  border: 1px solid white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/******** Featured Products *********/
+
+/******** Featured Collections *********/
 .index-section--featured-collections {
   .collection-title {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    font-weight: 400;
   }
 }

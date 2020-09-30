@@ -1,13 +1,13 @@
 {% assign links = linklists[section.settings.nav_menu].links %}
 <div class="
-                                                                                  section-inner-wrapper
-                                                                                  {% if section.settings.section_width == 'container' %}container{% endif %}
-                                                                                  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
-                                                                                  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
-                                                                                  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-                                                                                  {{ section.settings.custom_classes }}
-                                                                                   {% if section.settings.style_for_desktop == 'styleA'%}style_for_desktop_a{% else %}style_for_desktop_b{% endif %}
-                                                                                  {% if section.settings.style_for_mobile == 'styleA'%}style_for_mobile_a{% else %}style_for_mobile_b{% endif %}">
+                                                                                                  section-inner-wrapper
+                                                                                                  {% if section.settings.section_width == 'container' %}container{% endif %}
+                                                                                                  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+                                                                                                  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+                                                                                                  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+                                                                                                  {{ section.settings.custom_classes }}
+                                                                                                   {% if section.settings.style_for_desktop == 'styleA'%}style_for_desktop_a{% else %}style_for_desktop_b{% endif %}
+                                                                                                  {% if section.settings.style_for_mobile == 'styleA'%}style_for_mobile_a{% else %}style_for_mobile_b{% endif %}">
     <div {% if section.settings.style_for_desktop == 'styleA' %} class="float-md-left row justify-content-between justify-content-md-center" {% else %} class="pt-md-30 pb-md-10 row justify-content-between justify-content-md-center" {% endif %} id="top-logo">
         <div class="text-center float-left float-md-none col col-auto">
             <img alt="Datomar Theme Dev" class="logo__image lazyautosizes ls-is-cached lazyloaded" data-sizes="auto" data-src="" data-widths="[120, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" itemprop="logo" sizes="120px" src="{{ section.settings.logo_img | img_url }}"/>
@@ -21,6 +21,7 @@
         <nav class="navbar navbar-light navbar-expand-md mobile-offcanvas" id="navbar_main">
             <div class="container-fluid bg-white">
                 <div class="mx-md-auto" id="navcol">
+                  <div>
                     <ul class="nav navbar-nav">
                         {% for link in links %}
                             {% if link.links != blank %}
@@ -47,10 +48,12 @@
                                                 {% else %}
                                                     <div class="col-md-2">
                                                         <div class="col-megamenu">
-                                                            <img class="img-fluid" src="{{ sublink.object.featured_image | img_url }}">
-                                                            <h6 class="product-title">{{ sublink.object.title }}</h6>
+                                                            <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}"><img class="img-fluid" src="{{ sublink.object.featured_image | img_url }}">
+                                                            </a>
+                                                            <h6 class="product-title">
+                                                                <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.object.title }}</a>
+                                                            </h6>
                                                             <h4 class="product-price">{{ sublink.object.price | money }}</h4>
-                                                            <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}"></a>
                                                         </div>
                                                     </div>
                                                 {% endif %}
