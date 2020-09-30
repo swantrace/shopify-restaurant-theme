@@ -1,4 +1,11 @@
-<div class="container">
+<div class="
+  section-inner-wrapper
+  {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  pt-30 bg-gray1
+  {{ section.settings.custom_classes }}">
     <div class="row">
         <div class="col col-12 col-md-3">
             <img class="d-xl-flex lazyload" src="{{ 'logo.png' | asset_img_url: '300x' }} " data-src="{{ img_url }}" data-widths="[120, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" data-sizes="auto" alt="{{ shop.name | escape }}" itemprop="logo">
@@ -27,17 +34,26 @@
         </div>
     </div>
 </div>
-
 <div class="bg-gray2">
     <small class="text-gray4 py-10 d-block text-center w-100">@2020 LOGO Restaurant. All Rights Reserved</small>
 </div>
+<style>
+  .static-section--footer .section-inner-wrapper{
+    background-color: {{ section.settings.color_bg }};
+    {% if section.settings.img_bg != blank %}
+    background-image: url("{{ section.settings.img_bg | img_url }}");
+    {% endif %}
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
 
 {% schema %}
 {
   "name": {
     "en": "Footer"
   },
-  "class": "index-section index-section--footer pt-30 bg-gray1",
+  "class": "static-section static-section--footer",
   "tag": "footer",
   "max_blocks": 4,
   "settings": [

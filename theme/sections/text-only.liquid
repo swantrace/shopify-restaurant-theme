@@ -1,4 +1,11 @@
-<div class="container">
+<div class="
+  section-inner-wrapper
+  {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  py-sm-25
+  {{ section.settings.custom_classes }}">
     <h4 class="pb-lg-20">H3 Header Nees To Go Here</h4>
     <p class="pb-lg-20">
         <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minm veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit inuptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laboru<br></small>
@@ -6,13 +13,23 @@
     <button class="btn btn-black mr-sm-10" type="button">LEARN MORE</button>
     <button class="btn btn-white border-black" type="button">LEARN MORE</button>
 </div>
+<style>
+  .index-section--only-text .section-inner-wrapper{
+    background-color: {{ section.settings.color_bg }};
+    {% if section.settings.img_bg != blank %}
+    background-image: url("{{ section.settings.img_bg | img_url }}");
+    {% endif %}
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
 
 {% schema %}
 {
   "name": {
     "en": "Only text"
   },
-  "class": "index-section index-section--only-text py-sm-25",
+  "class": "index-section index-section--only-text",
   "tag": "section",
   "settings": [
     {

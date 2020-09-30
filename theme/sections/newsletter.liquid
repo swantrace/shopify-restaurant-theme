@@ -1,4 +1,11 @@
-<div class="container newsletter-block">
+<div class="
+  section-inner-wrapper
+  {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  py-sm-30
+  {{ section.settings.custom_classes }}">
     <div class="row align-items-center justify-content-between border-white" style="margin: 0;border: 1px solid white;padding-top: 30px;padding-bottom: 30px;">
         <div class="col">
             <h5 class="text-gray1 font-weight-light">Get the latest updates</h5>
@@ -16,13 +23,22 @@
         </div>
     </div>
 </div>
-
+<style>
+  .index-section--newsletter .section-inner-wrapper{
+    background-color: {{ section.settings.color_bg }};
+    {% if section.settings.img_bg != blank %}
+    background-image: url("{{ section.settings.img_bg | img_url }}");
+    {% endif %}
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
 {% schema %}
 {
   "name": {
     "en": "Newsletter"
   },
-  "class": "index-section index-section--newsletter py-sm-30",
+  "class": "index-section index-section--newsletter",
   "tag": "section",
   "settings": [
     {
@@ -116,32 +132,32 @@
       },
       "default": {
         "en": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
-                                                                  }
-                                                                },
-                                                                {
-                                                                  "type": "text",
-                                                                  "id": "button_label",
-                                                                  "label": {
-                                                                    "en": "Button text"
-                                                                  }
-                                                                },
-                                                                {
-                                                                  "type": "url",
-                                                                  "id": "button_link",
-                                                                  "label": {
-                                                                    "en": "Button link"
-                                                                  }
-                                                                }
-                                                              ],
-                                                              "presets": [
-                                                                {
-                                                                  "name": {
-                                                                    "en": "Newsletter"
-                                                                  },
-                                                                  "category": {
-                                                                    "en": "Promotional"
-                                                                  }
-                                                                }
-                                                              ]
-                                                            }
+        }
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": {
+          "en": "Button text"
+        }
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": {
+          "en": "Button link"
+        }
+      }
+    ],
+    "presets": [
+      {
+        "name": {
+          "en": "Newsletter"
+        },
+        "category": {
+          "en": "Promotional"
+        }
+      }
+    ]
+  }
 {% endschema %}

@@ -1,4 +1,11 @@
-<div class="container">
+<div class="
+  section-inner-wrapper
+  {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  py-sm-30
+  {{ section.settings.custom_classes }}">
   <div class="images-wrapper">
     <img src="https://picsum.photos/1028/792"/>
     <img src="https://picsum.photos/1920/1020"/>
@@ -17,7 +24,7 @@
   "name": {
     "en": "Masonry gallery"
   },
-  "class": "index-section index-section--masonry py-sm-30",
+  "class": "index-section index-section--masonry",
   "tag": "section",
   "settings": [
     {

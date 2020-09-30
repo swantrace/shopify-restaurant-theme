@@ -1,4 +1,11 @@
-<div class="container">
+<div class="
+  section-inner-wrapper
+  {% if section.settings.section_width == 'container' %}container{%else %}container-fluid{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  py-sm-30
+  {{ section.settings.custom_classes }}">
     <div class="row">
         <div class="col col-12 col-sm-4">
             <div class="card" style="border: none;"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
@@ -35,13 +42,23 @@
         </div>
     </div>
 </div>
+<style>
+  .index-section--three-columns .section-inner-wrapper{
+    background-color: {{ section.settings.color_bg }};
+    {% if section.settings.img_bg != blank %}
+    background-image: url("{{ section.settings.img_bg | img_url }}");
+    {% endif %}
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
 
 {% schema %}
 {
   "name": {
     "en": "Three columns"
   },
-  "class": "index-section index-section--three-columns py-sm-30",
+  "class": "index-section index-section--three-columns",
   "tag": "section",
   "max_blocks": 3,
   "settings": [

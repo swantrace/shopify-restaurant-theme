@@ -1,3 +1,10 @@
+<div class="
+  section-inner-wrapper
+  {% if section.settings.section_width == 'container' %}container{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  {{ section.settings.custom_classes }}">
 <div class="carousel slide" data-ride="carousel" id="carousel-1">
     <div class="carousel-inner">
         <div class="carousel-item active"><img class="w-100 d-block" src="https://picsum.photos/id/1019/1920/1080">
@@ -52,6 +59,7 @@
         <li data-slide-to="1" data-target="#carousel-1"></li>
         <li data-slide-to="2" data-target="#carousel-1"></li>
     </ol>
+</div>
 </div>
 
 {% schema %}

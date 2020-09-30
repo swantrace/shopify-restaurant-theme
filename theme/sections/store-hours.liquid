@@ -1,3 +1,11 @@
+<div class="
+  section-inner-wrapper
+  {% if section.settings.section_width == 'container' %}container{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  py-sm-20
+  {{ section.settings.custom_classes }}">
 <div class="row no-gutters bg-gray5">
     <div class="col col-12 col-md-6">
         <iframe allowfullscreen="" frameborder="0" height="100%" src="https://cdn.bootstrapstudio.io/placeholders/map.html" width="100%"></iframe>
@@ -41,13 +49,24 @@
         </div>
     </div>
 </div>
+</div>
+<style>
+  .index-section--store-hours .section-inner-wrapper{
+    background-color: {{ section.settings.color_bg }};
+    {% if section.settings.img_bg != blank %}
+    background-image: url("{{ section.settings.img_bg | img_url }}");
+    {% endif %}
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
 
 {% schema %}
 {
   "name": {
     "en": "Store hours"
   },
-  "class": "index-section index-section--store-hours py-sm-20",
+  "class": "index-section index-section--store-hours",
   "tag": "section",
   "settings": [
     {
