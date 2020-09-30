@@ -1,130 +1,130 @@
 <div class="
-    section-inner-wrapper
-    {% if section.settings.section_width == 'container' %}container{% endif %}
-    {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
-    {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
-    {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-    {{ section.settings.custom_classes }}">
+  section-inner-wrapper
+  {% if section.settings.section_width == 'container' %}container{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  {{ section.settings.custom_classes }}">
   {{ section.settings.custom-html }}
 </div>
 <style>
-  .index-section--custom-html .section-inner-wrapper{
-    background-color: {{ section.settings.color_bg }};
-    {% if section.settings.img_bg != blank %}
-    background-image: url("{{ section.settings.img_bg | img_url }}");
-    {% endif %}
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.index-section--custom-html .section-inner-wrapper{
+  background-color: {{ section.settings.color_bg }};
+  {% if section.settings.img_bg != blank %}
+  background-image: url("{{ section.settings.img_bg | img_url }}");
+  {% endif %}
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 </style>
 
 {% schema %}
 {
-  "name": {
-    "en": "Custom HTML"
-  },
-  "class": "index-section index-section--custom-html",
-  "settings": [
-    {
-      "type": "header",
-      "content": {
-        "en": "Background"
-      }
-    },
-    {
-      "type": "image_picker",
-      "id": "img_bg",
-      "label": {
-        "en": "Background image"
-      }
-    },
-    {
-      "type": "color",
-      "id": "color_bg",
-      "label": {
-        "en": "Background color"
+   "name":{
+      "en":"Custom HTML"
+   },
+   "class":"index-section index-section--custom-html",
+   "settings":[
+      {
+         "type":"header",
+         "content":{
+            "en":"Background"
+         }
       },
-      "default": "rgba(0,0,0,0)"
-    },
-    {
-      "type": "header",
-      "content": {
-        "en": "Layout"
-      }
-    },
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": {
-        "en": "Section Width"
+      {
+         "type":"image_picker",
+         "id":"img_bg",
+         "label":{
+            "en":"Background image"
+         }
       },
-      "default": "full",
-      "options": [
-        {
-          "label": {
-            "en": "Container Width"
-          },
-          "value": "container"
-        },
-        {
-          "label": {
-            "en": "Full Width"
-          },
-          "value": "full"
-        }
-      ]
-    },
-    {
-      "type": "checkbox",
-      "id": "disable_on_mobile",
-      "label":{
-        "en": "Disable on mobile"
+      {
+         "type":"color",
+         "id":"color_bg",
+         "label":{
+            "en":"Background color"
+         },
+         "default":"rgba(0,0,0,0)"
       },
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "disable_on_tablet",
-      "label":{
-        "en": "Disable on tablet"
+      {
+         "type":"header",
+         "content":{
+            "en":"Layout"
+         }
       },
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "disable_on_desktop",
-      "label":{
-        "en": "Disable on desktop"
-      },
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "custom_classes",
-      "label": {
-        "en": "Custom class names assigned to inner wrapper div"
-      }
-    },
-    {
-      "type": "html",
-      "id": "custom-html",
-      "label": {
-        "en": "Custom HTML"
-      },
-      "default": {
-        "en": "<p>new products and sales.</p>"
-                  }
-                }
-              ],
-              "presets": [
-                {
-                  "name": {
-                    "en": "Custom HTML"
-                  },
-                  "category": {
-                    "en": "text"
-                  }
-                }
-              ]
+      {
+         "type":"select",
+         "id":"section_width",
+         "label":{
+            "en":"Section Width"
+         },
+         "default":"full",
+         "options":[
+            {
+               "label":{
+                  "en":"Container Width"
+               },
+               "value":"container"
+            },
+            {
+               "label":{
+                  "en":"Full Width"
+               },
+               "value":"full"
             }
+         ]
+      },
+      {
+         "type":"checkbox",
+         "id":"disable_on_mobile",
+         "label":{
+            "en":"Disable on mobile"
+         },
+         "default":false
+      },
+      {
+         "type":"checkbox",
+         "id":"disable_on_tablet",
+         "label":{
+            "en":"Disable on tablet"
+         },
+         "default":false
+      },
+      {
+         "type":"checkbox",
+         "id":"disable_on_desktop",
+         "label":{
+            "en":"Disable on desktop"
+         },
+         "default":false
+      },
+      {
+         "type":"text",
+         "id":"custom_classes",
+         "label":{
+            "en":"Custom class names assigned to inner wrapper div"
+         }
+      },
+      {
+         "type":"html",
+         "id":"custom-html",
+         "label":{
+            "en":"Custom HTML"
+         },
+         "default":{
+            "en":"<p>new products and sales.</p>"
+         }
+      }
+   ],
+   "presets":[
+      {
+         "name":{
+            "en":"Custom HTML"
+         },
+         "category":{
+            "en":"text"
+         }
+      }
+   ]
+}
 {% endschema %}

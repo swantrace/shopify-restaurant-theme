@@ -1,7 +1,22 @@
-<div class="container-fluid">
+<div class="
+  section-inner-wrapper
+  {% if section.settings.section_width == 'container' %}container{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  {{ section.settings.custom_classes }}">
   <div class="pt-md-30 pb-md-10 row justify-content-between justify-content-md-center" id="top-logo">
     <div class="text-center float-left float-md-none col col-auto">
-      <img alt="Datomar Theme Dev" class="logo__image lazyautosizes ls-is-cached lazyloaded" data-sizes="auto" data-src="" data-widths="[120, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" itemprop="logo" sizes="120px" src="//cdn.shopify.com/s/files/1/0479/3643/8425/t/3/assets/logo_300x.png?v=1940511523923517395 ">
+      <img 
+        alt="Datomar Theme Dev" 
+        class="logo__image lazyautosizes ls-is-cached lazyloaded" 
+        data-sizes="auto" 
+        data-src="" 
+        data-widths="[120, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]" 
+        itemprop="logo" 
+        sizes="120px" 
+        src="{{ section.settings.logo_img | img_url }}" 
+      />
     </div>
     <button class="d-block d-md-none navbar-toggler border-0 navbar navbar-light col col-auto" data-trigger="#navbar_main">
       <span class="sr-only">Toggle navigation</span>
@@ -149,3 +164,183 @@
     </nav>
   </div>
 </div>
+<style>
+  .index-section--custom-html .section-inner-wrapper{
+    background-color: {{ section.settings.color_bg }};
+    {% if section.settings.img_bg != blank %}
+    background-image: url("{{ section.settings.img_bg | img_url }}");
+    {% endif %}
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+{% schema %}
+{
+   "name":{
+      "en":"Header"
+   },
+   "tag": "header",
+   "class":"static-section static-section-header",
+   "settings":[
+      {
+         "type":"header",
+         "content":{
+            "en":"Background"
+         }
+      },
+      {
+         "type":"image_picker",
+         "id":"img_bg",
+         "label":{
+            "en":"Background image"
+         }
+      },
+      {
+         "type":"color",
+         "id":"color_bg",
+         "label":{
+            "en":"Background color"
+         },
+         "default":"rgba(0,0,0,0)"
+      },
+      {
+         "type":"header",
+         "content":{
+            "en":"Layout"
+         }
+      },
+      {
+         "type":"select",
+         "id":"section_width",
+         "label":{
+            "en":"Section Width"
+         },
+         "default":"full",
+         "options":[
+            {
+               "label":{
+                  "en":"Container Width"
+               },
+               "value":"container"
+            },
+            {
+               "label":{
+                  "en":"Full Width"
+               },
+               "value":"full"
+            }
+         ]
+      },
+      {
+         "type":"checkbox",
+         "id":"disable_on_mobile",
+         "label":{
+            "en":"Disable on mobile"
+         },
+         "default":false
+      },
+      {
+         "type":"checkbox",
+         "id":"disable_on_tablet",
+         "label":{
+            "en":"Disable on tablet"
+         },
+         "default":false
+      },
+      {
+         "type":"checkbox",
+         "id":"disable_on_desktop",
+         "label":{
+            "en":"Disable on desktop"
+         },
+         "default":false
+      },
+      {
+         "type":"text",
+         "id":"custom_classes",
+         "label":{
+            "en":"Custom class names assigned to inner wrapper div"
+         }
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Header Logo"
+        }
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_img",
+        "label":{
+          "en":"Logo image"
+        }
+      },
+    {
+      "type": "header",
+      "content": {
+        "en": "Main menu"
+      }
+    },
+    {
+      "type": "link_list",
+      "id": "nav_menu",
+      "label": {
+        "en": "Menu"
+      },
+      "default": "main-menu"
+    },
+    {
+      "type":"select",
+      "id":"style_for_desktop",
+      "label":{
+        "en":"Choose a style for desktop"
+      },
+      "default":"styleA",
+      "options":[
+        {
+          "label":{
+            "en":"Style A: Logo left with navigation right."
+          },
+          "value":"styleA"
+        },
+        {
+          "label":{
+            "en":"Style B: Logo centered with navigation below it."
+          },
+          "value":"styleB"
+        }
+      ]
+    },
+    {
+      "type":"select",
+      "id":"style_for_mobile",
+      "label":{
+        "en":"Choose a style for mobile"
+      },
+      "default":"styleA",
+      "options":[
+        {
+          "label":{
+            "en":"Style A: account, search, cart in the menu"
+          },
+          "value":"styleA"
+        },
+        {
+          "label":{
+            "en":"Style B: account, search, cart on the bottom"
+          },
+          "value":"styleB"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "display_phone_number",
+      "label":{
+        "en": "Display Phone Number"
+      },
+      "default": true
+    }
+  ]
+}
+{% endschema %}
