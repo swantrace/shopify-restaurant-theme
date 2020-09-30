@@ -8,8 +8,8 @@
   my-sm-30
   {{ section.settings.custom_classes }}">
   <div class="row no-gutters bg-gray5">
-    <div class="col col-12 col-md-6">
-      <img class="img-fluid w-100" src="{{ product.featured_image | img_url}}">
+    <div class="col col-12 col-md-6 d-flex justify-content-center align-items-center">
+      <img class="img-fluid w-100" src="{{ product.featured_image | img_url: 'large'}}">
     </div>
     <div class="col col-12 col-md-6 align-self-center px-sm-10 px-md-20 px-lg-30 pl-xl-35 pr-xl-50 ml-auto">
       <div>
@@ -35,9 +35,9 @@
           </add-to-cart-form-inputs>
           <a class="form-control btn btn-black" type="button" href="{{product.url}}">LEARN MORE</a>
           <div class="btn-group align-self-center h-100" role="group">
-            <button class="btn btn-primary p-0 pr-3" style="background: none;color: gray;font-size: 0.6rem;border: none;" type="button">
+            <button class="detail-icon btn btn-primary p-0 pr-3" type="button">
               <i class="fa fa-list pr-2"></i>Detail</button>
-            <button class="btn btn-primary p-0" style="background: none;color: gray;font-size: 0.6rem;border: none;" type="button">
+            <button class="share-icon btn btn-primary p-0" type="button">
               <i class="fa fa-share-alt pr-2"></i>Share</button>
           </div>
         {% endform %}
@@ -45,6 +45,20 @@
     </div>
   </div>
 </div>
+<style>
+  .detail-icon{
+    background: none;
+    color: gray;
+    font-size: 0.6rem;
+    border: none;
+  }
+  .share-icon{
+    background: none;
+    color: gray;
+    font-size: 0.6rem;
+    border: none;
+  }
+</style>
 <script>
 document.addEventListener('additemfromform', function(e){
   if(window.datomar && datomar.apis && datomar.apis.addItemFromForm){
