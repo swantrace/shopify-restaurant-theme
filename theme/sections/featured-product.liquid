@@ -1,3 +1,4 @@
+{% assign product = all_products[section.settings.featured_product] %}
 <div class="
   section-inner-wrapper
   {% if section.settings.section_width == 'container' %}container{% endif %}
@@ -7,79 +8,53 @@
   my-sm-30
   {{ section.settings.custom_classes }}">
   <div class="row no-gutters bg-gray5">
-    <div class="col col-12 col-md-6"><img class="img-fluid" src="https://picsum.photos/id/1060/1200/1028"></div>
+    <div class="col col-12 col-md-6">
+      <img class="img-fluid w-100" src="{{ product.featured_image | img_url}}">
+    </div>
     <div class="col col-12 col-md-6 align-self-center px-sm-10 px-md-20 px-lg-30 pl-xl-35 pr-xl-50 ml-auto">
       <div>
-        <h4 class="text-white mb-lg-10">Featured Product Name</h4>
-        <h5 class="mb-lg-10">
-          <span class="text-red">$100.00&nbsp;</span>
+        <h4 class="text-white mb-lg-10">{{ product.title}}</h4>
+        <h5 class="mb-lg-10 product-price"> 
+          <span class="{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}text-red{% endif %}">{{ product.selected_or_first_available_variant.price | money}}&nbsp;</span>
+          {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
           <i class="fas fa-arrow-left text-red px-5"></i>
-          <span class="text-white">$120.00</span>
+          <span class="text-white">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+          {% endif %}
         </h5>
         <p class="text-white">
-          <small>Small description Small description Small description Small description Small description Small description Small description&nbsp;</small>
+          <small>{{ product.content }}</small>
         </p>
-        <div class="row mb-10">
-          <div class="col-3">
-            <div class="bg-gray2 text-white pb-5">
-              <h1 class="text-center">99</h1>
-              <small class="d-block text-center">days</small>
-            </div>
+        {% form 'product', product %}
+          <add-to-cart-form-inputs
+            data-product="{{ product | json |escape }}" 
+            data-selected-or-first-available-variant="{{ product.selected_or_first_available_variant.id }}"
+            data-options-with-values="{{ product.options_with_values | json | escape }}"
+            selector-custom-classes="mb-5 py-4 pl-4 bg-gray2 border-0"
+            quantity-input-custom-classes="mb-5 py-4 pl-4 bg-gray2 border-0"
+            atc-button-custom-classes="btn-white mb-4">
+          </add-to-cart-form-inputs>
+          <a class="form-control btn btn-black" type="button" href="{{product.url}}">LEARN MORE</a>
+          <div class="btn-group align-self-center h-100" role="group">
+            <button class="btn btn-primary p-0 pr-3" style="background: none;color: gray;font-size: 0.6rem;border: none;" type="button">
+              <i class="fa fa-list pr-2"></i>Detail</button>
+            <button class="btn btn-primary p-0" style="background: none;color: gray;font-size: 0.6rem;border: none;" type="button">
+              <i class="fa fa-share-alt pr-2"></i>Share</button>
           </div>
-          <div class="col-3">
-            <div class="bg-gray2 text-white pb-5">
-              <h1 class="text-center">99</h1>
-              <small class="d-block text-center">hours</small>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="bg-gray2 text-white pb-5">
-              <h1 class="text-center">99</h1>
-              <small class="d-block text-center">minutes</small>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="bg-gray2 text-white pb-5">
-              <h1 class="text-center">99</h1>
-              <small class="d-block text-center">seconds</small>
-            </div>
-          </div>
-        </div>
-        <form>
-          <!-- <select class="form-control mb-5 py-4 pl-4 bg-gray2 border-0">
-            <optgroup label="This is a group">
-              <option selected="" value="12">Selection 1</option>
-              <option value="13">This is item 2</option>
-              <option value="14">This is item 3</option>
-            </optgroup>
-          </select>
-          <select class="form-control mb-5 py-4 pl-4 bg-gray2 border-0">
-            <optgroup label="This is a group">
-              <option selected="" value="12">Selection 2</option>
-              <option value="13">This is item 2</option>
-              <option value="14">This is item 3</option>
-            </optgroup>
-          </select>
-          <input class="form-control mb-5 py-4 pl-4 bg-gray2 border-0" type="number"> -->
-          <div class="form-row justify-content-between">
-            <div class="col">
-              <button class="btn btn-white" type="button">LEARN MORE</button>
-              <button class="btn btn-black" type="button">LEARN MORE</button>
-            </div>
-            <div class="col col-auto">
-              <div class="btn-group align-self-center h-100" role="group">
-                <button class="btn btn-primary p-0 pr-3" style="background: none;color: gray;font-size: 0.6rem;border: none;" type="button">
-                  <i class="fa fa-list pr-2"></i>Detail</button>
-                <button class="btn btn-primary p-0" style="background: none;color: gray;font-size: 0.6rem;border: none;" type="button">
-                  <i class="fa fa-share-alt pr-2"></i>Share</button>
-              </div>
-            </div>
-          </div>
-        </form>
+        {% endform %}
       </div>
     </div>
   </div>
 </div>
+<script>
+document.addEventListener('additemfromform', function(e){
+  if(window.datomar && datomar.apis && datomar.apis.addItemFromForm){
+    var originalEvent = e.detail.originalEvent;
+    var form = e.detail.form;
+    originalEvent.preventDefault();
+    datomar.apis.addItemFromForm(form);
+  }
+});
+</script>
 {% schema %}
 {
   "name": {

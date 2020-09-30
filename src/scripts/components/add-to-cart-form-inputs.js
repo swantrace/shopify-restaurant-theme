@@ -4,6 +4,9 @@ function addToCartFormInputs({
   dataProduct,
   dataSelectedOrFirstAvailableVariant,
   dataOptionsWithValues,
+  selectorCustomClasses = '',
+  quantityInputCustomClasses = '',
+  atcButtonCustomClasses = '',
 }) {
   const product = JSON.parse(dataProduct);
   const optionsWithValues = JSON.parse(dataOptionsWithValues);
@@ -51,7 +54,11 @@ function addToCartFormInputs({
     this.dispatchEvent(event);
   };
 
-  return html`<input name="id" value="${currentVariant.id}" type="hidden" />
+  return html`<input
+      name="id"
+      value="${currentVariant && currentVariant.id}"
+      type="hidden"
+    />
     ${optionsWithValues.map(
       (option) =>
         html`<div
@@ -59,26 +66,37 @@ function addToCartFormInputs({
           ?hidden=${option.name === 'Title' &&
           option.values[0] === 'Default Title'}
         >
-          <label for="ProductSelect-product-template-option-${option.position}"
-            >${option.name}</label
-          >
           <select
             data-option="option${option.position}"
             @change=${handleOptionChange}
+            class="form-control ${selectorCustomClasses}"
           >
             ${option.values.map(
-              (value) => html`<option value="${value}">${value}</option>`
+              (value) =>
+                html`<option
+                  ?selected=${currentVariant &&
+                  currentVariant[`option${option.position}`] === value}
+                  value="${value}"
+                >
+                  ${value}
+                </option>`
             )}
           </select>
         </div>`
     )}
+    <input
+      class="form-control quantity_input ${quantityInputCustomClasses}"
+      name="quantity"
+      type="number"
+      value="1"
+      step="1"
+    />
     <button
-      ?disabled=${!currentVariant.available}
+      ?disabled=${!currentVariant || !currentVariant.available}
       @click=${handleATCButtonClick}
       type="submit"
       name="add"
-      class="AddToCart"
-      class="btn"
+      class="form-control AddToCart btn ${atcButtonCustomClasses}"
     >
       <span class="AddToCartText">Add to Cart</span>
     </button>`;
@@ -92,6 +110,9 @@ customElements.define(
       'data-product',
       'data-selected-or-first-available-variant',
       'data-options-with-values',
+      'selector-custom-classes',
+      'quantity-input-custom-classes',
+      'atc-button-custom-classes',
     ],
   })
 );
