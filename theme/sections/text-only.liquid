@@ -14,7 +14,7 @@
     <button class="btn btn-white border-black" type="button">LEARN MORE</button>
 </div>
 <style>
-  .index-section--only-text .section-inner-wrapper{
+  .index-section--only-text{
     background-color: {{ section.settings.color_bg }};
     {% if section.settings.img_bg != blank %}
     background-image: url("{{ section.settings.img_bg | img_url }}");
