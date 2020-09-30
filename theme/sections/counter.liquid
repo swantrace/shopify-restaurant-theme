@@ -19,6 +19,32 @@
           <p class="text-white">
               <small>Small description Small description Small description Small description Small description Small description Small description&nbsp;</small>
           </p>
+          <div class="row mb-10">
+            <div class="col-3">
+              <div class="bg-gray2 text-white pb-5">
+                <h1 class="text-center">99</h1>
+                <small class="d-block text-center">days</small>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="bg-gray2 text-white pb-5">
+                <h1 class="text-center">99</h1>
+                <small class="d-block text-center">hours</small>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="bg-gray2 text-white pb-5">
+                <h1 class="text-center">99</h1>
+                <small class="d-block text-center">minutes</small>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="bg-gray2 text-white pb-5">
+                <h1 class="text-center">99</h1>
+                <small class="d-block text-center">seconds</small>
+              </div>
+            </div>
+          </div>
           <form>
               <select class="form-control mb-5 py-4 pl-4 bg-gray2 border-0">
                   <optgroup label="This is a group">
@@ -40,9 +66,9 @@
                   </div>
                   <div class="col col-auto">
                       <div class="btn-group align-self-center h-100" role="group">
-                          <button class="btn btn-primary p-0 pr-3" style="background: none;color: gray;font-size: 0.6rem;border: none;" type="button">
+                          <button class="detail-icon btn btn-primary p-0 pr-3"  type="button">
                               <i class="fa fa-list pr-2"></i>Detail</button>
-                          <button class="btn btn-primary p-0" style="background: none;color: gray;font-size: 0.6rem;border: none;" type="button">
+                          <button class="share-icon btn btn-primary p-0"  type="button">
                               <i class="fa fa-share-alt pr-2"></i>Share</button>
                       </div>
                   </div>
@@ -60,6 +86,19 @@
     {% endif %}
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .detail-icon{
+    background: none;
+    color: gray;
+    font-size: 0.6rem;
+    border: none;
+  }
+  .share-icon{
+    background: none;
+    color: gray;
+    font-size: 0.6rem;
+    border: none;
   }
 </style>
 
