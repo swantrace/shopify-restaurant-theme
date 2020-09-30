@@ -15,7 +15,7 @@ const ajaxTemplateFunc = (url, method = 'get', data = {}) => {
     } else {
       request = instance.get(encoded, data);
     }
-  } else if (isEmpty(data)) {
+  } else if (isEmpty(data) && !(data instanceof FormData)) {
     request = instance.post(encoded);
   } else {
     request = instance.post(encoded, data);
