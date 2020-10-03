@@ -1,9 +1,14 @@
+/* eslint-disable no-nested-ternary */
 import { html, component, useState } from 'haunted';
+import { addItemFromForm, getCart } from '../ajaxapis';
+import { dispatchCustomEvent, formatMoney } from '../helper';
 
-function addToCartFormInputs({
+function atcDropdownInputs({
   dataProduct,
   dataSelectedOrFirstAvailableVariant,
   dataOptionsWithValues,
+  selectorWrapperCustomClasses = '',
+  selectorLabelCustomClasses = '',
   selectorCustomClasses = '',
   quantityInputCustomClasses = '',
   atcButtonCustomClasses = '',
@@ -16,8 +21,11 @@ function addToCartFormInputs({
         variant.id === parseInt(dataSelectedOrFirstAvailableVariant, 10)
     )
   );
+  const [status, setStatus] = useState('suspended'); // there should be four kinds of status, suspended, loading, success, error
+  const [errorDescription, setErrorDescription] = useState('');
 
   const handleOptionChange = () => {
+    const form = this.closest('form');
     const option1 =
       this.querySelector('select[data-option="option1"]') &&
       this.querySelector('select[data-option="option1"]').value;
@@ -36,22 +44,43 @@ function addToCartFormInputs({
 
     setCurrentVariant(cVariant);
 
-    // dispatch a custom event to connect to other codes
-    const event = new CustomEvent('variantchange', {
+    dispatchCustomEvent(form, 'variantchanged', {
       bubbles: true,
       composed: true,
-      detail: { currentVariant: cVariant, form: this.closest('form') },
+      detail: { currentVariant: cVariant, formatMoney },
     });
-    this.dispatchEvent(event);
   };
 
   const handleATCButtonClick = (e) => {
-    const event = new CustomEvent('additemfromform', {
-      bubbles: true,
-      composed: true,
-      detail: { originalEvent: e, form: this.closest('form') },
-    });
-    this.dispatchEvent(event);
+    if (this.closest('form').id) {
+      e.preventDefault();
+      const form = this.closest('form');
+      setStatus('loading');
+      addItemFromForm(form).then((addedItem) => {
+        if (addedItem.id) {
+          setStatus('success');
+          getCart().then((cart) => {
+            dispatchCustomEvent(form, 'cartupdated', {
+              bubbles: true,
+              composed: true,
+              detail: { cart },
+            });
+          });
+          setTimeout(() => {
+            setStatus('suspended');
+          }, 1000);
+        }
+
+        if (addedItem.description) {
+          setStatus('error');
+          setErrorDescription(addedItem.description);
+          setTimeout(() => {
+            setErrorDescription('');
+            setStatus('suspended');
+          }, 1000);
+        }
+      });
+    }
   };
 
   return html`<input
@@ -62,11 +91,15 @@ function addToCartFormInputs({
     ${optionsWithValues.map(
       (option) =>
         html`<div
-          class="selector-wrapper"
+          class="selector-wrapper form-group ${selectorWrapperCustomClasses}"
           ?hidden=${option.name === 'Title' &&
           option.values[0] === 'Default Title'}
         >
+          <label class="${selectorLabelCustomClasses}" for="${option.name}"
+            >${option.name}:</label
+          >
           <select
+            id="${option.name}"
             data-option="option${option.position}"
             @change=${handleOptionChange}
             class="form-control ${selectorCustomClasses}"
@@ -74,9 +107,9 @@ function addToCartFormInputs({
             ${option.values.map(
               (value) =>
                 html`<option
+                  value="${value}"
                   ?selected=${currentVariant &&
                   currentVariant[`option${option.position}`] === value}
-                  value="${value}"
                 >
                   ${value}
                 </option>`
@@ -98,18 +131,33 @@ function addToCartFormInputs({
       name="add"
       class="form-control AddToCart btn ${atcButtonCustomClasses}"
     >
-      <span class="AddToCartText">Add to Cart</span>
-    </button>`;
+      <span class="AddToCartText"
+        >${currentVariant && !currentVariant.available
+          ? html`Not Available`
+          : status === 'suspended'
+          ? html`Add To Cart`
+          : status === 'loading'
+          ? html`<span class="spinner-border"></span>`
+          : status === 'success'
+          ? html`Added`
+          : html``}</span
+      >
+    </button>
+    <div class="error-description" ?hidden=${errorDescription === ''}>
+      ${errorDescription}
+    </div>`;
 }
 
 customElements.define(
-  'add-to-cart-form-inputs',
-  component(addToCartFormInputs, {
+  'atc-dropdown-inputs',
+  component(atcDropdownInputs, {
     useShadowDOM: false,
     observedAttributes: [
       'data-product',
       'data-selected-or-first-available-variant',
       'data-options-with-values',
+      'selector-wrapper-custom-classes',
+      'selector-label-custom-classes',
       'selector-custom-classes',
       'quantity-input-custom-classes',
       'atc-button-custom-classes',
