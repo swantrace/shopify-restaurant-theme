@@ -1,0 +1,5 @@
+<script>
+  {% if collection and collection.handle != 'all' %}
+  window.location.replace("{{ routes.all_products_collection_url }}");
+  {% endif %}
+</script>

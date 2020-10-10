@@ -1,0 +1,78 @@
+  <div class="container">
+    <div class="row align-items-md-start">
+      <div class="col-12 col-md-2">
+        <ul class="nav flex-md-column" id="category-list">
+        {% for collection in collections %}
+        {% if collection.handle != 'all'%}
+            <li class="nav-item">
+              <a href="#{{ collection.handle }}">
+                {{ collection.title }}
+              </a>
+            </li>
+        {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+      <div class="col-12 col-md-10">
+        {% include 'collection-tags' %}
+        {% for collection in collections %}
+        {% if collection.handle != 'all' %}
+        <section class="single-collection-section" id="{{ collection.handle }}">
+            <collection-item collection-handle="{{ collection.handle }}" collection-title="{{ collection.title }}"></collection-item>
+        </section>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="atcFormModal"></div>
+
+<script>
+document.addEventListener('productgridclicked', function(e){
+    const modalElement = document.getElementById('atcFormModal');
+    const modal = new datomar.BSN.Modal(modalElement, {backdrop: 'static',keyboard: false});
+    const product = e.detail.product;
+    const escape = e.detail.escape;
+    const unescape = e.detail.unescape;
+    modalElement.addEventListener('show.bs.modal', function(e){
+        e.target.innerHTML = `<div class="modal-dialog">
+        <atc-radiobutton-form 
+            data-product="${escape(JSON.stringify(product))}"
+            data-selected-or-first-available-variant="${product.variants[0].id}"
+            data-options-with-values="${escape(JSON.stringify(product.options))}"
+            atc-button-custom-classes="btn-black"
+          ></atc-radiobutton-form></div>`;
+        modalElement.addEventListener('hidden.bs.modal', function(e){
+            console.log('close:', e);
+            e.target.innerHTML = '';
+        })
+
+    })
+    modal.show();
+});
+</script>
+<style>
+
+  #back-link {
+    height: 100px;
+  }
+
+  #back-link:before {
+    content: "";
+    position: absolute;
+    color: white;
+    top: 0;
+    width: 100px;
+    border-top: 1px solid white;
+  }
+
+  #back-link:after {
+    content: "";
+    position: absolute;
+    color: white;
+    bottom: 0;
+    width: 100px;
+    border-top: 1px solid white;
+  }
+</style>
