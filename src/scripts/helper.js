@@ -72,3 +72,46 @@ export function formatMoney(cents, format) {
 
   return formatString.replace(placeholderRegex, value);
 }
+
+export function isNil(value) {
+  return value === null || value === undefined;
+}
+
+export function stringify(value) {
+  return isNil(value) ? '' : String(value);
+}
+
+const escapeMap = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&#34;',
+  "'": '&#39;',
+};
+const unescapeMap = {
+  '&amp;': '&',
+  '&lt;': '<',
+  '&gt;': '>',
+  '&#34;': '"',
+  '&#39;': "'",
+};
+
+export function escape(str) {
+  return stringify(str).replace(/&|<|>|"|'/g, (m) => escapeMap[m]);
+}
+
+export function unescape(str) {
+  return String(str).replace(/&(amp|lt|gt|#34|#39);/g, (m) => unescapeMap[m]);
+}
+
+export default {
+  attributeToString,
+  toggleClass,
+  removeClass,
+  dispatchCustomEvent,
+  formatMoney,
+  isNil,
+  stringify,
+  escape,
+  unescape,
+};

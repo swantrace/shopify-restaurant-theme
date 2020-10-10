@@ -67,9 +67,8 @@ function compressImages() {
 }
 
 exports.default = () => {
+  compileSass();
   compileJavascript();
-  compileJavascript();
-  compressImages();
   gulp.watch('src/styles/**/*.scss', compileSass);
   gulp.watch('src/scripts/**/*.js', compileJavascript);
   gulp.watch('src/images', compressImages);

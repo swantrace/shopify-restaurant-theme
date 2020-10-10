@@ -1,0 +1,41 @@
+<div class="col-12 col-md-2 d-flex align-items-center justify-content-center" id="back-link">
+  <div>
+    <div>
+      {% if canonical_url contains routes.all_products_collection_url %}
+        <ul class="collection-handles">
+          {% for collection in collections %}
+            <li class="{% if handle == collection.handle %}active{% endif %}">
+              <a href="#{{ collection.handle }}">
+                {{ collection.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <a href="{{ routes.all_products_collection_url}}">
+          <span class="text-white">&lt;&lt;&nbsp; Go Back</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<style>
+  .collection-handles {
+    margin-top: 1rem;
+    list-style: none;
+    padding-inline-start: 0;
+  }
+
+  .collection-handles li a {
+    color: white;
+  }
+
+  .collection-handles li:nth-of-type(1){
+    display: none;
+  }
+
+  .collection-handles li:nth-of-type(2):before {
+    color: white;
+    content: ">>";
+  }
+</style>

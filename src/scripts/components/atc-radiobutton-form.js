@@ -1,9 +1,9 @@
 /* eslint-disable no-nested-ternary */
-import { html, component, useState } from 'haunted';
+import { html, component, useState, useLayoutEffect } from 'haunted';
 import { addItemFromForm, getCart } from '../ajaxapis';
 import { dispatchCustomEvent, formatMoney } from '../helper';
 
-function atcDropdownInputs({
+function atcRadiobuttonForm({
   dataProduct,
   dataSelectedOrFirstAvailableVariant,
   dataOptionsWithValues,
@@ -21,6 +21,7 @@ function atcDropdownInputs({
         variant.id === parseInt(dataSelectedOrFirstAvailableVariant, 10)
     )
   );
+
   const [status, setStatus] = useState('suspended'); // there should be four kinds of status, suspended, loading, success, error
   const [errorDescription, setErrorDescription] = useState('');
 
@@ -83,75 +84,42 @@ function atcDropdownInputs({
     }
   };
 
-  return html`<input
-      name="id"
-      value="${currentVariant && currentVariant.id}"
-      type="hidden"
-    />
-    ${optionsWithValues.map(
-      (option) =>
-        html`<div
-          class="selector-wrapper form-group ${selectorWrapperCustomClasses}"
-          ?hidden=${option.name === 'Title' &&
-          option.values[0] === 'Default Title'}
-        >
-          <label class="${selectorLabelCustomClasses}" for="${option.name}"
-            >${option.name}:</label
-          >
-          <select
-            id="${option.name}"
-            data-option="option${option.position}"
-            @change=${handleOptionChange}
-            class="form-control ${selectorCustomClasses}"
-          >
-            ${option.values.map(
-              (value) =>
-                html`<option
-                  value="${value}"
-                  ?selected=${currentVariant &&
-                  currentVariant[`option${option.position}`] === value}
-                >
-                  ${value}
-                </option>`
-            )}
-          </select>
-        </div>`
-    )}
-    <input
-      class="form-control quantity_input ${quantityInputCustomClasses}"
-      name="quantity"
-      type="number"
-      value="1"
-      step="1"
-    />
-    <button
-      ?disabled=${!currentVariant || !currentVariant.available}
-      @click=${handleATCButtonClick}
-      type="submit"
-      name="add"
-      class="form-control AddToCart btn ${atcButtonCustomClasses}"
-    >
-      <span class="AddToCartText"
-        >${currentVariant && !currentVariant.available
-          ? html`Not Available`
-          : status === 'suspended'
-          ? html`Add To Cart`
-          : status === 'loading'
-          ? html`<span class="spinner-border"></span>`
-          : status === 'success'
-          ? html`Added`
-          : html``}</span
+  return html` <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
       >
-    </button>
-    <div class="bold_options"></div>
-    <div class="error-description" ?hidden=${errorDescription === ''}>
-      ${errorDescription}
-    </div>`;
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Recipient:</label>
+          <input type="text" class="form-control" id="recipient-name" />
+        </div>
+        <div class="form-group">
+          <label for="message-text" class="col-form-label">Message:</label>
+          <textarea class="form-control" id="message-text"></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">
+        Close
+      </button>
+      <button type="button" class="btn btn-primary">Send message</button>
+    </div>
+  </div>`;
 }
 
 customElements.define(
-  'atc-dropdown-inputs',
-  component(atcDropdownInputs, {
+  'atc-radiobutton-form',
+  component(atcRadiobuttonForm, {
     useShadowDOM: false,
     observedAttributes: [
       'data-product',

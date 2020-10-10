@@ -3,6 +3,10 @@
 @import './sections/header.scss';
 @import './sections/masonry-gallery';
 
+html {
+  scroll-behavior: smooth;
+}
+
 // global style
 @include media-breakpoint-only(xs) {
   .disable_on_mobile {

@@ -1,0 +1,31 @@
+{%- if collection.all_tags.size > 0 -%}
+  <div class="form-horizontal">
+    <label for="FilterBy">Filter By</label>
+    <select name="FilterBy" id="FilterBy" class="btn--tertiary">
+      <option value="">{{ 'collections.sorting.all_tags' | t }}</option>
+      {%- for tag in collection.all_tags -%}
+        {% capture tag_value %}{{ tag | link_to_tag: tag | split: 'href="' | last | split: '"' | first | split: '/' | last }}{% endcapture %}
+        <option{% if current_tags contains tag %} selected{% endif %} value="{{ tag_value }}">{{ tag }}</option>
+      {%- endfor -%}
+    </select>
+  </div>
+{%- endif -%}
+
+<script>
+  window.addEventListener("load", function(){
+    const filterBy = document.getElementById("FilterBy");
+    filterBy.addEventListener("change", function(e){
+      const value = e.target.value;
+      const collectionItems = document.querySelectorAll('collection-item');
+      if(value === ''){
+        collectionItems.forEach((collectionItem) => {
+          collectionItem.removeAttribute('data-tag');
+        });
+      } else {
+        collectionItems.forEach((collectionItem) => {
+          collectionItem.setAttribute('data-tag', value);
+        });
+      }
+    })
+  })
+</script>

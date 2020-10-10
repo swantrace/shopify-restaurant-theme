@@ -6,6 +6,7 @@
   "author": "Qixuan Hong <frederickhong.5@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "async.maplimit": "^0.5.2",
     "axios": "^0.20.0",
     "bootstrap.native": "^3.0.9",
     "glider-js": "^1.7.3",
