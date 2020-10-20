@@ -59,7 +59,7 @@ function compressImages() {
     .pipe(imageResize({ percentage: 20 }))
     .pipe(
       imagemin(
-        [imagemin.mozjpeg(), imagemin.optipng({ optimizationLevel: 7 })],
+        [imagemin.mozjpeg(), imagemin.optipng({ optimizationLevel: 1 })],
         { verbose: true }
       )
     )
@@ -69,6 +69,7 @@ function compressImages() {
 exports.default = () => {
   compileSass();
   compileJavascript();
+  compressImages();
   gulp.watch('src/styles/**/*.scss', compileSass);
   gulp.watch('src/scripts/**/*.js', compileJavascript);
   gulp.watch('src/images', compressImages);

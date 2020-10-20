@@ -7,7 +7,7 @@ import './sections/masonry-gallery';
 import './components/predictive-search';
 import './components/atc-dropdown-inputs';
 import './components/collection-item';
-import './components/atc-radiobutton-form';
+import './components/collection-item-modal';
 
 window.datomar = {
   BSN,

@@ -101,7 +101,20 @@ export function escape(str) {
 }
 
 export function unescape(str) {
-  return String(str).replace(/&(amp|lt|gt|#34|#39);/g, (m) => unescapeMap[m]);
+  return stringify(str).replace(
+    /&(amp|lt|gt|#34|#39);/g,
+    (m) => unescapeMap[m]
+  );
+}
+
+export function handleize(str) {
+  return stringify(str)
+    .toLowerCase()
+    .replace("'", '')
+    .replace(/[^\w\u00C0-\u024f]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
 }
 
 export default {
@@ -114,4 +127,5 @@ export default {
   stringify,
   escape,
   unescape,
+  handleize,
 };

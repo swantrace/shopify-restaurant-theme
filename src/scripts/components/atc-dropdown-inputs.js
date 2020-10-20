@@ -24,8 +24,8 @@ function atcDropdownInputs({
   const [status, setStatus] = useState('suspended'); // there should be four kinds of status, suspended, loading, success, error
   const [errorDescription, setErrorDescription] = useState('');
 
-  const handleOptionChange = () => {
-    const form = this.closest('form');
+  const handleOptionChange = (e) => {
+    const form = e.target.closest('form');
     const option1 =
       this.querySelector('select[data-option="option1"]') &&
       this.querySelector('select[data-option="option1"]').value;
