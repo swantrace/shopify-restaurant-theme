@@ -28,6 +28,7 @@
       !called && handler(), called = 1;
     }, 17);
   }
+  
 
   function queryElement(selector, parent) {
     var lookUp = parent && parent instanceof Element ? parent : document;
