@@ -1,12 +1,15 @@
 /* eslint-disable no-console */
 import { html, component, useState, useEffect } from 'haunted';
-import { dispatchCustomEvent, escape, unescape } from '../helper';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { dispatchCustomEvent, escape, unescape, formatMoney } from '../helper';
 import { getCollectionWithProductsDetails } from '../ajaxapis';
+import tagimages from '../tagimages';
 
 function collectionItem({
   collectionHandle = '',
   collectionTitle = '',
   dataTag = '',
+  dataStyle = 'light',
 }) {
   const [collection, setCollection] = useState({});
   useEffect(() => {
@@ -44,38 +47,42 @@ function collectionItem({
           }}
         >
           <div style="float: right;width: 30%;">
-            <img class="img-fluid" src="https://picsum.photos/300/300" />
+            <img
+              class="img-fluid"
+              src=${product.featured_image.replace('.jpg', '_200x.jpg')}
+            />
           </div>
           <div style="float: left;width: 70%;">
             <h6>${product.title}</h6>
-            <p>
-              Lorem ipsum dolor sit ament, consectetuer adipiscing elit, sed
-              diam nonummy nibh euismod lincidunt ut laoreet dolore magna
-              aliquam erat
-            </p>
-            <p>
-              <span class="text-danger">$100 .00 ← </span>
-              <span>$120.00</span>
-            </p>
-            <p>
-              <img
-                height="20"
-                src="https://picsum.photos/20/20"
-                width="20"
-              /><img
-                height="20"
-                src="https://picsum.photos/20/20"
-                width="20"
-              /><img
-                height="20"
-                src="https://picsum.photos/20/20"
-                width="20"
-              /><img
-                height="20"
-                src="https://picsum.photos/20/20"
-                width="20"
-              /><img height="20" src="https://picsum.photos/20/20" width="20" />
-            </p>
+            <div>${unsafeHTML(product.description)}</div>
+            <div>
+              ${product.compare_at_price > product.price
+                ? html`<div class="onsale-price">
+                    <span class="current-variant-price"
+                      >${formatMoney(product.price)}</span
+                    >
+                    <i class="fas fa-arrow-left"></i>
+                    <span class="current-variant-compare-at-price"
+                      >${formatMoney(product.compare_at_price)}</span
+                    >
+                  </div>`
+                : html`<div class="normal-price">
+                    <span class="current-variant-price"
+                      >${formatMoney(product.price)}</span
+                    >
+                  </div>`}
+            </div>
+            <div>
+              ${product.tags.map(
+                (tag) =>
+                  html`${tagimages[`${tag}_${dataStyle}`]
+                    ? html`<img
+                        src="${tagimages[`${tag}_${dataStyle}`]}"
+                        width="20"
+                      />`
+                    : html``}`
+              )}
+            </div>
           </div>
         </div>`
       )}
@@ -86,6 +93,11 @@ customElements.define(
   'collection-item',
   component(collectionItem, {
     useShadowDOM: false,
-    observedAttributes: ['collection-handle', 'collection-title', 'data-tag'],
+    observedAttributes: [
+      'collection-handle',
+      'collection-title',
+      'data-tag',
+      'data-style',
+    ],
   })
 );
