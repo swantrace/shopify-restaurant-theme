@@ -1,0 +1,14 @@
+<a class="nav-link" href="tel:{{ settings.phone }}">
+  <i aria-hidden="true" class="fas fa-phone"></i>
+</a>
+{% if shop.customer_accounts_enabled %}
+<a class="nav-link" href=" {% unless customer %}{{ routes.account_login_url }}{% else %}{{ routes.account_url }}{% endunless %}">
+    <i aria-hidden="true" class="far fa-user"></i>
+</a>
+{% endif %}
+<a class="nav-link" href="{{ routes.cart_url }}">
+    <i aria-hidden="true" class="fas fa-shopping-cart"></i>
+</a>
+<a class="nav-link" href="{{ routes.search_url }}">
+    <i aria-hidden="true" class="fa fa-search"></i>
+</a>

@@ -141,3 +141,7 @@ footer .fab {
 h1 {
   color: red;
 }
+
+body.offcanvas-active {
+  overflow: hidden;
+}

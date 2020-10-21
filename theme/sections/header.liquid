@@ -1,28 +1,52 @@
 {% assign links = linklists[section.settings.nav_menu].links %}
-<div class="section-inner-wrapper">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Navbar</a>
+
+<div class="section-inner-wrapper 
+{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
+{% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+{% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+{% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+{% if section.settings.style_for_desktop == 'styleA'%}desktop_style_a{% else %}desktop_style_b{% endif %}
+{% if section.settings.style_for_mobile == 'styleA'%}mobile_style_a{% else %}mobile_style_b{% endif %}
+bg-{{ settings.default_style_mode }}">
+{% if section.settings.style_for_mobile == 'styleB' %}
+<ul class="navbar-nav fixed-bottom header_navbar-nav header_navbar-nav-bottom-icons-wrapper d-lg-none">
+  <li class="nav-item d-flex header_nav-item-icons justify-content-around">
+    {% render 'nav-icons' %}
+  </li>
+</ul>
+{% endif %}
+  <div class="navbar header_navbar{% unless section.settings.style_for_desktop == 'styleB' %} d-none{% else %} d-none d-lg-flex{% endunless %}">
+    <a class="navbar-brand header_navbar-brand" href="/">
+      <img alt="Datomar Theme Dev" class="logo_image header_logo_image"  src="{{ section.settings.logo_img | img_url: '200x' }}"/>
+    </a>
+  </div>
+  <nav class="navbar navbar-expand-lg header_navbar align-items-lg-end navbar-{{ settings.default_style_mode }}">
+    <a class="navbar-brand header_navbar-brand{% unless section.settings.style_for_desktop == 'styleA' %} d-lg-none{% endunless %}" href="/">
+      <img alt="Datomar Theme Dev" class="logo_image header_logo_image"  src="{{ section.settings.logo_img | img_url: '200x' }}"/>
+    </a>
     <button class="navbar-toggler" type="button" data-trigger="#main_nav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse" id="main_nav">
-      <div class="offcanvas-header mt-3">  
-        <button class="btn btn-outline-danger btn-close float-right"> &times Close </button>
-        <h5 class="py-2 text-white">Main navbar</h5>
-      </div>
-      <ul class="navbar-nav">
+      {% if section.settings.style_for_desktop == 'styleA' %}
+      <ul class="navbar-nav header_navbar-nav d-none d-lg-flex">
+        <li class="nav-item d-flex header_nav-item-icons">
+          {% render 'nav-icons' %}
+        </li>
+      </ul>
+      {% endif %}
+      <ul class="navbar-nav header_navbar-nav">
         {% for link in links %}
         {% if link.links != blank %}
         {% assign first_level_index = forloop.index %}
         <li class="nav-item dropdown has-megamenu">
             <a class="nav-link dropdown-toggle first-level-nav-link{% if link.child_active %} active{% endif %}" data-toggle="dropdown" href="{{ link.url }}">{{ link.title | escape }}</a>
             <div class="dropdown-menu megamenu" tabindex="0">
-              <div class="container-fluid">
-                <div class="row">
+                <div class="d-flex flex-wrap w-100">
                     {% for sublink in link.links %}
                         {% if sublink.links != blank %}
                             {% assign second_level_index = forloop.index %}
-                            <div class="col-md-2">
+                            <div class="col-12 col-md-4 col-lg-2">
                                 <div class="col-megamenu">
                                     <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.title | escape }}</a>
                                     <ul class="list-unstyled">
@@ -35,7 +59,7 @@
                                 </div>
                             </div>
                         {% else %}
-                            <div class="col-md-2">
+                            <div class="col-12 col-md-4 col-lg-2">
                                 <div class="col-megamenu">
                                     <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}"><img class="img-fluid" src="{{ sublink.object.featured_image | img_url }}">
                                     </a>
@@ -48,7 +72,6 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-              </div>
             </div>
         </li>
         {% else %}
@@ -57,27 +80,43 @@
         </li>
         {% endif %}
         {% endfor %}
-
-        <li class="nav-item d-flex">
-            <a class="nav-link active" href="tel:{{ settings.phone }}">
-                <i aria-hidden="true" class="fas fa-phone"></i>
-            </a>
-          {% if shop.customer_accounts_enabled %}
-            <a class="nav-link active" href=" {% unless customer %}{{ routes.account_login_url }}{% else %}{{ routes.account_url }}{% endunless %}">
-                <i aria-hidden="true" class="far fa-user"></i>
-            </a>
-            {% endif %}
-            <a class="nav-link" href="{{ routes.cart_url }}">
-                <i aria-hidden="true" class="fas fa-shopping-cart"></i>
-            </a>
-            <a class="nav-link" href="{{ routes.search_url }}">
-                <i aria-hidden="true" class="fa fa-search"></i>
-            </a>
+        <li class="nav-item header_nav-item-icons{% if section.settings.style_for_mobile == 'styleB' %} d-none{% else %} d-flex justify-content-around{% endif %}{% if section.settings.style_for_desktop == 'styleA' %} d-lg-none{% else %} d-lg-flex{% endif %}">
+          {% render 'nav-icons' %}
         </li>
       </ul>
     </div> <!-- navbar-collapse.// -->
   </nav>
 </div>
+<style>
+  @media (min-width: 992px) {
+    .desktop_style_b .header_navbar-brand {
+      margin: 0 auto;
+    }
+
+    .desktop_style_b .header_navbar-nav {
+      margin: 0 auto;
+    }
+
+    .desktop_style_a #main_nav {
+      justify-content: flex-end;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .header_logo_image {
+      width: 200px;
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    .header_logo_image {
+      width: 80px;
+    }
+  }
+  .mobile_style_b .header_navbar-nav-bottom-icons-wrapper {
+    background: black;
+  }
+</style>
 
 {% schema %}
 {
@@ -159,13 +198,6 @@
             "en":"Disable on desktop"
          },
          "default":false
-      },
-      {
-         "type":"text",
-         "id":"custom_classes",
-         "label":{
-            "en":"Custom class names assigned to inner wrapper div"
-         }
       },
       {
         "type": "header",
