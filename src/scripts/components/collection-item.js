@@ -1,7 +1,13 @@
 /* eslint-disable no-console */
 import { html, component, useState, useEffect } from 'haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { dispatchCustomEvent, escape, unescape, formatMoney } from '../helper';
+import {
+  dispatchCustomEvent,
+  escape,
+  unescape,
+  formatMoney,
+  handleize,
+} from '../helper';
 import { getCollectionWithProductsDetails } from '../ajaxapis';
 import tagimages from '../tagimages';
 
@@ -75,9 +81,13 @@ function collectionItem({
             <div>
               ${product.tags.map(
                 (tag) =>
-                  html`${tagimages[`${tag}_${dataStyle}`]
+                  html`${tagimages[
+                    `${handleize(tag).replace('-', '_')}_${dataStyle}`
+                  ]
                     ? html`<img
-                        src="${tagimages[`${tag}_${dataStyle}`]}"
+                        src="${tagimages[
+                          `${handleize(tag).replace('-', '_')}_${dataStyle}`
+                        ]}"
                         width="20"
                       />`
                     : html``}`

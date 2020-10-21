@@ -1,79 +1,66 @@
-@include media-breakpoint-up(md) {
-  .navbar .nav-item .dropdown-menu {
-    display: none;
+.navbar-collapse {
+  text-transform: uppercase;
+}
+
+body.light .navbar-collapse {
+  background-color: #f8f9fa;
+  .nav-item .nav-link {
+    color: black;
+    i {
+      color: black;
+    }
+  }
+}
+
+body.dark .navbar-collapse {
+  background-color: #343a40;
+  .nav-item .nav-link {
+    color: white;
+    i {
+      color: white;
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 100%;
+    width: 80%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    transform: translateX(0);
+    transition: visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
+    z-index: 99;
   }
 
-  .navbar .nav-item:hover .dropdown-menu {
-    display: block;
+  .navbar-collapse.show {
+    visibility: visible;
+    transform: translateX(-100%);
+    transition: visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
   }
+}
 
-  .navbar .nav-item .dropdown-menu {
-    margin-top: 0;
+@media all and (min-width: 992px) {
+  .navbar {
+    padding-top: 0;
+    padding-bottom: 0;
   }
-
   .navbar .has-megamenu {
     position: static !important;
   }
-
   .navbar .megamenu {
     left: 0;
     right: 0;
-    width: 100vw;
+    width: 100%;
     padding: 20px;
   }
-
   .navbar .nav-link {
     padding-top: 1rem;
     padding-bottom: 1rem;
-  }
-}
-
-.offcanvas-header {
-  display: none;
-}
-
-.screen-overlay {
-  height: 100%;
-  z-index: 30;
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  background-color: rgba(34, 34, 34, 0.6);
-  transition: opacity 0.2s linear, visibility 0.1s, width 1s ease-in;
-}
-
-.screen-overlay.show {
-  transition: opacity 0.5s ease, width 0s;
-  opacity: 1;
-  width: 100%;
-  visibility: visible;
-}
-
-@include media-breakpoint-down(sm) {
-  .offcanvas-header {
-    display: block;
-  }
-
-  .mobile-offcanvas {
-    visibility: hidden;
-    transform: translateX(100%);
-    border-radius: 0;
-    display: block;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    height: 100%;
-    z-index: 1200;
-    width: 80%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    transition: visibility 0.2s ease-in-out, transform 0.2s ease-in-out;
-  }
-
-  .mobile-offcanvas.show {
-    visibility: visible;
-    transform: translateX(0);
   }
 }

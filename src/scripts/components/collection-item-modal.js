@@ -127,9 +127,13 @@ function collectionItemModal({
           <div class="collection-item-modal-tags">
             ${product.tags.map(
               (tag) =>
-                html`${tagimages[`${tag}_${dataStyle}`]
+                html`${tagimages[
+                  `${handleize(tag).replace('-', '_')}_${dataStyle}`
+                ]
                   ? html`<img
-                      src="${tagimages[`${tag}_${dataStyle}`]}"
+                      src="${tagimages[
+                        `${handleize(tag).replace('-', '_')}_${dataStyle}`
+                      ]}"
                       width="20"
                     />`
                   : html``}`
