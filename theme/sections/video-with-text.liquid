@@ -1,29 +1,46 @@
 <div class="
           section-inner-wrapper
-          {% if section.settings.section_width == 'container' %}container{% endif %}
           {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
           {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
           {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-          {{ section.settings.custom_classes }}">
-    <div class="row no-gutters bg-gray5">
-        <div class="col col-12 col-md-6 align-self-center 
-        {% if section.settings.video_position == 'left' %}order-first{% endif %} {% if section.settings.video_position == 'right' %}order-last{% endif %}
-        ">
-            <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/9xwazD5SyVg"></iframe>
-            </div>
-        </div>
-        <div class="col col-12 col-md-6 align-self-center px-sm-10 px-md-20 px-lg-30 pl-xl-35 pr-xl-50 ml-auto text-{{ section.settings.alignment }}">
-            <h3 class="mb-lg-20">{{ section.settings.header }}</h3>
-            <p class="content mb-lg-20">
-              {{ section.settings.text }}
-            </p>
+          bg-{{ settings.default_style_mode }}
+          ">
+        <div class="{% if section.settings.section_width == 'container' %}container{% endif %}"> 
 
-            <a class="btn first mr-sm-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
-            <a class="btn second" href="{{ section.settings.second_button_link }}" >{{ section.settings.second_button_label }}</a>
-        </div>
+            <div class="row no-gutters">
+            <div class="col col-12 col-md-6 align-self-center 
+            {% if section.settings.video_position == 'left' %}order-first{% endif %} {% if section.settings.video_position == 'right' %}order-last{% endif %}
+            ">
+              <div class="embed-responsive embed-responsive-4by3">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/9xwazD5SyVg"></iframe>
+              </div>
+            </div>
+            <div class="col col-12 col-md-6 align-self-center px-30 ml-auto text-{{ section.settings.alignment }} text-{{ settings.default_style_mode }}-text">
+              <h3 class="p-0">{{ section.settings.header }}</h3>
+              <div class="content py-20">
+                {{ section.settings.text }}
+              </div>
+
+              <a class="btn bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text mr-sm-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
+              <a class="btn border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text" href="{{ section.settings.second_button_link }}" >{{ section.settings.second_button_label }}</a>
+            </div>
+            </div>
     </div>
 </div>
+
+<style>
+  #shopify-section-{{ section.id }} .section-inner-wrapper{
+    {% if section.settings.color_bg != 'rgba(0,0,0,0)' %}
+    background-color: {{ section.settings.color_bg }}!important;
+    {% endif %}
+    {% if section.settings.img_bg != blank %}
+    background-image: url("{{ section.settings.img_bg | img_url: 'master'  }}");
+    {% endif %}
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+</style>
 
 {% schema %}
 {
@@ -33,6 +50,26 @@
   "class": "index-section index-section--video-with-text",
   "tag": "section",
   "settings": [
+  {
+      "type": "header",
+      "content": {
+        "en": "Background"
+      }
+    },
+    {
+      "type": "image_picker",
+      "id": "img_bg",
+      "label": {
+        "en": "Background image"
+      }
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": {
+        "en": "Background color"
+      } 
+   },
     {
       "type": "header",
       "content": {
