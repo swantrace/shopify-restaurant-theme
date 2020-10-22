@@ -1,5 +1,5 @@
 {% assign links = linklists[section.settings.nav_menu].links %}
-
+{% assign logo_img = settings.default_style_mode | append: '_logo_img'%}
 <div class="section-inner-wrapper 
 {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
 {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
@@ -7,7 +7,7 @@
 {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
 {% if section.settings.style_for_desktop == 'styleA'%}desktop_style_a{% else %}desktop_style_b{% endif %}
 {% if section.settings.style_for_mobile == 'styleA'%}mobile_style_a{% else %}mobile_style_b{% endif %}
-bg-{{ settings.default_style_mode }}">
+bg-{{ settings.default_style_mode }}-header">
 {% if section.settings.style_for_mobile == 'styleB' %}
 <ul class="navbar-nav fixed-bottom header_navbar-nav header_navbar-nav-bottom-icons-wrapper d-lg-none">
   <li class="nav-item d-flex header_nav-item-icons justify-content-around">
@@ -17,17 +17,17 @@ bg-{{ settings.default_style_mode }}">
 {% endif %}
   <div class="navbar header_navbar{% unless section.settings.style_for_desktop == 'styleB' %} d-none{% else %} d-none d-lg-flex{% endunless %}">
     <a class="navbar-brand header_navbar-brand" href="/">
-      <img alt="Datomar Theme Dev" class="logo_image header_logo_image"  src="{{ section.settings.logo_img | img_url: '200x' }}"/>
+      <img alt="Datomar Theme Dev" class="logo_image header_logo_image"  src="{{ section.settings[logo_img] | img_url: '200x' }}"/>
     </a>
   </div>
-  <nav class="navbar navbar-expand-lg header_navbar align-items-lg-end navbar-{{ settings.default_style_mode }}">
+  <nav class="navbar navbar-expand-lg header_navbar align-items-lg-end navbar-{{ settings.default_style_mode}} navbar-{{ settings.default_style_mode }}-header">
     <a class="navbar-brand header_navbar-brand{% unless section.settings.style_for_desktop == 'styleA' %} d-lg-none{% endunless %}" href="/">
-      <img alt="Datomar Theme Dev" class="logo_image header_logo_image"  src="{{ section.settings.logo_img | img_url: '200x' }}"/>
+      <img alt="Datomar Theme Dev" class="logo_image header_logo_image"  src="{{ section.settings[logo_img] | img_url: '200x' }}"/>
     </a>
-    <button class="navbar-toggler" type="button" data-trigger="#main_nav">
+    <button class="text-{{settings.default_style_mode}}-header-text navbar-toggler border-0" type="button" data-trigger="#main_nav">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse" id="main_nav">
+    <div class="bg-{{ settings.default_style_mode }}-header navbar-collapse" id="main_nav">
       {% if section.settings.style_for_desktop == 'styleA' %}
       <ul class="navbar-nav header_navbar-nav d-none d-lg-flex">
         <li class="nav-item d-flex header_nav-item-icons">
@@ -40,7 +40,7 @@ bg-{{ settings.default_style_mode }}">
         {% if link.links != blank %}
         {% assign first_level_index = forloop.index %}
         <li class="nav-item dropdown has-megamenu">
-            <a class="nav-link dropdown-toggle first-level-nav-link{% if link.child_active %} active{% endif %}" data-toggle="dropdown" href="{{ link.url }}">{{ link.title | escape }}</a>
+            <a class="text-{{settings.default_style_mode}}-header-text nav-link dropdown-toggle first-level-nav-link{% if link.child_active %} active{% endif %}" data-toggle="dropdown" href="{{ link.url }}">{{ link.title | escape }}</a>
             <div class="dropdown-menu megamenu" tabindex="0">
                 <div class="d-flex flex-wrap w-100">
                     {% for sublink in link.links %}
@@ -48,7 +48,7 @@ bg-{{ settings.default_style_mode }}">
                             {% assign second_level_index = forloop.index %}
                             <div class="col-12 col-md-4 col-lg-2">
                                 <div class="col-megamenu">
-                                    <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.title | escape }}</a>
+                                    <a class="text-{{settings.default_style_mode}}-header-text nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.title | escape }}</a>
                                     <ul class="list-unstyled">
                                         {% for subsublink in sublink.links %}
                                             <li>
@@ -61,10 +61,10 @@ bg-{{ settings.default_style_mode }}">
                         {% else %}
                             <div class="col-12 col-md-4 col-lg-2">
                                 <div class="col-megamenu">
-                                    <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}"><img class="img-fluid" src="{{ sublink.object.featured_image | img_url }}">
+                                    <a class="text-{{settings.default_style_mode}}-header-text nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}"><img class="img-fluid" src="{{ sublink.object.featured_image | img_url }}">
                                     </a>
                                     <h6 class="product-title">
-                                        <a class="nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.object.title }}</a>
+                                        <a class="text-{{settings.default_style_mode}}-header-text nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.object.title }}</a>
                                     </h6>
                                     <h4 class="product-price">{{ sublink.object.price | money }}</h4>
                                 </div>
@@ -76,7 +76,7 @@ bg-{{ settings.default_style_mode }}">
         </li>
         {% else %}
         <li class="nav-item{% if link.active %} active{% endif %}">
-            <a class="nav-link first-level-nav-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+            <a class="text-{{settings.default_style_mode}}-header-text nav-link first-level-nav-link" href="{{ link.url }}">{{ link.title | escape }}</a>
         </li>
         {% endif %}
         {% endfor %}
@@ -114,7 +114,7 @@ bg-{{ settings.default_style_mode }}">
     }
   }
   .mobile_style_b .header_navbar-nav-bottom-icons-wrapper {
-    background: black;
+    background: white;
   }
 </style>
 
@@ -207,9 +207,16 @@ bg-{{ settings.default_style_mode }}">
       },
       {
         "type": "image_picker",
-        "id": "logo_img",
+        "id": "light_logo_img",
         "label":{
-          "en":"Logo image"
+          "en":"Logo image in light mode"
+        }
+      },
+      {
+        "type": "image_picker",
+        "id": "dark_logo_img",
+        "label":{
+          "en":"Logo image in dark mode"
         }
       },
     {

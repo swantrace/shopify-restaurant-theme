@@ -2,25 +2,25 @@
   text-transform: uppercase;
 }
 
-body.light .navbar-collapse {
-  background-color: #f8f9fa;
-  .nav-item .nav-link {
-    color: black;
-    i {
-      color: black;
-    }
-  }
-}
+// body.light .navbar-collapse {
+//   background-color: $light;
+//   .nav-item .nav-link {
+//     color: black;
+//     i {
+//       color: black;
+//     }
+//   }
+// }
 
-body.dark .navbar-collapse {
-  background-color: #343a40;
-  .nav-item .nav-link {
-    color: white;
-    i {
-      color: white;
-    }
-  }
-}
+// body.dark .navbar-collapse {
+//   background-color: $dark;
+//   .nav-item .nav-link {
+//     color: white;
+//     i {
+//       color: white;
+//     }
+//   }
+// }
 
 @media (max-width: 991.98px) {
   .navbar-collapse {

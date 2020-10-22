@@ -1,18 +1,18 @@
 <div class="
-                          section-inner-wrapper
-                          {% if section.settings.section_width == 'container' %}container{% endif %}
-                          {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
-                          {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
-                          {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-                          {{ section.settings.style }}
-                          ">
-    <div class="row no-gutters bg-gray5">
+  section-inner-wrapper
+  {% if section.settings.section_width == 'container' %}container{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  {{ section.settings.style }}
+  bg-{{ settings.default_style_mode }}">
+    <div class="row no-gutters">
         <div class="col col-12 col-md-6 
         {% if section.settings.image_position == 'left' %}order-first{% endif %} {% if section.settings.image_position == 'right' %}order-last{% endif %}
         ">
             <img class="img-fluid" src="{{ section.settings.image | img_url: 'master' }}" />
         </div>
-        <div class="col col-12 col-md-6 align-self-center pl-35 pr-50 ml-auto w-50 
+        <div class=" bg-{{ settings.default_style_mode }}-text col col-12 col-md-6 align-self-center pl-35 pr-50 ml-auto w-50 
         text-{{ section.settings.alignment }}
         ">
             <h3 class="mb-lg-20">{{ section.settings.header }}</h3>
@@ -20,8 +20,8 @@
               {{ section.settings.text }}
             </p>
 
-            <a class="btn first mr-sm-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
-            <a class="btn second" href="{{ section.settings.second_button_link }}">{{ section.settings.second_button_label }}</a>
+            <a class="bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn mr-sm-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
+            <a class="border border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text btn" href="{{ section.settings.second_button_link }}">{{ section.settings.second_button_label }}</a>
         </div>
     </div>
 </div>
