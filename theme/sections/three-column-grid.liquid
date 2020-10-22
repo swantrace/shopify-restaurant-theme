@@ -5,41 +5,24 @@
                           {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
                           {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
                           py-sm-30
-                          {{ section.settings.custom_classes }}">
+                          
+                        ">
     <div class="row">
+
+      {% for block in section.blocks %}
         <div class="col col-12 col-sm-4">
-            <div class="card"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
-                <div class="card-body">
-                    <h6 class="card-title my-10">H3 Header Needs To Go Here</h6>
-                    <p class="card-text mb-20">
-                        <small>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.Text<br></small>
-                    </p>
-                    <button class="btn btn-black" type="button">LEARN MORE</button>
+            <div class="card border-0"><img class="card-img-top w-100 d-block" src="{{ block.settings.image | img_url: '500x300', crop: 'center' }}">
+                <div class="card-body text-{{ block.settings.alignment }}">
+                    <h6 class="card-title crop-text-1 my-10">{{ block.settings.title }}</h6>
+                    <div class="card-text crop-text-6 mb-20">
+                      {{ block.settings.description }}
+                    </div>
+                    <a class="btn btn-black" href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a>
                 </div>
             </div>
         </div>
-        <div class="col col-12 col-sm-4">
-            <div class="card"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
-                <div class="card-body">
-                    <h6 class="card-title my-10">H3 Header Needs To Go Here</h6>
-                    <p class="card-text mb-20">
-                        <small>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.Text<br></small>
-                    </p>
-                    <button class="btn btn-black" type="button">LEARN MORE</button>
-                </div>
-            </div>
-        </div>
-        <div class="col col-12 col-sm-4">
-            <div class="card"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
-                <div class="card-body">
-                    <h6 class="card-title my-10">H3 Header Needs To Go Here</h6>
-                    <p class="card-text mb-20">
-                        <small>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.Text<br></small>
-                    </p>
-                    <button class="btn btn-black" type="button">LEARN MORE</button>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+
     </div>
 </div>
 <style>
@@ -52,9 +35,22 @@
     background-size: cover;
   }
 
-  .card{
-    border: none;
+
+  .crop-text-1 {
+  -webkit-line-clamp: 1;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   }
+  .crop-text-6 {
+  -webkit-line-clamp: 6;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  }
+
 
 </style>
 

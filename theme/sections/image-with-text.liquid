@@ -4,24 +4,31 @@
                           {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
                           {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
                           {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-                          py-sm-30
-                          {{ section.settings.custom_classes }}">
+                          {{ section.settings.style }}
+                          ">
     <div class="row no-gutters bg-gray5">
-        <div class="col col-12 col-md-6">
-            <img class="img-fluid" src="https://picsum.photos/id/1060/1200/1028"/>
+        <div class="col col-12 col-md-6 
+        {% if section.settings.image_position == 'left' %}order-first{% endif %} {% if section.settings.image_position == 'right' %}order-last{% endif %}
+        ">
+            <img class="img-fluid" src="{{ section.settings.image | img_url: 'master' }}" />
         </div>
-        <div class="col col-12 col-md-6 align-self-center px-sm-10 px-md-20 px-lg-30 pl-xl-35 pr-xl-50 ml-auto">
-            <h3 class="text-white mb-lg-20">H3 header goes here</h3>
-            <p class="content text-white mb-lg-20">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        <div class="col col-12 col-md-6 align-self-center pl-35 pr-50 ml-auto w-50 
+        text-{{ section.settings.alignment }}
+        ">
+            <h3 class="mb-lg-20">{{ section.settings.header }}</h3>
+            <p class="content mb-lg-20">
+              {{ section.settings.text }}
             </p>
 
-            <button class="btn btn-black mr-sm-10" type="button">LEARN MORE</button>
-            <button class="btn btn-white border-black" type="button">LEARN MORE</button>
+            <a class="btn first mr-sm-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
+            <a class="btn second" href="{{ section.settings.second_button_link }}">{{ section.settings.second_button_label }}</a>
         </div>
     </div>
 </div>
 
+<style>
+
+</style>
 {% schema %}
 {
   "name": {
@@ -81,6 +88,12 @@
         "en": "Disable on desktop"
       },
       "default": false
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Section Content"
+      }
     },
     {
       "type": "select",

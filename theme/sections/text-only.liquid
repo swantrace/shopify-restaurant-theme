@@ -4,14 +4,15 @@
                           {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
                           {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
                           {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-                          py-sm-25
-                          {{ section.settings.custom_classes }}">
-    <h3 class="pb-lg-20">H3 Header Nees To Go Here</h3>
-    <p class="content pb-lg-20">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minm veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit inuptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laboru
-    </p>
-    <button class="btn btn-black mr-sm-10" type="button">LEARN MORE</button>
-    <button class="btn btn-white border-black" type="button">LEARN MORE</button>
+                          text-{{ section.settings.alignment }} py-30
+                          ">
+    <h3 class="pb-lg-20">{{ section.settings.header }}</h3>
+    <div class="content pb-lg-20">
+      {{ section.settings.text }}
+    </div>
+
+    <a class="btn first mr-sm-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
+    <a class="btn second" href="{{ section.settings.second_button_link }}" >{{ section.settings.second_button_label }}</a>
 </div>
 <style>
   .index-section--only-text{
@@ -104,6 +105,26 @@
         "en": "Disable on desktop"
       },
       "default": false
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Section Content"
+      }
+    },
+    {
+      "type": "text",
+      "id": "header",
+      "label": {
+        "en": "Header"
+      }
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": {
+        "en": "Text"
+      }
     },
     {
       "type": "select",
