@@ -12,6 +12,7 @@ function atcDropdownInputs({
   selectorCustomClasses = '',
   quantityInputCustomClasses = '',
   atcButtonCustomClasses = '',
+  dataStyle = 'dark',
 }) {
   const product = JSON.parse(dataProduct);
   const optionsWithValues = JSON.parse(dataOptionsWithValues);
@@ -107,6 +108,7 @@ function atcDropdownInputs({
             ${option.values.map(
               (value) =>
                 html`<option
+                  class="text text-${dataStyle}-text"
                   value="${value}"
                   ?selected=${currentVariant &&
                   currentVariant[`option${option.position}`] === value}
@@ -124,26 +126,35 @@ function atcDropdownInputs({
       value="1"
       step="1"
     />
-    <button
-      ?disabled=${!currentVariant || !currentVariant.available}
-      @click=${handleATCButtonClick}
-      type="submit"
-      name="add"
-      class="form-control AddToCart btn ${atcButtonCustomClasses}"
-    >
-      <span class="AddToCartText"
-        >${currentVariant && !currentVariant.available
-          ? html`Not Available`
-          : status === 'suspended'
-          ? html`Add To Cart`
-          : status === 'loading'
-          ? html`<span class="spinner-border"></span>`
-          : status === 'success'
-          ? html`Added`
-          : html``}</span
+    <div class="d-flex justify-content-between">
+      <button
+        ?disabled=${!currentVariant || !currentVariant.available}
+        @click=${handleATCButtonClick}
+        type="submit"
+        name="add"
+        class="form-control AddToCart btn ${atcButtonCustomClasses} col col-lg-3"
       >
-    </button>
-    <div class="bold_options"></div>
+        <span class="AddToCartText"
+          >${currentVariant && !currentVariant.available
+            ? html`Not Available`
+            : status === 'suspended'
+            ? html`Add To Cart`
+            : status === 'loading'
+            ? html`<span class="spinner-border"></span>`
+            : status === 'success'
+            ? html`Added`
+            : html``}</span
+        >
+      </button>
+      <div class="btn-group align-self-center h-100" role="group">
+        <button class="detail-icon btn btn-primary p-0 pr-3" type="button">
+          <i class="fa fa-list pr-2"></i>Detail
+        </button>
+        <button class="share-icon btn btn-primary p-0" type="button">
+          <i class="fa fa-share-alt pr-2"></i>Share
+        </button>
+      </div>
+    </div>
     <div class="error-description" ?hidden=${errorDescription === ''}>
       ${errorDescription}
     </div>`;
@@ -157,9 +168,7 @@ customElements.define(
       'data-product',
       'data-selected-or-first-available-variant',
       'data-options-with-values',
-      'selector-wrapper-custom-classes',
-      'selector-label-custom-classes',
-      'selector-custom-classes',
+      'data-style',
       'quantity-input-custom-classes',
       'atc-button-custom-classes',
     ],

@@ -34,14 +34,20 @@ $red: #e54a55;
 $light: #ffffff;
 $dark: #4d4d4d;
 
-$light-text: $white;
-$dark-text: $black;
+$light-text: $black;
+$dark-text: $white;
 
 $light-filled-btn: $black;
 $light-filled-btn-text: $white;
 $light-outline-btn: transparent;
 $light-outline-btn-text: $black;
 $light-outline-btn-border: $black;
+
+$dark-filled-btn: $white;
+$dark-filled-btn-text: $black;
+$dark-outline-btn: transparent;
+$dark-outline-btn-text: $white;
+$dark-outline-btn-border: $white;
 
 $light-header: $white;
 $light-header-text: $gray3;
@@ -95,6 +101,11 @@ $theme-colors: (
   'light-footer-social-text': $light-footer-social-text,
   'dark-footer-social': $dark-footer-social,
   'dark-footer-social-text': $dark-footer-social-text,
+  'dark-filled-btn': $dark-filled-btn,
+  'dark-filled-btn-text': $dark-filled-btn-text,
+  'dark-outline-btn': $dark-outline-btn,
+  'dark-outline-btn-text': $dark-outline-btn-text,
+  'dark-outline-btn-border': $dark-outline-btn-border,
 );
 
 $input-btn-line-height-sm: 1;
