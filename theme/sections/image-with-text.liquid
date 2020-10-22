@@ -1,33 +1,45 @@
 <div class="
   section-inner-wrapper
-  {% if section.settings.section_width == 'container' %}container{% endif %}
   {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
   {{ section.settings.style }}
   bg-{{ settings.default_style_mode }}">
+
+  <div class="{% if section.settings.section_width == 'container' %}container{% endif %}"> 
     <div class="row no-gutters">
         <div class="col col-12 col-md-6 
         {% if section.settings.image_position == 'left' %}order-first{% endif %} {% if section.settings.image_position == 'right' %}order-last{% endif %}
         ">
             <img class="img-fluid" src="{{ section.settings.image | img_url: 'master' }}" />
         </div>
-        <div class=" bg-{{ settings.default_style_mode }}-text col col-12 col-md-6 align-self-center pl-35 pr-50 ml-auto w-50 
+        <div class="text-{{ settings.default_style_mode }}-text col col-12 col-md-6 align-self-center pl-35 pr-50 ml-auto w-50 
         text-{{ section.settings.alignment }}
         ">
             <h3 class="mb-lg-20">{{ section.settings.header }}</h3>
-            <p class="content mb-lg-20">
+            <div class="content mb-lg-20">
               {{ section.settings.text }}
-            </p>
+            </div>
 
             <a class="bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn mr-sm-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
-            <a class="border border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text btn" href="{{ section.settings.second_button_link }}">{{ section.settings.second_button_label }}</a>
+            <a class="border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text btn" href="{{ section.settings.second_button_link }}">{{ section.settings.second_button_label }}</a>
         </div>
     </div>
+  </div>
 </div>
 
 <style>
-
+  #shopify-section-{{ section.id }} .section-inner-wrapper{
+    {% if section.settings.color_bg != 'rgba(0,0,0,0)' %}
+    background-color: {{ section.settings.color_bg }}!important;
+    {% endif %}
+    {% if section.settings.img_bg != blank %}
+    background-image: url("{{ section.settings.img_bg | img_url: 'master'  }}");
+    {% endif %}
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
 </style>
 {% schema %}
 {
@@ -37,6 +49,26 @@
   "class": "index-section index-section--image-with-text",
   "tag": "section",
   "settings": [
+  {
+      "type": "header",
+      "content": {
+        "en": "Background"
+      }
+    },
+    {
+      "type": "image_picker",
+      "id": "img_bg",
+      "label": {
+        "en": "Background image"
+      }
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": {
+        "en": "Background color"
+      } 
+   },
     {
       "type": "header",
       "content": {
