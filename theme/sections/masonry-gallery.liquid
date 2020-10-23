@@ -1,23 +1,33 @@
 <div class="
   section-inner-wrapper
-  {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
   {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-  py-sm-30
-  {{ section.settings.custom_classes }}">
-  <div class="images-wrapper">
-    <img src="https://picsum.photos/1028/792"/>
-    <img src="https://picsum.photos/1920/1020"/>
-    <img src="https://picsum.photos/1536/1080"/>
-    <img src="https://picsum.photos/1028/792"/>
-    <img src="https://picsum.photos/1920/1020"/>
-    <img src="https://picsum.photos/1536/1080"/>
-    <img src="https://picsum.photos/1028/792"/>
-    <img src="https://picsum.photos/1920/1020"/>
-    <img src="https://picsum.photos/1536/1080"/>
+  bg-{{ settings.default_style_mode }}
+  py-30
+ ">
+ <div class="{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}">    
+    
+  <div class="text-{{ settings.default_style_mode }}-text text-center pb-10">
+    {% if section.settings.section-title %}
+      <h2>{{ section.settings.section-title }}</h1>
+    {% endif %}
+
+    {% if section.settings.section-subtitle %}
+      <h3>{{ section.settings.section-subtitle }}</h2>
+    {% endif %}
+
+  </div>
+
+    <div class="images-wrapper">
+      {% for block in section.blocks %}
+        <img class="img-fluid" src="{{ block.settings.image | img_url: 'master' }}" />
+      {% endfor %}
+    </div>
   </div>
 </div>
+
+{% render 'common-section-styles' %}
 
 {% schema %}
 {
@@ -27,6 +37,26 @@
   "class": "index-section index-section--masonry",
   "tag": "section",
   "settings": [
+    {
+        "type": "header",
+        "content": {
+          "en": "Background"
+        }
+      },
+      {
+        "type": "image_picker",
+        "id": "img_bg",
+        "label": {
+          "en": "Background image"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": {
+          "en": "Background color"
+        } 
+    },
     {
       "type": "header",
       "content": {
@@ -78,6 +108,12 @@
         "en": "Disable on desktop"
       },
       "default": false
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Section Content"
+      }
     },
     {
       "type": "text",

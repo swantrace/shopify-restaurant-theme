@@ -1,158 +1,34 @@
 <div class="
   section-inner-wrapper
-  {% if section.settings.section_width == 'container' %}container{% endif %}
   {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-  py-sm-30
-  {{ section.settings.custom_classes }}">
-<div id="testimonials">
+  bg-{{ settings.default_style_mode }}
+  {{ section.settings.style }}
+  py-sm-30">
+
+  <div class="{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}">    
+
+  <div id="testimonials">
     <div class="glider-contain">
-        <div class="glider bg-black p-20">
+        <div class="glider p-20">
+
+          {% for block in section.blocks %}
             <div class="card mr-sm-10 rounded-0">
                 <div class="card-body">
-                    <h4 class="text-center card-title">
+                    <h4 class="card-title">
                         <i class="fas fa-quote-left"></i>
                     </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
+                    <blockquote class="blockquote text-{{ block.settings.alignment }}">
+                      <div class="card-text mb-20">
+                        {{ block.settings.review }}
+                      </div>
+                      <div class="blockquote-footer"> - {{ block.settings.reviewer }}</div>
                     </blockquote>
                 </div>
             </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="card mr-sm-10 rounded-0">
-                <div class="card-body">
-                    <h4 class="text-center card-title">
-                        <i class="fas fa-quote-left"></i>
-                    </h4>
-                    <blockquote class="blockquote">
-                        <p class="text-center mb-10"><br><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp; Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&nbsp;&nbsp;Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<br></small>
-                        </p>
-                        <footer class="blockquote-footer text-center">Someone famous</footer>
-                    </blockquote>
-                </div>
-            </div>
+            {% endfor %}
+
         </div>
         <button class="btn glider-prev d-none" type="button">&lt;</button>
         <button class="btn glider-next d-none" type="button">&gt;</button>
@@ -160,16 +36,16 @@
     </div>
 </div>
 </div>
+</div>
+
+{% render 'common-section-styles' %}
+
 <style>
-    .index-section--testimonials{
-    background-color: {{ section.settings.color_bg }};
-    {% if section.settings.img_bg != blank %}
-    background-image: url("{{ section.settings.img_bg | img_url }}");
-    {% endif %}
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.glider{
+
+}
 </style>
+
 {% schema %}
 {
   "name": {
@@ -177,7 +53,7 @@
   },
   "class": "index-section index-section--testimonials",
   "tag": "section",
-  "max_blocks": 12,
+  "max_blocks": 20,
   "settings": [
     {
       "type": "header",
@@ -197,8 +73,7 @@
       "id": "color_bg",
       "label": {
         "en": "Background color"
-      },
-      "default": "#3a3a3a"
+      }
     },
     {
       "type": "header",
@@ -251,6 +126,34 @@
         "en": "Disable on desktop"
       },
       "default": false
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Section Content"
+      }
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": {
+        "en": "Choose a style"
+      },
+      "default": "styleA",
+      "options": [
+        {
+          "label": {
+            "en": "Style A"
+          },
+          "value": "styleA"
+        },
+        {
+          "label": {
+            "en": "Style B"
+          },
+          "value": "styleB"
+        }
+      ]
     }
   ],
   "blocks": [
@@ -290,16 +193,16 @@
         },
         {
           "type": "text",
-          "id": "title",
+          "id": "reviewer",
           "label": {
-            "en": "Title"
+            "en": "Reviewer Name"
           }
         },
         {
           "type": "richtext",
-          "id": "description",
+          "id": "review",
           "label": {
-            "en": "Description"
+            "en": "Review"
           }
         }
       ]
