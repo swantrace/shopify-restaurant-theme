@@ -1,60 +1,53 @@
 <div class="
   section-inner-wrapper
-  {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
   {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-  py-sm-30
-  {{ section.settings.custom_classes }}">
-  <h1 class="text-center mb-10">Featured Products</h1>
-  <div class="row">
-    <div class="col col-12 col-sm-3">
-      <div class="card border-0"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
-        <div class="card-body">
-          <h6 class="card-title my-10">H3 Header Needs To Go Here</h6>
-          <p class="card-text mb-20">
-            <small>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.Text<br></small>
-          </p>
-          <button class="btn btn-black" type="button">LEARN MORE</button>
-        </div>
+  bg-{{ settings.default_style_mode }}
+  ">
+  <div class="{% if section.settings.section_width == 'container' %}container{% endif %} text-{{ settings.default_style_mode }}-text py-40">
+   {% if section.settings.title %}
+      <h3 class="text-center pb-20">{{ section.settings.title }}</h3>
+   {% endif %}
+
+   <div class="row">
+      {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.featured_product] %}
+      <div class="col col-12 col-sm-3">
+         <img class="img-fluid w-100 d-block" src="{{ product.selected_or_first_available_variant.image | default: product.featured_image | img_url: '480x300', crop: 'center' }}">
+         <div class="text-{{ block.settings.alignment }}">
+            <h6 class="crop-text-1 my-10">{{ product.title}}</h6>
+            <div class="crop-content my-10">
+               {{ product.content | strip_html }}
+            </div>
+            <a class="btn bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text mb-20" href="{{ product.url }}">{{ block.settings.button_label }}</a>
+         </div>
       </div>
-    </div>
-    <div class="col col-12 col-sm-3">
-      <div class="card border-0"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
-        <div class="card-body">
-          <h6 class="card-title my-10">H3 Header Needs To Go Here</h6>
-          <p class="card-text mb-20">
-            <small>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.Text<br></small>
-          </p>
-          <button class="btn btn-black" type="button">LEARN MORE</button>
-        </div>
-      </div>
-    </div>
-    <div class="col col-12 col-sm-3">
-      <div class="card border-0"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
-        <div class="card-body">
-          <h6 class="card-title my-10">H3 Header Needs To Go Here</h6>
-          <p class="card-text mb-20">
-            <small>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.Text<br></small>
-          </p>
-          <button class="btn btn-black" type="button">LEARN MORE</button>
-        </div>
-      </div>
-    </div>
-    <div class="col col-12 col-sm-3">
-      <div class="card border-0"><img class="card-img-top w-100 d-block" src="https://picsum.photos/id/555/660/480">
-        <div class="card-body">
-          <h6 class="card-title my-10">H3 Header Needs To Go Here</h6>
-          <p class="card-text mb-20">
-            <small>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.Text<br></small>
-          </p>
-          <button class="btn btn-black" type="button">LEARN MORE</button>
-        </div>
-      </div>
-    </div>
+      {% endfor %}
+   </div>
   </div>
 </div>
 {% render 'common-section-styles' %}
+
+<style>
+  
+   .crop-text-1 {
+   -webkit-line-clamp: 1;
+   overflow : hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   }
+ 
+   .crop-content {
+      -webkit-line-clamp: {{ section.settings.line_num }};
+      overflow : hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+   }
+ 
+ </style>
 
 {% schema %}
 {
@@ -82,8 +75,7 @@
          "id":"color_bg",
          "label":{
             "en":"Background color"
-         },
-         "default":"#3a3a3a"
+         }
       },
       {
          "type": "header",
@@ -138,27 +130,27 @@
          "default":false
       },
       {
-         "type":"select",
-         "id":"style",
-         "label":{
-            "en":"Choose a style for mobile"
-         },
-         "default":"styleA",
-         "options":[
-            {
-               "label":{
-                  "en":"Style A"
-               },
-               "value":"styleA"
-            },
-            {
-               "label":{
-                  "en":"Style B"
-               },
-               "value":"styleB"
-            }
-         ]
-      }
+         "type": "header",
+         "content": {
+           "en": "Section Content"
+         }
+       },
+       {
+         "type": "text",
+         "id": "title",
+         "label": {
+           "en": "Title"
+         }
+       },
+       {
+         "type":      "range",
+         "id":        "line_num",
+         "min":       1,
+         "max":        20,
+         "step":       1,
+         "label":     "Show # of Line Text for Description",
+         "default":   6
+       }
    ],
    "blocks":[
       {
@@ -174,34 +166,41 @@
                   "en":"Product"
                }
             },
-         {
-          "type": "select",
-          "id": "alignment",
-          "label": {
-            "en": "Content alignment"
-          },
-          "default": "center",
-          "options":[
             {
-              "label": {
-                "en": "Left"
-              },
-              "value": "left"
+               "type": "text",
+               "id": "button_label",
+               "label": {
+                 "en": "Button label"
+               }
+             },
+            {
+            "type": "select",
+            "id": "alignment",
+            "label": {
+               "en": "Content alignment"
             },
-            {
-              "label": {
-                "en": "Center"
-              },
-              "value": "center"
-            },
-            {
-              "label": {
-                "en": "Right"
-              },
-              "value": "right"
-            }
-          ]
-        }
+            "default": "center",
+            "options":[
+               {
+               "label": {
+                  "en": "Left"
+               },
+               "value": "left"
+               },
+               {
+               "label": {
+                  "en": "Center"
+               },
+               "value": "center"
+               },
+               {
+               "label": {
+                  "en": "Right"
+               },
+               "value": "right"
+               }
+            ]
+         }
          ]
       }
    ],

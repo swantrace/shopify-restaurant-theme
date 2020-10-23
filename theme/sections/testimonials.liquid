@@ -7,9 +7,8 @@
   {{ section.settings.style }}
   py-sm-30">
 
-  <div class="{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}">    
-
-  <div id="testimonials">
+  <div class="{% if section.settings.section_width == 'container' %}container{% endif %}">    
+    <div id="testimonials">
     <div class="glider-contain">
         <div class="glider p-20">
 
@@ -19,7 +18,7 @@
                     <h4 class="card-title">
                         <i class="fas fa-quote-left"></i>
                     </h4>
-                    <blockquote class="blockquote text-{{ block.settings.alignment }}">
+                    <blockquote class="text-{{ block.settings.alignment }}">
                       <div class="card-text mb-20">
                         {{ block.settings.review }}
                       </div>
@@ -41,8 +40,21 @@
 {% render 'common-section-styles' %}
 
 <style>
-.glider{
+.bg-dark.styleA .glider, .bg-dark.styleB .glider, .bg-dark.styleA .card, .bg-light.styleA .card{
+  background-color: #ffffff;
+}
 
+.bg-light.styleA .glider, .bg-light.styleB .glider{
+  background-color: #000000;
+}
+
+.bg-dark.styleB .card, .bg-light.styleB .card{
+  background-color: #000000;
+  color: #fff;
+}
+
+.bg-light.styleB .card{
+  border: 1px solid #ffffff;
 }
 </style>
 

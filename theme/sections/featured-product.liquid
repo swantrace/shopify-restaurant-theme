@@ -9,7 +9,7 @@
   <div class="{% if section.settings.section_width == 'container' %}container{% endif %}">
     <div class="row no-gutters">
       <div class="col col-12 col-md-6 d-flex justify-content-center align-items-center">
-        <img class="variant-image img-fluid w-100" src="{{ product.selected_or_first_available_variant.image | default: product.featured_image | img_url: '1000x833' | crop: 'center'}}">
+        <img class="variant-image img-fluid w-100" src="{{ product.selected_or_first_available_variant.image | default: product.featured_image | img_url: '1000x833' , crop: 'center'}}">
       </div>
       <div class="text-{{ settings.default_style_mode }}-text col col-12 col-md-6 align-self-center px-sm-10 px-md-20 px-lg-30 pl-xl-35 pr-xl-50 ml-auto">
         <div>
