@@ -37,16 +37,7 @@
 <div class="bg-gray2">
     <small class="text-gray4 py-10 d-block text-center w-100">@2020 LOGO Restaurant. All Rights Reserved</small>
 </div>
-<style>
-  .static-section--footer{
-    background-color: {{ section.settings.color_bg }};
-    {% if section.settings.img_bg != blank %}
-    background-image: url("{{ section.settings.img_bg | img_url }}");
-    {% endif %}
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-</style>
+{% render 'common-section-styles' %}
 
 {% schema %}
 {

@@ -1,0 +1,13 @@
+<style>
+  #shopify-section-{{ section.id }} .bg-light, #shopify-section-{{ section.id }} .bg-dark{
+    {% if section.settings.color_bg != 'rgba(0,0,0,0)' %}
+    background-color: {{ section.settings.color_bg }}!important;
+    {% endif %}
+    {% if section.settings.img_bg != blank %}
+    background-image: url("{{ section.settings.img_bg | img_url: 'master'  }}");
+    {% endif %}
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+</style>

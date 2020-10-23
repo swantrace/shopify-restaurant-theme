@@ -17,21 +17,7 @@ py-50
     </div>
   </div>
 </div>
-
-<style>
-  #shopify-section-{{ section.id }} .section-inner-wrapper{
-    {% if section.settings.color_bg != 'rgba(0,0,0,0)' %}
-    background-color: {{ section.settings.color_bg }}!important;
-    {% endif %}
-    {% if section.settings.img_bg != blank %}
-    background-image: url("{{ section.settings.img_bg | img_url: 'master'  }}");
-    {% endif %}
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-  }
-</style>
-
+{% render 'common-section-styles' %}
 {% schema %}
 {
   "name": {

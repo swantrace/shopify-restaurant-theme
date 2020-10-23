@@ -7,16 +7,7 @@
   {{ section.settings.custom_classes }}">
   {{ section.settings.custom-html }}
 </div>
-<style>
-.index-section--custom-html{
-  background-color: {{ section.settings.color_bg }};
-  {% if section.settings.img_bg != blank %}
-  background-image: url("{{ section.settings.img_bg | img_url }}");
-  {% endif %}
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-</style>
+{% render 'common-section-styles' %}
 
 {% schema %}
 {

@@ -78,16 +78,8 @@
   </div>
 </div>
 </div>
+{% render 'common-section-styles' %}
 <style>
-  .index-section--counter{
-    background-color: {{ section.settings.color_bg }};
-    {% if section.settings.img_bg != blank %}
-    background-image: url("{{ section.settings.img_bg | img_url }}");
-    {% endif %}
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
   .detail-icon{
     background: none;
     color: gray;
