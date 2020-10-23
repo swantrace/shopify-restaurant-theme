@@ -6,15 +6,16 @@
           bg-{{ settings.default_style_mode }}
           ">
         <div class="{% if section.settings.section_width == 'container' %}container{% endif %}"> 
-
             <div class="row no-gutters">
             <div class="col col-12 col-md-6 align-self-center 
             {% if section.settings.video_position == 'left' %}order-first{% endif %} {% if section.settings.video_position == 'right' %}order-last{% endif %}
             ">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe id="video__iframe" class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?enablejsapi=1" allowfullscreen></iframe>
-                <div class="video__image">
-                  <button onclick="console.log('hello')">Play</button>
+              <div class="video-iframe-wrapper embed-responsive embed-responsive-16by9">
+                <div id="video-iframe"></div>
+                <div class="video-image">
+                  <button class="btn video-control video-control__play video-play-btn">
+                    {% render 'icon-play' %}
+                  </button>
                 </div>
               </div>
             </div>
@@ -23,7 +24,6 @@
               <div class="content py-20">
                 {{ section.settings.text }}
               </div>
-
               <a class="btn bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text mr-sm-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
               <a class="btn border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text" href="{{ section.settings.second_button_link }}" >{{ section.settings.second_button_label }}</a>
             </div>
@@ -33,7 +33,7 @@
 
 {% render 'common-section-styles' %}
 <style>
-  #shopify-section-{{ section.id }} .video__image{
+  #shopify-section-{{ section.id }} .video-iframe-wrapper .video-image{
     position: absolute;
     top: 0;
     left: 0;
@@ -43,50 +43,72 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    /* display: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.4s;
   }
+
+  #shopify-section-{{ section.id }} .video-play-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 5px;
+    background: white;
+    border: 1px solid black;
+  }
+
+  #shopify-section-{{ section.id }} .video-iframe-wrapper.video-is-playing .video-image {
+    opacity: 0;
+    transition: opacity 0.4s;
+    z-index: -99999;
+  }
+
 </style>
 <script>
-  var tag = document.createElement('script');
+  const tag = document.createElement('script');
   tag.id = 'iframe-demo';
   tag.src = 'https://www.youtube.com/iframe_api';
-  var firstScriptTag = document.getElementsByTagName('script')[0];
+  const firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  var player;
+  let player;
   function onYouTubeIframeAPIReady() {
-    player = new YT.Player('video__iframe', {
+    player = new YT.Player('video-iframe', {
+        class: 'embed-responsive-item',
+        videoId: 'zpOULjyy-n8',
         events: {
           'onReady': onPlayerReady,
           'onStateChange': onPlayerStateChange
         }
     });
-    console.log(player);
   }
+
   function onPlayerReady(event) {
-    document.getElementById('video__iframe').style.borderColor = '#FF6D00';
-  }
-  function changeBorderColor(playerStatus) {
-    var color;
-    if (playerStatus == -1) {
-      color = "#37474F"; // unstarted = gray
-    } else if (playerStatus == 0) {
-      color = "#FFFF00"; // ended = yellow
-    } else if (playerStatus == 1) {
-      color = "#33691E"; // playing = green
-    } else if (playerStatus == 2) {
-      color = "#DD2C00"; // paused = red
-    } else if (playerStatus == 3) {
-      color = "#AA00FF"; // buffering = purple
-    } else if (playerStatus == 5) {
-      color = "#FF6DOO"; // video cued = orange
-    }
-    if (color) {
-      document.getElementById('video__iframe').style.borderColor = color;
+    const videoIframeWrapper = document.querySelector(".video-iframe-wrapper");
+    const videoPlayButton = document.querySelector(".video-iframe-wrapper .video-play-btn");
+    if(videoPlayButton && videoIframeWrapper) {
+      videoPlayButton.addEventListener("click", function(){
+        videoIframeWrapper.classList.add("video-is-playing");
+        event.target.playVideo();
+      });
     }
   }
+
   function onPlayerStateChange(event) {
-    changeBorderColor(event.data);
+    const playerStatus = event.data;
+    if(playerStatus == 0 || playerStatus == 2) {
+      const videoIframeWrapper = document.querySelector(".video-iframe-wrapper");
+      const videoPlayButton = document.querySelector(".video-iframe-wrapper .video-play-btn");
+      if(videoPlayButton && videoIframeWrapper) {
+        videoIframeWrapper.classList.remove("video-is-playing");
+      }
+    }
   }
 </script>
 {% schema %}
