@@ -19,13 +19,14 @@
                       <a class="btn bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text" href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a>
                   </div>
           </div>
-          {% endfor %}
+        {% endfor %}
       </div>
     </div>
 </div>
 
 {% render 'common-section-styles' %}
 <style>
+  
   .crop-text-1 {
   -webkit-line-clamp: 1;
   overflow : hidden;
@@ -33,6 +34,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   }
+
   .crop-text-desc {
   -webkit-line-clamp: {{ section.settings.line_num }};
   overflow : hidden;
@@ -40,7 +42,6 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   }
-
 
 </style>
 
