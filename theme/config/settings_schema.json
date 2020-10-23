@@ -363,7 +363,7 @@
       {
         "type": "text",
         "id": "social_google_plus_link",
-        "label":{
+        "label": {
           "en": "Google Plus"
         },
         "info": {
@@ -455,6 +455,11 @@
       },
       {
         "type": "text",
+        "id": "company_name",
+        "label": "Company Name"
+      },
+      {
+        "type": "text",
         "id": "phone",
         "label": {
           "en": "Phone number"
@@ -466,7 +471,7 @@
         "label": {
           "en": "Email"
         }
-      },    
+      },
       {
         "type": "text",
         "id": "location",
@@ -486,9 +491,7 @@
         "label": {
           "en": "First line"
         },
-        "placeholder": {
-          "en": "Mon - Fri/12pm - 11pm"
-        }
+        "default": "Mon - Fri/12pm - 11pm"
       },
       {
         "type": "text",
@@ -496,9 +499,7 @@
         "label": {
           "en": "Second line"
         },
-        "placeholder": {
-          "en": "Sat/12pm - 12pm"
-        }
+        "default": "Sat/12pm - 12pm"
       },
       {
         "type": "text",
@@ -506,9 +507,7 @@
         "label": {
           "en": "Third line"
         },
-        "placeholder": {
-          "en": "* Close on Sun & Holidays"
-        }
+        "default": "* Close on Sun & Holidays"
       },
       {
         "type": "text",
@@ -536,22 +535,6 @@
         "id": "store_hours_seventh_line",
         "label": {
           "en": "Seventh line"
-        }
-      },
-      {
-        "type": "header",
-        "content": {
-          "en": "Map"
-        }
-      },      
-      {
-        "type": "text",
-        "id": "map_address",
-        "label": {
-          "en": "Map address"
-        },
-        "info": {
-          "en": "Google Maps will find the exact location"
         }
       },
       {
