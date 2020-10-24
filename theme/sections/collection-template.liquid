@@ -1,7 +1,7 @@
-<div  class="bg-{{ settings.default_style_mode }} py-50 ">
+<div  class="bg-{{ settings.default_style_mode }} py-50">
   <div class="container text-{{ settings.default_style_mode }}-text ">
     <div class="row align-items-md-start">
-      <div class="col-12 col-md-2">
+      <div class="col-12 col-md-2" style="position: sticky; top: 0;">
         <ul class="nav flex-md-column" id="category-list">
         {% for collection in collections %}
         {% if collection.handle != 'all'%}
@@ -27,9 +27,6 @@
     </div>
   </div>
 </div>
-
-</div>
-
 <div class="modal fade" id="atcFormModal"></div>
 
 <script>
