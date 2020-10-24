@@ -2,3 +2,4 @@ node_modules
 config.yml
 theme/assets/theme.min.js
 theme/assets/theme.js
+theme/assets/theme.scss.liquid
