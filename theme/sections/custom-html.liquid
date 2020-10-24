@@ -1,11 +1,14 @@
 <div class="
   section-inner-wrapper
-  {% if section.settings.section_width == 'container' %}container{% endif %}
   {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-  {{ section.settings.custom_classes }}">
-  {{ section.settings.custom-html }}
+  bg-{{ settings.default_style_mode }}
+  ">
+  <div class="{% if section.settings.section_width == 'container' %}container{% endif %} text-{{ settings.default_style_mode }}-text"> 
+   {{ section.settings.custom-html }}
+   </div>
+
 </div>
 {% render 'common-section-styles' %}
 
@@ -88,13 +91,6 @@
             "en":"Disable on desktop"
          },
          "default":false
-      },
-      {
-         "type":"text",
-         "id":"custom_classes",
-         "label":{
-            "en":"Custom class names assigned to inner wrapper div"
-         }
       },
       {
          "type":"html",

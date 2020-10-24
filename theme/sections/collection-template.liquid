@@ -1,4 +1,5 @@
-  <div class="container">
+<div  class="bg-{{ settings.default_style_mode }} py-50 ">
+  <div class="container text-{{ settings.default_style_mode }}-text ">
     <div class="row align-items-md-start">
       <div class="col-12 col-md-2">
         <ul class="nav flex-md-column" id="category-list">
@@ -17,8 +18,8 @@
         {% include 'collection-tags' %}
         {% for collection in collections %}
         {% if collection.handle != 'all' %}
-        <section class="single-collection-section" id="{{ collection.handle }}">
-            <collection-item collection-handle="{{ collection.handle }}" collection-title="{{ collection.title }}"></collection-item>
+        <section class="single-collection-section pb-20" id="{{ collection.handle }}">
+            <collection-item collection-handle="{{ collection.handle }}" collection-title="{{ collection.title }}" data-style="{{ settings.default_style_mode }}"></collection-item>
         </section>
         {% endif %}
         {% endfor %}
@@ -26,6 +27,9 @@
     </div>
   </div>
 </div>
+
+</div>
+
 <div class="modal fade" id="atcFormModal"></div>
 
 <script>
@@ -56,6 +60,52 @@ document.addEventListener('productgridclicked', function(e){
 </script>
 <style>
 
+  .product-title{
+    font-size: 1rem;
+    font-weight: 400;
+    -webkit-line-clamp: 1;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  .product-desc{
+    -webkit-line-clamp: 6;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+  }
+
+  .tags-list img{
+    margin-right: 6px;
+  }
+
+  .product-img{
+    max-height: 180px;
+    object-position: center center;
+    height: 100%;
+    object-fit: cover; 
+  }
+
+  .onsale-price .current-variant-compare-at-price{
+    text-decoration: line-through;
+  }
+
+  .onsale-price .current-variant-price, .onsale-price .fas{
+    color: #DA4551;
+  }
+
+  .divider{
+    color: #e8eff0;
+    background-color: #e8eff0;
+    border: 1px solid #e8eff0;
+    width: 3rem;
+    height: 0.05rem;
+  }
+
   #back-link {
     height: 100px;
   }
@@ -78,3 +128,80 @@ document.addEventListener('productgridclicked', function(e){
     border-top: 1px solid white;
   }
 </style>
+
+
+{% schema %}
+{
+  "name": {
+    "en": "Collection Page"
+  },
+  "class": "collection-section",
+  "settings": [
+        {
+          "type": "header",
+          "content": {
+          "en": "Layout"
+          }
+       },
+       {
+        "type": "select",
+        "id": "image_position",
+        "label": {
+          "en": "Image position"
+        },
+        "default": "left",
+        "options": [
+          {
+            "label": {
+              "en": "Left"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Right"
+            },
+            "value": "right"
+          }
+        ]
+      },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "en": "Content alignment"
+          },
+          "default": "center",
+          "options":[
+            {
+              "label": {
+                "en": "Left"
+              },
+              "value": "left"
+            },
+            {
+              "label": {
+                "en": "Center"
+              },
+              "value": "center"
+            },
+            {
+              "label": {
+                "en": "Right"
+              },
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type":      "range",
+          "id":        "line_num",
+          "min":       1,
+          "max":        20,
+          "step":       1,
+          "label":     "Show # of Line Text for Description",
+          "default":   6
+        }
+  ]
+}
+{% endschema %}
