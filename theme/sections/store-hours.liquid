@@ -24,15 +24,15 @@
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
   bg-{{ settings.default_style_mode }}">
-    <div class="row no-gutters">
-        <div class="restaurant-map-wrapper col col-12 col-md-6">
+    <div class="row no-gutters{% if section.settings.style == 'styleB' %} py-60{% endif %}">
+        <div class="restaurant-map-wrapper col col-12 col-md-6  {% if section.settings.map_position == 'left' %}order-first{% endif %} {% if section.settings.map_position == 'right' %}order-last{% endif %}">
           <div id="map"></div>
         </div>
-        <div class="restaurant-info-wrapper col col-12 col-md-6 align-self-center px-sm-10 px-md-20 px-lg-30 pl-xl-35 pr-xl-50 py-50">
+        <div class="restaurant-info-wrapper col col-12 col-md-6 align-self-center px-sm-10 px-md-20 px-lg-30 px-xl-50 py-50">
             <div class="restaurant-info text-{{ settings.default_style_mode }}-text text-{{ section.settings.alignment }}{% case section.settings.alignment %}{% when 'left' %} mr-auto{% when 'right' %} ml-auto{% else %} mx-auto{% endcase %}">
                 <h4 class="store-hours-title mb-lg-10">{{ section.settings.title }}</h4>
                 <div class="table-wrapper table-responsive table-borderless">
-                    <table class="table bg-{{ settings.default_style_mode }} text-{{ settings.default_style_mode }}-text">
+                    <table class="store-hours-table table bg-{{ settings.default_style_mode }} text-{{ settings.default_style_mode }}-text">
                         <tbody>
                             {% if section.settings.email_enabled %}
                             <tr class="email-table-row">
@@ -49,7 +49,8 @@
                             {% if section.settings.location_enabled %}
                             <tr class="location-table-row">
                                 <td class="text-weight-lighter">Location:</td>
-                                <td class="text-weight-lighter">{{ settings.location }}<a class="text-{{ settings.default_style_mode }}-text text-weight-lighter" href="#"><br>(Check direction)<br><br></a>
+                                <td class="text-weight-lighter">{{ settings.location }}
+                                  <a class="check-direction-link text-{{ settings.default_style_mode }}-text text-weight-lighter" href="#"><br>(Check direction)<br><br></a>
                                 </td>
                             </tr>
                             {% endif %}
@@ -97,15 +98,14 @@
 
                             {% if store_hours_seventh_line_size > 0 %}
                             <tr class="store-hours-seventh-row">
-                                <td class="text-weight-lighter" {% if store_hours_seventh_line_array[1] == blank %}colspan="2"{% endif %}>{{ store_hours_seventh_line_array[0] }}</td>
-                                <td class="text-weight-lighter">{{ store_hours_seventh_line_array[1] }}</td>
+                                <td class="px-0 text-weight-lighter" {% if store_hours_seventh_line_array[1] == blank %}colspan="2"{% endif %}>{{ store_hours_seventh_line_array[0] }}</td>
+                                <td class="px-0">{{ store_hours_seventh_line_array[1] }}</td>
                             </tr>
                             {% endif %}
-
                         </tbody>
                     </table>
                 </div>
-                <a class="btn bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn btn ml-6" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+                <a class="btn bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
             </div>
         </div>
     </div>
@@ -129,6 +129,15 @@
     top: 15px;
   }
 
+  .store-hours-table.table td {
+    padding: 0.75rem 0;
+  }
+
+  .store-hours-table.table tr td:nth-of-type(1):not([colspan="2"]) {
+    padding-right: 1.5rem;
+  }
+
+
 </style>
 <script>
   function initMap() {
@@ -139,6 +148,7 @@
     });
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ "address": "{{ settings.location | url_encode }}" }, function(results, status){
+      console.log(results);
       if (status == 'OK') {
         map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
@@ -146,6 +156,11 @@
           position: results[0].geometry.location,
           label: { color: "black", fontWeight: "500", fontSize: "12px", text: "{{ settings.company_name }}" }
         });
+        const formatted_address = results[0].formatted_address;
+        const check_direction_link = document.querySelector("a.check-direction-link");
+        if(check_direction_link && formatted_address) {
+          check_direction_link.href = `https://www.google.com/maps/dir/${encodeURI(formatted_address)}//`;
+        }
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
@@ -254,6 +269,12 @@
           "value":"styleB"
         }
       ]
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Section Content"
+      }
     },
     {
       "type": "text",

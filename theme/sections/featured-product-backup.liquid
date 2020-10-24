@@ -4,54 +4,80 @@
   {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-  {% case section.settings.style_for_desktop %}{% when 'styleA' %}desktop_style_a{% when 'styleB' %}desktop_style_b{% else %}desktop_style_c{% endcase %}
+  {% if section.settings.style_for_desktop == 'styleA'%}desktop_style_a{% else %}desktop_style_b{% endif %}
   bg-{{ settings.default_style_mode }}">
-  <featured-product
-    data-product="{{ product | json |escape }}" 
-    data-selected-or-first-available-variant="{{ product.selected_or_first_available_variant.id }}"
-    data-options-with-values="{{ product.options_with_values | json | escape }}"
-    data-style="{{ settings.default_style_mode }}"
-    data-section-width="{{ section.settings.section_width }}"
-    data-image-position="{{ section.settings.image_position }}"
-    data-style-for-desktop="{{ section.settings.style_for_desktop }}"
-    data-alignment="{{section.settings.alignment }}"
-  ></featured-product>
+  <div class="{% if section.settings.section_width == 'container' %}container{% endif %}">
+    <div class="row no-gutters">
+      <div class="col col-12 col-md-6 d-flex justify-content-center align-items-center">
+        <img class="variant-image img-fluid w-100" src="{{ product.selected_or_first_available_variant.image | default: product.featured_image | img_url: '1000x833' , crop: 'center'}}">
+      </div>
+      <div class="text-{{ settings.default_style_mode }}-text col col-12 col-md-6 align-self-center px-sm-10 px-md-20 px-lg-30 pl-xl-35 pr-xl-50 ml-auto">
+        <div>
+          <h4 class="mb-lg-10">{{ product.title}}</h4>
+          <h5 class="mb-lg-10 product-price"> 
+            <span class="{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}text-red{% endif %}">{{ product.selected_or_first_available_variant.price | money}}&nbsp;</span>
+            {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+            <i class="fas fa-arrow-left text-red px-5"></i>
+            <del>{{ product.selected_or_first_available_variant.compare_at_price | money }}</del>
+            {% endif %}
+          </h5>
+          <p>
+            <small>{{ product.content }}</small>
+          </p>
+          {% form 'product', product %}
+            <atc-dropdown-inputs
+              data-product="{{ product | json |escape }}" 
+              data-selected-or-first-available-variant="{{ product.selected_or_first_available_variant.id }}"
+              data-options-with-values="{{ product.options_with_values | json | escape }}"
+              selector-custom-classes="mb-5 py-4 pl-4 bg-gray2 border-0"
+              quantity-input-custom-classes="mb-5 py-4 pl-4 bg-gray2 border-0"
+              atc-button-custom-classes="btn-white mb-4"
+              data-style="{{ settings.default_style_mode }}">
+              <div class="bold-ooptions"></div>
+            </atc-dropdown-inputs>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-{% render 'common-section-styles' %}
 <style>
   .detail-icon{
     background: none;
+    color: gray;
     font-size: 0.6rem;
     border: none;
   }
   .share-icon{
     background: none;
+    color: gray;
     font-size: 0.6rem;
     border: none;
   }
-  #shopify-section-{{ section.id }} .row {
-    height: 800px;
-  }
-
-  #shopify-section-{{ section.id }} .product-item-wrapper>div{
-    max-width: 100%; 
-    width: 540px;
-  }
-
-  #shopify-section-{{ section.id }} .desktop_style_c .product-item-wrapper>div{
-    background-color: rgba(255, 255, 255, 0.3);
-    padding: 16px 16px;
-  }
-
-  @media (min-width: 992px) {
-
-    #shopify-section-{{ section.id }} .desktop_style_c .product-item-wrapper {
-      position: absolute;
-    }
-
-  }
 </style>
+<script>
+document.addEventListener('variantchanged', function(e){
+  const form = e.target;
+  const productPriceElement = form.closest('.section-inner-wrapper').querySelector('.product-price');
+  const variantImageElement = form.closest('.section-inner-wrapper').querySelector('.variant-image');
+  const currentVariant = e.detail.currentVariant;
+  const formatMoney = e.detail.formatMoney;
+  console.log(variantImageElement);
+  if(currentVariant.featured_image) {
+    variantImageElement.src = currentVariant.featured_image.src;
+  } else {
+    variantImageElement.src = "{{ product.featured_image | img_url: 'large'}}";
+  }
+  if(currentVariant.compare_at_price > currentVariant.price){
+    productPriceElement.innerHTML = `<span class="text-red">${formatMoney(currentVariant.price)}&nbsp;</span>
+          <i class="fas fa-arrow-left text-red px-5"></i>
+          <span class="text-white">${formatMoney(currentVariant.compare_at_price)}</span>`
+  } else {
+    productPriceElement.innerHTML = `<span class="text-white">${formatMoney(currentVariant.price)}&nbsp;</span>`
+  }
+});
+</script>
+{% render 'common-section-styles' %}
 
 {% schema %}
 {
@@ -79,7 +105,8 @@
       "id": "color_bg",
       "label": {
         "en": "Background color"
-      }
+      },
+      "default": "#3a3a3a"
     },
     {
       "type": "header",
@@ -142,7 +169,7 @@
     },
     {
       "type":"select",
-      "id":"style_for_desktop",
+      "id":"style",
       "label":{
         "en":"Choose a style for desktop"
       },

@@ -9,6 +9,8 @@ import './components/predictive-search';
 import './components/atc-dropdown-inputs';
 import './components/collection-item';
 import './components/collection-item-modal';
+import './components/featured-product';
+import './components/counter-product';
 
 window.datomar = {
   BSN,

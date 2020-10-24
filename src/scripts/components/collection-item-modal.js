@@ -24,7 +24,6 @@ function collectionItemModal({
     )
   );
   const [quantity, setQuantity] = useState(1);
-
   const [status, setStatus] = useState('suspended'); // there should be four kinds of status, suspended, loading, success, error
   const [errorDescription, setErrorDescription] = useState('');
 
@@ -109,7 +108,11 @@ function collectionItemModal({
     <div class="modal-content collection-item-modal-inner">
       <img
         class="img-fluid collection-item-modal-image"
-        src=${product.featured_image}
+        src=${
+          currentVariant.featured_image
+            ? currentVariant.featured_image
+            : product.featured_image
+        }
       />
       <i class="fas fa-times modal-close-icon" data-dismiss="modal" style="
           position: absolute;
@@ -220,7 +223,6 @@ function collectionItemModal({
                 step="1"
               />
             </div>
-            <div class="bold_options"></div>
             <div class="error-description" ?hidden=${errorDescription === ''}>
               ${errorDescription}
             </div>
