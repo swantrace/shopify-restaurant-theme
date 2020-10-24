@@ -1,97 +1,48 @@
+{% assign product = all_products[section.settings.onsale_product] %}
 <div class="
   section-inner-wrapper
-  {% if section.settings.section_width == 'container' %}container{% endif %}
+  py-0
   {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-  my-sm-30
-  {{ section.settings.custom_classes }}">
-<div class="row no-gutters bg-gray5">
-  <div class="col col-12 col-md-6"><img class="img-fluid" src="https://picsum.photos/id/1060/1200/1028"></div>
-  <div class="col col-12 col-md-6 align-self-center px-sm-10 px-md-20 px-lg-30 pl-xl-35 pr-xl-50 ml-auto">
-      <div>
-          <h4 class="text-white mb-lg-10">Featured Product Name</h4>
-          <h5 class="mb-lg-10">
-              <span class="text-red">$100.00&nbsp;</span>
-              <i class="fas fa-arrow-left text-red px-5"></i>
-              <span class="text-white">$120.00</span>
-          </h5>
-          <p class="text-white">
-              <small>Small description Small description Small description Small description Small description Small description Small description&nbsp;</small>
-          </p>
-          <div class="row mb-10">
-            <div class="col-3">
-              <div class="bg-gray2 text-white pb-5">
-                <h1 class="text-center">99</h1>
-                <small class="d-block text-center">days</small>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="bg-gray2 text-white pb-5">
-                <h1 class="text-center">99</h1>
-                <small class="d-block text-center">hours</small>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="bg-gray2 text-white pb-5">
-                <h1 class="text-center">99</h1>
-                <small class="d-block text-center">minutes</small>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="bg-gray2 text-white pb-5">
-                <h1 class="text-center">99</h1>
-                <small class="d-block text-center">seconds</small>
-              </div>
-            </div>
-          </div>
-          <form>
-              <select class="form-control mb-5 py-4 pl-4 bg-gray2 border-0">
-                  <optgroup label="This is a group">
-                      <option selected="" value="12">Selection 1</option>
-                      <option value="13">This is item 2</option>
-                      <option value="14">This is item 3</option>
-                  </optgroup>
-              </select>
-              <select class="form-control mb-5 py-4 pl-4 bg-gray2 border-0">
-                  <optgroup label="This is a group">
-                      <option selected="" value="12">Selection 2</option>
-                      <option value="13">This is item 2</option>
-                      <option value="14">This is item 3</option>
-                  </optgroup>
-              </select><input class="form-control mb-5 py-4 pl-4 bg-gray2 border-0" type="number">
-              <div class="form-row justify-content-between">
-                  <div class="col">
-                      <button class="btn btn-white" type="button">LEARN MORE</button>
-                  </div>
-                  <div class="col col-auto">
-                      <div class="btn-group align-self-center h-100" role="group">
-                          <button class="detail-icon btn btn-primary p-0 pr-3"  type="button">
-                              <i class="fa fa-list pr-2"></i>Detail</button>
-                          <button class="share-icon btn btn-primary p-0"  type="button">
-                              <i class="fa fa-share-alt pr-2"></i>Share</button>
-                      </div>
-                  </div>
-              </div>
-          </form>
-      </div>
-  </div>
+  {% if section.settings.style_for_desktop_and_mobile == 'styleA' %}style_for_desktop_and_mobile_a{% else %}style_for_desktop_and_mobile_b{% endif %}
+  bg-{{ settings.default_style_mode }}">
+  <counter-product
+    data-product="{{ product | json |escape }}" 
+    data-selected-or-first-available-variant="{{ product.selected_or_first_available_variant.id }}"
+    data-options-with-values="{{ product.options_with_values | json | escape }}"
+    data-style="{{ settings.default_style_mode }}"
+    data-section-width="{{ section.settings.section_width }}"
+    data-image-position="{{ section.settings.image_position }}"
+    data-style-for-desktop-and-mobile="{{ section.settings.style_for_desktop_and_mobile }}"
+    data-alignment="{{ section.settings.alignment }}"
+    data-discount-deadline="{{ section.settings.discount_deadline }}"
+    data-add-to-cart-button-text="{{ section.settings.add_to_cart_button_text}}"
+    data-learn-more-button-text="{{ section.settings.learn_more_button_text }}"
+  ></counter-product>
 </div>
-</div>
+
 {% render 'common-section-styles' %}
 <style>
   .detail-icon{
     background: none;
-    color: gray;
     font-size: 0.6rem;
     border: none;
   }
   .share-icon{
     background: none;
-    color: gray;
     font-size: 0.6rem;
     border: none;
   }
+  #shopify-section-{{ section.id }} .onsale-product-container > .row {
+    height: 800px;
+  }
+
+  #shopify-section-{{ section.id }} .product-item-wrapper>div{
+    max-width: 100%; 
+    width: 540px;
+  }
+
 </style>
 
 {% schema %}
@@ -175,16 +126,16 @@
     },
     {
       "type": "product",
-      "id": "featured_product",
+      "id": "onsale_product",
       "label": {
         "en": "Product"
       }
     },
     {
       "type":"select",
-      "id":"style",
+      "id":"style_for_desktop_and_mobile",
       "label":{
-        "en":"Choose a style for desktop"
+        "en":"Choose a style for desktop and mobile"
       },
       "default":"styleA",
       "options":[
@@ -258,9 +209,7 @@
       "label": {
         "en": "Discount deadline"
       },
-      "placeholder": {
-        "en": "2020-09-11/19:03"
-      }
+      "placeholder": "2020-12-12/19:03"
     },
     {
       "type": "text",
