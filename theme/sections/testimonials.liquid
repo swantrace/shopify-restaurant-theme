@@ -40,20 +40,25 @@
 {% render 'common-section-styles' %}
 
 <style>
-.bg-dark.styleA .glider, .bg-dark.styleB .glider, .bg-dark.styleA .card, .bg-light.styleA .card{
+  #shopify-section-{{ section.id }} .bg-dark.styleA .glider, 
+  #shopify-section-{{ section.id }} .bg-dark.styleB .glider, 
+  #shopify-section-{{ section.id }} .bg-dark.styleA .card, 
+  #shopify-section-{{ section.id }} .bg-light.styleA .card{
   background-color: #ffffff;
 }
 
-.bg-light.styleA .glider, .bg-light.styleB .glider{
+#shopify-section-{{ section.id }} .bg-light.styleA .glider, 
+#shopify-section-{{ section.id }} .bg-light.styleB .glider{
   background-color: #000000;
 }
 
-.bg-dark.styleB .card, .bg-light.styleB .card{
+#shopify-section-{{ section.id }} .bg-dark.styleB .card, 
+#shopify-section-{{ section.id }} .bg-light.styleB .card{
   background-color: #000000;
   color: #fff;
 }
 
-.bg-light.styleB .card{
+#shopify-section-{{ section.id }} .bg-light.styleB .card{
   border: 1px solid #ffffff;
 }
 </style>

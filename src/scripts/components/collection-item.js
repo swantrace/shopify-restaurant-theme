@@ -42,33 +42,33 @@ function collectionItem({
       }
     );
   };
-  return html`<h5>${collectionTitle}</h5>
+  return html`<h4 class="collection-name text-center py-20">${collectionTitle}</h4>
     <div class="row">
       ${collection.products &&
       collection.products.map(
         (product) => html`<div
-          class="product-grid col-12 col-sm-12 col-md-6"
+          class="product-grid col-12 col-sm-12 col-md-6 d-flex pb-20 flex-wrap"
           @click=${(e) => {
             handleClick(product, e);
           }}
         >
-          <div style="float: right;width: 30%;">
+          <div class="col-4 p-0">
             <img
-              class="img-fluid"
+              class="img-fluid product-img"
               src=${product.featured_image.replace('.jpg', '_200x.jpg')}
             />
           </div>
-          <div style="float: left;width: 70%;">
-            <h6>${product.title}</h6>
-            <div>${unsafeHTML(product.description)}</div>
-            <div>
+          <div class="col-8">
+            <h6 class="product-title mb-5">${product.title}</h6>
+            <div class="product-desc mb-10">${unsafeHTML(product.description)}</div>
+            <div class="product-price mb-5">
               ${product.compare_at_price > product.price
                 ? html`<div class="onsale-price">
-                    <span class="current-variant-price"
+                    <span class="current-variant-price pr-2"
                       >${formatMoney(product.price)}</span
                     >
                     <i class="fas fa-arrow-left"></i>
-                    <span class="current-variant-compare-at-price"
+                    <span class="current-variant-compare-at-price pl-2"
                       >${formatMoney(product.compare_at_price)}</span
                     >
                   </div>`
@@ -78,7 +78,7 @@ function collectionItem({
                     >
                   </div>`}
             </div>
-            <div>
+            <div class="tags-list mb-20">
               ${product.tags.map(
                 (tag) =>
                   html`${tagimages[
@@ -94,6 +94,7 @@ function collectionItem({
               )}
             </div>
           </div>
+          <hr class="divider">
         </div>`
       )}
     </div>`;

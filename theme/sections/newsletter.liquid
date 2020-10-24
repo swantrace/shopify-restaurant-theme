@@ -1,29 +1,147 @@
 <div class="
                                           section-inner-wrapper
-                                          {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
                                           {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
                                           {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
                                           {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
                                           py-sm-30
-                                          {{ section.settings.custom_classes }}">
-    <div class="row align-items-center justify-content-between border-white newsletter-block">
-        <div class="col">
-            <h5 class="text-gray1 font-weight-light">Get the latest updates</h5>
-            <p class="text-gray1 font-weight-light">
-                <small>Lorem ipsum dolor sit amet. consecteduer adipi-text</small>
-            </p>
-        </div>
-        <div class="col">
-            <form class="form-inline" method="post">
-                <div class="form-group"><input class="form-control border-white border-0 bg-black" name="email" placeholder="Your Email" type="email"></div>
-                <div class="form-group">
-                    <button class="btn btn-white" type="submit">LEARN MORE</button>
+                                          bg-{{ settings.default_style_mode }}
+                                          {{ section.settings.style }}
+                                          ">
+    <div class="{% if section.settings.section_width == 'container' %}container{% endif %} newsletter-wrap p-20"> 
+      <div class="row align-items-center justify-content-between">
+        
+        <p class="col text-center mb-6"> <span class="triangle-down"> </span></p>
+
+        <div class="d-flex p-30 flex-wrap {% if section.settings.style == 'styleB' %}align-items-end{% endif %} ">
+
+          {% if section.settings.style == 'styleB' %} <div class="col col-12 col-md-5"> {% endif %}
+
+            <div class="col col-12 {% if section.settings.style == 'styleA' %}col-md-6{% endif %} ">
+                <h5 class="font-weight-light">{{ section.settings.section_title }}</h5>
+            </div>
+
+            <div class="col col-12 {% if section.settings.style == 'styleA' %}col-md-6{% endif %} ">
+                <div class="font-weight-light subheading-content">
+                  {{ section.settings.subheading }}
                 </div>
-            </form>
+            </div>
+
+          {% if section.settings.style == 'styleB' %}</div>{% endif %}
+          
+
+          <form class="newsletter-form col {% if section.settings.style == 'styleA' %}col-12 col-md-12{% else %}col-12 col-md-7{% endif %} d-flex pt-20" method="post">
+            {% unless section.settings.style == 'styleB' %} <div class="form-input {% if section.settings.style == 'styleA' %}col-12 col-md-5 pl-0{% endif %}"><input class="form-control" name="name" placeholder="Name" type="text"></div>{% endunless %}
+              <div class="form-input {% if section.settings.style == 'styleA' %}col-12 col-md-5 mr-auto{% else %}col-12 col-md-10{% endif %} "><input class="form-control" name="email" placeholder="Email" type="email"></div>
+              <div class="form-input col-12 col-md-2 text-right">
+                  <button class="btn {% if settings.default_style_mode == 'light' %}btn-white{% endif %}" type="submit">{{ section.settings.button_label }}</button>
+              </div>
+          </form>
+
+
         </div>
+
+      </div>
+    </div>
+
+
+
     </div>
 </div>
 {% render 'common-section-styles' %}
+
+<style>
+
+
+#shopify-section-{{ section.id }} .form-control{
+  border: none;
+  background-color: transparent;
+  padding: 1rem .5rem;
+}
+
+#shopify-section-{{ section.id }} .newsletter-form .btn{
+  padding: 1rem 1.8rem;
+}
+
+#shopify-section-{{ section.id }} .form-control{
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #fff;
+  padding: 1rem .5rem;
+}
+
+/**** Dark Mode *****/
+#shopify-section-{{ section.id }} .bg-dark .row
+{
+  border: 1px solid #000000;
+  color: #000000;
+}
+#shopify-section-{{ section.id }} .bg-dark.styleA .newsletter-wrap, .bg-dark.styleB .newsletter-wrap{
+  background-color: #fff;
+}
+#shopify-section-{{ section.id }} .bg-dark .row
+{
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+#shopify-section-{{ section.id }} .bg-dark .btn{
+  background-color: #000;
+  color: #fff;
+}
+
+
+#shopify-section-{{ section.id }} .bg-light .form-control{
+  color: #000000;
+}
+
+#shopify-section-{{ section.id }} .bg-dark .triangle-down
+{
+  border-top: 25px solid #000000;
+}
+
+#shopify-section-{{ section.id }} .bg-dark .form-control{
+  border-bottom: 1px solid #000000;
+  color: #000000;
+}
+
+/**** Light Mode ****/
+#shopify-section-{{ section.id }} .bg-light.styleA .newsletter-wrap, .bg-light.styleB .newsletter-wrap{
+  background-color: #000000;
+}
+
+#shopify-section-{{ section.id }} .bg-light .row
+{
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+#shopify-section-{{ section.id }} .bg-light .form-control{
+  border-bottom: 2px solid #fff;
+  color: #fff;
+}
+
+#shopify-section-{{ section.id }} .triangle-down
+{
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  display: inline-block;
+}
+
+#shopify-section-{{ section.id }} .bg-light .triangle-down
+{
+  border-top: 25px solid #fff;
+}
+
+
+
+#shopify-section-{{ section.id }} .subheading-content p{
+  margin-bottom: 0;
+}
+
+</style>
+
 {% schema %}
 {
   "name": {
@@ -50,8 +168,7 @@
       "id": "color_bg",
       "label": {
         "en": "Background color"
-      },
-      "default": "#3a3a3a"
+      }
     },
     {
       "type": "header",
@@ -106,6 +223,34 @@
       "default": false
     },
     {
+      "type": "header",
+      "content": {
+        "en": "Section Content"
+      }
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": {
+        "en": "Choose a style"
+      },
+      "default": "styleA",
+      "options": [
+        {
+          "label": {
+            "en": "Style A"
+          },
+          "value": "styleA"
+        },
+        {
+          "label": {
+            "en": "Style B"
+          },
+          "value": "styleB"
+        }
+      ]
+    },
+    {
       "type": "text",
       "id": "section_title",
       "label": {
@@ -130,13 +275,6 @@
                             "id": "button_label",
                             "label": {
                               "en": "Button text"
-                            }
-                          },
-                          {
-                            "type": "url",
-                            "id": "button_link",
-                            "label": {
-                              "en": "Button link"
                             }
                           }
                         ],
