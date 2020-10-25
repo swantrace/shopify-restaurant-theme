@@ -122,7 +122,7 @@ function CounterProduct({
         />
       </div>
       <div
-        class="product-item-wrapper col col-12 col-lg-6 align-self-center pt-10 pt-lg-0 px-lg-30 text-${dataStyle}-text"
+        class="product-item-wrapper col col-12 col-lg-6 align-self-center pt-15 pt-lg-0 px-15 px-lg-30 text-${dataStyle}-text"
       >
         <div
           class="text-${dataAlignment} ${dataAlignment === 'left'
@@ -131,8 +131,8 @@ function CounterProduct({
             ? 'ml-auto'
             : 'mx-auto'}"
         >
-          <h4 class="mb-lg-10">${product.title}</h4>
-          <h5 class="mb-lg-10 product-price">
+          <h4 class="mb-10">${product.title}</h4>
+          <h5 class="mb-10 product-price">
             ${currentVariant.compare_at_price > currentVariant.price
               ? html`<div class="onsale-price">
                   <span class="current-variant-price text-red"
@@ -149,33 +149,33 @@ function CounterProduct({
                   >
                 </div>`}
           </h5>
-          <div class="row mb-10">
-            <div class="col-3 p-5">
-              <div class="bg-gray2 text-${dataStyle}-text">
+          <div class="row mb-10 justify-content-between">
+            <div class="col-3">
+              <div class="bg-gray2 p-5 text-${dataStyle}-text">
                 <h1 class="text-center">
                   ${Math.floor(moment.duration(leftTime).asDays())}
                 </h1>
                 <small class="d-block text-center">days</small>
               </div>
             </div>
-            <div class="col-3 p-5">
-              <div class="bg-gray2 text-${dataStyle}-text">
+            <div class="col-3">
+              <div class="bg-gray2 p-5 text-${dataStyle}-text">
                 <h1 class="text-center">
                   ${moment.duration(leftTime).hours()}
                 </h1>
                 <small class="d-block text-center">hours</small>
               </div>
             </div>
-            <div class="col-3 p-5">
-              <div class="bg-gray2 text-${dataStyle}-text">
+            <div class="col-3">
+              <div class="bg-gray2 p-5 text-${dataStyle}-text">
                 <h1 class="text-center">
                   ${moment.duration(leftTime).minutes()}
                 </h1>
                 <small class="d-block text-center">minutes</small>
               </div>
             </div>
-            <div class="col-3 p-5">
-              <div class="bg-gray2 text-${dataStyle}-text">
+            <div class="col-3">
+              <div class="bg-gray2 p-5 text-${dataStyle}-text">
                 <h1 class="text-center">
                   ${moment.duration(leftTime).seconds()}
                 </h1>

@@ -92,14 +92,14 @@ function featuredProduct({
   return html`<div
     class="featured-product-container ${dataSectionWidth === 'container'
       ? 'container'
-      : ''} ${dataStyleForDesktop === 'styleB' ? 'py-40' : ''}"
+      : ''}"
   >
     <div class="row no-gutters">
       <div
         class="variant-image-wrapper col col-12 ${dataStyleForDesktop ===
         'styleC'
           ? 'col-lg-12'
-          : 'col-lg-6'} align-self-center h-100 ${dataImagePosition === 'left'
+          : 'col-lg-6'} align-self-center ${dataImagePosition === 'left'
           ? 'order-lg-first'
           : 'order-lg-last'}"
       >
@@ -124,13 +124,10 @@ function featuredProduct({
         />
       </div>
       <div
-        class="product-item-wrapper col col-12 ${dataStyleForDesktop ===
+        class="product-item-wrapper col col-12  pt-15 pt-lg-0 px-15 align-self-center ${dataStyleForDesktop ===
         'styleC'
-          ? 'offset-lg-6 col-lg-6'
-          : 'col-lg-6'} align-self-center px-15 ${dataStyleForDesktop ===
-        'styleC'
-          ? 'px-lg-0'
-          : 'px-lg-30'} text-${dataStyle}-text"
+          ? 'offset-lg-6 col-lg-6 px-lg-0'
+          : 'col-lg-6 px-lg-30'} text-${dataStyle}-text"
       >
         <div
           class="text-${dataAlignment} ${dataAlignment === 'left'
@@ -139,8 +136,8 @@ function featuredProduct({
             ? 'ml-auto'
             : 'mx-auto'}"
         >
-          <h4 class="mb-lg-10">${product.title}</h4>
-          <h5 class="mb-lg-10 product-price">
+          <h4 class="mb-10">${product.title}</h4>
+          <h5 class="mb-10 product-price">
             ${currentVariant.compare_at_price > currentVariant.price
               ? html`<div class="onsale-price">
                   <span class="current-variant-price text-red"
