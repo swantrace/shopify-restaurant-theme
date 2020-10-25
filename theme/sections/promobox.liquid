@@ -1,29 +1,33 @@
-<div class="section-inner-wrapper">
+<div class="
+    section-inner-wrapper 
+    py-0
+    {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+    {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+    {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}">
   <div class="modal">
-    <div class="
-      modal-dialog
-      modal-xl   
-      {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
-      {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
-      {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}">
-      <div class="modal-content bg-{{ settings.default_style_mode }}">
-        <div class="modal-body">
-          <div class="{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}">
-            <div class="row no-gutters">
-                <div class="col col-12 col-md-4 order-2">
-                  <img class="img-fluid" src="https://picsum.photos/id/1060/1200/1028">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content bg-{{ settings.default_style_mode }} p-0">
+        <div class="modal-body p-0">
+          <div class="{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %} p-0">
+            <div class="row no-gutters align-items-center">
+                <div class="col col-12 col-md-4{% if section.settings.image_position == 'left' %} order-first{% else %} order-last{% endif %}">
+                  <img class="img-fluid w-100 h-100" src="{{ section.settings.image | img_url: 'medium' | crop: 'center' }}">
                 </div>
-                <div class="col col-12 col-md-8 order-1">
-                    <div class="p-20 text-{{ settings.default_style_mode}}-text">
-                        <h4 class="mb-lg-10">Head needs to be here</h4>
-                        <p>
-                            <small>Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;Small description Small description Small description Small description Small description Small description Small description&nbsp;</small>
-                        </p>
+                <div class="col col-12 col-md-8">
+                    <div class="p-20 text-{{ settings.default_style_mode}}-text text-{{ section.settings.alignment }}">
+                        <h4 class="mb-lg-10">{{ section.settings.header }}</h4>
+                        <div>
+                            <small>{{ section.settings.text}}</small>
+                        </div>
                         <form>
                             <div class="form-row justify-content-between">
                                 <div class="col">
-                                    <button class="bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn" type="button">LEARN MORE</button>
-                                    <button class="border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text btn" type="button">LEARN MORE</button>
+                                    <a href="{{ section.settings.first_button_link }}" class="bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn" type="button">
+                                      {{ section.settings.first_button_label }}
+                                    </a>
+                                    <a href="{{ section.settings.second_button_link }}" class="border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text btn" type="button">
+                                      {{ section.settings.second_button_label }}
+                                    </a>
                                 </div>
                             </div>
                         </form>

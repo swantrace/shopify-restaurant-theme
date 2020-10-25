@@ -19,13 +19,18 @@
 ></script>
 <div class="
   section-inner-wrapper
+  py-0
   {% if section.settings.section_width == 'container' %}container{% endif %}
   {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  {% if section.settings.style_for_desktop == 'styleA' %}desktop_style_a{% else %}desktop_style_b{% endif %}
   bg-{{ settings.default_style_mode }}">
-    <div class="row no-gutters{% if section.settings.style == 'styleB' %} py-60{% endif %}">
-        <div class="restaurant-map-wrapper col col-12 col-md-6  {% if section.settings.map_position == 'left' %}order-first{% endif %} {% if section.settings.map_position == 'right' %}order-last{% endif %}">
+    <div class="row no-gutters">
+        <div class="restaurant-map-wrapper col col-12 col-md-6  
+        {% if section.settings.map_position == 'left' %}order-lg-first{% endif %}
+        {% if section.settings.map_position == 'right' %}order-lg-last{% endif %}
+        {% if section.settings.style_for_desktop == 'styleB' %}d-lg-flex align-items-lg-center justify-content-lg-end{% endif %}">
           <div id="map"></div>
         </div>
         <div class="restaurant-info-wrapper col col-12 col-md-6 align-self-center px-sm-10 px-md-20 px-lg-30 px-xl-50 py-50">
@@ -120,9 +125,11 @@
   .restaurant-map-wrapper {
   	width: 100%;
   }
+
   #map {
     height: 100%;
   }
+
   [style*="color: black; font-size: 12px; font-weight: 500"] {
   	position: relative; 
     left: 80px; 
@@ -135,6 +142,11 @@
 
   .store-hours-table.table tr td:nth-of-type(1):not([colspan="2"]) {
     padding-right: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .desktop_style_b #map {
+    width: 70%;
+    height: 70%;
   }
 
 
@@ -250,7 +262,7 @@
     },
     {
       "type":"select",
-      "id":"style",
+      "id":"style_for_desktop",
       "label":{
         "en":"Choose a style for desktop"
       },

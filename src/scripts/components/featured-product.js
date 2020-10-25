@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-nested-ternary */
 import { html, component, useState } from 'haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -24,6 +25,10 @@ function featuredProduct({
   );
   const [status, setStatus] = useState('suspended'); // there should be four kinds of status, suspended, loading, success, error
   const [errorDescription, setErrorDescription] = useState('');
+
+  if (dataStyleForDesktop === 'styleC') {
+    dataStyle = 'light';
+  }
 
   const handleOptionChange = (e) => {
     const form = e.target.closest('form');
@@ -101,9 +106,17 @@ function featuredProduct({
         <img
           class="variant-image img-fluid w-100 h-100"
           src=${currentVariant.featured_image
-            ? currentVariant.featured_image
-                .replace('.jpg', '_960x832.jpg')
-                .replace('.png', '_960x832.png')
+            ? dataStyleForDesktop === 'styleC'
+              ? currentVariant.featured_image
+                  .replace('.jpg', '_1680x1050.jpg')
+                  .replace('.png', '_1680x1050.png')
+              : currentVariant.featured_image
+                  .replace('.jpg', '_960x832.jpg')
+                  .replace('.png', '_960x832.png')
+            : dataStyleForDesktop === 'styleC'
+            ? product.featured_image
+                .replace('.jpg', '_1680x1050.jpg')
+                .replace('.png', '_1680x1050.png')
             : product.featured_image
                 .replace('.jpg', '_960x832.jpg')
                 .replace('.png', '_960x832.png')}

@@ -1,7 +1,8 @@
 {% assign product = all_products[section.settings.onsale_product] %}
 <div class="
   section-inner-wrapper
-  py-0
+  pt-10
+  py-lg-0
   {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
@@ -34,13 +35,35 @@
     font-size: 0.6rem;
     border: none;
   }
-  #shopify-section-{{ section.id }} .onsale-product-container > .row {
-    height: 800px;
-  }
 
   #shopify-section-{{ section.id }} .product-item-wrapper>div{
     max-width: 100%; 
     width: 540px;
+  }
+
+  @media (min-width: 992px) {
+
+    #shopify-section-{{ section.id }} .variant-image-wrapper img {
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    #shopify-section-{{ section.id }} .style_for_desktop_and_mobile_b .variant-image-wrapper {
+      transform: scale(1, 0.7);
+      overflow: hidden;
+    }
+
+    #shopify-section-{{ section.id }} .style_for_desktop_and_mobile_b .variant-image-wrapper img {
+      transform: scale(1, calc(10/7));
+    }
+
+    #shopify-section-{{ section.id }} .onsale-product-container .variant-image-wrapper{
+      height: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .onsale-product-container > .row {
+      height: 800px;
+    }
   }
 
 </style>

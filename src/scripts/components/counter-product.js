@@ -99,14 +99,14 @@ function CounterProduct({
   return html`<div
     class="onsale-product-container ${dataSectionWidth === 'container'
       ? 'container'
-      : ''} ${dataStyleForDesktopAndMobile === 'styleB' ? 'py-40' : ''}"
+      : ''}"
   >
     <div class="row no-gutters">
       <div
         class="variant-image-wrapper col col-12 ${dataStyleForDesktopAndMobile ===
         'styleC'
           ? 'col-lg-12'
-          : 'col-lg-6'} align-self-center h-100 ${dataImagePosition === 'left'
+          : 'col-lg-6'} align-self-center ${dataImagePosition === 'left'
           ? 'order-lg-first'
           : 'order-lg-last'}"
       >
@@ -114,22 +114,15 @@ function CounterProduct({
           class="variant-image img-fluid w-100 h-100"
           src=${currentVariant.featured_image
             ? currentVariant.featured_image
-                .replace('.jpg', '_960x832.jpg')
-                .replace('.png', '_960x832.png')
+                .replace('.jpg', '_1200X800.jpg')
+                .replace('.png', '_1200x800.png')
             : product.featured_image
-                .replace('.jpg', '_960x832.jpg')
-                .replace('.png', '_960x832.png')}
-          style="object-fit: cover; object-position: center center;"
+                .replace('.jpg', '_1200X800.jpg')
+                .replace('.png', '_1200X800.png')}
         />
       </div>
       <div
-        class="product-item-wrapper col col-12 ${dataStyleForDesktopAndMobile ===
-        'styleC'
-          ? 'offset-lg-6 col-lg-6'
-          : 'col-lg-6'} align-self-center px-15 ${dataStyleForDesktopAndMobile ===
-        'styleC'
-          ? 'px-lg-0'
-          : 'px-lg-30'} text-${dataStyle}-text"
+        class="product-item-wrapper col col-12 col-lg-6 align-self-center pt-10 pt-lg-0 px-lg-30 text-${dataStyle}-text"
       >
         <div
           class="text-${dataAlignment} ${dataAlignment === 'left'
@@ -266,6 +259,7 @@ function CounterProduct({
                   >
                 </button>
                 <a
+                  href=${`/products/${product.handle}`}
                   class="btn btn-${dataStyle}-outline-btn text-${dataStyle}-outline-btn-text border-${dataStyle}-outline-btn-border w-100"
                   >${dataLearnMoreButtonText.toUpperCase()}</a
                 >
