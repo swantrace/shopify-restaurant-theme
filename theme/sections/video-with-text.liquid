@@ -5,20 +5,20 @@
           {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
           bg-{{ settings.default_style_mode }}
           ">
-        <div class="{% if section.settings.section_width == 'container' %}container{% endif %}"> 
+        <div class="{% if section.settings.section_width == 'container' %}container {% else %}container-fluid{% endif %}"> 
             <div class="row no-gutters">
-            <div class="col col-12 col-md-6 align-self-center 
-            {% if section.settings.video_position == 'left' %}order-first{% endif %} {% if section.settings.video_position == 'right' %}order-last{% endif %}
-            ">
-              <div class="video-iframe-wrapper embed-responsive embed-responsive-16by9">
-                <div id="video-iframe"></div>
-                <div class="video-image">
-                  <button class="btn video-control video-control__play video-play-btn">
-                    {% render 'icon-play' %}
-                  </button>
+              <div class="col col-12 col-md-6 align-self-center 
+              {% if section.settings.video_position == 'left' %}order-first{% endif %} {% if section.settings.video_position == 'right' %}order-last{% endif %}
+              ">
+                <div class="video-iframe-wrapper embed-responsive embed-responsive-16by9">
+                  <div id="video-iframe"></div>
+                  <div class="video-image">
+                    <button class="btn video-control video-control__play video-play-btn">
+                      {% render 'icon-play' %}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
             <div class="col col-12 col-md-6 align-self-center px-30 ml-auto text-{{ section.settings.alignment }} text-{{ settings.default_style_mode }}-text">
               <h3 class="p-0">{{ section.settings.header }}</h3>
               <div class="content py-20">
@@ -28,18 +28,23 @@
               <a class="btn border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text" href="{{ section.settings.second_button_link }}" >{{ section.settings.second_button_label }}</a>
             </div>
             </div>
-    </div>
+        </div>
 </div>
 
 {% render 'common-section-styles' %}
 <style>
+
+/* #shopify-section-{{ section.id }} .container-fluid .video-iframe-wrapper{
+  transform: scale(0.7, 0.7);
+} */
+
   #shopify-section-{{ section.id }} .video-iframe-wrapper .video-image{
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("{{ section.settings.video_image | img_url: 'master'  }}");
+    background-image: url("{{ section.settings.video_image | img_url: '720x486', crop: 'center'  }}");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

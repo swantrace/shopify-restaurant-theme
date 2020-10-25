@@ -3,11 +3,10 @@
                                           {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
                                           {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
                                           {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-                                          py-sm-30
                                           bg-{{ settings.default_style_mode }}
                                           {{ section.settings.style }}
                                           ">
-    <div class="{% if section.settings.section_width == 'container' %}container{% endif %} newsletter-wrap p-20"> 
+    <div class="{% if section.settings.section_width == 'container' %}container {% else %}container-fluid{% endif %} newsletter-wrap"> 
       <div class="row align-items-center justify-content-between">
         
         <p class="col text-center mb-6"> <span class="triangle-down"> </span></p>
@@ -27,9 +26,8 @@
             </div>
 
           {% if section.settings.style == 'styleB' %}</div>{% endif %}
-          
-
-          <form class="newsletter-form col {% if section.settings.style == 'styleA' %}col-12 col-md-12{% else %}col-12 col-md-7{% endif %} d-flex pt-20" method="post">
+      
+          <form class="newsletter-form col {% if section.settings.style == 'styleA' %}col-12 col-md-12{% else %}col-12 col-md-7{% endif %} d-flex  flex-wrap pt-20" method="post">
             {% unless section.settings.style == 'styleB' %} <div class="form-input {% if section.settings.style == 'styleA' %}col-12 col-md-5 pl-0{% endif %}"><input class="form-control" name="name" placeholder="Name" type="text"></div>{% endunless %}
               <div class="form-input {% if section.settings.style == 'styleA' %}col-12 col-md-5 mr-auto{% else %}col-12 col-md-10{% endif %} "><input class="form-control" name="email" placeholder="Email" type="email"></div>
               <div class="form-input col-12 col-md-2 text-right">

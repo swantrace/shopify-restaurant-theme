@@ -13,6 +13,7 @@
                 <div class="col col-12 col-md-4{% if section.settings.image_position == 'left' %} order-first{% else %} order-last{% endif %}">
                   <img class="img-fluid w-100 h-100" src="{{ section.settings.image | img_url: 'medium' | crop: 'center' }}">
                 </div>
+
                 <div class="col col-12 col-md-8">
                     <div class="p-20 text-{{ settings.default_style_mode}}-text text-{{ section.settings.alignment }}">
                         <h4 class="mb-lg-10">{{ section.settings.header }}</h4>

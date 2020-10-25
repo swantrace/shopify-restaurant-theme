@@ -3,10 +3,9 @@
                           {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
                           {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
                           {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-                          py-30
                           bg-{{ settings.default_style_mode }}
                         ">
-    <div class="{% if section.settings.section_width == 'container' %}container{% endif %} text-{{ settings.default_style_mode }}-text">    
+    <div class="{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %} text-{{ settings.default_style_mode }}-text">    
       {% if section.settings.title %}
         <h3 class="text-center pb-20">{{ section.settings.title }}</h3>
       {% endif %}
