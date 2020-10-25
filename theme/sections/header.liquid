@@ -1,13 +1,14 @@
 {% assign links = linklists[section.settings.nav_menu].links %}
 {% assign logo_img = settings.default_style_mode | append: '_logo_img'%}
 <div class="section-inner-wrapper 
-{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
-{% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
-{% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
-{% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
-{% if section.settings.style_for_desktop == 'styleA'%}desktop_style_a{% else %}desktop_style_b{% endif %}
-{% if section.settings.style_for_mobile == 'styleA'%}mobile_style_a{% else %}mobile_style_b{% endif %}
-bg-{{ settings.default_style_mode }}-header">
+    py-0
+    {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
+    {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+    {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+    {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+    {% if section.settings.style_for_desktop == 'styleA'%}desktop_style_a{% else %}desktop_style_b{% endif %}
+    {% if section.settings.style_for_mobile == 'styleA'%}mobile_style_a{% else %}mobile_style_b{% endif %}
+    bg-{{ settings.default_style_mode }}-header">
 {% if section.settings.style_for_mobile == 'styleB' %}
 <ul class="navbar-nav fixed-bottom header_navbar-nav header_navbar-nav-bottom-icons-wrapper d-lg-none">
   <li class="nav-item d-flex header_nav-item-icons justify-content-around">

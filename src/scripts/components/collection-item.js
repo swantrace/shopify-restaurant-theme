@@ -26,9 +26,14 @@ function collectionItem({
         (updatedCollection) => {
           setCollection(updatedCollection);
         }
-      ).then((updatedCollection) => {
-        setCollection(updatedCollection);
-      });
+      )
+        .then((updatedCollection) => {
+          setCollection(updatedCollection);
+        })
+        .catch((error) => {
+          console.log(error);
+          debugger;
+        });
     }
   }, [collectionHandle, dataTag]);
   const handleClick = (product, e) => {
@@ -42,7 +47,9 @@ function collectionItem({
       }
     );
   };
-  return html`<h4 class="collection-name text-center py-20">${collectionTitle}</h4>
+  return html`<h4 class="collection-name text-center py-20">
+      ${collectionTitle}
+    </h4>
     <div class="row">
       ${collection.products &&
       collection.products.map(
@@ -55,12 +62,15 @@ function collectionItem({
           <div class="col-4 p-0">
             <img
               class="img-fluid product-img"
-              src=${product.featured_image.replace('.jpg', '_200x.jpg')}
+              src=${product.featured_image &&
+              product.featured_image.replace('.jpg', '_200x.jpg')}
             />
           </div>
           <div class="col-8">
             <h6 class="product-title mb-5">${product.title}</h6>
-            <div class="product-desc mb-10">${unsafeHTML(product.description)}</div>
+            <div class="product-desc mb-10">
+              ${unsafeHTML(product.description)}
+            </div>
             <div class="product-price mb-5">
               ${product.compare_at_price > product.price
                 ? html`<div class="onsale-price">
@@ -94,7 +104,7 @@ function collectionItem({
               )}
             </div>
           </div>
-          <hr class="divider">
+          <hr class="divider" />
         </div>`
       )}
     </div>`;
