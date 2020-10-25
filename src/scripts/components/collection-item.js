@@ -32,7 +32,6 @@ function collectionItem({
         })
         .catch((error) => {
           console.log(error);
-          debugger;
         });
     }
   }, [collectionHandle, dataTag]);
