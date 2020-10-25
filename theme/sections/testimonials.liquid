@@ -5,9 +5,9 @@
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
   bg-{{ settings.default_style_mode }}
   {{ section.settings.style }}
-  py-sm-30">
+  ">
 
-  <div class="{% if section.settings.section_width == 'container' %}container{% endif %}">    
+  <div class="{% if section.settings.section_width == 'container' %}container {% else %}container-fluid{% endif %}"> 
     <div id="testimonials">
     <div class="glider-contain">
         <div class="glider p-20">

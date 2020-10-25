@@ -5,7 +5,8 @@ if (document.querySelector('.index-section--masonry .images-wrapper')) {
     container: '.index-section--masonry .images-wrapper',
     columns: 3,
     breakAt: {
-      520: 2,
+      940: 2,
+      520: 1,
       400: 1,
     },
   });

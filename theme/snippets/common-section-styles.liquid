@@ -4,7 +4,7 @@
     background-color: {{ section.settings.color_bg }}!important;
     {% endif %}
     {% if section.settings.img_bg != blank %}
-    background-image: url("{{ section.settings.img_bg | img_url: 'master'  }}");
+    background-image: url("{{ section.settings.img_bg | img_url: '1680x560', crop: 'center'  }}");
     {% endif %}
     background-repeat: no-repeat;
     background-size: cover;

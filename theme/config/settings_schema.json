@@ -362,42 +362,12 @@
       },
       {
         "type": "text",
-        "id": "social_google_plus_link",
-        "label": {
-          "en": "Google Plus"
-        },
-        "info": {
-          "en": "https://plus.google.com/+shopify"
-        }
-      },
-      {
-        "type": "text",
         "id": "social_instagram_link",
         "label": {
           "en": "Instagram"
         },
         "info": {
           "en": "https://instagram.com/shopify"
-        }
-      },
-      {
-        "type": "text",
-        "id": "social_snapchat_link",
-        "label": {
-          "en": "Snapchat"
-        },
-        "info": {
-          "en": "https://snapchat.com/add/shopify"
-        }
-      },
-      {
-        "type": "text",
-        "id": "social_tumblr_link",
-        "label": {
-          "en": "Tumblr"
-        },
-        "info": {
-          "en": "http://shopify.tumblr.com"
         }
       },
       {
@@ -418,26 +388,6 @@
         },
         "info": {
           "en": "https://vimeo.com/shopify"
-        }
-      },
-      {
-        "type": "text",
-        "id": "social_fancy_link",
-        "label": {
-          "en": "Fancy"
-        },
-        "info": {
-          "en": "http://fancy.com/shopify"
-        }
-      },
-      {
-        "type": "text",
-        "id": "social_rss_link",
-        "label": {
-          "en": "RSS"
-        },
-        "info": {
-          "en": "http://store.myshopify.com/blogs/blogname.atom"
         }
       }
     ]
