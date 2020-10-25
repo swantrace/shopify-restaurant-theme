@@ -13,10 +13,16 @@
               <div class="carousel-item"><img class="w-100 d-block" src="{{ block.settings.image | img_url: '1920x1200', crop: 'center' }}">
                   <div class="row carousel-caption h-100 align-items-center justify-content-center text-{{ block.settings.alignment }} text-{{ settings.default_style_mode }}-text">
                       <div class="col">
-                          <h1 class="font-weight-light pb-lg-16">{{ block.settings.title }}</h1>
-                          <h2 class="font-weight-light pb-lg-16">{{ block.settings.subtitle }}</h2>
-                            <a class="bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn mr-sm-10" href="{{ block.settings.first_button_link }}">{{ block.settings.first_button_label }}</a>
-                            <a class="border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text btn" href="{{ block.settings.second_button_link }}">{{ block.settings.second_button_label }}</a>
+                        {% if block.settings.title %}
+                          <h1 class="carousel-title pb-15">{{ block.settings.title }}</h1>
+                        {% endif %}
+
+                        {% if block.settings.subtitle %}
+                          <h3 class="carousel-subtitle pb-16">{{ block.settings.subtitle }}</h3>
+                        {% endif %}
+
+                            <a class="bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn mr-sm-10 mb-10" href="{{ block.settings.first_button_link }}">{{ block.settings.first_button_label }}</a>
+                            <a class="border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text btn mb-10" href="{{ block.settings.second_button_link }}">{{ block.settings.second_button_label }}</a>
                       </div>
                   </div>
               </div>

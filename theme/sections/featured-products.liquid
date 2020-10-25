@@ -14,9 +14,9 @@
    <div class="row">
       {% for block in section.blocks %}
       {% assign product = all_products[block.settings.featured_product] %}
-      <div class="col col-12 col-sm-3">
-         <img class="img-fluid w-100 d-block" src="{{ product.selected_or_first_available_variant.image | default: product.featured_image | img_url: '480x300', crop: 'center' }}">
-         <div class="text-{{ block.settings.alignment }}">
+      <div class="col col-12 col-lg-3">
+         <img class="img-fluid w-100 d-block {% if section.settings.section_width == 'container' %} py-lg-15 px-10 px-md-20 px-lg-0{% endif %}" src="{{ product.selected_or_first_available_variant.image | default: product.featured_image | img_url: '480x300', crop: 'center' }}">
+         <div class="text-{{ block.settings.alignment }} py-lg-15 px-10 px-md-20 px-lg-0">
             <h6 class="crop-text-1 my-10">{{ product.title}}</h6>
             <div class="crop-content my-10">
                {{ product.content | strip_html }}

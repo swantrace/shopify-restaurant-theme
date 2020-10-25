@@ -15,8 +15,9 @@
           {% for block in section.blocks %}
             <div class="card mr-sm-10 rounded-0">
                 <div class="card-body">
-                    <h4 class="card-title">
+                    <h4 class="card-title mb-15 w-100">
                         <i class="fas fa-quote-left"></i>
+                        <i class="fas fa-quote-right"></i>
                     </h4>
                     <blockquote class="text-{{ block.settings.alignment }}">
                       <div class="card-text mb-20">
@@ -60,6 +61,11 @@
 
 #shopify-section-{{ section.id }} .bg-light.styleB .card{
   border: 1px solid #ffffff;
+}
+
+#shopify-section-{{ section.id }} .card-title {
+  font-size: 1rem;
+  text-align: center;
 }
 </style>
 

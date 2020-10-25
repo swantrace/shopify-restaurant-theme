@@ -5,19 +5,19 @@
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
   bg-{{ settings.default_style_mode }}">
   
-  <div class="{% if section.settings.section_width == 'container' %}container{% endif %} text-{{ settings.default_style_mode }}-text"> 
-      <div class="row mb-sm-20">
+  <div class="{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %} text-{{ settings.default_style_mode }}-text"> 
+      <div class="row mb-20">
           <div class="col-sm-12 my-auto text-center">
             {% if section.settings.section-title %}
               <h4>{{ section.settings.section-title }}</h4>
             {% endif %}
           </div>
       </div>
-      <div class="row">
+      <div class="d-flex flex-wrap">
         {% for block in section.blocks %}
           {% assign collection = collections[block.settings.collection] %}
-          <div class="collection-card col-12 col-md-4 p-0 m-0">
-              <a href="{{ collection.url }} "><img class="card-img-top w-100 d-block" src="{{ collection.image  | img_url: 'large', crop: 'center' }}"></a>
+          <div class="collection-card col-12 col-lg-4 p-0 m-0">
+              <a href="{{ collection.url }} "><img class="card-img-top img-fluid d-block" src="{{ collection.image  | img_url: '800x700', crop: 'center' }}"></a>
               <div class="collection-title text-white text-center">{{ collection.title }} <br> >> </div>
           </div>
         {% endfor %}

@@ -12,10 +12,10 @@
 
       <div class="row">
         {% for block in section.blocks %}
-          <div class="col col-12 col-sm-4">
-              <img class="card-img-top w-100 d-block" src="{{ block.settings.image | img_url: '500x300', crop: 'center' }}">
-                  <div class="card-body text-{{ block.settings.alignment }}">
-                      <h6 class="card-title crop-text-1 my-10">{{ block.settings.title }}</h6>
+          <div class="col col-12 col-lg-4">
+              <img class="card-img-top w-100 d-block mt-20 mt-lg-0 {% if section.settings.section_width == 'container' %} py-lg-15 px-10 px-md-20 px-lg-0{% endif %}" src="{{ block.settings.image | img_url: '500x300', crop: 'center' }}">
+                  <div class="card-body text-{{ block.settings.alignment }} py-lg-15 px-10 px-md-20 px-lg-0">
+                      <h6 class="card-title crop-text-1 ">{{ block.settings.title }}</h6>
                       <div class="card-text crop-text-desc mb-20">
                         {{ block.settings.description }}
                       </div>
