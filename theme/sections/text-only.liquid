@@ -6,13 +6,13 @@ section-inner-wrapper
 bg-{{ settings.default_style_mode }}
 ">
   <div class="{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}">    
-    <div class="text-{{ section.settings.alignment }} text-{{ settings.default_style_mode }}-text">
+    <div class="text-{{ section.settings.alignment }} text-{{ settings.default_style_mode }}-text px-10 px-md-20 px-lg-30">
       <h3 class="pb-lg-20">{{ section.settings.header }}</h3>
       <div class="content py-15">
       {{ section.settings.text }}
       </div>
-      <a class="btn bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text mr-sm-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
-      <a class="btn border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text" href="{{ section.settings.second_button_link }}" >{{ section.settings.second_button_label }}</a>
+      <a class="btn bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text mr-sm-10 mb-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
+      <a class="btn border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text mb-10" href="{{ section.settings.second_button_link }}" >{{ section.settings.second_button_label }}</a>
     </div>
   </div>
 </div>

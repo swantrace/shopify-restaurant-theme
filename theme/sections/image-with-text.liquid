@@ -4,25 +4,27 @@
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
   {{ section.settings.style }}
-  bg-{{ settings.default_style_mode }} py-0">
+  bg-{{ settings.default_style_mode }} py-lg-0">
 
-  <div class="{% if section.settings.section_width == 'container' %}container{% endif %}"> 
-    <div class="row no-gutters">
-        <div class="col col-12 col-md-6 
-        {% if section.settings.image_position == 'left' %}order-first{% endif %} {% if section.settings.image_position == 'right' %}order-last{% endif %}
+  <div class="{% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}">    
+
+      <div class="row no-gutters align-items-center">
+        <div class="col col-12 col-lg-6 order-first
+        {% if section.settings.image_position == 'left' %}order-lg-first{% endif %} {% if section.settings.image_position == 'right' %}order-lg-last{% endif %}
         ">
-        <img class="img-fluid" src="{{ section.settings.image | img_url: '1024x768', crop: 'center' }}" />
+        <img class="img-fluid mb-20 mb-lg-0" src="{{ section.settings.image | img_url: '1024x768', crop: 'center' }}" />
       </div>
-        <div class="text-{{ settings.default_style_mode }}-text col col-12 col-md-6 align-self-center pl-35 pr-50 ml-auto w-50 
+        <div class="text-{{ settings.default_style_mode }}-text col col-12 col-lg-6 align-self-center px-10 px-md-20 px-lg-30 w-50 
         text-{{ section.settings.alignment }}
+        {% if section.settings.image_position == 'left' %}px-lg-50{% endif %}
         ">
-            <h3 class="mb-lg-20">{{ section.settings.header }}</h3>
-            <div class="content mb-lg-20">
+            <h3 class="mb-20">{{ section.settings.header }}</h3>
+            <div class="content mb-20">
               {{ section.settings.text }}
             </div>
 
-            <a class="bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn mr-sm-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
-            <a class="border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text btn" href="{{ section.settings.second_button_link }}">{{ section.settings.second_button_label }}</a>
+            <a class="bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn mr-sm-10 mb-10" href="{{ section.settings.first_button_link }}">{{ section.settings.first_button_label }}</a>
+            <a class="border-{{ settings.default_style_mode }}-outline-btn-border bg-{{ settings.default_style_mode }}-outline-btn text-{{ settings.default_style_mode }}-outline-btn-text btn mb-10" href="{{ section.settings.second_button_link }}">{{ section.settings.second_button_label }}</a>
         </div>
     </div>
   </div>

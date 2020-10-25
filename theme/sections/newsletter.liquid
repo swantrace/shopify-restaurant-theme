@@ -11,15 +11,15 @@
         
         <p class="col text-center mb-6"> <span class="triangle-down"> </span></p>
 
-        <div class="d-flex p-30 flex-wrap {% if section.settings.style == 'styleB' %}align-items-end{% endif %} ">
+        <div class="d-flex p-10 p-md-15 p-lg-30 flex-wrap {% if section.settings.style == 'styleB' %}align-items-end{% endif %} ">
 
-          {% if section.settings.style == 'styleB' %} <div class="col col-12 col-md-5"> {% endif %}
+          {% if section.settings.style == 'styleB' %} <div class="col col-12 col-lg-5"> {% endif %}
 
-            <div class="col col-12 {% if section.settings.style == 'styleA' %}col-md-6{% endif %} ">
+            <div class="col col-12 {% if section.settings.style == 'styleA' %}col-lg-6{% endif %} ">
                 <h5 class="font-weight-light">{{ section.settings.section_title }}</h5>
             </div>
 
-            <div class="col col-12 {% if section.settings.style == 'styleA' %}col-md-6{% endif %} ">
+            <div class="col col-12 {% if section.settings.style == 'styleA' %}col-lg-6{% endif %} ">
                 <div class="font-weight-light subheading-content">
                   {{ section.settings.subheading }}
                 </div>
@@ -27,10 +27,10 @@
 
           {% if section.settings.style == 'styleB' %}</div>{% endif %}
       
-          <form class="newsletter-form col {% if section.settings.style == 'styleA' %}col-12 col-md-12{% else %}col-12 col-md-7{% endif %} d-flex  flex-wrap pt-20" method="post">
-            {% unless section.settings.style == 'styleB' %} <div class="form-input {% if section.settings.style == 'styleA' %}col-12 col-md-5 pl-0{% endif %}"><input class="form-control" name="name" placeholder="Name" type="text"></div>{% endunless %}
-              <div class="form-input {% if section.settings.style == 'styleA' %}col-12 col-md-5 mr-auto{% else %}col-12 col-md-10{% endif %} "><input class="form-control" name="email" placeholder="Email" type="email"></div>
-              <div class="form-input col-12 col-md-2 text-right">
+          <form class="newsletter-form col {% if section.settings.style == 'styleA' %}col-12 col-lg-12{% else %}col-12 col-lg-7{% endif %} d-flex  flex-wrap pt-20" method="post">
+            {% unless section.settings.style == 'styleB' %} <div class="form-input {% if section.settings.style == 'styleA' %}col-12 col-lg-5 pl-0{% endif %}"><input class="form-control" name="name" placeholder="Name" type="text"></div>{% endunless %}
+              <div class="form-input {% if section.settings.style == 'styleA' %}col-12 col-lg-5 pl-0 pl-lg-10{% else %}col-12 col-lg-10{% endif %} "><input class="form-control" name="email" placeholder="Email" type="email"></div>
+              <div class="form-input col-12 col-lg-2 text-center text-lg-right mt-15 mt-lg-0">
                   <button class="btn {% if settings.default_style_mode == 'light' %}btn-white{% endif %}" type="submit">{{ section.settings.button_label }}</button>
               </div>
           </form>
@@ -49,6 +49,9 @@
 
 <style>
 
+#shopify-section-{{ section.id }} .newsletter-wrap{
+  padding: 35px 50px;
+}
 
 #shopify-section-{{ section.id }} .form-control{
   border: none;
