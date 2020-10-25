@@ -1,0 +1,18 @@
+{% if search.performed %}
+{% paginate search.results by 10 %}
+{% if search.results_count == 0 %}
+1. search title and tell you no results
+2. search bar
+{% else %}
+1. search title and tell you how many results
+2. search bar
+3. results
+{% endif %}
+{% if paginate.pages > 1 %}
+pagination
+{% endif %}
+{% endpaginate %}
+{% else %}
+1. search title
+2. search bar
+{% endif %}
