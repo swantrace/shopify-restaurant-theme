@@ -1,14 +1,14 @@
 {% assign links = linklists[section.settings.nav_menu].links %}
 {% assign logo_img = settings.default_style_mode | append: '_logo_img'%}
 <div class="section-inner-wrapper 
-    py-0
-    {% if section.settings.section_width == 'container' %}container{% else %}container-fluid{% endif %}
     {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
     {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
     {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
     {% if section.settings.style_for_desktop == 'styleA'%}desktop_style_a{% else %}desktop_style_b{% endif %}
     {% if section.settings.style_for_mobile == 'styleA'%}mobile_style_a{% else %}mobile_style_b{% endif %}
-    bg-{{ settings.default_style_mode }}-header">
+    bg-{{ settings.default_style_mode }}-header  py-0">
+   <div class="{% if section.settings.section_width == 'container' %}container{% endif %}">    
+
 {% if section.settings.style_for_mobile == 'styleB' %}
 <ul class="navbar-nav fixed-bottom header_navbar-nav header_navbar-nav-bottom-icons-wrapper d-lg-none">
   <li class="nav-item d-flex header_nav-item-icons justify-content-around">
@@ -18,20 +18,21 @@
 {% endif %}
   <div class="navbar header_navbar{% unless section.settings.style_for_desktop == 'styleB' %} d-none{% else %} d-none d-lg-flex{% endunless %}">
     <a class="navbar-brand header_navbar-brand" href="/">
-      <img alt="Datomar Theme Dev" class="logo_image header_logo_image"  src="{{ section.settings[logo_img] | img_url: '200x' }}"/>
+      <img alt="Datomar Theme Dev" class="logo_image header_logo_image"  src="{{ section.settings[logo_img] | img_url: '150x' }}"/>
     </a>
   </div>
-  <nav class="navbar navbar-expand-lg header_navbar align-items-lg-end navbar-{{ settings.default_style_mode}} navbar-{{ settings.default_style_mode }}-header">
+  <nav class="navbar navbar-expand-lg header_navbar align-items-lg-end navbar-{{ settings.default_style_mode}} navbar-{{ settings.default_style_mode }}-header py-8">
     <a class="navbar-brand header_navbar-brand{% unless section.settings.style_for_desktop == 'styleA' %} d-lg-none{% endunless %}" href="/">
-      <img alt="Datomar Theme Dev" class="logo_image header_logo_image"  src="{{ section.settings[logo_img] | img_url: '200x' }}"/>
+      <img alt="Datomar Theme Dev" class="logo_image header_logo_image"  src="{{ section.settings[logo_img] | img_url: '150x' }}"/>
     </a>
     <button class="text-{{settings.default_style_mode}}-header-text navbar-toggler border-0" type="button" data-trigger="#main_nav">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="bg-{{ settings.default_style_mode }}-header navbar-collapse" id="main_nav">
+    <!-- <div class="bg-{{ settings.default_style_mode }}-header navbar-collapse" id="main_nav"> -->
+    <div class=" navbar-collapse" id="main_nav">
       {% if section.settings.style_for_desktop == 'styleA' %}
       <ul class="navbar-nav header_navbar-nav d-none d-lg-flex">
-        <li class="nav-item d-flex header_nav-item-icons">
+        <li class="nav-item d-lg-flex header_nav-item-icons">
           {% render 'nav-icons' %}
         </li>
       </ul>
@@ -40,7 +41,7 @@
         {% for link in links %}
         {% if link.links != blank %}
         {% assign first_level_index = forloop.index %}
-        <li class="nav-item dropdown has-megamenu">
+        <li class="nav-item d-lg-flex align-items-lg-center dropdown has-megamenu">
             <a class="text-{{settings.default_style_mode}}-header-text nav-link dropdown-toggle first-level-nav-link{% if link.child_active %} active{% endif %}" data-toggle="dropdown" href="{{ link.url }}">{{ link.title | escape }}</a>
             <div class="dropdown-menu megamenu" tabindex="0">
                 <div class="d-flex flex-wrap w-100">
@@ -49,10 +50,10 @@
                             {% assign second_level_index = forloop.index %}
                             <div class="col-12 col-md-4 col-lg-2">
                                 <div class="col-megamenu">
-                                    <a class="text-{{settings.default_style_mode}}-header-text nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.title | escape }}</a>
+                                    <a class=" nav-link px-0 second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.title | escape }}</a>
                                     <ul class="list-unstyled">
                                         {% for subsublink in sublink.links %}
-                                            <li>
+                                            <li class="py-2">
                                                 <a href="{{ subsublink.url }}">{{ subsublink.title | escape }}</a>
                                             </li>
                                         {% endfor %}
@@ -62,12 +63,10 @@
                         {% else %}
                             <div class="col-12 col-md-4 col-lg-2">
                                 <div class="col-megamenu">
-                                    <a class="text-{{settings.default_style_mode}}-header-text nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}"><img class="img-fluid" src="{{ sublink.object.featured_image | img_url }}">
+                                    <a class="nav-link px-0 second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}"><img class="img-fluid" src="{{ sublink.object.featured_image | img_url: '250x260', crop: 'center'}}">
                                     </a>
-                                    <h6 class="product-title">
-                                        <a class="text-{{settings.default_style_mode}}-header-text nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.object.title }}</a>
-                                    </h6>
-                                    <h4 class="product-price">{{ sublink.object.price | money }}</h4>
+                                        <a class="product-title p-0 nav-link second-level-nav-link{% if sublink.active %} active{% endif %}" href="{{ sublink.url }}">{{ sublink.object.title }}</a>
+                                    <span class="product-price">{{ sublink.object.price | money }}</span>
                                 </div>
                             </div>
                         {% endif %}
@@ -76,7 +75,7 @@
             </div>
         </li>
         {% else %}
-        <li class="nav-item{% if link.active %} active{% endif %}">
+        <li class="nav-item{% if link.active %} active{% endif %} d-lg-flex align-items-lg-center ">
             <a class="text-{{settings.default_style_mode}}-header-text nav-link first-level-nav-link" href="{{ link.url }}">{{ link.title | escape }}</a>
         </li>
         {% endif %}
@@ -87,6 +86,8 @@
       </ul>
     </div> <!-- navbar-collapse.// -->
   </nav>
+</div>
+
 </div>
 <style>
   @media (min-width: 992px) {
@@ -104,9 +105,6 @@
       align-items: flex-end;
     }
 
-    .header_logo_image {
-      width: 200px;
-    }
   }
 
   @media (max-width: 991.98px) {

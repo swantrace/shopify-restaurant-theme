@@ -21,22 +21,24 @@
   section-inner-wrapper
   pt-0
   py-lg-0
-  {% if section.settings.section_width == 'container' %}container{% endif %}
   {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
   {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
   {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
   {% if section.settings.style_for_desktop == 'styleA' %}desktop_style_a{% else %}desktop_style_b{% endif %}
   bg-{{ settings.default_style_mode }}">
+
+  <div class="{% if section.settings.section_width == 'container' %}container{% endif %}">    
+
   <div class="store-hours-container">
     <div class="row no-gutters">
-        <div class="restaurant-map-wrapper col col-12 col-md-6  
+        <div class="restaurant-map-wrapper col col-12 col-lg-6  
         {% if section.settings.map_position == 'left' %}order-lg-first{% endif %}
         {% if section.settings.map_position == 'right' %}order-lg-last{% endif %}
         {% if section.settings.style_for_desktop == 'styleB' %}d-lg-flex align-items-lg-center justify-content-lg-end{% endif %}">
           <div id="map"></div>
         </div>
-        <div class="restaurant-info-wrapper col col-12 col-lg-6 align-self-center pt-15 px-lg-0 px-15 px-lg-30">
-            <div class="restaurant-info text-{{ settings.default_style_mode }}-text text-{{ section.settings.alignment }}{% case section.settings.alignment %}{% when 'left' %} mr-auto{% when 'right' %} ml-auto{% else %} mx-auto{% endcase %}">
+        <div class="restaurant-info-wrapper col col-12 col-lg-6 align-self-center py-25 px-lg-0 px-20 px-lg-30">
+            <div class="restaurant-info text-{{ settings.default_style_mode }}-text text-{{ section.settings.alignment }}{% case section.settings.alignment %}{% when 'left' %} m-auto{% when 'right' %} ml-auto{% else %} mx-auto{% endcase %}">
                 <h4 class="store-hours-title mb-lg-10">{{ section.settings.title }}</h4>
                 <div class="table-wrapper table-responsive table-borderless">
                     <table class="store-hours-table table bg-{{ settings.default_style_mode }} text-{{ settings.default_style_mode }}-text">
@@ -117,6 +119,8 @@
         </div>
     </div>
   </div>
+  </div>
+
 </div>
 {% render 'common-section-styles' %}
 <style type="text/css">
