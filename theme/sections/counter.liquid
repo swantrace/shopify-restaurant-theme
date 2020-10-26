@@ -55,12 +55,13 @@
   top: 15%;
 }
 
-.style_for_desktop_and_mobile_b .featured-badge {
-      top: 7px !important;
-      transform: scale(1, calc(10/7));
-}
 
   @media (min-width: 992px) {
+
+  #shopify-section-{{ section.id }} .style_for_desktop_and_mobile_b .featured-badge {
+    transform: scale(1, calc(10/7));
+    top: 7px !important;
+  }
 
   #shopify-section-{{ section.id }} .featured-badge.img-left{
     border-bottom-left-radius: 20px;
