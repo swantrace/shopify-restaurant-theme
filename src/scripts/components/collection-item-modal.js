@@ -111,7 +111,11 @@ function collectionItemModal({
         src=${
           currentVariant.featured_image
             ? currentVariant.featured_image
+                .replace('.jpg', '_500x.jpg')
+                .replace('.png', '_500x.png')
             : product.featured_image
+                .replace('.jpg', '_500x.jpg')
+                .replace('.png', '_500x.png')
         }
       />
       <i class="fas fa-times modal-close-icon" data-dismiss="modal" style="
