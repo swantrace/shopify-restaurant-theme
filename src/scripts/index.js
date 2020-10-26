@@ -10,10 +10,12 @@ import './components/collection-item';
 import './components/collection-item-modal';
 import './components/featured-product';
 import './components/counter-product';
+import tagimages from './tagimages';
 
 window.datomar = {
   BSN,
   apis,
   helper,
   Cookies,
+  tagimages
 };

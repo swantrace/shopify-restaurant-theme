@@ -94,7 +94,7 @@ function featuredProduct({
       ? 'container'
       : ''}"
   >
-    <div class="row no-gutters">
+    <div class="row no-gutters ${dataSectionWidth === 'container' ? 'px-10' : 'px-0'}">
       <div
         class="variant-image-wrapper col col-12 ${dataStyleForDesktop ===
         'styleC'
@@ -103,6 +103,13 @@ function featuredProduct({
           ? 'order-lg-first'
           : 'order-lg-last'}"
       >
+      <div class="featured-badge ${dataImagePosition === 'left'
+      ? 'img-left'
+      : 'img-right' }   ${dataStyleForDesktop === 'styleC'
+      ? 'd-lg-none'
+      : '' }  ">
+        <span class="featured-badge-text">Featured</span>
+      </div>
         <img
           class="variant-image img-fluid w-100 h-100"
           src=${currentVariant.featured_image
@@ -115,8 +122,8 @@ function featuredProduct({
                   .replace('.png', '_960x832.png')
             : dataStyleForDesktop === 'styleC'
             ? product.featured_image
-                .replace('.jpg', '_1680x1050.jpg')
-                .replace('.png', '_1680x1050.png')
+                .replace('.jpg', '_1680x960.jpg')
+                .replace('.png', '_1680x960.png')
             : product.featured_image
                 .replace('.jpg', '_960x832.jpg')
                 .replace('.png', '_960x832.png')}
@@ -124,20 +131,25 @@ function featuredProduct({
         />
       </div>
       <div
-        class="product-item-wrapper col col-12  pt-15 pt-lg-0 px-15 align-self-center ${dataStyleForDesktop ===
+        class="product-item-wrapper col col-12 mt-30 mt-lg-0 ${dataSectionWidth === 'container' ? '' : 'px-20'} align-self-center ${dataStyleForDesktop ===
         'styleC'
-          ? 'offset-lg-6 col-lg-6 px-lg-0'
+          ? 'offset-lg-6 col-lg-6 px-lg-0 px-lg-0'
           : 'col-lg-6 px-lg-30'} text-${dataStyle}-text"
       >
+        <div class="featured-badge-style-c  d-none ${dataStyleForDesktop === 'styleC'
+        ? 'd-lg-block'
+        : '' } ">
+          <span class="featured-badge-text">Featured</span>
+        </div>
         <div
           class="text-${dataAlignment} ${dataAlignment === 'left'
-            ? 'mr-auto'
+            ? 'm-auto mr-lg-auto'
             : dataAlignment === 'right'
-            ? 'ml-auto'
-            : 'mx-auto'}"
+            ? 'ml-lg-auto'
+            : 'mx-lg-auto'} featured-product-content"
         >
-          <h4 class="mb-10">${product.title}</h4>
-          <h5 class="mb-10 product-price">
+          <h5 class="mb-10">${product.title}</h5>
+          <h6 class="mb-10 product-price">
             ${currentVariant.compare_at_price > currentVariant.price
               ? html`<div class="onsale-price">
                   <span class="current-variant-price text-red"
@@ -153,8 +165,8 @@ function featuredProduct({
                     >${formatMoney(currentVariant.price)}</span
                   >
                 </div>`}
-          </h5>
-          <div>
+          </h6>
+          <div class="product-desc">
             <small>${unsafeHTML(product.description)}</small>
           </div>
           <form
@@ -215,7 +227,7 @@ function featuredProduct({
                 @click=${handleATCButtonClick}
                 type="submit"
                 name="add"
-                class="form-control AddToCart btn col col-lg-4 btn-${dataStyle}-filled-btn text-${dataStyle}-filled-btn-text"
+                class="form-control AddToCart btn col-12 col-md-5 btn-${dataStyle}-filled-btn text-${dataStyle}-filled-btn-text"
               >
                 <span class="AddToCartText"
                   >${currentVariant && !currentVariant.available
@@ -230,7 +242,7 @@ function featuredProduct({
                 >
               </button>
               <div
-                class="btn-group align-self-center h-100 text-${dataStyle}-selector-icons"
+                class="btn-group align-self-center mt-10 mt-md-auto h-100 text-${dataStyle}-selector-icons"
                 role="group"
               >
                 <button class="detail-icon btn p-0 pr-3" type="button">

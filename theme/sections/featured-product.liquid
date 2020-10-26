@@ -33,29 +33,80 @@
     border: none;
   }
 
-  #shopify-section-{{ section.id }} .product-item-wrapper>div{
-    max-width: 100%; 
-    width: 540px;
+.featured-badge, .featured-badge-style-c{
+  background-color: #E54A55;
+  padding: 4px;
+  width: 100px;
+  color: #fff;
+  text-align: center;
+  font-weight: 400;
+  position: absolute;
+  z-index: 100;
+}
+
+.desktop_style_a .featured-badge 
+{
+  top: 15%;
+}
+
+.featured-badge{
+  left: 0;
+  border-bottom-right-radius: 20px;
+  top: 0;
+}
+
+  #shopify-section-{{ section.id }} .product-desc {
+  -webkit-line-clamp: 4;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   }
 
-  #shopify-section-{{ section.id }} .desktop_style_c .product-item-wrapper>div{
+  @media (min-width: 992px) {
+
+    #shopify-section-{{ section.id }} .desktop_style_c .product-item-wrapper{
     background-color: rgba(255, 255, 255, 0.3);
     padding: 16px 16px;
   }
+  
+    .desktop_style_b .featured-badge {
+      top: 0;
+      transform: scale(1, calc(10/7));
+    }
 
-  @media (min-width: 992px) {
+    .desktop_style_c .featured-product-content{
+      padding: 80px 40px 20px;
+    }
+
+    .desktop_style_c .featured-badge-style-c{
+      border-bottom-right-radius: 20px;
+      top: 5%;
+    }
+
+    .featured-badge.img-left{
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 0;
+      right: 0;
+      left: auto;
+    }
+
+    .featured-badge.img-right{
+      border-bottom-right-radius: 20px;
+      border-bottom-left-radius: 0;
+      left:0;
+      right: auto;
+    }
 
     #shopify-section-{{ section.id }} .desktop_style_c .product-item-wrapper {
       position: absolute;
+      max-width: 600px;
     }
-
-  }
-
-  @media (min-width: 992px) {
 
     #shopify-section-{{ section.id }} .variant-image-wrapper img {
       object-fit: cover;
       object-position: center center;
+      max-height: 550px;
     }
 
     #shopify-section-{{ section.id }} .desktop_style_b .variant-image-wrapper {
@@ -72,7 +123,7 @@
     }
 
     #shopify-section-{{ section.id }} .featured-product-container > .row {
-      height: 800px;
+      /* height: 800px; */
     }
 }
 </style>
