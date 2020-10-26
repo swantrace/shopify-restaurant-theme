@@ -1,0 +1,208 @@
+<div class="datomar"> 
+  <div class="container py-6">
+    <div class="row">
+
+      <div class="col-12 col-md-6">
+        {% for block in section.blocks %}
+          {% if block.type == 'left_text' %}
+            <{{ block.settings.title_tag }}>{{ block.settings.title_text }}</{{ block.settings.title_tag }}>
+            {{ block.settings.paragraphs }}
+          {% endif %}
+        {% endfor %}    
+      </div>
+      <div class="col-12 col-md-6">
+        {% form 'contact' %}
+          {% for block in section.blocks %}
+            {% if block.type != 'left_text' %}
+              {% if block.settings.input_type == 'text' or block.settings.input_type == 'phone' or block.settings.input_type == 'email' or block.settings.input_type == 'url' or block.settings.input_type == 'date' or block.settings.input_type == 'datetime-local' %}
+              <div class="form-group d-flex align-items-end">
+                {% if block.settings.input_label != '' %}
+                <label for="{{ block.settings.input_id }}" class="col-auto col-form-label pl-0">{{ block.settings.input_label }}</label>
+                {% endif %}
+                <input id="{{ block.settings.input_id }}" name="{{ block.settings.input_name }}" class="form-control custom px-0 py-4 mt-3" type="{{ block.settings.input_type }}" placeholder="{{ block.settings.placeholder }}">
+              </div>
+              {% endif %}
+              {% if block.settings.input_type == 'textarea' %}
+              <div class="form-group d-flex align-items-end">
+                <textarea id="{{ block.settings.id }}" name="{{ block.settings.name }}" class="form-control custom px-0 py-4 mt-2" rows="5" placeholder="{{ block.settings.placeholder }}"></textarea>
+              </div>
+              {% endif %}
+              {% if block.settings.input_type == 'select' %}
+              <div class="form-group d-flex align-items-end">
+                {% if block.settings.input_label != '' %}
+                <label for="{{ block.settings.input_id }}"  class="col-auto col-form-label pl-0">{{ block.settings.input_label }}</label>
+                {% endif %}
+                <select id="{{ block.settings.input_id }}" name="{{ block.settings.input_name }}" class="form-control custom px-0 mt-3">
+                  <option value="" disabled selected hidden>{{ block.settings.placeholder }}</option>
+                  {% assign options = block.settings.select_options | split: ',' %}
+                  {% for option in options %}
+                  <option value="{{ option }}">{{ option }}</option>
+                  {% endfor %}
+                </select>
+                <style>
+                  input[type="datetime-local"][value=""],
+                  select[value=""]{
+                    color: lightgray;
+                  }
+                  option{
+                    color: black;
+                  }
+                </style>
+              </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          <button class="btn btn-soild-green px-4 mt-4 float-right" type="submit">
+            {{ section.settings.submit_button_text }}
+          </button>
+        {% endform %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Conatct Us Form",
+  "class" : "datomar--contact-us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Submit button text"
+    }
+  ],
+  "blocks": [
+    {
+	  "type": "form_inputs",
+      "name": "Form inputs",
+      "settings": [
+        {
+          "type": "select",
+          "id": "input_type",
+          "label": "Input type",
+          "default": "text",
+          "options": [
+              {
+                  "value": "text",
+                  "label": "text"
+              },              
+			  {
+                  "value": "email",
+                  "label": "email"
+              },
+              {
+                  "value": "phone",
+                  "label": "phone"
+              },
+              {
+                  "value": "url",
+                  "label": "url"
+              },
+              {
+                  "value": "textarea",
+                  "label": "textarea"
+              },
+			  {
+				  "value": "select",
+				  "label": "select"
+			  },
+			  {
+				"value": "datetime-local",
+				"label": "datetime-local"
+			  },
+			  {
+				"value": "date",
+				"label": "date"
+			  }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "input_name",
+          "label": "Input name" 
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Input placeholder" 
+        },
+		{
+		  "type": "text",
+		  "id": "input_id",
+		  "label": "Input id"
+		},
+		{
+		  "type": "text",
+		  "id": "input_label",
+		  "label": "Input label"
+		},
+        {
+		  "type": "text",
+		  "id": "select_options",
+		  "label": "Options when input type is select"
+		}
+      ]
+    },
+    {
+      "type": "left_text",
+	  "name": "Left text",
+      "settings": [
+		{
+			"type": "select",
+			"id": "title_tag",
+			"label": "Title tag",
+			"default": "h1",
+			"options": [
+				{
+					"value": "h1",
+					"label": "h1"
+				},
+				{
+					"value": "h2",
+					"label": "h2"
+				},
+				{
+					"value": "h3",
+					"label": "h3"
+				},
+				{
+					"value": "h4",
+					"label": "h4"
+				},
+				{
+					"value": "h5",
+					"label": "h5"
+				},
+				{
+					"value": "h6",
+					"label": "h6"
+				},
+				{
+					"value": "p",
+					"label": "p"
+				}
+			]
+		},
+		{
+			"type": "text",
+			"id": "title_text",
+			"label": "Title text"
+		},
+		{
+			"type": "richtext",
+			"id": "paragraphs",
+			"label": "Paragraphs" 
+		}
+	  ]
+	}
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,87 @@
+<script
+  src="https://maps.googleapis.com/maps/api/js?key={{ section.settings.api_key }}&callback=initMap&libraries=&v=weekly"
+  defer
+></script>
+<div class="datomar">
+	<div id="map"></div>
+</div>
+<style type="text/css">
+  .datomar--map .datomar {
+  	width: 100%;
+    height: 500px;
+  }
+  #map {
+    height: 100%;
+  }
+  [style*="color: black; font-size: 12px; font-weight: 500"] {
+  	position: relative; 
+    left: 80px; 
+    top: 15px;
+  }
+</style>
+<script>
+  function initMap() {
+    const initialLatLng = { lat: -34.397, lng: 150.644 }
+    let map = new google.maps.Map(document.getElementById("map"), {
+      center: initialLatLng,
+      zoom: {{ section.settings.zoom}},
+    });
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ "address": "{{ section.settings.address | url_encode }}" }, function(results, status){
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location,
+          label: { color: "black", fontWeight: "500", fontSize: "12px", text: "{{ section.settings.company_name }}" }
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    })
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Map",
+  "class": "datomar--map",
+  "settings": [
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Map address",
+      "default": "1221 Broad St, Victoria, BC"
+    },
+    {
+      "type": "text",
+      "id": "company_name",
+      "label": "Company Name",
+      "default": "Luxe Furniture Company"
+    },
+    {
+      "type": "text",
+      "id": "api_key",
+      "label": "Google Maps API key",
+      "info": "You’ll need to enable both [Google Maps](https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key) and [Geocoding](https://developers.google.com/maps/documentation/geocoding/get-api-key) API keys to display the map."
+    },
+    {
+      "type": "range",
+      "id": "zoom",
+      "label": "Map zoom level",
+      "min": 1,
+      "max": 22,
+      "step": 1,
+      "unit": "x",
+      "default": 2
+    }
+  ],
+  "presets": [
+    {
+      "name": "Map",
+      "category": "Store information"
+    }
+  ]
+}
+
+{% endschema %}
