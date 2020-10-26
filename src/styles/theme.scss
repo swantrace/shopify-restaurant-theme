@@ -138,8 +138,6 @@ footer .fab {
   padding-bottom: 30px;
 }
 
-/******** Featured Products *********/
-
 /******** Featured Collections *********/
 .index-section--featured-collections {
   .collection-title {
@@ -242,6 +240,35 @@ body.offcanvas-active {
 
 .navbar-expand-lg .navbar-nav .nav-link{
   padding: 0;
+}
+
+
+/********* Footer **************/
+
+footer .bg-dark-footer .social-link{
+  color:#4d4d4d;
+  background-color: #fff;
+}
+
+footer .bg-light-footer .social-link{
+  background-color: #808080;
+  color:#fff;
+}
+
+footer .social-link {
+  position: relative;
+  display: inline-block;
+  height: 28px;
+  width: 28px;
+  margin: 4px;
+  border-radius: 50%;
+}
+
+footer  .social-link svg {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
 }
 
 /******** Video with Text *********/

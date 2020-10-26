@@ -244,7 +244,7 @@ function CounterProduct({
             <div
               class="d-flex flex-wrap justify-content-between align-items-start"
             >
-              <div class="col-12 col-md-3 col-lg-4 px-0">
+              <div class="col-12 col-md-4 col-lg-5 px-0">
                 <button
                   ?disabled=${!currentVariant || !currentVariant.available}
                   @click=${handleATCButtonClick}
