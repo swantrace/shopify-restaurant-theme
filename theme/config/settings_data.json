@@ -1,6 +1,6 @@
 {
   "current": {
-    "default_style_mode": "light",
+    "default_style_mode": "dark",
     "type_base_family": "pt_serif_n4",
     "type_base_size": "17px",
     "type_header_family": "source_sans_pro_n7",
@@ -10,29 +10,24 @@
     "type_accent_transform": false,
     "type_accent_spacing": false,
     "favicon": "",
-    "social_twitter_link": "",
-    "social_facebook_link": "",
-    "social_pinterest_link": "",
-    "social_google_plus_link": "",
-    "social_instagram_link": "",
-    "social_snapchat_link": "",
-    "social_tumblr_link": "",
-    "social_youtube_link": "",
-    "social_vimeo_link": "",
-    "social_fancy_link": "",
-    "social_rss_link": "",
+    "social_twitter_link": "#",
+    "social_facebook_link": "#",
+    "social_pinterest_link": "#",
+    "social_instagram_link": "#",
+    "social_youtube_link": "#",
+    "social_vimeo_link": "#",
+    "company_name": "360 E-meda",
     "phone": "204-555-5555",
-    "email": "",
-    "location": "",
-    "store_hours_first_line": "",
-    "store_hours_second_line": "",
-    "store_hours_third_line": "",
+    "email": "360@test.ca",
+    "location": "321 McDermot Ave, Winnipeg",
+    "store_hours_first_line": "Mon - Fri:\/12pm - 11pm",
+    "store_hours_second_line": "Sat:\/12pm - 12pm",
+    "store_hours_third_line": "* close on Sat&Sun",
     "store_hours_fourth_line": "",
     "store_hours_fifth_line": "",
     "store_hours_sixth_line": "",
     "store_hours_seventh_line": "",
-    "map_address": "",
-    "google_maps_api": "",
+    "google_maps_api": "AIzaSyABilm4rQJkE17je5w7riI4q3BVWLNp15s",
     "checkout_header_image": "",
     "checkout_logo_image": "",
     "checkout_logo_position": "left",
@@ -47,6 +42,12 @@
     "checkout_accent_color": "#767676",
     "checkout_button_color": "#e42c00",
     "checkout_error_color": "#e42c00",
+    "social_google_plus_link": "",
+    "social_snapchat_link": "",
+    "social_tumblr_link": "",
+    "social_fancy_link": "",
+    "social_rss_link": "",
+    "map_address": "",
     "enable_wide_layout": false,
     "color_topbar_bg": "#cbd5cc",
     "color_body_bg": "#ffffff",
@@ -73,26 +74,98 @@
           "disable_on_mobile": false,
           "disable_on_tablet": false,
           "disable_on_desktop": false,
+<<<<<<< HEAD
           "custom_classes": "",
           "logo_img": "shopify://shop_images/logo_300x_daa92c44-083b-4dae-9196-9c0123238703.png",
+=======
+          "light_logo_img": "shopify:\/\/shop_images\/light_logo_img.png",
+          "dark_logo_img": "shopify:\/\/shop_images\/dark_logo_img.png",
+>>>>>>> 94e20ad7d492775d4e2dfa6e84b88b2001cac248
           "nav_menu": "main-menu",
           "style_for_desktop": "styleB",
-          "style_for_mobile": "styleA",
+          "style_for_mobile": "styleB",
           "display_phone_number": true
         }
       },
       "footer": {
         "type": "footer",
+        "blocks": {
+          "f1ede6be-da74-4791-a8d4-5c783b80a5d2": {
+            "type": "menu",
+            "settings": {
+              "menu": "footer"
+            }
+          },
+          "88121410-99f6-48eb-900a-a4fd43203911": {
+            "type": "menu",
+            "settings": {
+              "menu": "additional-links"
+            }
+          }
+        },
+        "block_order": [
+          "f1ede6be-da74-4791-a8d4-5c783b80a5d2",
+          "88121410-99f6-48eb-900a-a4fd43203911"
+        ],
         "settings": {
           "color_bg": "#3a3a3a",
-          "section_width": "full",
+          "section_width": "container",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
-          "disable_on_desktop": false
+          "disable_on_desktop": false,
+          "light_logo_img": "shopify:\/\/shop_images\/light_logo_img.png",
+          "dark_logo_img": "shopify:\/\/shop_images\/dark_logo_img.png",
+          "display_social_icons": true
         }
       },
       "1600401429471": {
         "type": "carousel",
+        "blocks": {
+          "2759a0ad-5436-4cb5-963c-a7d6417898fb": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/rain-covered-vintage-car.jpg",
+              "title": "H1 Header Needs to go here",
+              "subtitle": "H2 Header will go here",
+              "first_button_label": "Reservation",
+              "first_button_link": "shopify:\/\/pages\/reservation",
+              "second_button_label": "Read More",
+              "second_button_link": "shopify:\/\/pages\/test-page",
+              "alignment": "left"
+            }
+          },
+          "0e735732-db67-4304-a431-9dec1dcc581a": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/happy-halloween-on-orange-flatlay.jpg",
+              "title": "Happy Halloween",
+              "subtitle": "Happy Halloween again",
+              "first_button_label": "Read More",
+              "first_button_link": "shopify:\/\/pages\/contact",
+              "second_button_label": "Contact Us",
+              "second_button_link": "shopify:\/\/pages\/reservation",
+              "alignment": "center"
+            }
+          },
+          "d445339a-11c8-4423-a6b9-706f2da9f57f": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/salt-and-pepper-in-teaspoons.jpg",
+              "title": "Working From Home Today",
+              "subtitle": "Hello Hello",
+              "first_button_label": "Contact Us",
+              "first_button_link": "shopify:\/\/pages\/contact",
+              "second_button_label": "Read More",
+              "second_button_link": "shopify:\/\/collections\/all",
+              "alignment": "right"
+            }
+          }
+        },
+        "block_order": [
+          "2759a0ad-5436-4cb5-963c-a7d6417898fb",
+          "0e735732-db67-4304-a431-9dec1dcc581a",
+          "d445339a-11c8-4423-a6b9-706f2da9f57f"
+        ],
         "settings": {
           "section_width": "full",
           "disable_on_mobile": false,
@@ -103,146 +176,400 @@
       "1600404101566": {
         "type": "featured-product",
         "settings": {
-          "color_bg": "#3a3a3a",
+          "color_bg": "rgba(0,0,0,0)",
           "section_width": "full",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
           "disable_on_desktop": false,
-          "featured_product": "antique-drawers",
-          "style": "styleA",
+          "featured_product": "10-piece-bone-in-chicken-raw-3lbs",
+          "style_for_desktop": "styleB",
           "image_position": "left",
-          "alignment": "center"
+          "alignment": "left"
         }
       },
       "1600404267845": {
         "type": "three-column-grid",
+        "blocks": {
+          "73c718fe-7b0e-4ce5-902d-3b5d5bccfb2d": {
+            "type": "column",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pistacchio-peppered-ice-creams-on-a-serving-plate.jpg",
+              "title": "H3 Header Needs To Go Here",
+              "description": "<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget, Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<\/p>",
+              "button_label": "Read More",
+              "button_link": "shopify:\/\/collections\/featured",
+              "alignment": "left"
+            }
+          },
+          "5086863b-4ac8-4f99-8f0d-867bbb38176c": {
+            "type": "column",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pistachio-macaron-on-wicker-tray.jpg",
+              "title": "H3 Header for Second",
+              "description": "<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.  Donec id elit non mi porta gravida at eget metus.  Donec id elit non mi porta. Donec id elit non mi porta gravida at eget metus.  Donec id elit non mi porta.<\/p>",
+              "button_label": "Read More",
+              "button_link": "shopify:\/\/collections\/vegetarian",
+              "alignment": "center"
+            }
+          },
+          "e80e6602-6955-47c1-9683-350ea69b5316": {
+            "type": "column",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/bone-in-steak-with-rosemary.jpg",
+              "title": "Last H3 Header Needs To Go Here",
+              "description": "<p>f Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.  Donec id elit non mi porta gravida at eget metus.  Donec id elit non mi porta gravida at eget metus. Donec id elit non mi porta gravida at eget metus. Donec id elit non mi porta gravida at eget metus<\/p>",
+              "button_label": "Read More",
+              "button_link": "shopify:\/\/collections\/soups-starters",
+              "alignment": "right"
+            }
+          }
+        },
+        "block_order": [
+          "73c718fe-7b0e-4ce5-902d-3b5d5bccfb2d",
+          "5086863b-4ac8-4f99-8f0d-867bbb38176c",
+          "e80e6602-6955-47c1-9683-350ea69b5316"
+        ],
         "settings": {
-          "color_bg": "#3a3a3a",
+          "color_bg": "#675a7c",
           "section_width": "container",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
-          "disable_on_desktop": false
+          "disable_on_desktop": false,
+          "title": "Three Column Section",
+          "line_num": 6
         }
       },
       "1600404555617": {
         "type": "testimonials",
+        "blocks": {
+          "5c5c65de-8de8-461b-84ce-9b5df19f9f6f": {
+            "type": "testimonial",
+            "settings": {
+              "alignment": "left",
+              "reviewer": "Danni Z",
+              "review": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.<\/p>"
+            }
+          },
+          "8bc17bdc-7c6f-4414-9c20-be45ec854f4b": {
+            "type": "testimonial",
+            "settings": {
+              "alignment": "center",
+              "reviewer": "Bob",
+              "review": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.<\/p>"
+            }
+          },
+          "3d56eaa5-5095-4c60-8ddb-0736e8f74209": {
+            "type": "testimonial",
+            "settings": {
+              "alignment": "right",
+              "reviewer": "Ash P",
+              "review": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.<\/p>"
+            }
+          },
+          "9597e15d-3f44-4303-81ae-ce65f496097f": {
+            "type": "testimonial",
+            "settings": {
+              "alignment": "right",
+              "reviewer": "Fred H",
+              "review": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.<\/p>"
+            }
+          },
+          "c8bef433-2381-457e-8fc3-ab0f19fe853f": {
+            "type": "testimonial",
+            "settings": {
+              "alignment": "center",
+              "reviewer": "Alan\tSanderson",
+              "review": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. <\/p>"
+            }
+          },
+          "7a2da9d5-d56f-40a7-86a7-b65cbeca2a57": {
+            "type": "testimonial",
+            "settings": {
+              "alignment": "center",
+              "reviewer": "Peter Kerr",
+              "review": "<p>vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.<\/p>"
+            }
+          },
+          "04f00f94-e66d-431b-8c05-40ede48b5ff6": {
+            "type": "testimonial",
+            "settings": {
+              "alignment": "right",
+              "reviewer": "Gabrielle\tAllan",
+              "review": "<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.<\/p>"
+            }
+          },
+          "a3772db1-5674-420d-bfbc-b21bb601f18c": {
+            "type": "testimonial",
+            "settings": {
+              "alignment": "center",
+              "reviewer": "Kylie Wright",
+              "review": "<p>A very bad quack might jinx zippy fowls. Few quips galvanized the mock jury box. Quick brown dogs jump over the lazy fox. <\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "5c5c65de-8de8-461b-84ce-9b5df19f9f6f",
+          "8bc17bdc-7c6f-4414-9c20-be45ec854f4b",
+          "3d56eaa5-5095-4c60-8ddb-0736e8f74209",
+          "9597e15d-3f44-4303-81ae-ce65f496097f",
+          "c8bef433-2381-457e-8fc3-ab0f19fe853f",
+          "7a2da9d5-d56f-40a7-86a7-b65cbeca2a57",
+          "04f00f94-e66d-431b-8c05-40ede48b5ff6",
+          "a3772db1-5674-420d-bfbc-b21bb601f18c"
+        ],
         "settings": {
-          "color_bg": "#3a3a3a",
-          "section_width": "full",
+          "color_bg": "#386c84",
+          "section_width": "container",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
-          "disable_on_desktop": false
+          "disable_on_desktop": false,
+          "style": "styleB"
         }
       },
       "1600404767746": {
         "type": "store-hours",
         "settings": {
-          "color_bg": "#3a3a3a",
+          "color_bg": "rgba(0,0,0,0)",
           "section_width": "full",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
           "disable_on_desktop": false,
-          "style": "styleA",
-          "title": "",
-          "email_enabled": false,
-          "phone_enabled": false,
-          "location_enabled": false,
+          "style_for_desktop": "styleB",
+          "title": "Restaurant Info",
+          "email_enabled": true,
+          "phone_enabled": true,
+          "location_enabled": true,
+          "zoom": 16,
           "map_position": "left",
-          "alignment": "center",
-          "button_label": ""
+          "alignment": "left",
+          "button_label": "Contact Us",
+          "button_link": "shopify:\/\/pages\/contact"
         }
       },
       "1600404949171": {
         "type": "newsletter",
-        "settings": {
-          "color_bg": "#3a3a3a",
-          "section_width": "container",
-          "disable_on_mobile": false,
-          "disable_on_tablet": false,
-          "disable_on_desktop": false,
-          "section_title": "Subscribe to our newsletter",
-          "subheading": "<p>Promotions, new products and sales. Directly to your inbox.</p>",
-          "button_label": ""
-        }
-      },
-      "1600408412588": {
-        "type": "text-only",
         "settings": {
           "color_bg": "rgba(0,0,0,0)",
           "section_width": "container",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
           "disable_on_desktop": false,
-          "alignment": "center",
-          "first_button_label": "",
-          "second_button_label": ""
+          "style": "styleA",
+          "section_title": "Subscribe to our newsletter",
+<<<<<<< HEAD
+          "subheading": "<p>Promotions, new products and sales. Directly to your inbox.</p>",
+          "button_label": ""
+=======
+          "subheading": "<p>Promotions, new products and sales. Directly to your inbox. dolor sit amet, consectetur adipiscing elit. to your inbox. dolor sit amet, consectetur adipiscing elit.<\/p>",
+          "button_label": "Send!"
+>>>>>>> 94e20ad7d492775d4e2dfa6e84b88b2001cac248
+        }
+      },
+      "1600408412588": {
+        "type": "text-only",
+        "settings": {
+          "img_bg": "shopify:\/\/shop_images\/rain-covered-vintage-car.jpg",
+          "color_bg": "rgba(0,0,0,0)",
+          "section_width": "container",
+          "disable_on_mobile": false,
+          "disable_on_tablet": false,
+          "disable_on_desktop": false,
+          "header": "H3 Header Needs To Go Here",
+          "text": "<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus<\/p>",
+          "alignment": "left",
+          "first_button_label": "Read More",
+          "first_button_link": "shopify:\/\/collections\/gluten-free",
+          "second_button_label": "Second Button",
+          "second_button_link": "shopify:\/\/collections\/proteins"
         }
       },
       "1600491888435": {
         "type": "image-with-text",
         "settings": {
+          "color_bg": "#60507b",
           "section_width": "full",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
           "disable_on_desktop": false,
           "style": "styleA",
-          "image_position": "left",
-          "first_button_label": "",
-          "second_button_label": "",
-          "header": "",
-          "text": "",
-          "alignment": "center"
+          "image": "shopify:\/\/shop_images\/hot-fresh-donut.jpg",
+          "image_position": "right",
+          "first_button_label": "Frist Button",
+          "first_button_link": "shopify:\/\/pages\/test-page",
+          "second_button_label": "Second Button",
+          "second_button_link": "shopify:\/\/collections\/proteins",
+          "header": "H3 header goes here",
+          "text": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#x27;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.<\/p>",
+          "alignment": "right"
         }
       },
       "1600492577771": {
         "type": "video-with-text",
         "settings": {
+          "color_bg": "#c3d24f",
           "section_width": "full",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
           "disable_on_desktop": false,
+<<<<<<< HEAD
           "video_link": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+=======
+          "video_link": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+          "video_image": "shopify:\/\/shop_images\/cats-eye-and-costume.jpg",
+>>>>>>> 94e20ad7d492775d4e2dfa6e84b88b2001cac248
           "video_position": "left",
-          "first_button_label": "",
-          "second_button_label": "",
-          "header": "",
-          "text": "",
-          "alignment": "center"
+          "first_button_label": "First Button",
+          "first_button_link": "shopify:\/\/products\/antipasto-for-2",
+          "second_button_label": "Second button",
+          "second_button_link": "shopify:\/\/collections\/soups-starters",
+          "header": "H3 header goes here?",
+          "text": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#x27;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic<\/p>",
+          "alignment": "left"
         }
       },
       "1600494321126": {
         "type": "featured-collections",
+        "blocks": {
+          "7e019800-0110-4109-93f6-cfed8861a304": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "gluten-free"
+            }
+          },
+          "c0cda899-9687-4b53-b063-9e8b53d72a5e": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "soups-starters"
+            }
+          },
+          "4ac30ddf-924a-40b4-8476-64fbe7ea130c": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "vegetarian"
+            }
+          }
+        },
+        "block_order": [
+          "7e019800-0110-4109-93f6-cfed8861a304",
+          "c0cda899-9687-4b53-b063-9e8b53d72a5e",
+          "4ac30ddf-924a-40b4-8476-64fbe7ea130c"
+        ],
         "settings": {
-          "color_bg": "#3a3a3a",
-          "section_width": "full",
-          "disable_on_mobile": false,
-          "disable_on_tablet": false,
-          "disable_on_desktop": false
-        }
-      },
-      "1600515580772": {
-        "type": "masonry-gallery",
-        "settings": {
+          "color_bg": "#42b6b6",
           "section_width": "container",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
           "disable_on_desktop": false,
-          "section-title": "",
-          "section-subtitle": ""
+          "section-title": "Featured Collections",
+          "button_label": "View All Collections"
+        }
+      },
+      "1600515580772": {
+        "type": "masonry-gallery",
+        "blocks": {
+          "2b15fa89-e7b5-4b98-af12-5aa530bdd4e0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pistachio-macaron-on-wicker-tray.jpg"
+            }
+          },
+          "a3666e7e-8f09-452e-bf80-c68f173ec640": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/hot-fresh-donut.jpg"
+            }
+          },
+          "8a14380d-c7b9-49d3-9b2b-b891d0bd86b8": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/plate-of-macarons-on-a-wicker-tray.jpg"
+            }
+          },
+          "3ec6dced-55b0-4f8e-a9c8-e183c329d4d6": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/freshly-baken-sourdough-bread.jpg"
+            }
+          },
+          "823395d8-d64e-4733-94c6-367932715dc5": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pastries-powdered-with-confectioners-sugar.jpg"
+            }
+          },
+          "2ea43ce3-205d-4cec-995b-7f130c799beb": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/grilled-seafood-platter.jpg"
+            }
+          },
+          "5ed4f829-4f4e-4a6c-a461-8856599a735b": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/close-up-of-chestnut-flatlay.jpg"
+            }
+          },
+          "62b5f316-e30f-4e5e-9134-6bdd7fce722e": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pile-of-hot-peppers.jpg"
+            }
+          },
+          "95802a5c-a3a1-4cae-9a6e-dfff0b6deb1b": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/a-tower-of-macarons-in-a-teapot.jpg"
+            }
+          },
+          "d4d79643-f0b9-4934-ae37-c84b8b751c9c": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/salt-and-pepper-in-teaspoons.jpg"
+            }
+          },
+          "4eabcca1-4cb1-49ac-b36e-483426e94df8": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/fresh-bread-covered-in-fruit-and-oats.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "2b15fa89-e7b5-4b98-af12-5aa530bdd4e0",
+          "a3666e7e-8f09-452e-bf80-c68f173ec640",
+          "8a14380d-c7b9-49d3-9b2b-b891d0bd86b8",
+          "3ec6dced-55b0-4f8e-a9c8-e183c329d4d6",
+          "823395d8-d64e-4733-94c6-367932715dc5",
+          "2ea43ce3-205d-4cec-995b-7f130c799beb",
+          "5ed4f829-4f4e-4a6c-a461-8856599a735b",
+          "62b5f316-e30f-4e5e-9134-6bdd7fce722e",
+          "95802a5c-a3a1-4cae-9a6e-dfff0b6deb1b",
+          "d4d79643-f0b9-4934-ae37-c84b8b751c9c",
+          "4eabcca1-4cb1-49ac-b36e-483426e94df8"
+        ],
+        "settings": {
+          "color_bg": "#cdd14a",
+          "section_width": "full",
+          "disable_on_mobile": false,
+          "disable_on_tablet": false,
+          "disable_on_desktop": false,
+          "section-title": "Masonry Gallery Section",
+          "section-subtitle": "Have fun with Masonry!"
         }
       },
       "1600734991880": {
         "type": "counter",
         "settings": {
-          "color_bg": "#3a3a3a",
+          "color_bg": "rgba(0,0,0,0)",
           "section_width": "full",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
           "disable_on_desktop": false,
-          "style": "styleA",
+          "onsale_product": "copy-of-serrano-honey",
+          "style_for_desktop_and_mobile": "styleB",
           "image_position": "left",
-          "alignment": "center",
-          "discount_deadline": "",
+          "alignment": "left",
+          "discount_deadline": "2020-12-12T19:03",
           "add_to_cart_button_text": "ADD TO CART",
           "learn_more_button_text": "LEARN MORE"
         }
@@ -250,44 +577,122 @@
       "1600737528078": {
         "type": "promobox",
         "settings": {
-          "color_bg": "#3a3a3a",
+          "color_bg": "rgba(0,0,0,0)",
           "section_width": "container",
-          "disable_on_mobile": true,
-          "disable_on_tablet": true,
-          "disable_on_desktop": true,
-          "image_position": "left",
-          "first_button_label": "",
-          "second_button_label": "",
-          "header": "",
-          "text": "",
+          "disable_on_mobile": false,
+          "disable_on_tablet": false,
+          "disable_on_desktop": false,
+          "image": "shopify:\/\/shop_images\/fresh-bread-covered-in-fruit-and-oats.jpg",
+          "image_position": "right",
+          "first_button_label": "Read Me",
+          "first_button_link": "shopify:\/\/pages\/test-page",
+          "second_button_label": "Contact Us",
+          "second_button_link": "shopify:\/\/pages\/contact",
+          "header": "H3 Header Needs To Go Here",
+          "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.<\/p>",
           "alignment": "center"
         }
       },
       "1600738220872": {
         "type": "custom-html",
+        "disabled": true,
         "settings": {
           "color_bg": "rgba(0,0,0,0)",
           "section_width": "container",
           "disable_on_mobile": false,
           "disable_on_tablet": false,
           "disable_on_desktop": false,
+<<<<<<< HEAD
           "custom_classes": "",
           "custom-html": "<p>This is a custom html section</p>"
+=======
+          "custom-html": ""
+        }
+      },
+      "1603434409289115a7": {
+        "type": "featured-products",
+        "blocks": {
+          "3645cbe0-90d5-4417-ac1d-dc6d81e304ad": {
+            "type": "product",
+            "settings": {
+              "featured_product": "cambozola-100g",
+              "button_label": "Read More",
+              "alignment": "left"
+            }
+          },
+          "37291d51-7b51-4c86-b152-5366c478ea3f": {
+            "type": "product",
+            "settings": {
+              "featured_product": "cacciatore",
+              "button_label": "Read This",
+              "alignment": "center"
+            }
+          },
+          "d6aa0f49-5bc5-48f6-8b6e-1a3e8487a60d": {
+            "type": "product",
+            "settings": {
+              "featured_product": "bresaola-100g",
+              "button_label": "Check Me",
+              "alignment": "right"
+            }
+          },
+          "142d1e05-e45e-452e-8464-863e83d0d6f0": {
+            "type": "product",
+            "settings": {
+              "featured_product": "gnudi",
+              "button_label": "Try Me",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "3645cbe0-90d5-4417-ac1d-dc6d81e304ad",
+          "37291d51-7b51-4c86-b152-5366c478ea3f",
+          "d6aa0f49-5bc5-48f6-8b6e-1a3e8487a60d",
+          "142d1e05-e45e-452e-8464-863e83d0d6f0"
+        ],
+        "settings": {
+          "color_bg": "#386c84",
+          "section_width": "container",
+          "disable_on_mobile": false,
+          "disable_on_tablet": false,
+          "disable_on_desktop": false,
+          "title": "Featured Products Section",
+          "line_num": 6
+        }
+      },
+      "16035216084a53fc80": {
+        "type": "instafeed",
+        "settings": {
+          "heading_font": "lato_n4",
+          "heading_size": 20,
+          "feed_width": 70,
+          "html_area": ""
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "image_position": "right",
+          "alignment": "left"
+>>>>>>> 94e20ad7d492775d4e2dfa6e84b88b2001cac248
         }
       }
     },
     "content_for_index": [
       "1600401429471",
-      "1600492577771",
       "1600491888435",
+      "1600492577771",
       "1600408412588",
       "1600404267845",
       "1600404101566",
       "1600515580772",
       "1600404555617",
       "1600404767746",
+      "1603434409289115a7",
       "1600404949171",
       "1600494321126",
+      "16035216084a53fc80",
       "1600734991880",
       "1600737528078",
       "1600738220872"
