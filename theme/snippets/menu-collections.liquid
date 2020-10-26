@@ -1,0 +1,33 @@
+{% for collection in collections %}
+{% if collection.handle != 'all' %}
+<section class="single-collection-section pb-20" id="{{ collection.handle }}">
+    <collection-item collection-handle="{{ collection.handle }}" collection-title="{{ collection.title }}" data-style="{{ settings.default_style_mode }}"></collection-item>
+</section>
+{% endif %}
+{% endfor %}
+<script>
+  document.addEventListener('productgridclicked', function(e){
+      const modalElement = document.getElementById('atcFormModal');
+      const modal = new datomar.BSN.Modal(modalElement, {backdrop: true, keyboard: false});
+      const product = e.detail.product;
+      const escape = e.detail.escape;
+      const unescape = e.detail.unescape;
+      modalElement.addEventListener('show.bs.modal', function(e){
+          e.target.innerHTML = `
+          <collection-item-modal
+              data-product="${escape(JSON.stringify(product))}"
+              data-selected-or-first-available-variant="${product.variants[0].id}"
+              data-options-with-values="${escape(JSON.stringify(product.options))}"
+              data-extra-price="0"
+            ></collection-item-modal>`;
+          modalElement.addEventListener('hidden.bs.modal', function(e){
+              console.log('close:', e);
+              e.target.innerHTML = '';
+          })
+          modalElement.addEventListener('modaladdtocartfinished', function(e){
+            modal.hide();
+          })
+      })
+      modal.show();
+  });
+  </script>

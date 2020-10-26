@@ -1,0 +1,30 @@
+<div class="product-grid col-12 col-sm-12 col-md-6 d-flex pb-20 flex-wrap" data-product="{{ product | json | escape }}" data-options-with-values="{{ product.options_with_values | json | escape }}">
+  <div class="col-4 p-0">
+    <img class="img-fluid product-img" src="{{ product.featured_image | default: collection.image | img_url: '200x' | crop: 'center'}}" />
+  </div>
+  <div class="col-8">
+    <h6 class="product-title mb-5">{{ product.title }}</h6>
+    <div class="product-desc mb-10">
+      {{ product.description }}
+    </div>
+    <div class="product-price mb-5">
+      {% if product.compare_at_price > product.price %}
+        <div class="onsale-price">
+          <span class="current-variant-price pr-2">{{ product.price | money }}</span>
+          <i class="fas fa-arrow-left"></i>
+          <span class="current-variant-compare-at-price pl-2">{{ product.compare_at_price | money }}</span>
+        </div>
+      {% else %}
+        <div class="normal-price">
+          <span class="current-variant-price">{{ product.price | money }}</span>
+        </div>
+      {% endif %}
+    </div>
+    <div class="tags-list mb-20">
+      {% for tag in product.tags %}
+      <img data-tag="{{ tag | handle | replace: '-', '_' }}" data-style="{{ settings.default_style_mode }}" class="tag-image" width="20" /> 
+      {% endfor %}
+    </div>
+  </div>
+  <hr class="divider" />
+</div>

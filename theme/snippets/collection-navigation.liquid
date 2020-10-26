@@ -1,40 +1,59 @@
-<div class="col-12 col-md-2 d-flex align-items-center justify-content-center" id="back-link">
+<div class="col-12 col-md-2 d-flex align-items-center justify-content-center" id="collection-navigation">
   <div>
-    <div>
-      {% if canonical_url contains routes.all_products_collection_url %}
-        <ul class="collection-handles">
-          {% for collection in collections %}
-            <li class="{% if handle == collection.handle %}active{% endif %}">
-              <a href="#{{ collection.handle }}">
+    {% if collection.handle == 'all' %}
+      <ul class="collection-titles">
+        {% for collection in collections %}
+          {% unless collection.handle == 'all' %}
+            <li class="collection-link-wrapper">
+              <a href="#{{ collection.handle }}" class="collection-link">
                 {{ collection.title }}
               </a>
             </li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <a href="{{ routes.all_products_collection_url}}">
-          <span class="text-white">&lt;&lt;&nbsp; Go Back</span>
-        </a>
-      {% endif %}
-    </div>
+          {% endunless %}
+        {% endfor %}
+      </ul>
+    {% else %}
+      <a href="{{ routes.all_products_collection_url | append: '#' | append: collection.handle }}">
+        <span class="text-white">&lt;&lt;&nbsp; Go Back</span>
+      </a>
+    {% endif %}
   </div>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    const currentHash = location.hash;
+    if(currentHash != '') {
+      activeLink = document.querySelector(`[href="${currentHash}"]`);
+      activeLink && activeLink.classList.add("active");
+    }
+    const links = document.querySelectorAll('.collection-titles a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if(!link.classList.contains('active')){
+          const currentActiveLink = document.querySelector('.collection-titles a.active');
+          currentActiveLink && currentActiveLink.classList.remove('active');
+          link.classList.add('active');
+        }
+      })
+    })
+  });
+</script>
 <style>
-  .collection-handles {
+  .collection-titles {
     margin-top: 1rem;
     list-style: none;
     padding-inline-start: 0;
   }
 
-  .collection-handles li a {
+  .collection-titles li a {
     color: white;
   }
 
-  .collection-handles li:nth-of-type(1){
-    display: none;
+  .collection-titles li a.active {
+    color: red;
   }
 
-  .collection-handles li:nth-of-type(2):before {
+  .collection-titles a.active:before {
     color: white;
     content: ">>";
   }

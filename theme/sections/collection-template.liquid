@@ -1,60 +1,30 @@
-<div  class="bg-{{ settings.default_style_mode }} py-50">
+<div  class="section-inner-wrapper bg-{{ settings.default_style_mode }} py-50">
   <div class="container text-{{ settings.default_style_mode }}-text ">
     <div class="row align-items-md-start">
       <div class="col-12 col-md-2" style="position: sticky; top: 0;">
         <ul class="nav flex-md-column" id="category-list">
-        {% for collection in collections %}
-        {% if collection.handle != 'all'%}
-            <li class="nav-item">
-              <a href="#{{ collection.handle }}">
-                {{ collection.title }}
-              </a>
-            </li>
-        {% endif %}
-        {% endfor %}
+          {% render 'collection-navigation' %}
         </ul>
       </div>
       <div class="col-12 col-md-10">
-        {% include 'collection-tags' %}
-        {% for collection in collections %}
-        {% if collection.handle != 'all' %}
-        <section class="single-collection-section pb-20" id="{{ collection.handle }}">
-            <collection-item collection-handle="{{ collection.handle }}" collection-title="{{ collection.title }}" data-style="{{ settings.default_style_mode }}"></collection-item>
-        </section>
+        {% if collection.handle == 'all' %}
+          {% render 'collection-tags' %}
+          {% render 'menu-collections' %}
+        {% else %}
+          {% paginate collection.products by 5 %}
+            {% render 'single-collection', collection: collection %}
+            {% if paginate.pages > 1 %}
+              {% render 'pagination-custom', paginate: paginate %}
+            {% endif %}
+          {% endpaginate %}
         {% endif %}
-        {% endfor %}
       </div>
     </div>
   </div>
 </div>
 <div class="modal fade" id="atcFormModal"></div>
 
-<script>
-document.addEventListener('productgridclicked', function(e){
-    const modalElement = document.getElementById('atcFormModal');
-    const modal = new datomar.BSN.Modal(modalElement, {backdrop: true, keyboard: false});
-    const product = e.detail.product;
-    const escape = e.detail.escape;
-    const unescape = e.detail.unescape;
-    modalElement.addEventListener('show.bs.modal', function(e){
-        e.target.innerHTML = `
-        <collection-item-modal
-            data-product="${escape(JSON.stringify(product))}"
-            data-selected-or-first-available-variant="${product.variants[0].id}"
-            data-options-with-values="${escape(JSON.stringify(product.options))}"
-            data-extra-price="0"
-          ></collection-item-modal>`;
-        modalElement.addEventListener('hidden.bs.modal', function(e){
-            console.log('close:', e);
-            e.target.innerHTML = '';
-        })
-        modalElement.addEventListener('modaladdtocartfinished', function(e){
-          modal.hide();
-        })
-    })
-    modal.show();
-});
-</script>
+
 <style>
 
   .product-title{
@@ -103,11 +73,11 @@ document.addEventListener('productgridclicked', function(e){
     height: 0.05rem;
   }
 
-  #back-link {
+  #collection-navigation {
     height: 100px;
   }
 
-  #back-link:before {
+  #collection-navigation:before {
     content: "";
     position: absolute;
     color: white;
@@ -116,7 +86,7 @@ document.addEventListener('productgridclicked', function(e){
     border-top: 1px solid white;
   }
 
-  #back-link:after {
+  #collection-navigation:after {
     content: "";
     position: absolute;
     color: white;
