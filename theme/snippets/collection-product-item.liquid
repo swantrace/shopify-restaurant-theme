@@ -1,5 +1,5 @@
 <div class="product-grid col-12 col-sm-12 col-md-6 d-flex pb-20 flex-wrap" data-product="{{ product | json | escape }}" data-options-with-values="{{ product.options_with_values | json | escape }}">
-  <div class="col-4 p-0">
+  <div class="col-4 p-0{% if image_position == 'left' %} order-first{% else %} order-last">
     <img class="img-fluid product-img" src="{{ product.featured_image | default: collection.image | img_url: '200x' | crop: 'center'}}" />
   </div>
   <div class="col-8">
@@ -25,6 +25,6 @@
       <img data-tag="{{ tag | handle | replace: '-', '_' }}" data-style="{{ settings.default_style_mode }}" class="tag-image" width="20" /> 
       {% endfor %}
     </div>
+    <div class="col-12"><hr class="divider" /></div>
   </div>
-  <hr class="divider" />
 </div>

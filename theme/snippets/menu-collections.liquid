@@ -1,7 +1,12 @@
 {% for collection in collections %}
 {% if collection.handle != 'all' %}
-<section class="single-collection-section pb-20" id="{{ collection.handle }}">
-    <collection-item collection-handle="{{ collection.handle }}" collection-title="{{ collection.title }}" data-style="{{ settings.default_style_mode }}"></collection-item>
+<section class="single-collection-section py-20" id="{{ collection.handle }}">
+    <collection-item 
+      collection-handle="{{ collection.handle }}" 
+      collection-title="{{ collection.title }}" 
+      data-style="{{ settings.default_style_mode }}"
+      data-image-position="{{ image_position}}"
+    ></collection-item>
 </section>
 {% endif %}
 {% endfor %}

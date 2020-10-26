@@ -1,63 +1,157 @@
-<div class="datomar"> 
-  <div class="container py-6">
-    <div class="row">
+{% assign store_hours_first_line_array = settings.store_hours_first_line | split: '/' %}
+{% assign store_hours_first_line_size = store_hours_first_line_array | size %}
+{% assign store_hours_second_line_array = settings.store_hours_second_line | split: '/' %}
+{% assign store_hours_second_line_size = store_hours_second_line_array | size %}
+{% assign store_hours_third_line_array = settings.store_hours_third_line | split: '/' %}
+{% assign store_hours_third_line_size = store_hours_third_line_array | size %}
+{% assign store_hours_fourth_line_array = settings.store_hours_fourth_line | split: '/' %}
+{% assign store_hours_fourth_line_size = store_hours_fourth_line_size | size %}
+{% assign store_hours_fifth_line_array = settings.store_hours_fifth_line | split: '/' %}
+{% assign store_hours_fifth_line_size = store_hours_fifth_line_size | size %}
+{% assign store_hours_sixth_line_array = settings.store_hours_sixth_line | split: '/' %}
+{% assign store_hours_sixth_line_size = store_hours_sixth_line_array | size %}
+{% assign store_hours_seventh_line_array = settings.store_hours_seventh_line | split: '/' %}
+{% assign store_hours_seventh_line_size = store_hours_seventh_line_array | size %}
 
-      <div class="col-12 col-md-6">
-        {% for block in section.blocks %}
-          {% if block.type == 'left_text' %}
-            <{{ block.settings.title_tag }}>{{ block.settings.title_text }}</{{ block.settings.title_tag }}>
-            {{ block.settings.paragraphs }}
-          {% endif %}
-        {% endfor %}    
-      </div>
-      <div class="col-12 col-md-6">
-        {% form 'contact' %}
-          {% for block in section.blocks %}
-            {% if block.type != 'left_text' %}
-              {% if block.settings.input_type == 'text' or block.settings.input_type == 'phone' or block.settings.input_type == 'email' or block.settings.input_type == 'url' or block.settings.input_type == 'date' or block.settings.input_type == 'datetime-local' %}
-              <div class="form-group d-flex align-items-end">
-                {% if block.settings.input_label != '' %}
-                <label for="{{ block.settings.input_id }}" class="col-auto col-form-label pl-0">{{ block.settings.input_label }}</label>
-                {% endif %}
-                <input id="{{ block.settings.input_id }}" name="{{ block.settings.input_name }}" class="form-control custom px-0 py-4 mt-3" type="{{ block.settings.input_type }}" placeholder="{{ block.settings.placeholder }}">
-              </div>
-              {% endif %}
-              {% if block.settings.input_type == 'textarea' %}
-              <div class="form-group d-flex align-items-end">
-                <textarea id="{{ block.settings.id }}" name="{{ block.settings.name }}" class="form-control custom px-0 py-4 mt-2" rows="5" placeholder="{{ block.settings.placeholder }}"></textarea>
-              </div>
-              {% endif %}
-              {% if block.settings.input_type == 'select' %}
-              <div class="form-group d-flex align-items-end">
-                {% if block.settings.input_label != '' %}
-                <label for="{{ block.settings.input_id }}"  class="col-auto col-form-label pl-0">{{ block.settings.input_label }}</label>
-                {% endif %}
-                <select id="{{ block.settings.input_id }}" name="{{ block.settings.input_name }}" class="form-control custom px-0 mt-3">
-                  <option value="" disabled selected hidden>{{ block.settings.placeholder }}</option>
-                  {% assign options = block.settings.select_options | split: ',' %}
-                  {% for option in options %}
-                  <option value="{{ option }}">{{ option }}</option>
-                  {% endfor %}
-                </select>
-                <style>
-                  input[type="datetime-local"][value=""],
-                  select[value=""]{
-                    color: lightgray;
-                  }
-                  option{
-                    color: black;
-                  }
-                </style>
-              </div>
-              {% endif %}
-            {% endif %}
-          {% endfor %}
-          <button class="btn btn-soild-green px-4 mt-4 float-right" type="submit">
-            {{ section.settings.submit_button_text }}
-          </button>
-        {% endform %}
-      </div>
+<div class="
+  section-inner-wrapper
+  pt-0
+  py-lg-0
+  {% if section.settings.section_width == 'container' %}container{% endif %}
+  {% if section.settings.disable_on_mobile %}disable_on_mobile{% endif %}
+  {% if section.settings.disable_on_tablet %}disable_on_tablet{% endif %}
+  {% if section.settings.disable_on_desktop %}disable_on_desktop{% endif %}
+  {% if section.settings.style_for_desktop == 'styleA' %}desktop_style_a{% else %}desktop_style_b{% endif %}
+  bg-{{ settings.default_style_mode }}">
+  <div class="store-hours-container">
+    <div class="row no-gutters">
+        <div class="restaurant-info-wrapper col col-12 col-lg-6 align-self-center pt-15 px-lg-0 px-15 px-lg-30">
+            <div class="restaurant-info text-{{ settings.default_style_mode }}-text text-{{ section.settings.alignment }}{% case section.settings.alignment %}{% when 'left' %} mr-auto{% when 'right' %} ml-auto{% else %} mx-auto{% endcase %}">
+                <h4 class="store-hours-title mb-lg-10">{{ section.settings.title }}</h4>
+                <div class="table-wrapper table-responsive table-borderless">
+                    <table class="store-hours-table table bg-{{ settings.default_style_mode }} text-{{ settings.default_style_mode }}-text">
+                        <tbody>
+                            {% if section.settings.email_enabled %}
+                            <tr class="email-table-row">
+                              <td class="text-weight-lighter">Email:</td>
+                              <td class="text-weight-lighter">{{ settings.email }}</td>
+                            </tr>
+                            {% endif %}
+                            {% if section.settings.phone_enabled %}
+                            <tr class="phone-table-row">
+                                <td class="text-weight-lighter">Phone:</td>
+                                <td class="text-weight-lighter">{{ settings.phone }}</td>
+                            </tr>
+                            {% endif %}
+                            {% if section.settings.location_enabled %}
+                            <tr class="location-table-row">
+                                <td class="text-weight-lighter">Location:</td>
+                                <td class="text-weight-lighter">{{ settings.location }}
+                                  <a class="check-direction-link text-{{ settings.default_style_mode }}-text text-weight-lighter" href="#"><br>(Check direction)<br><br></a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if store_hours_first_line_size > 0 %}
+                            <tr class="store-hours-first-row">
+                                <td class="text-weight-lighter" {% if store_hours_first_line_array[1] == blank %}colspan="2"{% endif %}>{{ store_hours_first_line_array[0] }}</td>
+                                <td class="text-weight-lighter">{{ store_hours_first_line_array[1] }}</td>
+                            </tr>
+                            {% endif %}
 
+                            {% if store_hours_second_line_size > 0 %}
+                            <tr class="store-hours-second-row">
+                                <td class="text-weight-lighter" {% if store_hours_second_line_array[1] == blank %}colspan="2"{% endif %}>{{ store_hours_second_line_array[0] }}</td>
+                                <td class="text-weight-lighter">{{ store_hours_second_line_array[1] }}</td>
+                            </tr>
+                            {% endif %}
+
+                            {% if store_hours_third_line_size > 0 %}
+                            <tr class="store-hours-third-row">
+                                <td class="text-weight-lighter" {% if store_hours_third_line_array[1] == blank %}colspan="2"{% endif %}>{{ store_hours_third_line_array[0] }}</td>
+                                <td class="text-weight-lighter">{{ store_hours_third_line_array[1] }}</td>
+                            </tr>
+                            {% endif %}
+
+                            {% if store_hours_fourth_line_size > 0 %}
+                            <tr class="store-hours-fourth-row">
+                                <td class="text-weight-lighter" {% if store_hours_fourth_line_array[1] == blank %}colspan="2"{% endif %}>{{ store_hours_fourth_line_array[0] }}</td>
+                                <td class="text-weight-lighter">{{ store_hours_fourth_line_array[1] }}</td>
+                            </tr>
+                            {% endif %}
+
+                            {% if store_hours_fifth_line_size > 0 %}
+                            <tr class="store-hours-fifth-row">
+                                <td class="text-weight-lighter" {% if store_hours_fifth_line_array[1] == blank %}colspan="2"{% endif %}>{{ store_hours_fifth_line_array[0] }}</td>
+                                <td class="text-weight-lighter">{{ store_hours_fifth_line_array[1] }}</td>
+                            </tr>
+                            {% endif %}
+
+                            {% if store_hours_sixth_line_size > 0 %}
+                            <tr class="store-hours-sixth-row">
+                                <td class="text-weight-lighter" {% if store_hours_sixth_line_array[1] == blank %}colspan="2"{% endif %}>{{ store_hours_sixth_line_array[0] }}</td>
+                                <td class="text-weight-lighter">{{ store_hours_sixth_line_array[1] }}</td>
+                            </tr>
+                            {% endif %}
+
+                            {% if store_hours_seventh_line_size > 0 %}
+                            <tr class="store-hours-seventh-row">
+                                <td class="px-0 text-weight-lighter" {% if store_hours_seventh_line_array[1] == blank %}colspan="2"{% endif %}>{{ store_hours_seventh_line_array[0] }}</td>
+                                <td class="px-0">{{ store_hours_seventh_line_array[1] }}</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                <a class="btn bg-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text btn" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+            </div>
+        </div>
+        <div class="restaurant-map-wrapper col col-12 col-md-6">
+          {% form 'contact' %}
+            {% for block in section.blocks %}
+              {% if block.type != 'left_text' %}
+                {% if block.settings.input_type == 'text' or block.settings.input_type == 'phone' or block.settings.input_type == 'email' or block.settings.input_type == 'url' or block.settings.input_type == 'date' or block.settings.input_type == 'datetime-local' %}
+                <div class="form-group d-flex align-items-end">
+                  {% if block.settings.input_label != '' %}
+                  <label for="{{ block.settings.input_id }}" class="col-auto col-form-label pl-0">{{ block.settings.input_label }}</label>
+                  {% endif %}
+                  <input id="{{ block.settings.input_id }}" name="{{ block.settings.input_name }}" class="form-control custom px-0 py-4 mt-3" type="{{ block.settings.input_type }}" placeholder="{{ block.settings.placeholder }}">
+                </div>
+                {% endif %}
+                {% if block.settings.input_type == 'textarea' %}
+                <div class="form-group d-flex align-items-end">
+                  <textarea id="{{ block.settings.id }}" name="{{ block.settings.name }}" class="form-control custom px-0 py-4 mt-2" rows="5" placeholder="{{ block.settings.placeholder }}"></textarea>
+                </div>
+                {% endif %}
+                {% if block.settings.input_type == 'select' %}
+                <div class="form-group d-flex align-items-end">
+                  {% if block.settings.input_label != '' %}
+                  <label for="{{ block.settings.input_id }}"  class="col-auto col-form-label pl-0">{{ block.settings.input_label }}</label>
+                  {% endif %}
+                  <select id="{{ block.settings.input_id }}" name="{{ block.settings.input_name }}" class="form-control custom px-0 mt-3">
+                    <option value="" disabled selected hidden>{{ block.settings.placeholder }}</option>
+                    {% assign options = block.settings.select_options | split: ',' %}
+                    {% for option in options %}
+                    <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                  </select>
+                  <style>
+                    input[type="datetime-local"][value=""],
+                    select[value=""]{
+                      color: lightgray;
+                    }
+                    option{
+                      color: black;
+                    }
+                  </style>
+                </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            <button class="btn btn-{{ settings.default_style_mode }}-filled-btn text-{{ settings.default_style_mode }}-filled-btn-text px-4 mt-4 float-right" type="submit">
+              {{ section.settings.submit_button_text }}
+            </button>
+          {% endform %}
+        </div>
     </div>
   </div>
 </div>

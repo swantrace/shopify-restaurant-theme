@@ -1,18 +1,16 @@
 <div  class="section-inner-wrapper bg-{{ settings.default_style_mode }} py-50">
   <div class="container text-{{ settings.default_style_mode }}-text ">
     <div class="row align-items-md-start">
-      <div class="col-12 col-md-2" style="position: sticky; top: 0;">
-        <ul class="nav flex-md-column" id="category-list">
-          {% render 'collection-navigation' %}
-        </ul>
+      <div class="col-12 col-md-2" style="position: sticky; top: 0; z-index: 999;">
+        {% render 'collection-navigation' %}
       </div>
       <div class="col-12 col-md-10">
         {% if collection.handle == 'all' %}
           {% render 'collection-tags' %}
-          {% render 'menu-collections' %}
+          {% render 'menu-collections', image_position: section.settings.image_position %}
         {% else %}
           {% paginate collection.products by 5 %}
-            {% render 'single-collection', collection: collection %}
+            {% render 'single-collection', collection: collection, image_position: section.settings.image_position %}
             {% if paginate.pages > 1 %}
               {% render 'pagination-custom', paginate: paginate %}
             {% endif %}
@@ -73,14 +71,25 @@
     height: 0.05rem;
   }
 
-  #collection-navigation {
-    height: 100px;
+  @media(min-width: 992px) {
+
   }
+
+  @media(max-width: 991.98px) {
+    #collection-navigation {
+      background: black;
+    }
+    #collection-navigation  .collection-titles {
+      overflow-y: scroll; 
+      flex-wrap: nowrap;
+    }
+  }
+
 
   #collection-navigation:before {
     content: "";
-    position: absolute;
     color: white;
+    position: absolute;
     top: 0;
     width: 100px;
     border-top: 1px solid white;
@@ -88,8 +97,8 @@
 
   #collection-navigation:after {
     content: "";
-    position: absolute;
     color: white;
+    position: absolute;
     bottom: 0;
     width: 100px;
     border-top: 1px solid white;
