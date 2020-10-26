@@ -1,6 +1,6 @@
-<div class="product-grid col-12 col-sm-12 col-md-6 d-flex pb-20 flex-wrap" data-product="{{ product | json | escape }}" data-options-with-values="{{ product.options_with_values | json | escape }}">
+<div class="product-grid col-12 col-sm-12 col-lg-6 d-flex pb-20 flex-wrap" data-product="{{ product | json | escape }}" data-options-with-values="{{ product.options_with_values | json | escape }}">
   <div class="col-4 p-0{% if image_position == 'left' %} order-first{% else %} order-last{% endif %}">
-    <img class="img-fluid product-img" src="{{ product.featured_image | default: collection.image | img_url: '200x' | crop: 'center'}}" />
+    <img class="img-fluid product-img" src="{{ product.featured_image | default: collection.image | img_url: '200x250' , crop: 'center'}}" />
   </div>
   <div class="col-8">
     <h6 class="product-title mb-5">{{ product.title }}</h6>

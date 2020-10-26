@@ -1,10 +1,10 @@
-<div  class="section-inner-wrapper bg-{{ settings.default_style_mode }} py-50">
+<div  class="section-inner-wrapper bg-{{ settings.default_style_mode }} py-10 py-lg-50">
   <div class="container text-{{ settings.default_style_mode }}-text ">
     <div class="row align-items-md-start">
-      <div class="col-12 col-md-2" style="position: sticky; top: 0; z-index: 9;">
+      <div class="col-12 col-lg-2" style="position: sticky; top: 0; z-index: 9;">
         {% render 'collection-navigation' %}
       </div>
-      <div class="col-12 col-md-10">
+      <div class="col-12 col-lg-10">
         {% if collection.handle == 'all' %}
           {% render 'collection-tags' %}
           {% render 'menu-collections', image_position: section.settings.image_position %}
@@ -48,13 +48,6 @@
     margin-right: 6px;
   }
 
-  .product-img{
-    max-height: 180px;
-    object-position: center center;
-    height: 100%;
-    object-fit: cover; 
-  }
-
   .onsale-price .current-variant-compare-at-price{
     text-decoration: line-through;
   }
@@ -71,13 +64,33 @@
     height: 0.05rem;
   }
 
-  @media(min-width: 992px) {
+  .product-img{
+    height: 190px;
+    width: 100%;
+    object-position: center center;
+    object-fit: cover; 
+  }
 
+  @media(min-width: 992px) {
+    .bg-dark #collection-navigation:before, .bg-dark #collection-navigation:after {
+    border-top: 1px solid white;
+  }
+
+
+    .bg-light #collection-navigation:before, .bg-light #collection-navigation:after {
+      border-top: 1px solid black;
+    }
   }
 
   @media(max-width: 991.98px) {
+
+  .product-img{
+  height: 220px;
+  width: 240px;
+}
+
     #collection-navigation {
-      background: grey;
+      background: #e6e6e6;
     }
     #collection-navigation  .collection-titles {
       overflow-y: scroll; 
@@ -104,14 +117,7 @@
     width: 100px;
   }
 
-  .bg-dark #collection-navigation:before, .bg-dark #collection-navigation:after {
-    border-top: 1px solid white;
-  }
 
-  
-  .bg-light #collection-navigation:before, .bg-light #collection-navigation:after {
-    border-top: 1px solid black;
-  }
 </style>
 
 

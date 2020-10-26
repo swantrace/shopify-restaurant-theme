@@ -47,14 +47,14 @@ function collectionItem({
       }
     );
   };
-  return html`<h4 class="collection-name text-center py-20">
+  return html`<h4 class="collection-name text-center py-10 py-lg-20">
       ${collectionTitle}
     </h4>
     <div class="row">
       ${collection.products &&
       collection.products.map(
         (product) => html`<div
-          class="product-grid col-12 col-sm-12 col-md-6 d-flex pb-20 flex-wrap"
+          class="product-grid col-12 col-sm-12 col-lg-6 d-flex pb-20 flex-wrap"
           @click=${(e) => {
             handleClick(product, e);
           }}
@@ -65,7 +65,7 @@ function collectionItem({
             <img
               class="img-fluid product-img"
               src=${product.featured_image &&
-              product.featured_image.replace('.jpg', '_200x.jpg')}
+              product.featured_image.replace('.jpg', '_200x250.jpg')}
             />
           </div>
           <div class="col-8">
