@@ -7,7 +7,7 @@
 </a>
 {% endif %}
 <a class="nav-link" href="{{ routes.cart_url }}">
-    <i aria-hidden="true" class="fas fa-shopping-cart text-{{settings.default_style_mode}}-header-text"></i>
+    <i aria-hidden="true" class="fas fa-shopping-cart text-{{settings.default_style_mode}}-header-text" data-cart-count="{{ cart.item_count }}"></i>
 </a>
 <a class="nav-link" href="{{ routes.search_url }}">
     <i aria-hidden="true" class="fa fa-search text-{{settings.default_style_mode}}-header-text"></i>

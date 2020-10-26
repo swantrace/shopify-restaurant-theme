@@ -74,7 +74,7 @@
           "disable_on_tablet": false,
           "disable_on_desktop": false,
           "custom_classes": "",
-          "logo_img": "shopify:\/\/shop_images\/logo_300x_daa92c44-083b-4dae-9196-9c0123238703.png",
+          "logo_img": "shopify://shop_images/logo_300x_daa92c44-083b-4dae-9196-9c0123238703.png",
           "nav_menu": "main-menu",
           "style_for_desktop": "styleB",
           "style_for_mobile": "styleA",
@@ -161,7 +161,7 @@
           "disable_on_tablet": false,
           "disable_on_desktop": false,
           "section_title": "Subscribe to our newsletter",
-          "subheading": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>",
+          "subheading": "<p>Promotions, new products and sales. Directly to your inbox.</p>",
           "button_label": ""
         }
       },
@@ -201,7 +201,7 @@
           "disable_on_mobile": false,
           "disable_on_tablet": false,
           "disable_on_desktop": false,
-          "video_link": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+          "video_link": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
           "video_position": "left",
           "first_button_label": "",
           "second_button_label": "",
@@ -272,7 +272,7 @@
           "disable_on_tablet": false,
           "disable_on_desktop": false,
           "custom_classes": "",
-          "custom-html": "<p>This is a custom html section<\/p>"
+          "custom-html": "<p>This is a custom html section</p>"
         }
       }
     },
@@ -333,9 +333,7 @@
       "checkout_button_color": "#0081a3",
       "checkout_error_color": "#e42c00",
       "collections_center_grid_link": false,
-      "content_for_index": [
-
-      ]
+      "content_for_index": []
     },
     "Fashion": {
       "enable_wide_layout": true,
@@ -368,9 +366,7 @@
       "checkout_accent_color": "#e42c00",
       "checkout_button_color": "#e42c00",
       "checkout_error_color": "#e42c00",
-      "content_for_index": [
-
-      ]
+      "content_for_index": []
     },
     "Modern": {
       "enable_wide_layout": false,
@@ -412,9 +408,7 @@
       "checkout_button_color": "#e42c00",
       "checkout_error_color": "#e42c00",
       "collections_center_grid_link": false,
-      "content_for_index": [
-
-      ]
+      "content_for_index": []
     }
   }
 }

@@ -16,6 +16,7 @@ function collectionItem({
   collectionTitle = '',
   dataTag = '',
   dataStyle = 'light',
+  dataImagePosition = 'left',
 }) {
   const [collection, setCollection] = useState({});
   useEffect(() => {
@@ -58,7 +59,9 @@ function collectionItem({
             handleClick(product, e);
           }}
         >
-          <div class="col-4 p-0">
+          <div
+            class="col-4 p-0 ${dataImagePosition === 'right' ? 'order-1' : ''}"
+          >
             <img
               class="img-fluid product-img"
               src=${product.featured_image &&
@@ -103,7 +106,7 @@ function collectionItem({
               )}
             </div>
           </div>
-          <hr class="divider" />
+          <div class="col-12 order-1"><hr class="divider" /></div>
         </div>`
       )}
     </div>`;
@@ -118,6 +121,7 @@ customElements.define(
       'collection-title',
       'data-tag',
       'data-style',
+      'data-image-position',
     ],
   })
 );

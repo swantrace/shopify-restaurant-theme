@@ -115,6 +115,29 @@
   .mobile_style_b .header_navbar-nav-bottom-icons-wrapper {
     background: white;
   }
+
+  a[href="/cart"] {
+    position: relative;
+  }
+
+  i.fas.fa-shopping-cart:after {
+    display: block;
+    height: 22px;
+    min-width: 22px;
+    padding: 3px;
+    font-size: 0.6875rem;
+    line-height: 12px;
+    color: #1a390c;
+    text-align: center;
+    text-decoration: none;
+    background-color: #ffab41;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    content: attr(data-cart-count);
+    position: absolute;
+    top: 0px;
+    left: 18px;
+  }
 </style>
 
 {% schema %}
