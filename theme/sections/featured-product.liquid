@@ -33,7 +33,7 @@
     border: none;
   }
 
-.featured-badge, .featured-badge-style-c{
+  #shopify-section-{{ section.id }} .featured-badge, .featured-badge-style-c{
   background-color: #E54A55;
   padding: 4px;
   width: 100px;
@@ -44,12 +44,12 @@
   z-index: 100;
 }
 
-.desktop_style_a .featured-badge 
+#shopify-section-{{ section.id }} .desktop_style_a .featured-badge 
 {
   top: 15%;
 }
 
-.featured-badge{
+#shopify-section-{{ section.id }} .featured-badge{
   left: 0;
   border-bottom-right-radius: 20px;
   top: 0;
@@ -69,7 +69,7 @@
     background-color: rgba(255, 255, 255, 0.3);
     padding: 16px 16px;
   }
-  
+
     .desktop_style_b .featured-badge {
       top: 0;
       transform: scale(1, calc(10/7));
