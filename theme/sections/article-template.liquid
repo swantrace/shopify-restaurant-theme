@@ -1,0 +1,58 @@
+{% paginate article.comments by 5 %}
+
+
+
+<div class="grid" data-section-id="{{ section.id }}" data-section-type="article-template">
+
+  <article class="grid__item post-large--four-fifths" itemscope itemtype="http://schema.org/Article">
+
+    <div class="grid">
+      <div class="grid__item post-large--ten-twelfths">
+
+        <header class="section-header">
+          <h1 class="section-header__title">{{ article.title }}</h1>
+        </header>
+
+        <p>
+          <time datetime="{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}">{{ article.published_at | date: format: 'date' }}</time>
+          {% if section.settings.article_author_enable %}
+            <span class="meta-sep">&#8226;</span>
+            {{ article.author }}
+          {% endif %}
+          {% if article.tags.size > 0 %}
+            <span class="meta-sep">&#8226;</span>
+            {% for tag in article.tags %}
+              <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %} <span class="meta-sep">&#8226;</span> {% endunless %}
+            {% endfor %}
+          {% endif %}
+        </p>
+
+        <div class="rte" itemprop="articleBody">
+          {{ article.content }}
+        </div>
+
+
+        {% comment %}
+          Create links to the next and previous articles, if available.
+        {% endcomment %}
+        {% if blog.next_article or blog.previous_article %}
+          <hr class="hr--clear hr--small">
+          <p class="clearfix">
+            {% if blog.previous_article %}
+              <span class="left">
+                &larr; {{ 'blogs.article.older_post' | t | link_to: blog.previous_article }}
+              </span>
+            {% endif %}
+            {% if blog.next_article %}
+              <span class="right">
+                {{ 'blogs.article.newer_post' | t | link_to: blog.next_article }} &rarr;
+              </span>
+            {% endif %}
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </article>
+</div>
+
+{% endpaginate %}
