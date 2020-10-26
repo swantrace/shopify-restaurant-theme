@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { html, component, useState } from 'haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { addItemFromForm, getCart } from '../ajaxapis';
+import { submitATCForm } from './common/helper-functions';
 import { dispatchCustomEvent, formatMoney, handleize } from '../helper';
 import tagimages from '../tagimages';
 
@@ -24,7 +24,7 @@ function collectionItemModal({
     )
   );
   const [quantity, setQuantity] = useState(1);
-  const [status, setStatus] = useState('suspended'); // there should be four kinds of status, suspended, loading, success, error
+  const [status, setStatus] = useState('suspended');
   const [errorDescription, setErrorDescription] = useState('');
 
   const handleFormChange = (e) => {
@@ -71,36 +71,7 @@ function collectionItemModal({
       e.target.closest('collection-item-modal').querySelector('form');
     if (form.id) {
       e.preventDefault();
-      setStatus('loading');
-      addItemFromForm(form).then((addedItem) => {
-        if (addedItem.id) {
-          setStatus('success');
-          getCart().then((cart) => {
-            dispatchCustomEvent(form, 'cartupdated', {
-              bubbles: true,
-              composed: true,
-              detail: { cart },
-            });
-          });
-          setTimeout(() => {
-            setStatus('suspended');
-            dispatchCustomEvent(form, 'modaladdtocartfinished', {
-              bubbles: true,
-              composed: true,
-              detail: { form },
-            });
-          }, 1000);
-        }
-
-        if (addedItem.description) {
-          setStatus('error');
-          setErrorDescription(addedItem.description);
-          setTimeout(() => {
-            setErrorDescription('');
-            setStatus('suspended');
-          }, 1000);
-        }
-      });
+      submitATCForm(form, setStatus, setErrorDescription);
     }
   };
 

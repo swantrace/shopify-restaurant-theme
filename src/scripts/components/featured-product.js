@@ -2,7 +2,7 @@
 /* eslint-disable no-nested-ternary */
 import { html, component, useState } from 'haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { addItemFromForm, getCart } from '../ajaxapis';
+import { submitATCForm } from './common/helper-functions';
 import { dispatchCustomEvent, formatMoney } from '../helper';
 
 function featuredProduct({
@@ -61,31 +61,7 @@ function featuredProduct({
     if (e.target.closest('form').id) {
       e.preventDefault();
       const form = e.target.closest('form');
-      setStatus('loading');
-      addItemFromForm(form).then((addedItem) => {
-        if (addedItem.id) {
-          setStatus('success');
-          getCart().then((cart) => {
-            dispatchCustomEvent(form, 'cartupdated', {
-              bubbles: true,
-              composed: true,
-              detail: { cart },
-            });
-          });
-          setTimeout(() => {
-            setStatus('suspended');
-          }, 1000);
-        }
-
-        if (addedItem.description) {
-          setStatus('error');
-          setErrorDescription(addedItem.description);
-          setTimeout(() => {
-            setErrorDescription('');
-            setStatus('suspended');
-          }, 1000);
-        }
-      });
+      submitATCForm(form, setStatus, setErrorDescription);
     }
   };
 
@@ -94,7 +70,11 @@ function featuredProduct({
       ? 'container'
       : ''}"
   >
-    <div class="row no-gutters ${dataSectionWidth === 'container' ? 'px-10' : 'px-0'}">
+    <div
+      class="row no-gutters ${dataSectionWidth === 'container'
+        ? 'px-10'
+        : 'px-0'}"
+    >
       <div
         class="variant-image-wrapper col col-12 ${dataStyleForDesktop ===
         'styleC'
@@ -103,13 +83,15 @@ function featuredProduct({
           ? 'order-lg-first'
           : 'order-lg-last'}"
       >
-      <div class="featured-badge ${dataImagePosition === 'left'
-      ? 'img-left'
-      : 'img-right' }   ${dataStyleForDesktop === 'styleC'
-      ? 'd-lg-none'
-      : '' }  ">
-        <span class="featured-badge-text">Featured</span>
-      </div>
+        <div
+          class="featured-badge ${dataImagePosition === 'left'
+            ? 'img-left'
+            : 'img-right'}   ${dataStyleForDesktop === 'styleC'
+            ? 'd-lg-none'
+            : ''}  "
+        >
+          <span class="featured-badge-text">Featured</span>
+        </div>
         <img
           class="variant-image img-fluid w-100 h-100"
           src=${currentVariant.featured_image
@@ -131,14 +113,19 @@ function featuredProduct({
         />
       </div>
       <div
-        class="product-item-wrapper col col-12 mt-30 mt-lg-0 ${dataSectionWidth === 'container' ? '' : 'px-20'} align-self-center ${dataStyleForDesktop ===
-        'styleC'
+        class="product-item-wrapper col col-12 mt-30 mt-lg-0 ${dataSectionWidth ===
+        'container'
+          ? ''
+          : 'px-20'} align-self-center ${dataStyleForDesktop === 'styleC'
           ? 'offset-lg-6 col-lg-6 px-lg-0 px-lg-0'
           : 'col-lg-6 px-lg-30'} text-${dataStyle}-text"
       >
-        <div class="featured-badge-style-c  d-none ${dataStyleForDesktop === 'styleC'
-        ? 'd-lg-block'
-        : '' } ">
+        <div
+          class="featured-badge-style-c  d-none ${dataStyleForDesktop ===
+          'styleC'
+            ? 'd-lg-block'
+            : ''} "
+        >
           <span class="featured-badge-text">Featured</span>
         </div>
         <div

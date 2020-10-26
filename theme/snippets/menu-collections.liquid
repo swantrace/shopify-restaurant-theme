@@ -26,7 +26,6 @@
               data-extra-price="0"
             ></collection-item-modal>`;
           modalElement.addEventListener('hidden.bs.modal', function(e){
-              console.log('close:', e);
               e.target.innerHTML = '';
           })
           modalElement.addEventListener('modaladdtocartfinished', function(e){

@@ -1,8 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import { html, component, useState, useEffect } from 'haunted';
 import moment from 'moment';
-import { addItemFromForm, getCart } from '../ajaxapis';
 import { dispatchCustomEvent, formatMoney } from '../helper';
+import { submitATCForm } from './common/helper-functions';
 
 function CounterProduct({
   dataProduct,
@@ -68,31 +68,7 @@ function CounterProduct({
     if (e.target.closest('form').id) {
       e.preventDefault();
       const form = e.target.closest('form');
-      setStatus('loading');
-      addItemFromForm(form).then((addedItem) => {
-        if (addedItem.id) {
-          setStatus('success');
-          getCart().then((cart) => {
-            dispatchCustomEvent(form, 'cartupdated', {
-              bubbles: true,
-              composed: true,
-              detail: { cart },
-            });
-          });
-          setTimeout(() => {
-            setStatus('suspended');
-          }, 1000);
-        }
-
-        if (addedItem.description) {
-          setStatus('error');
-          setErrorDescription(addedItem.description);
-          setTimeout(() => {
-            setErrorDescription('');
-            setStatus('suspended');
-          }, 1000);
-        }
-      });
+      submitATCForm(form, setStatus, setErrorDescription);
     }
   };
 
@@ -110,11 +86,13 @@ function CounterProduct({
           ? 'order-lg-first'
           : 'order-lg-last'}"
       >
-      <div class="featured-badge ${dataImagePosition === 'left'
-      ? 'img-left'
-      : 'img-right' } ">
-        <span class="featured-badge-text">Featured</span>
-      </div>
+        <div
+          class="featured-badge ${dataImagePosition === 'left'
+            ? 'img-left'
+            : 'img-right'} "
+        >
+          <span class="featured-badge-text">Featured</span>
+        </div>
 
         <img
           class="variant-image img-fluid w-100 h-100"
@@ -270,14 +248,17 @@ function CounterProduct({
                   >${dataLearnMoreButtonText.toUpperCase()}</a
                 >
               </div>
-              <div
-                class="btn-group mt-10 mt-md-auto h-100"
-                role="group"
-              >
-                <button class="detail-icon btn p-0 pr-3 text-${dataStyle}-selector-icons" type="button">
+              <div class="btn-group mt-10 mt-md-auto h-100" role="group">
+                <button
+                  class="detail-icon btn p-0 pr-3 text-${dataStyle}-selector-icons"
+                  type="button"
+                >
                   <i class="fa fa-list pr-2"></i>Detail
                 </button>
-                <button class="share-icon btn p-0 text-${dataStyle}-selector-icons" type="button">
+                <button
+                  class="share-icon btn p-0 text-${dataStyle}-selector-icons"
+                  type="button"
+                >
                   <i class="fa fa-share-alt pr-2"></i>Share
                 </button>
               </div>

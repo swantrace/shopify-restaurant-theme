@@ -1,5 +1,5 @@
 import { html, component, useState } from 'haunted';
-import { useDebouncedCallback } from './custom-hooks';
+import { useDebouncedCallback } from './common/custom-hooks';
 import { getPredictiveSearchResults } from '../ajaxapis';
 
 function predictiveSearch() {

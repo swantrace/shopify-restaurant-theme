@@ -88,6 +88,7 @@ const escapeMap = {
   '"': '&#34;',
   "'": '&#39;',
 };
+
 const unescapeMap = {
   '&amp;': '&',
   '&lt;': '<',

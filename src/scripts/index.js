@@ -17,5 +17,19 @@ window.datomar = {
   apis,
   helper,
   Cookies,
-  tagimages
+  tagimages,
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('cartupdated', (event2) => {
+    const cart = event2.detail && event2.detail.cart;
+    if (cart && cart.item_count) {
+      const cartIcons = document.querySelectorAll(
+        '[data-cart-count].fas.fa-shopping-cart'
+      );
+      cartIcons.forEach((cartIcon) => {
+        cartIcon.setAttribute('data-cart-count', cart.item_count);
+      });
+    }
+  });
+});
