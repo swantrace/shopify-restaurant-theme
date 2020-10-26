@@ -1,12 +1,8 @@
-<div class="datomar">
-	<div class="container-fluid py-4">
-		<div class="d-flex flex-column">
-          <h2 class="d-block d-sm-none pt-2">{{ text_on_image }}</h2>			
-          <div class="column-height d-flex flex-column justify-content-end align-items-left" style="background: url({{ hero_image | img_url: 'master' }}) no-repeat center/cover">
-            <h2 class="text-white d-none d-sm-block pl-5 pb-4">
-              {{ text_on_image }}
-            </h2>
-          </div>
-		</div>
-	</div>
+<div class="row flex-column">
+  <h2 class="d-block d-sm-none pt-2">{{ text_on_image }}</h2>			
+  <div class="column-height d-flex flex-column justify-content-end align-items-left" style="background: url({{ hero_image | img_url: 'master' }}) no-repeat center/cover">
+    <h2 class="text-white d-none d-sm-block pl-5 pb-4">
+      {{ text_on_image }}
+    </h2>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="collection-products-wrapper row">
   {% for product in collection.products %}
-  {% render 'collection-product-item', product: product %}
+  {% render 'collection-product-item', product: product, image_position: section.settings.image_position %}
   {% endfor %}
 </div>
 <script>

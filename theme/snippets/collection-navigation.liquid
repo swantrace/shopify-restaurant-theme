@@ -1,23 +1,21 @@
-<div class="col-12 col-md-2 d-flex align-items-center justify-content-center" id="collection-navigation">
-  <div>
-    {% if collection.handle == 'all' %}
-      <ul class="collection-titles">
-        {% for collection in collections %}
-          {% unless collection.handle == 'all' %}
-            <li class="collection-link-wrapper">
-              <a href="#{{ collection.handle }}" class="collection-link">
-                {{ collection.title }}
-              </a>
-            </li>
-          {% endunless %}
-        {% endfor %}
-      </ul>
-    {% else %}
-      <a href="{{ routes.all_products_collection_url | append: '#' | append: collection.handle }}">
-        <span class="text-white">&lt;&lt;&nbsp; Go Back</span>
-      </a>
-    {% endif %}
-  </div>
+<div id="collection-navigation">
+  {% if collection.handle == 'all' %}
+    <ul class="nav flex-row flex-lg-column collection-titles">
+      {% for collection in collections %}
+        {% unless collection.handle == 'all' %}
+          <li class="collection-link-wrapper">
+            <a href="#{{ collection.handle }}" class="collection-link">
+              {{ collection.title }}
+            </a>
+          </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  {% else %}
+    <a href="{{ routes.all_products_collection_url | append: '#' | append: collection.handle }}">
+      <span class="text-white">&lt;&lt;&nbsp; Go Back</span>
+    </a>
+  {% endif %}
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", function(){
@@ -39,12 +37,13 @@
   });
 </script>
 <style>
-  .collection-titles {
-    margin-top: 1rem;
-    list-style: none;
-    padding-inline-start: 0;
-  }
 
+  li.collection-link-wrapper {
+      display: block;
+      min-width: fit-content;
+      padding: 15px 10px;
+  }
+  
   .collection-titles li a {
     color: white;
   }
