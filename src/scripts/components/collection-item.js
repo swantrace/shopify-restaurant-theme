@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-console */
 import { html, component, useState, useEffect } from 'haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -19,6 +20,7 @@ function collectionItem({
   dataImagePosition = 'left',
 }) {
   const [collection, setCollection] = useState({});
+
   useEffect(() => {
     if (collectionHandle !== '') {
       getCollectionWithProductsDetails(
@@ -47,6 +49,7 @@ function collectionItem({
       }
     );
   };
+
   return html`<h4 class="collection-name text-center py-10 py-lg-20">
       ${collectionTitle}
     </h4>
@@ -64,8 +67,11 @@ function collectionItem({
           >
             <img
               class="img-fluid product-img"
-              src=${product.featured_image &&
-              product.featured_image.replace('.jpg', '_200x250.jpg')}
+              src=${product.featured_image
+                ? product.featured_image.replace('.jpg', '_200x250.jpg')
+                : collection.image
+                ? collection.image.replace('.jpg', '_200x250.jpg')
+                : ''}
             />
           </div>
           <div class="col-8">
