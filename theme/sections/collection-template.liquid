@@ -14,9 +14,7 @@
           {% paginate collection.products by 5 %}
             {% render 'single-collection', collection: collection %}
             {% if paginate.pages > 1 %}
-              <div class="text-center pagination">
-                {{ paginate | default_pagination }}
-              </div>
+              {% render 'pagination-custom', paginate: paginate %}
             {% endif %}
           {% endpaginate %}
         {% endif %}
