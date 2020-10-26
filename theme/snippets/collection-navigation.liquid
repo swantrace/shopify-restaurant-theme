@@ -4,7 +4,7 @@
       {% for collection in collections %}
         {% unless collection.handle == 'all' %}
           <li class="collection-link-wrapper">
-            <a href="#{{ collection.handle }}" class="collection-link">
+            <a href="#{{ collection.handle }}" class="collection-link text-{{ settings.default_style_mode }}-text">
               {{ collection.title }}
             </a>
           </li>
@@ -13,7 +13,7 @@
     </ul>
   {% else %}
     <a href="{{ routes.all_products_collection_url | append: '#' | append: collection.handle }}">
-      <span class="text-white">&lt;&lt;&nbsp; Go Back</span>
+      <span class="text-{{ settings.default_style_mode }}-text">&lt;&lt;&nbsp; Go Back</span>
     </a>
   {% endif %}
 </div>
@@ -52,8 +52,13 @@
     color: red;
   }
 
-  .collection-titles a.active:before {
+  .bg-dark .collection-titles a.active:before {
     color: white;
+    content: ">>";
+  }
+
+  .bg-light .collection-titles a.active:before {
+    color: black;
     content: ">>";
   }
 </style>
