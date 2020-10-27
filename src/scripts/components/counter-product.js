@@ -1,7 +1,6 @@
 /* eslint-disable no-nested-ternary */
-import { html, component, useState, useEffect } from 'haunted';
-import moment from 'moment';
-import { useATCForm } from './common/custom-hooks';
+import { html, component } from 'haunted';
+import { useATCForm, useLeftTime } from './common/custom-hooks';
 import { formatMoney, resizeImage } from '../helper';
 
 function CounterProduct({
@@ -33,15 +32,7 @@ function CounterProduct({
     dataSelectedOrFirstAvailableVariant
   );
 
-  const deadline = moment(dataDiscountDeadline);
-  const [leftTime, setLeftTime] = useState(deadline.diff(moment()));
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setLeftTime(leftTime - 1000);
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [leftTime]);
+  const leftTime = useLeftTime(dataDiscountDeadline);
 
   return html`<div
     class="onsale-product-container ${dataSectionWidth === 'container'
@@ -103,33 +94,25 @@ function CounterProduct({
           <div class="row mb-10 justify-content-between">
             <div class="col-3">
               <div class="bg-gray2 p-5 text-${dataStyle}-text">
-                <h3 class="text-center">
-                  ${Math.floor(moment.duration(leftTime).asDays())}
-                </h3>
+                <h3 class="text-center">${leftTime.days}</h3>
                 <small class="d-block text-center">days</small>
               </div>
             </div>
             <div class="col-3">
               <div class="bg-gray2 p-5 text-${dataStyle}-text">
-                <h3 class="text-center">
-                  ${moment.duration(leftTime).hours()}
-                </h3>
+                <h3 class="text-center">${leftTime.hours}</h3>
                 <small class="d-block text-center">hours</small>
               </div>
             </div>
             <div class="col-3">
               <div class="bg-gray2 p-5 text-${dataStyle}-text">
-                <h3 class="text-center">
-                  ${moment.duration(leftTime).minutes()}
-                </h3>
+                <h3 class="text-center">${leftTime.minutes}</h3>
                 <small class="d-block text-center">minutes</small>
               </div>
             </div>
             <div class="col-3">
               <div class="bg-gray2 p-5 text-${dataStyle}-text">
-                <h3 class="text-center">
-                  ${moment.duration(leftTime).seconds()}
-                </h3>
+                <h3 class="text-center">${leftTime.seconds}</h3>
                 <small class="d-block text-center">seconds</small>
               </div>
             </div>

@@ -85,4 +85,22 @@ export function changeQuantity(e, setQuantity) {
   }
 }
 
-export default { submitATCForm, changeCurrentVariant, changeQuantity };
+export function diffToLeftTime(initialDiff) {
+  let diff = initialDiff;
+  const days = Math.floor(diff / (24 * 60 * 60 * 1000));
+  diff -= days * 24 * 60 * 60 * 1000;
+  const hours = Math.floor(diff / (60 * 60 * 1000));
+  diff -= hours * 60 * 60 * 1000;
+  const minutes = Math.floor(diff / (60 * 1000));
+  diff -= minutes * 60 * 1000;
+  const seconds = Math.floor(diff / 1000);
+  const milliseconds = diff - seconds * 1000;
+  return { days, hours, minutes, seconds, milliseconds };
+}
+
+export default {
+  submitATCForm,
+  changeCurrentVariant,
+  changeQuantity,
+  diffToLeftTime,
+};

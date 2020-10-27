@@ -3,6 +3,7 @@ import {
   submitATCForm,
   changeCurrentVariant,
   changeQuantity,
+  diffToLeftTime,
 } from './helper-functions';
 
 export function useDebouncedCallback(
@@ -256,6 +257,22 @@ export function useATCForm(
     handleQuantityInputChange,
     handleATCButtonClick,
   ];
+}
+
+export function useLeftTime(dataDiscountDeadline) {
+  const deadlineTime = Date.parse(dataDiscountDeadline);
+  const nowTime = Date.now();
+  let diff = deadlineTime - nowTime;
+  const memoizedDiffToLeftTime = useCallback(diffToLeftTime, []);
+  const [leftTime, setLeftTime] = useState(memoizedDiffToLeftTime(diff));
+  useEffect(() => {
+    const timer = setInterval(() => {
+      diff -= 1000;
+      setLeftTime(memoizedDiffToLeftTime(diff));
+    }, 1000);
+    return () => clearInterval(timer);
+  });
+  return leftTime;
 }
 
 export default { useDebouncedCallback, useATCForm };
