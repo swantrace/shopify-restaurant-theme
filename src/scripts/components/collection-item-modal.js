@@ -96,7 +96,7 @@ function collectionItemModal({
           font-size: 30px;
           cursor: pointer;
       "></i>
-      <div class="modal-body">
+      <div class="modal-body bg-${dataStyle} text-${dataStyle}-text">
         <div class="collection-item-modal-info">
           <h5 class="collection-item-modal-title">${product.title}</h5>
           <div class="collection-item-modal-description">
@@ -211,7 +211,7 @@ function collectionItemModal({
             @click=${handleATCButtonClick}
             type="submit"
             name="add"
-            class="form-control AddToCart btn btn-black"
+            class="form-control AddToCart btn btn-${dataStyle}-filled-btn text-${dataStyle}-filled-btn-text"
           >
             <span class="AddToCartText"
               >${
@@ -228,7 +228,9 @@ function collectionItemModal({
             >
           </button>
         </div>
-        <div class="w-50 text-center text-white">
+        <div class="w-50 text-center bg-${
+          dataStyle === 'light' ? 'black' : 'white'
+        } text-${dataStyle === 'light' ? 'white' : 'black'}">
           ${formatMoney(currentVariant.price * quantity + extraPrice)}
         </div>
       </div>

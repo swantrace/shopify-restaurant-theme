@@ -1,5 +1,5 @@
 <div id="collection-navigation">
-  {% if collection.handle == 'all' %}
+  {% if collection.handle == 'all' or is_menu_page == true %}
     <ul class="nav flex-row flex-lg-column collection-titles">
       {% for collection in collections %}
         {% unless collection.handle == 'all' %}

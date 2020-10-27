@@ -1,0 +1,192 @@
+{% assign collectionLinklist = linklists[page.handle] %}
+{% unless collectionLinklist == empty %}
+{% assign currentCollections = collectionLinklist.links | map: 'object' %}
+<div  class="section-inner-wrapper bg-{{ settings.default_style_mode }} py-10 py-lg-50">
+  <div class="container text-{{ settings.default_style_mode }}-text ">
+    <div class="row align-items-md-start">
+      <div class="col-12 col-lg-2" style="position: sticky; top: 0; z-index: 9;">
+        {% render 'collection-navigation', collections: currentCollections, is_menu_page: true %}
+      </div>
+      <div class="col-12 col-lg-10">
+          {% render 'collection-tags', collection: collections['all'] %}
+          {% render 'menu-collections', image_position: section.settings.image_position, collections: currentCollections %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="atcFormModal"></div>
+<style>
+
+  .product-title{
+    font-size: 1rem;
+    font-weight: 400;
+    -webkit-line-clamp: 1;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  .product-desc{
+    -webkit-line-clamp: 3;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+  }
+
+  .tags-list img{
+    margin-right: 6px;
+  }
+
+  .onsale-price .current-variant-compare-at-price{
+    text-decoration: line-through;
+  }
+
+  .onsale-price .current-variant-price, .onsale-price .fas{
+    color: #DA4551;
+  }
+
+  .divider{
+    color: #e8eff0;
+    background-color: #e8eff0;
+    border: 1px solid #e8eff0;
+    width: 3rem;
+    height: 0.05rem;
+  }
+
+  .product-img{
+    height: 190px;
+    width: 100%;
+    object-position: center center;
+    object-fit: cover; 
+  }
+
+  @media(min-width: 992px) {
+    .bg-dark #collection-navigation:before, .bg-dark #collection-navigation:after {
+    border-top: 1px solid white;
+  }
+
+
+    .bg-light #collection-navigation:before, .bg-light #collection-navigation:after {
+      border-top: 1px solid black;
+    }
+  }
+
+  @media(max-width: 991.98px) {
+
+  .product-img{
+  height: 220px;
+  width: 240px;
+}
+
+    #collection-navigation {
+      background: #e6e6e6;
+    }
+    #collection-navigation  .collection-titles {
+      overflow-y: scroll; 
+      flex-wrap: nowrap;
+    }
+  }
+
+  #collection-navigation > a {
+    display: block;
+  }
+
+
+  #collection-navigation:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+  }
+
+  #collection-navigation:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+  }
+
+
+</style>
+{% else %}
+Please make sure you've got a menu of collection links which has the same handle with this page's
+{% endunless %}
+
+{% schema %}
+{
+  "name": {
+    "en": "Collection Page"
+  },
+  "class": "collection-section",
+  "settings": [
+        {
+          "type": "header",
+          "content": {
+          "en": "Layout"
+          }
+       },
+       {
+        "type": "select",
+        "id": "image_position",
+        "label": {
+          "en": "Image position"
+        },
+        "default": "left",
+        "options": [
+          {
+            "label": {
+              "en": "Left"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Right"
+            },
+            "value": "right"
+          }
+        ]
+      },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "en": "Content alignment"
+          },
+          "default": "center",
+          "options":[
+            {
+              "label": {
+                "en": "Left"
+              },
+              "value": "left"
+            },
+            {
+              "label": {
+                "en": "Center"
+              },
+              "value": "center"
+            },
+            {
+              "label": {
+                "en": "Right"
+              },
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type":      "range",
+          "id":        "line_num",
+          "min":       1,
+          "max":        20,
+          "step":       1,
+          "label":     "Show # of Line Text for Description",
+          "default":   6
+        }
+  ]
+}
+{% endschema %}
