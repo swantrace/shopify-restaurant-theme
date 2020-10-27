@@ -5,7 +5,7 @@ import { useATCForm } from './common/custom-hooks';
 import { formatMoney, handleize, resizeImage } from '../helper';
 import tagimages from '../tagimages';
 
-function collectionItemModal({
+function productModal({
   dataProduct,
   dataSelectedOrFirstAvailableVariant,
   dataOptionsWithValues,
@@ -32,10 +32,10 @@ function collectionItemModal({
     ? 0
     : parseInt(Number(dataExtraPrice), 10);
 
-  return html`<div class="modal-dialog collection-item-modal">
-    <div class="modal-content collection-item-modal-inner product-item-wrapper">
+  return html`<div class="modal-dialog product-modal">
+    <div class="modal-content product-modal-inner product-item-wrapper">
       <img
-        class="img-fluid collection-item-modal-image"
+        class="img-fluid product-modal-image"
         src=${
           currentVariant.featured_image
             ? resizeImage(currentVariant.featured_image, '500x')
@@ -50,12 +50,12 @@ function collectionItemModal({
           cursor: pointer;
       "></i>
       <div class="modal-body bg-${dataStyle} text-${dataStyle}-text">
-        <div class="collection-item-modal-info">
-          <h5 class="collection-item-modal-title">${product.title}</h5>
-          <div class="collection-item-modal-description">
+        <div class="product-modal-info">
+          <h5 class="product-modal-title">${product.title}</h5>
+          <div class="product-modal-description">
             ${unsafeHTML(product.description)}
           </div>
-          <div class="collection-item-modal-tags">
+          <div class="product-modal-tags">
             ${product.tags.map(
               (tag) =>
                 html`${tagimages[
@@ -70,7 +70,7 @@ function collectionItemModal({
                   : html``}`
             )}
           </div>
-          <div class="collection-item-modal-price">
+          <div class="product-modal-price">
             ${
               currentVariant.compare_at_price > currentVariant.price
                 ? html`<div class="onsale-price">
@@ -195,8 +195,8 @@ function collectionItemModal({
 }
 
 customElements.define(
-  'collection-item-modal',
-  component(collectionItemModal, {
+  'product-modal',
+  component(productModal, {
     useShadowDOM: false,
     observedAttributes: [
       'data-product',

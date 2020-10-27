@@ -13,7 +13,7 @@ import {
 import { getCollectionWithProductsDetails } from '../ajaxapis';
 import tagimages from '../tagimages';
 
-function collectionItem({
+function singleCollection({
   collectionHandle = '',
   collectionTitle = '',
   dataTag = '',
@@ -120,8 +120,8 @@ function collectionItem({
 }
 
 customElements.define(
-  'collection-item',
-  component(collectionItem, {
+  'single-collection',
+  component(singleCollection, {
     useShadowDOM: false,
     observedAttributes: [
       'collection-handle',

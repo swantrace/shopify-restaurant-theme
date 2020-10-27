@@ -1,12 +1,12 @@
 {% for collection in collections %}
 {% if collection.handle != 'all' %}
 <section class="single-collection-section py-0 py-lg-20" id="{{ collection.handle }}">
-    <collection-item 
+    <single-collection 
       collection-handle="{{ collection.handle }}" 
       collection-title="{{ collection.title }}" 
       data-style="{{ settings.default_style_mode }}"
       data-image-position="{{ image_position}}"
-    ></collection-item>
+    ></single-collection>
 </section>
 {% endif %}
 {% endfor %}
@@ -19,13 +19,13 @@
       const unescape = e.detail.unescape;
       modalElement.addEventListener('show.bs.modal', function(e){
           e.target.innerHTML = `
-          <collection-item-modal
+          <product-modal
               data-product="${escape(JSON.stringify(product))}"
               data-selected-or-first-available-variant="${product.variants[0].id}"
               data-options-with-values="${escape(JSON.stringify(product.options))}"
               data-extra-price="0"
               data-style={{ settings.default_style_mode }}
-            ></collection-item-modal>`;
+            ></product-modal>`;
           modalElement.addEventListener('hidden.bs.modal', function(e){
               e.target.innerHTML = '';
           })
