@@ -1,4 +1,9 @@
-import { useRef, useCallback, useEffect, useMemo } from 'haunted';
+import { useState, useRef, useCallback, useEffect, useMemo } from 'haunted';
+import {
+  submitATCForm,
+  changeCurrentVariant,
+  changeQuantity,
+} from './helper-functions';
 
 export function useDebouncedCallback(
   func,
@@ -211,4 +216,46 @@ export function useDebouncedCallback(
   return debouncedState;
 }
 
-export default { useDebouncedCallback };
+export function useATCForm(
+  dataProduct,
+  dataOptionsWithValues,
+  dataSelectedOrFirstAvailableVariant
+) {
+  const product = JSON.parse(dataProduct);
+  const optionsWithValues = JSON.parse(dataOptionsWithValues);
+  const [currentVariant, setCurrentVariant] = useState(
+    product.variants.find(
+      (variant) =>
+        variant.id === parseInt(dataSelectedOrFirstAvailableVariant, 10)
+    )
+  );
+  const [quantity, setQuantity] = useState(1);
+  const [status, setStatus] = useState('suspended');
+  const [errorDescription, setErrorDescription] = useState('');
+
+  const handleOptionChange = (e) => {
+    changeCurrentVariant(e, optionsWithValues, product, setCurrentVariant);
+  };
+
+  const handleQuantityInputChange = (e) => {
+    changeQuantity(e, setQuantity);
+  };
+
+  const handleATCButtonClick = (e) => {
+    submitATCForm(e, setStatus, setErrorDescription);
+  };
+
+  return [
+    product,
+    optionsWithValues,
+    currentVariant,
+    quantity,
+    status,
+    errorDescription,
+    handleOptionChange,
+    handleQuantityInputChange,
+    handleATCButtonClick,
+  ];
+}
+
+export default { useDebouncedCallback, useATCForm };

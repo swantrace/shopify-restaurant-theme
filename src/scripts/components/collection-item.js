@@ -103,9 +103,9 @@ function collectionItem({
                     `${handleize(tag).replace('-', '_')}_${dataStyle}`
                   ]
                     ? html`<img
-                        src="${tagimages[
+                        src=${tagimages[
                           `${handleize(tag).replace('-', '_')}_${dataStyle}`
-                        ]}"
+                        ]}
                         width="20"
                       />`
                     : html``}`

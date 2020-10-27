@@ -1,8 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import { html, component, useState, useEffect } from 'haunted';
 import moment from 'moment';
-import { dispatchCustomEvent, formatMoney } from '../helper';
-import { submitATCForm } from './common/helper-functions';
+import { useATCForm } from './common/custom-hooks';
+import { formatMoney } from '../helper';
 
 function CounterProduct({
   dataProduct,
@@ -17,16 +17,22 @@ function CounterProduct({
   dataAddToCartButtonText = 'ADD TO CART',
   dataLearnMoreButtonText = 'LEARN MORE',
 }) {
-  const product = JSON.parse(dataProduct);
-  const optionsWithValues = JSON.parse(dataOptionsWithValues);
-  const [currentVariant, setCurrentVariant] = useState(
-    product.variants.find(
-      (variant) =>
-        variant.id === parseInt(dataSelectedOrFirstAvailableVariant, 10)
-    )
+  const [
+    product,
+    optionsWithValues,
+    currentVariant,
+    quantity,
+    status,
+    errorDescription,
+    handleOptionChange,
+    handleQuantityInputChange,
+    handleATCButtonClick,
+  ] = useATCForm(
+    dataProduct,
+    dataOptionsWithValues,
+    dataSelectedOrFirstAvailableVariant
   );
-  const [status, setStatus] = useState('suspended'); // there should be four kinds of status, suspended, loading, success, error
-  const [errorDescription, setErrorDescription] = useState('');
+
   const deadline = moment(dataDiscountDeadline);
   const [leftTime, setLeftTime] = useState(deadline.diff(moment()));
 
@@ -36,41 +42,6 @@ function CounterProduct({
     }, 1000);
     return () => clearInterval(timer);
   }, [leftTime]);
-
-  const handleOptionChange = (e) => {
-    const form = e.target.closest('form');
-    const option1 =
-      this.querySelector('select[data-option="option1"]') &&
-      this.querySelector('select[data-option="option1"]').value;
-    const option2 =
-      this.querySelector('select[data-option="option2"]') &&
-      this.querySelector('select[data-option="option2"]').value;
-    const option3 =
-      this.querySelector('select[data-option="option3"]') &&
-      this.querySelector('select[data-option="option3"]').value;
-    const cVariant = product.variants.find(
-      (variant) =>
-        variant.option1 === option1 &&
-        variant.option2 === option2 &&
-        variant.option3 === option3
-    );
-
-    setCurrentVariant(cVariant);
-
-    dispatchCustomEvent(form, 'variantchanged', {
-      bubbles: true,
-      composed: true,
-      detail: { currentVariant: cVariant, formatMoney },
-    });
-  };
-
-  const handleATCButtonClick = (e) => {
-    if (e.target.closest('form').id) {
-      e.preventDefault();
-      const form = e.target.closest('form');
-      submitATCForm(form, setStatus, setErrorDescription);
-    }
-  };
 
   return html`<div
     class="onsale-product-container ${dataSectionWidth === 'container'
@@ -215,7 +186,9 @@ function CounterProduct({
                 class="form-control quantity_input bg-${dataStyle}-selector text-${dataStyle}-text font-weight-bold"
                 name="quantity"
                 type="number"
-                value="1"
+                value=${quantity}
+                @change=${handleQuantityInputChange}
+                min="0"
                 step="1"
               />
             </div>

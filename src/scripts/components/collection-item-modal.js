@@ -1,82 +1,39 @@
 /* eslint-disable no-nested-ternary */
-import { html, component, useState } from 'haunted';
+import { html, component } from 'haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { submitATCForm } from './common/helper-functions';
-import { dispatchCustomEvent, formatMoney, handleize } from '../helper';
+import { useATCForm } from './common/custom-hooks';
+import { formatMoney, handleize } from '../helper';
 import tagimages from '../tagimages';
 
 function collectionItemModal({
   dataProduct,
   dataSelectedOrFirstAvailableVariant,
   dataOptionsWithValues,
-  dataExtraPrice,
   dataStyle = 'light',
+  dataExtraPrice,
 }) {
-  const product = JSON.parse(dataProduct);
-  const optionsWithValues = JSON.parse(dataOptionsWithValues);
+  const [
+    product,
+    optionsWithValues,
+    currentVariant,
+    quantity,
+    status,
+    errorDescription,
+    handleOptionChange,
+    handleQuantityInputChange,
+    handleATCButtonClick,
+  ] = useATCForm(
+    dataProduct,
+    dataOptionsWithValues,
+    dataSelectedOrFirstAvailableVariant
+  );
+
   const extraPrice = Number.isNaN(Number(dataExtraPrice))
     ? 0
     : parseInt(Number(dataExtraPrice), 10);
-  const [currentVariant, setCurrentVariant] = useState(
-    product.variants.find(
-      (variant) =>
-        variant.id === parseInt(dataSelectedOrFirstAvailableVariant, 10)
-    )
-  );
-  const [quantity, setQuantity] = useState(1);
-  const [status, setStatus] = useState('suspended');
-  const [errorDescription, setErrorDescription] = useState('');
-
-  const handleFormChange = (e) => {
-    if (e.target.name === 'quantity') {
-      const quantityInput = e.target;
-      setQuantity(quantityInput.value);
-    } else {
-      const form = e.target.closest('form');
-      let option1 = null;
-      let option2 = null;
-      let option3 = null;
-      optionsWithValues.forEach((option) => {
-        if (option.position === 1) {
-          option1 = form[option.name].value;
-        }
-        if (option.position === 2) {
-          option2 = form[option.name].value;
-        }
-        if (option.position === 3) {
-          option3 = form[option.name].value;
-        }
-      });
-
-      const cVariant = product.variants.find(
-        (variant) =>
-          variant.option1 === option1 &&
-          variant.option2 === option2 &&
-          variant.option3 === option3
-      );
-
-      setCurrentVariant(cVariant);
-
-      dispatchCustomEvent(form, 'variantchanged', {
-        bubbles: true,
-        composed: true,
-        detail: { currentVariant: cVariant, formatMoney },
-      });
-    }
-  };
-
-  const handleATCButtonClick = (e) => {
-    const form =
-      e.target.closest('collection-item-modal') &&
-      e.target.closest('collection-item-modal').querySelector('form');
-    if (form.id) {
-      e.preventDefault();
-      submitATCForm(form, setStatus, setErrorDescription);
-    }
-  };
 
   return html`<div class="modal-dialog collection-item-modal">
-    <div class="modal-content collection-item-modal-inner">
+    <div class="modal-content collection-item-modal-inner product-item-wrapper">
       <img
         class="img-fluid collection-item-modal-image"
         src=${
@@ -109,9 +66,9 @@ function collectionItemModal({
                   `${handleize(tag).replace('-', '_')}_${dataStyle}`
                 ]
                   ? html`<img
-                      src="${tagimages[
+                      src=${tagimages[
                         `${handleize(tag).replace('-', '_')}_${dataStyle}`
-                      ]}"
+                      ]}
                       width="20"
                     />`
                   : html``}`
@@ -143,13 +100,12 @@ function collectionItemModal({
             accept-charset="UTF-8"
             class="shopify-product-form"
             enctype="multipart/form-data"
-            @change=${handleFormChange}
           >
             <input type="hidden" name="form_type" value="product" />
             <input type="hidden" name="utf8" value="✓" />
             <input
               name="id"
-              value="${currentVariant && currentVariant.id}"
+              value=${currentVariant && currentVariant.id}
               type="hidden"
             />
 
@@ -173,6 +129,7 @@ function collectionItemModal({
                           )}"
                           name=${option.name}
                           value=${value}
+                          @change=${handleOptionChange}
                           class="custom-control-input"
                           ?checked=${currentVariant[
                             `option${option.position}`
@@ -194,7 +151,9 @@ function collectionItemModal({
                 class="form-control quantity_input"
                 name="quantity"
                 type="number"
-                value="${quantity}"
+                value=${quantity}
+                @change=${handleQuantityInputChange}
+                min="0"
                 step="1"
               />
             </div>
