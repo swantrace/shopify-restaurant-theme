@@ -118,6 +118,10 @@ export function handleize(str) {
     .replace(/[\u0300-\u036f]/g, '');
 }
 
+export function resizeImage(url, size) {
+  return url.replace('.jpg', `_${size}.jpg`).replace('.png', `_${size}.png`);
+}
+
 export default {
   attributeToString,
   toggleClass,
@@ -129,4 +133,5 @@ export default {
   escape,
   unescape,
   handleize,
+  resizeImage,
 };

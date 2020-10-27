@@ -3,7 +3,7 @@
 import { html, component } from 'haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { useATCForm } from './common/custom-hooks';
-import { formatMoney } from '../helper';
+import { formatMoney, resizeImage } from '../helper';
 
 function featuredProduct({
   dataProduct,
@@ -66,19 +66,11 @@ function featuredProduct({
           class="variant-image img-fluid w-100 h-100"
           src=${currentVariant.featured_image
             ? dataStyleForDesktop === 'styleC'
-              ? currentVariant.featured_image
-                  .replace('.jpg', '_1680x1050.jpg')
-                  .replace('.png', '_1680x1050.png')
-              : currentVariant.featured_image
-                  .replace('.jpg', '_960x832.jpg')
-                  .replace('.png', '_960x832.png')
+              ? resizeImage(currentVariant.featured_image, '1680x1050')
+              : resizeImage(currentVariant.featured_image, '960x832')
             : dataStyleForDesktop === 'styleC'
-            ? product.featured_image
-                .replace('.jpg', '_1680x960.jpg')
-                .replace('.png', '_1680x960.png')
-            : product.featured_image
-                .replace('.jpg', '_960x832.jpg')
-                .replace('.png', '_960x832.png')}
+            ? resizeImage(product.featured_image, '1680x960')
+            : resizeImage(product.featured_image, '960x832')}
           style="object-fit: cover; object-position: center center;"
         />
       </div>

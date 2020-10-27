@@ -8,6 +8,7 @@ import {
   unescape,
   formatMoney,
   handleize,
+  resizeImage,
 } from '../helper';
 import { getCollectionWithProductsDetails } from '../ajaxapis';
 import tagimages from '../tagimages';
@@ -68,9 +69,9 @@ function collectionItem({
             <img
               class="img-fluid product-img"
               src=${product.featured_image
-                ? product.featured_image.replace('.jpg', '_200x250.jpg')
+                ? resizeImage(product.featured_image, '200x250')
                 : collection.image
-                ? collection.image.replace('.jpg', '_200x250.jpg')
+                ? resizeImage(collection.image, '200x250')
                 : ''}
             />
           </div>

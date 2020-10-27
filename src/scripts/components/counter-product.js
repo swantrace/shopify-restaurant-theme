@@ -2,7 +2,7 @@
 import { html, component, useState, useEffect } from 'haunted';
 import moment from 'moment';
 import { useATCForm } from './common/custom-hooks';
-import { formatMoney } from '../helper';
+import { formatMoney, resizeImage } from '../helper';
 
 function CounterProduct({
   dataProduct,
@@ -68,12 +68,8 @@ function CounterProduct({
         <img
           class="variant-image img-fluid w-100 h-100"
           src=${currentVariant.featured_image
-            ? currentVariant.featured_image
-                .replace('.jpg', '_1200X800.jpg')
-                .replace('.png', '_1200x800.png')
-            : product.featured_image
-                .replace('.jpg', '_1200X800.jpg')
-                .replace('.png', '_1200X800.png')}
+            ? resizeImage(currentVariant.featured_image, '1200x800')
+            : resizeImage(product.featured_image, '1200x800')}
         />
       </div>
       <div

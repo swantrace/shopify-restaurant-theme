@@ -2,7 +2,7 @@
 import { html, component } from 'haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { useATCForm } from './common/custom-hooks';
-import { formatMoney, handleize } from '../helper';
+import { formatMoney, handleize, resizeImage } from '../helper';
 import tagimages from '../tagimages';
 
 function collectionItemModal({
@@ -38,12 +38,8 @@ function collectionItemModal({
         class="img-fluid collection-item-modal-image"
         src=${
           currentVariant.featured_image
-            ? currentVariant.featured_image
-                .replace('.jpg', '_500x.jpg')
-                .replace('.png', '_500x.png')
-            : product.featured_image
-                .replace('.jpg', '_500x.jpg')
-                .replace('.png', '_500x.png')
+            ? resizeImage(currentVariant.featured_image, '500x')
+            : resizeImage(product.featured_image, '500x')
         }
       />
       <i class="fas fa-times modal-close-icon" data-dismiss="modal" style="
