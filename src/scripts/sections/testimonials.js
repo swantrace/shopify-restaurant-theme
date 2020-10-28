@@ -1,6 +1,6 @@
 import Glider from 'glider-js';
-// code for testimonials
-window.addEventListener('load', function setupTestimonialSlider() {
+
+export default function preapreTestimonials() {
   if (document.querySelector('.glider')) {
     // eslint-disable-next-line no-new
     new Glider(document.querySelector('.glider'), {
@@ -39,4 +39,4 @@ window.addEventListener('load', function setupTestimonialSlider() {
       ],
     });
   }
-});
+}

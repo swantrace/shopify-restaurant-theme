@@ -3,7 +3,7 @@
 import { html, component } from 'haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { useATCForm } from './common/custom-hooks';
-import { formatMoney, resizeImage } from '../helper';
+import { formatMoney, resizeImage } from '../general/helper';
 
 function featuredProduct({
   dataProduct,
@@ -28,7 +28,8 @@ function featuredProduct({
   ] = useATCForm(
     dataProduct,
     dataOptionsWithValues,
-    dataSelectedOrFirstAvailableVariant
+    dataSelectedOrFirstAvailableVariant,
+    this.tagName
   );
 
   if (dataStyleForDesktop === 'styleC') {

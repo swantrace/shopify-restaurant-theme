@@ -10,22 +10,3 @@
     </select>
   </div>
 {%- endif -%}
-
-<script>
-  window.addEventListener("load", function(){
-    const filterBy = document.getElementById("FilterBy");
-    filterBy.addEventListener("change", function(e){
-      const value = e.target.value;
-      const collectionItems = document.querySelectorAll('collection-item');
-      if(value === ''){
-        collectionItems.forEach((collectionItem) => {
-          collectionItem.removeAttribute('data-tag');
-        });
-      } else {
-        collectionItems.forEach((collectionItem) => {
-          collectionItem.setAttribute('data-tag', value);
-        });
-      }
-    })
-  })
-</script>

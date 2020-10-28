@@ -122,6 +122,32 @@ export function resizeImage(url, size) {
   return url.replace('.jpg', `_${size}.jpg`).replace('.png', `_${size}.png`);
 }
 
+export function docReady(fn) {
+  if (
+    document.readyState === 'complete' ||
+    document.readyState === 'interactive'
+  ) {
+    setTimeout(fn, 1);
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+export function winLoad(fn) {
+  if (document.readyState === 'complete') {
+    setTimeout(fn, 1);
+  } else {
+    window.addEventListener('load', fn);
+  }
+}
+
+export function empty(elem) {
+  while (elem.hasChildNodes()) {
+    elem.removeChild(elem.lastChild);
+  }
+  return elem;
+}
+
 export default {
   attributeToString,
   toggleClass,
@@ -134,4 +160,7 @@ export default {
   unescape,
   handleize,
   resizeImage,
+  docReady,
+  winLoad,
+  empty,
 };

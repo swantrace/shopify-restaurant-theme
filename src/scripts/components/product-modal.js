@@ -2,8 +2,8 @@
 import { html, component } from 'haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { useATCForm } from './common/custom-hooks';
-import { formatMoney, handleize, resizeImage } from '../helper';
-import tagimages from '../tagimages';
+import { formatMoney, handleize, resizeImage } from '../general/helper';
+import tagimages from '../general/tagimages';
 
 function productModal({
   dataProduct,
@@ -25,7 +25,8 @@ function productModal({
   ] = useATCForm(
     dataProduct,
     dataOptionsWithValues,
-    dataSelectedOrFirstAvailableVariant
+    dataSelectedOrFirstAvailableVariant,
+    this.tagName
   );
 
   const extraPrice = Number.isNaN(Number(dataExtraPrice))

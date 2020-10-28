@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { html, component } from 'haunted';
 import { useATCForm, useLeftTime } from './common/custom-hooks';
-import { formatMoney, resizeImage } from '../helper';
+import { formatMoney, resizeImage } from '../general/helper';
 
 function CounterProduct({
   dataProduct,
@@ -29,7 +29,8 @@ function CounterProduct({
   ] = useATCForm(
     dataProduct,
     dataOptionsWithValues,
-    dataSelectedOrFirstAvailableVariant
+    dataSelectedOrFirstAvailableVariant,
+    this.tagName
   );
 
   const leftTime = useLeftTime(dataDiscountDeadline);

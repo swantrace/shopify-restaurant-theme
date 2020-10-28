@@ -220,7 +220,8 @@ export function useDebouncedCallback(
 export function useATCForm(
   dataProduct,
   dataOptionsWithValues,
-  dataSelectedOrFirstAvailableVariant
+  dataSelectedOrFirstAvailableVariant,
+  tagName
 ) {
   const product = JSON.parse(dataProduct);
   const optionsWithValues = JSON.parse(dataOptionsWithValues);
@@ -243,7 +244,7 @@ export function useATCForm(
   };
 
   const handleATCButtonClick = (e) => {
-    submitATCForm(e, setStatus, setErrorDescription);
+    submitATCForm(e, setStatus, setErrorDescription, tagName);
   };
 
   return [

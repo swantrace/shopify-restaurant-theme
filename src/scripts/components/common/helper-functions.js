@@ -1,8 +1,10 @@
-import { addItemFromForm, getCart } from '../../ajaxapis';
-import { dispatchCustomEvent } from '../../helper';
+import { addItemFromForm, getCart } from '../../general/ajaxapis';
+import { dispatchCustomEvent } from '../../general/helper';
 
-export function submitATCForm(e, setStatus, setErrorDescription) {
-  const form = e.target.closest('form');
+export function submitATCForm(e, setStatus, setErrorDescription, tagName) {
+  const form =
+    e.target.closest(tagName) &&
+    e.target.closest(tagName).querySelector('form[action*="/cart/add"]');
   if (form && form.id) {
     e.preventDefault();
     setStatus('loading');

@@ -24,7 +24,7 @@
               data-selected-or-first-available-variant="${product.variants[0].id}"
               data-options-with-values="${escape(JSON.stringify(product.options))}"
               data-extra-price="0"
-              data-style={{ settings.default_style_mode }}
+              data-style="${window.default_style_mode?window.default_style_mode:'light'}"
             ></product-modal>`;
           modalElement.addEventListener('hidden.bs.modal', function(e){
               e.target.innerHTML = '';

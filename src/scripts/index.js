@@ -1,35 +1,61 @@
 import BSN from 'bootstrap.native';
-import Cookies from 'js-cookie';
-import apis from './ajaxapis';
-import helper from './helper';
-import './sections/testimonials';
-import './sections/header';
-import './sections/masonry-gallery';
+import apis from './general/ajaxapis';
+import tagimages from './general/tagimages';
+import helper, { docReady, winLoad } from './general/helper';
+import {
+  registerCartupdatedEventListener,
+  registerProductgridclickedEventListener,
+} from './general/eventhandlers';
+import preapreTestimonials from './sections/testimonials';
+import prepareHeaderSection from './sections/header';
+import prepareMasonryGallery from './sections/masonry-gallery';
+import showModal from './sections/promobox';
+import prepareVideoWithText from './sections/video-with-text';
+import prepareCollectionNavigation from './sections/collection-navigation';
+import prepareCollectionTags from './sections/collection-tags';
+import prepareSingleCollection from './sections/single-collection';
 import './components/predictive-search';
 import './components/single-collection';
 import './components/product-modal';
 import './components/featured-product';
 import './components/counter-product';
-import tagimages from './tagimages';
 
 window.datomar = {
   BSN,
   apis,
   helper,
-  Cookies,
   tagimages,
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('cartupdated', (event2) => {
-    const cart = event2.detail && event2.detail.cart;
-    if (cart && cart.item_count) {
-      const cartIcons = document.querySelectorAll(
-        '[data-cart-count].fas.fa-shopping-cart'
-      );
-      cartIcons.forEach((cartIcon) => {
-        cartIcon.setAttribute('data-cart-count', cart.item_count);
-      });
-    }
+docReady(() => {
+  prepareHeaderSection();
+
+  prepareMasonryGallery();
+  preapreTestimonials();
+  prepareVideoWithText(
+    window.videoWithTextVideoId ? window.videoWithTextVideoId : '_9VUPq3SxOc'
+  );
+
+  prepareCollectionNavigation();
+  prepareCollectionTags();
+  prepareSingleCollection();
+
+  registerCartupdatedEventListener();
+  registerProductgridclickedEventListener();
+
+  winLoad(() => {
+    setTimeout(
+      () => {
+        showModal(
+          window.promoboxExpires &&
+            !Number.isNaN(Number(window.promoboxExpires))
+            ? Number(window.promoboxExpires)
+            : 30
+        );
+      },
+      window.promoboxDelay && !Number.isNaN(Number(window.promoboxDelay * 1000))
+        ? Number(window.promoboxDelay * 1000)
+        : 5000
+    );
   });
 });

@@ -9,9 +9,9 @@ import {
   formatMoney,
   handleize,
   resizeImage,
-} from '../helper';
-import { getCollectionWithProductsDetails } from '../ajaxapis';
-import tagimages from '../tagimages';
+} from '../general/helper';
+import { getCollectionWithProductsDetails } from '../general/ajaxapis';
+import tagimages from '../general/tagimages';
 
 function singleCollection({
   collectionHandle = '',
