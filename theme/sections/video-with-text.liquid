@@ -72,45 +72,7 @@
 
 </style>
 <script>
-  const tag = document.createElement('script');
-  tag.id = 'iframe-demo';
-  tag.src = 'https://www.youtube.com/iframe_api';
-  const firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  let player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('video-iframe', {
-        class: 'embed-responsive-item',
-        videoId: 'zpOULjyy-n8',
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-    });
-  }
-
-  function onPlayerReady(event) {
-    const videoIframeWrapper = document.querySelector(".video-iframe-wrapper");
-    const videoPlayButton = document.querySelector(".video-iframe-wrapper .video-play-btn");
-    if(videoPlayButton && videoIframeWrapper) {
-      videoPlayButton.addEventListener("click", function(){
-        videoIframeWrapper.classList.add("video-is-playing");
-        event.target.playVideo();
-      });
-    }
-  }
-
-  function onPlayerStateChange(event) {
-    const playerStatus = event.data;
-    if(playerStatus == 0 || playerStatus == 2) {
-      const videoIframeWrapper = document.querySelector(".video-iframe-wrapper");
-      const videoPlayButton = document.querySelector(".video-iframe-wrapper .video-play-btn");
-      if(videoPlayButton && videoIframeWrapper) {
-        videoIframeWrapper.classList.remove("video-is-playing");
-      }
-    }
-  }
+  window.videoWithTextVideoId = "{{ section.settings.video_link | split: '?' | last | remove_first: 'v=' }}";
 </script>
 {% schema %}
 {

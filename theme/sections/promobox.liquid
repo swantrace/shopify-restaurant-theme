@@ -43,20 +43,8 @@
 </div>
 {% render 'common-section-styles' %}
 <script>
-function showModal(event) {
-  const promoboxSectionElement = document.querySelector('.index-section--promobox');
-  if(promoboxSectionElement && !datomar.Cookies.get('promobox')){
-    const modalElement = promoboxSectionElement.querySelector('.modal');
-    const modal = new datomar.BSN.Modal(modalElement, {backdrop: true, keyboard: false});
-    modal.show();
-    datomar.Cookies.set('promobox', 'shown', {expires: 30});
-  }
-}
-
-window.addEventListener("load", function(){
-  setTimeout(showModal, 5000);
-})
-
+  window.promoboxExpires = {{ section.settings.promobox_expires | default: 30 }};
+  window.promoboxDelay = {{ section.settings.promobox_delay | default: 5 }};
 </script>
 
 <style>
@@ -250,6 +238,22 @@ window.addEventListener("load", function(){
           "value": "right"
         }
       ]
+    },
+    {
+      "type": "text",
+      "id": "promobox_expires",
+      "label": {
+        "en": "Display promobox every n days"
+      },
+      "default": "30"
+    },
+    {
+      "type": "text",
+      "id": "promobox_delay",
+      "label": {
+        "en": "Display promobox after n seconds"
+      },
+      "default": "5"
     }
   ],
   "presets": [

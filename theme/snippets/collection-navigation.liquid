@@ -17,25 +17,6 @@
     </a>
   {% endif %}
 </div>
-<script>
-  document.addEventListener("DOMContentLoaded", function(){
-    const currentHash = location.hash;
-    if(currentHash != '') {
-      activeLink = document.querySelector(`[href="${currentHash}"]`);
-      activeLink && activeLink.classList.add("active");
-    }
-    const links = document.querySelectorAll('.collection-titles a[href^="#"]');
-    links.forEach(link => {
-      link.addEventListener('click', (e) => {
-        if(!link.classList.contains('active')){
-          const currentActiveLink = document.querySelector('.collection-titles a.active');
-          currentActiveLink && currentActiveLink.classList.remove('active');
-          link.classList.add('active');
-        }
-      })
-    })
-  });
-</script>
 <style>
 
   li.collection-link-wrapper {
