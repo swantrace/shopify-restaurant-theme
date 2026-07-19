@@ -1,6 +1,6 @@
-import { html, component, useState } from 'haunted';
-import { useDebouncedCallback } from './common/custom-hooks';
+import { component, html, useState } from 'haunted';
 import { getPredictiveSearchResults } from '../general/ajaxapis';
+import { useDebouncedCallback } from './common/custom-hooks';
 
 function predictiveSearch() {
   const [q, setQ] = useState('');

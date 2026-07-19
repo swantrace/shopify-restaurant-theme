@@ -1,20 +1,20 @@
 import BSN from 'bootstrap.native';
 import '../styles/theme.scss';
 import apis from './general/ajaxapis';
-import tagimages from './general/tagimages';
-import helper, { docReady, winLoad } from './general/helper';
 import {
   registerCartupdatedEventListener,
   registerProductgridclickedEventListener,
 } from './general/eventhandlers';
-import preapreTestimonials from './sections/testimonials';
+import helper, { docReady, winLoad } from './general/helper';
+import tagimages from './general/tagimages';
+import prepareCollectionNavigation from './sections/collection-navigation';
+import prepareCollectionTags from './sections/collection-tags';
 import prepareHeaderSection from './sections/header';
 import prepareMasonryGallery from './sections/masonry-gallery';
 import showModal from './sections/promobox';
-import prepareVideoWithText from './sections/video-with-text';
-import prepareCollectionNavigation from './sections/collection-navigation';
-import prepareCollectionTags from './sections/collection-tags';
 import prepareSingleCollection from './sections/single-collection';
+import preapreTestimonials from './sections/testimonials';
+import prepareVideoWithText from './sections/video-with-text';
 import './components/predictive-search';
 import './components/single-collection';
 import './components/product-modal';

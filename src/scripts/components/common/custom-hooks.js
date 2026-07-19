@@ -1,9 +1,9 @@
-import { useState, useRef, useCallback, useEffect, useMemo } from 'haunted';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'haunted';
 import {
-  submitATCForm,
   changeCurrentVariant,
   changeQuantity,
   diffToLeftTime,
+  submitATCForm,
 } from './helper-functions';
 
 export function useDebouncedCallback(

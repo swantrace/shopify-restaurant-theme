@@ -1,16 +1,16 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-console */
-import { html, component, useState, useEffect } from 'haunted';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { component, html, useEffect, useState } from 'haunted';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { getCollectionWithProductsDetails } from '../general/ajaxapis';
 import {
   dispatchCustomEvent,
   escape,
-  unescape,
   formatMoney,
   handleize,
   resizeImage,
+  unescape,
 } from '../general/helper';
-import { getCollectionWithProductsDetails } from '../general/ajaxapis';
 import tagimages from '../general/tagimages';
 
 function singleCollection({

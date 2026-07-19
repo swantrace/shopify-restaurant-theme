@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-nested-ternary */
-import { html, component } from 'haunted';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { useATCForm } from './common/custom-hooks';
+import { component, html } from 'haunted';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { formatMoney, resizeImage } from '../general/helper';
+import { useATCForm } from './common/custom-hooks';
 
 function featuredProduct({
   dataProduct,

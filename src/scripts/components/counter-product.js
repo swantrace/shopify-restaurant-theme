@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
-import { html, component } from 'haunted';
-import { useATCForm, useLeftTime } from './common/custom-hooks';
+import { component, html } from 'haunted';
 import { formatMoney, resizeImage } from '../general/helper';
+import { useATCForm, useLeftTime } from './common/custom-hooks';
 
 function CounterProduct({
   dataProduct,

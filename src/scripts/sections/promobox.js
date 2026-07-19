@@ -1,5 +1,5 @@
-import Cookies from 'js-cookie';
 import BSN from 'bootstrap.native';
+import Cookies from 'js-cookie';
 
 export default function showModal(expires) {
   const promoboxSectionElement = document.querySelector(

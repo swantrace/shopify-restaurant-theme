@@ -2,8 +2,9 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-shadow */
 /* eslint-disable camelcase */
-import Axios from 'axios';
+
 import mapLimit from 'async.maplimit';
+import Axios from 'axios';
 import { attributeToString } from './helper';
 
 const instance = Axios.create({
