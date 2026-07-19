@@ -33,5 +33,5 @@ function predictiveSearch() {
 
 customElements.define(
   'predictive-search',
-  component(predictiveSearch, { useShadowDOM: false })
+  component(predictiveSearch, { useShadowDOM: false }),
 );

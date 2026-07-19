@@ -35,7 +35,7 @@ export function formatMoney(cents, format) {
     number,
     precision = 2,
     thousands = ',',
-    decimal = '.'
+    decimal = '.',
   ) {
     if (Number.isNaN(number) || number == null) {
       return 0;
@@ -46,7 +46,7 @@ export function formatMoney(cents, format) {
     const parts = number.split('.');
     const dollarsAmount = parts[0].replace(
       /(\d)(?=(\d\d\d)+(?!\d))/g,
-      `$1${thousands}`
+      `$1${thousands}`,
     );
     const centsAmount = parts[1] ? decimal + parts[1] : '';
 
@@ -104,7 +104,7 @@ export function escape(str) {
 export function unescape(str) {
   return stringify(str).replace(
     /&(amp|lt|gt|#34|#39);/g,
-    (m) => unescapeMap[m]
+    (m) => unescapeMap[m],
   );
 }
 

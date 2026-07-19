@@ -21,6 +21,6 @@ export default function prepareHeaderSection() {
         toggleClass(document.body, 'offcanvas-active');
       }
     },
-    true
+    true,
   );
 }

@@ -81,7 +81,7 @@ export const updateCartAttributes = (attributes) => {
     Object.keys(attributes).forEach((key) => {
       const value = attributes[key];
       data += `attributes[${attributeToString(key)}]=${attributeToString(
-        value
+        value,
       )}&`;
     });
   }
@@ -91,7 +91,7 @@ export const updateCartNote = (note) => {
   return ajaxTemplateFunc(
     '/cart/update.js',
     'post',
-    `note=${attributeToString(note)}`
+    `note=${attributeToString(note)}`,
   );
 };
 export const getRecommendedProducts = (productId, limit = 10) => {
@@ -100,7 +100,7 @@ export const getRecommendedProducts = (productId, limit = 10) => {
       limit && parseInt(limit, 10) > 0 && parseInt(limit, 10) <= 10
         ? parseInt(limit, 10)
         : 10
-    }`
+    }`,
   );
 };
 export const getPredictiveSearchResults = (
@@ -108,7 +108,7 @@ export const getPredictiveSearchResults = (
   type = ['product', 'page', 'article', 'collection'],
   limit = 10,
   unavailableProducts = 'last',
-  fields = ['title', 'product_type', 'variants.title', 'vendor']
+  fields = ['title', 'product_type', 'variants.title', 'vendor'],
 ) => {
   let paramsString = '';
   paramsString += `q=${q}`;
@@ -125,7 +125,7 @@ export const _getPageCollection = (handle, page = 1, tag = '') => {
       : `/collections/${handle}/${tag}?view=theme&page=${page}`,
     'get',
     {},
-    { headers: { accept: 'text/html' } }
+    { headers: { accept: 'text/html' } },
   );
 };
 
@@ -154,7 +154,7 @@ export const getCollection = (handle, tag = '') => {
 export const getCollectionWithProductsDetails = (
   handle,
   tag = '',
-  productsLoadedCallback
+  productsLoadedCallback,
 ) => {
   return new Promise((resolve, reject) => {
     getCollection(handle, tag).then((collection) => {
@@ -199,7 +199,7 @@ export const getCollectionWithProductsDetails = (
             collection.products = results;
             resolve(collection);
           }
-        }
+        },
       );
     });
   });

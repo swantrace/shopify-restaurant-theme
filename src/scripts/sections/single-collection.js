@@ -2,7 +2,7 @@ import tagimages from '../general/tagimages';
 
 export default function prepareSingleCollection() {
   const tagImages = document.querySelectorAll(
-    '[data-tag][data-style].tag-image'
+    '[data-tag][data-style].tag-image',
   );
   Object.keys(tagImages).forEach((key) => {
     const tagImage = tagImages[key];
@@ -20,11 +20,11 @@ export default function prepareSingleCollection() {
       const { target } = event;
       if (target.closest('.collection-products-wrapper .product-grid')) {
         const productGrid = target.closest(
-          '.collection-products-wrapper .product-grid'
+          '.collection-products-wrapper .product-grid',
         );
         const product = JSON.parse(productGrid.dataset.product);
         const optionsWithValues = JSON.parse(
-          productGrid.dataset.optionsWithValues
+          productGrid.dataset.optionsWithValues,
         );
         product.options = optionsWithValues;
         const customEvent = new CustomEvent('productgridclicked', {
@@ -33,6 +33,6 @@ export default function prepareSingleCollection() {
         document.dispatchEvent(customEvent);
       }
     },
-    true
+    true,
   );
 }

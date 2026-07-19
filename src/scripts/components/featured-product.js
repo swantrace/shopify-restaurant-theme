@@ -29,7 +29,7 @@ function featuredProduct({
     dataProduct,
     dataOptionsWithValues,
     dataSelectedOrFirstAvailableVariant,
-    this.tagName
+    this.tagName,
   );
 
   if (dataStyleForDesktop === 'styleC') {
@@ -37,84 +37,87 @@ function featuredProduct({
   }
 
   return html`<div
-    class="featured-product-container ${dataSectionWidth === 'container'
-      ? 'container'
-      : ''}"
+    class="featured-product-container ${
+      dataSectionWidth === 'container' ? 'container' : ''
+    }"
   >
     <div
-      class="row no-gutters ${dataSectionWidth === 'container'
-        ? 'px-10'
-        : 'px-0'}"
+      class="row no-gutters ${
+        dataSectionWidth === 'container' ? 'px-10' : 'px-0'
+      }"
     >
       <div
-        class="variant-image-wrapper col col-12 ${dataStyleForDesktop ===
-        'styleC'
-          ? 'col-lg-12'
-          : 'col-lg-6'} align-self-center ${dataImagePosition === 'left'
-          ? 'order-lg-first'
-          : 'order-lg-last'}"
+        class="variant-image-wrapper col col-12 ${
+          dataStyleForDesktop === 'styleC' ? 'col-lg-12' : 'col-lg-6'
+        } align-self-center ${
+          dataImagePosition === 'left' ? 'order-lg-first' : 'order-lg-last'
+        }"
       >
         <div
-          class="featured-badge ${dataImagePosition === 'left'
-            ? 'img-left'
-            : 'img-right'}   ${dataStyleForDesktop === 'styleC'
-            ? 'd-lg-none'
-            : ''}  "
+          class="featured-badge ${
+            dataImagePosition === 'left' ? 'img-left' : 'img-right'
+          }   ${dataStyleForDesktop === 'styleC' ? 'd-lg-none' : ''}  "
         >
           <span class="featured-badge-text">Featured</span>
         </div>
         <img
           class="variant-image img-fluid w-100 h-100"
-          src=${currentVariant.featured_image
-            ? dataStyleForDesktop === 'styleC'
-              ? resizeImage(currentVariant.featured_image, '1680x1050')
-              : resizeImage(currentVariant.featured_image, '960x832')
-            : dataStyleForDesktop === 'styleC'
-            ? resizeImage(product.featured_image, '1680x960')
-            : resizeImage(product.featured_image, '960x832')}
+          src=${
+            currentVariant.featured_image
+              ? dataStyleForDesktop === 'styleC'
+                ? resizeImage(currentVariant.featured_image, '1680x1050')
+                : resizeImage(currentVariant.featured_image, '960x832')
+              : dataStyleForDesktop === 'styleC'
+                ? resizeImage(product.featured_image, '1680x960')
+                : resizeImage(product.featured_image, '960x832')
+          }
           style="object-fit: cover; object-position: center center;"
         />
       </div>
       <div
-        class="product-item-wrapper col col-12 mt-30 mt-lg-0 ${dataSectionWidth ===
-        'container'
-          ? ''
-          : 'px-20'} align-self-center ${dataStyleForDesktop === 'styleC'
-          ? 'offset-lg-6 col-lg-6 px-lg-0 px-lg-0'
-          : 'col-lg-6 px-lg-30'} text-${dataStyle}-text"
+        class="product-item-wrapper col col-12 mt-30 mt-lg-0 ${
+          dataSectionWidth === 'container' ? '' : 'px-20'
+        } align-self-center ${
+          dataStyleForDesktop === 'styleC'
+            ? 'offset-lg-6 col-lg-6 px-lg-0 px-lg-0'
+            : 'col-lg-6 px-lg-30'
+        } text-${dataStyle}-text"
       >
         <div
-          class="featured-badge-style-c  d-none ${dataStyleForDesktop ===
-          'styleC'
-            ? 'd-lg-block'
-            : ''} "
+          class="featured-badge-style-c  d-none ${
+            dataStyleForDesktop === 'styleC' ? 'd-lg-block' : ''
+          } "
         >
           <span class="featured-badge-text">Featured</span>
         </div>
         <div
-          class="text-${dataAlignment} ${dataAlignment === 'left'
-            ? 'm-auto mr-lg-auto'
-            : dataAlignment === 'right'
-            ? 'ml-lg-auto'
-            : 'mx-lg-auto'} featured-product-content"
+          class="text-${dataAlignment} ${
+            dataAlignment === 'left'
+              ? 'm-auto mr-lg-auto'
+              : dataAlignment === 'right'
+                ? 'ml-lg-auto'
+                : 'mx-lg-auto'
+          } featured-product-content"
         >
           <h5 class="mb-10">${product.title}</h5>
           <h6 class="mb-10 product-price">
-            ${currentVariant.compare_at_price > currentVariant.price
-              ? html`<div class="onsale-price">
-                  <span class="current-variant-price text-red"
-                    >${formatMoney(currentVariant.price)}</span
-                  >
-                  <i class="fas fa-arrow-left text-red"></i>
-                  <span class="current-variant-compare-at-price"
-                    >${formatMoney(currentVariant.compare_at_price)}</span
-                  >
-                </div>`
-              : html`<div class="normal-price">
-                  <span class="current-variant-price"
-                    >${formatMoney(currentVariant.price)}</span
-                  >
-                </div>`}
+            ${
+              currentVariant.compare_at_price > currentVariant.price
+                ? html`<div class="onsale-price">
+                    <span class="current-variant-price text-red"
+                      >${formatMoney(currentVariant.price)}</span
+                    >
+                    <i class="fas fa-arrow-left text-red"></i>
+                    <span class="current-variant-compare-at-price"
+                      >${formatMoney(currentVariant.compare_at_price)}</span
+                    >
+                  </div>`
+                : html`<div class="normal-price">
+                    <span class="current-variant-price"
+                      >${formatMoney(currentVariant.price)}</span
+                    >
+                  </div>`
+            }
           </h6>
           <div class="product-desc">
             <small>${unsafeHTML(product.description)}</small>
@@ -138,8 +141,10 @@ function featuredProduct({
               (option) =>
                 html`<div
                   class="selector-wrapper form-group"
-                  ?hidden=${option.name === 'Title' &&
-                  option.values[0] === 'Default Title'}
+                  ?hidden=${
+                    option.name === 'Title' &&
+                    option.values[0] === 'Default Title'
+                  }
                 >
                   <label class="" for=${option.name}>${option.name}:</label>
                   <select
@@ -153,14 +158,16 @@ function featuredProduct({
                         html`<option
                           class="text text-${dataStyle}-text font-weight-bold"
                           value=${value}
-                          ?selected=${currentVariant &&
-                          currentVariant[`option${option.position}`] === value}
+                          ?selected=${
+                            currentVariant &&
+                            currentVariant[`option${option.position}`] === value
+                          }
                         >
                           ${value}
-                        </option>`
+                        </option>`,
                     )}
                   </select>
-                </div>`
+                </div>`,
             )}
             <div class="form-group">
               <input
@@ -182,15 +189,17 @@ function featuredProduct({
                 class="form-control AddToCart btn col-12 col-md-5 btn-${dataStyle}-filled-btn text-${dataStyle}-filled-btn-text"
               >
                 <span class="AddToCartText"
-                  >${currentVariant && !currentVariant.available
-                    ? html`Not Available`
-                    : status === 'suspended'
-                    ? html`Add To Cart`
-                    : status === 'loading'
-                    ? html`<span class="spinner-border"></span>`
-                    : status === 'success'
-                    ? html`Added`
-                    : html``}</span
+                  >${
+                    currentVariant && !currentVariant.available
+                      ? html`Not Available`
+                      : status === 'suspended'
+                        ? html`Add To Cart`
+                        : status === 'loading'
+                          ? html`<span class="spinner-border"></span>`
+                          : status === 'success'
+                            ? html`Added`
+                            : html``
+                  }</span
                 >
               </button>
               <div
@@ -229,5 +238,5 @@ customElements.define(
       'data-style-for-desktop',
       'data-alignment',
     ],
-  })
+  }),
 );

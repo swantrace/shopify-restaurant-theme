@@ -34,14 +34,18 @@
     overflow-y: auto;
     visibility: hidden;
     transform: translateX(0);
-    transition: visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transition:
+      visibility 0.4s ease-in-out,
+      transform 0.4s ease-in-out;
     z-index: 99;
   }
 
   .navbar-collapse.show {
     visibility: visible;
     transform: translateX(-100%);
-    transition: visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transition:
+      visibility 0.4s ease-in-out,
+      transform 0.4s ease-in-out;
   }
 }
 

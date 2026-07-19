@@ -30,67 +30,72 @@ function CounterProduct({
     dataProduct,
     dataOptionsWithValues,
     dataSelectedOrFirstAvailableVariant,
-    this.tagName
+    this.tagName,
   );
 
   const leftTime = useLeftTime(dataDiscountDeadline);
 
   return html`<div
-    class="onsale-product-container ${dataSectionWidth === 'container'
-      ? 'container'
-      : ''}"
+    class="onsale-product-container ${
+      dataSectionWidth === 'container' ? 'container' : ''
+    }"
   >
     <div class="row no-gutters">
       <div
-        class="variant-image-wrapper col col-12 ${dataStyleForDesktopAndMobile ===
-        'styleC'
-          ? 'col-lg-12'
-          : 'col-lg-6'} align-self-center ${dataImagePosition === 'left'
-          ? 'order-lg-first'
-          : 'order-lg-last'}"
+        class="variant-image-wrapper col col-12 ${
+          dataStyleForDesktopAndMobile === 'styleC' ? 'col-lg-12' : 'col-lg-6'
+        } align-self-center ${
+          dataImagePosition === 'left' ? 'order-lg-first' : 'order-lg-last'
+        }"
       >
         <div
-          class="featured-badge ${dataImagePosition === 'left'
-            ? 'img-left'
-            : 'img-right'} "
+          class="featured-badge ${
+            dataImagePosition === 'left' ? 'img-left' : 'img-right'
+          } "
         >
           <span class="featured-badge-text">Featured</span>
         </div>
 
         <img
           class="variant-image img-fluid w-100 h-100"
-          src=${currentVariant.featured_image
-            ? resizeImage(currentVariant.featured_image, '1200x800')
-            : resizeImage(product.featured_image, '1200x800')}
+          src=${
+            currentVariant.featured_image
+              ? resizeImage(currentVariant.featured_image, '1200x800')
+              : resizeImage(product.featured_image, '1200x800')
+          }
         />
       </div>
       <div
         class="product-item-wrapper col col-12 col-lg-6 align-self-center pt-15 pt-lg-0 px-15 px-lg-30 text-${dataStyle}-text"
       >
         <div
-          class="text-${dataAlignment} ${dataAlignment === 'left'
-            ? 'mr-auto'
-            : dataAlignment === 'right'
-            ? 'ml-auto'
-            : 'mx-auto'}"
+          class="text-${dataAlignment} ${
+            dataAlignment === 'left'
+              ? 'mr-auto'
+              : dataAlignment === 'right'
+                ? 'ml-auto'
+                : 'mx-auto'
+          }"
         >
           <h5 class="mb-10">${product.title}</h5>
           <h6 class="mb-10 product-price">
-            ${currentVariant.compare_at_price > currentVariant.price
-              ? html`<div class="onsale-price">
-                  <span class="current-variant-price text-red"
-                    >${formatMoney(currentVariant.price)}</span
-                  >
-                  <i class="fas fa-arrow-left text-red"></i>
-                  <span class="current-variant-compare-at-price"
-                    >${formatMoney(currentVariant.compare_at_price)}</span
-                  >
-                </div>`
-              : html`<div class="normal-price">
-                  <span class="current-variant-price"
-                    >${formatMoney(currentVariant.price)}</span
-                  >
-                </div>`}
+            ${
+              currentVariant.compare_at_price > currentVariant.price
+                ? html`<div class="onsale-price">
+                    <span class="current-variant-price text-red"
+                      >${formatMoney(currentVariant.price)}</span
+                    >
+                    <i class="fas fa-arrow-left text-red"></i>
+                    <span class="current-variant-compare-at-price"
+                      >${formatMoney(currentVariant.compare_at_price)}</span
+                    >
+                  </div>`
+                : html`<div class="normal-price">
+                    <span class="current-variant-price"
+                      >${formatMoney(currentVariant.price)}</span
+                    >
+                  </div>`
+            }
           </h6>
           <div class="row mb-10 justify-content-between">
             <div class="col-3">
@@ -137,8 +142,10 @@ function CounterProduct({
               (option) =>
                 html`<div
                   class="selector-wrapper form-group"
-                  ?hidden=${option.name === 'Title' &&
-                  option.values[0] === 'Default Title'}
+                  ?hidden=${
+                    option.name === 'Title' &&
+                    option.values[0] === 'Default Title'
+                  }
                 >
                   <label class="" for=${option.name}>${option.name}:</label>
                   <select
@@ -152,14 +159,16 @@ function CounterProduct({
                         html`<option
                           class="text text-${dataStyle}-text font-weight-bold"
                           value=${value}
-                          ?selected=${currentVariant &&
-                          currentVariant[`option${option.position}`] === value}
+                          ?selected=${
+                            currentVariant &&
+                            currentVariant[`option${option.position}`] === value
+                          }
                         >
                           ${value}
-                        </option>`
+                        </option>`,
                     )}
                   </select>
-                </div>`
+                </div>`,
             )}
             <div class="form-group">
               <input
@@ -184,15 +193,17 @@ function CounterProduct({
                   class="form-control AddToCart btn btn-${dataStyle}-filled-btn text-${dataStyle}-filled-btn-text px-2 mb-8"
                 >
                   <span class="AddToCartText"
-                    >${currentVariant && !currentVariant.available
-                      ? html`Not Available`
-                      : status === 'suspended'
-                      ? html`${dataAddToCartButtonText.toUpperCase()}`
-                      : status === 'loading'
-                      ? html`<span class="spinner-border"></span>`
-                      : status === 'success'
-                      ? html`Added`
-                      : html``}</span
+                    >${
+                      currentVariant && !currentVariant.available
+                        ? html`Not Available`
+                        : status === 'suspended'
+                          ? html`${dataAddToCartButtonText.toUpperCase()}`
+                          : status === 'loading'
+                            ? html`<span class="spinner-border"></span>`
+                            : status === 'success'
+                              ? html`Added`
+                              : html``
+                    }</span
                   >
                 </button>
                 <a
@@ -243,5 +254,5 @@ customElements.define(
       'data-add-to-cart-button-text',
       'data-learn-more-button-text',
     ],
-  })
+  }),
 );

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.4/schema.json",
+  "files": {
+    "includes": ["src/**/*.js", "vite.config.js"]
+  },
+  "formatter": {
+    "enabled": false
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noShadowRestrictedNames": "off",
+        "noTemplateCurlyInString": "off"
+      }
+    }
+  },
+  "javascript": {
+    "globals": ["Shopify"]
+  }
+}

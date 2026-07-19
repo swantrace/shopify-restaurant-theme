@@ -1,0 +1,8 @@
+node_modules
+src/styles/bootstrap
+src/scripts/components/single-collection.js
+theme
+theme/assets/theme.js
+theme/assets/theme.min.js
+theme/assets/theme.scss.liquid
+yarn.lock

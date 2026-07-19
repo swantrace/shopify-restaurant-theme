@@ -26,7 +26,7 @@ function productModal({
     dataProduct,
     dataOptionsWithValues,
     dataSelectedOrFirstAvailableVariant,
-    this.tagName
+    this.tagName,
   );
 
   const extraPrice = Number.isNaN(Number(dataExtraPrice))
@@ -59,16 +59,18 @@ function productModal({
           <div class="product-modal-tags">
             ${product.tags.map(
               (tag) =>
-                html`${tagimages[
-                  `${handleize(tag).replace('-', '_')}_${dataStyle}`
-                ]
-                  ? html`<img
-                      src=${tagimages[
-                        `${handleize(tag).replace('-', '_')}_${dataStyle}`
-                      ]}
-                      width="20"
-                    />`
-                  : html``}`
+                html`${
+                  tagimages[`${handleize(tag).replace('-', '_')}_${dataStyle}`]
+                    ? html`<img
+                        src=${
+                          tagimages[
+                            `${handleize(tag).replace('-', '_')}_${dataStyle}`
+                          ]
+                        }
+                        width="20"
+                      />`
+                    : html``
+                }`,
             )}
           </div>
           <div class="product-modal-price">
@@ -110,8 +112,10 @@ function productModal({
               (option) =>
                 html`<div
                   class="radiobuttons-group-wrapper form-group"
-                  ?hidden=${option.name === 'Title' &&
-                  option.values[0] === 'Default Title'}
+                  ?hidden=${
+                    option.name === 'Title' &&
+                    option.values[0] === 'Default Title'
+                  }
                 >
                   <h6>Choose a ${option.name}:</h6>
                   ${option.values.map(
@@ -122,26 +126,26 @@ function productModal({
                         <input
                           type="radio"
                           id="radio_${handleize(option.name)}_${handleize(
-                            value
+                            value,
                           )}"
                           name=${option.name}
                           value=${value}
                           @change=${handleOptionChange}
                           class="custom-control-input"
-                          ?checked=${currentVariant[
-                            `option${option.position}`
-                          ] === value}
+                          ?checked=${
+                            currentVariant[`option${option.position}`] === value
+                          }
                         />
                         <label
                           class="custom-control-label"
                           for="radio_${handleize(option.name)}_${handleize(
-                            value
+                            value,
                           )}"
                           >${value}</label
                         >
-                      </div>`
+                      </div>`,
                   )}
-                </div>`
+                </div>`,
             )}
             <div class="form-group">
               <input
@@ -174,12 +178,12 @@ function productModal({
                 currentVariant && !currentVariant.available
                   ? html`Not Available`
                   : status === 'suspended'
-                  ? html`Add To Cart`
-                  : status === 'loading'
-                  ? html`<span class="spinner-border"></span>`
-                  : status === 'success'
-                  ? html`Added`
-                  : html``
+                    ? html`Add To Cart`
+                    : status === 'loading'
+                      ? html`<span class="spinner-border"></span>`
+                      : status === 'success'
+                        ? html`Added`
+                        : html``
               }</span
             >
           </button>
@@ -206,5 +210,5 @@ customElements.define(
       'data-style',
       'data-extra-price',
     ],
-  })
+  }),
 );

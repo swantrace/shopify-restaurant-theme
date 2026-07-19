@@ -6,7 +6,7 @@ export function registerCartupdatedEventListener() {
     const cart = e.detail && e.detail.cart;
     if (cart && cart.item_count) {
       const cartIcons = document.querySelectorAll(
-        '[data-cart-count].fas.fa-shopping-cart'
+        '[data-cart-count].fas.fa-shopping-cart',
       );
       cartIcons.forEach((cartIcon) => {
         cartIcon.setAttribute('data-cart-count', cart.item_count);
@@ -30,7 +30,7 @@ export function registerProductgridclickedEventListener() {
             data-product="${escape(JSON.stringify(product))}"
             data-selected-or-first-available-variant="${product.variants[0].id}"
             data-options-with-values="${escape(
-              JSON.stringify(product.options)
+              JSON.stringify(product.options),
             )}"
             data-extra-price="0"
             data-style="${

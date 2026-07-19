@@ -39,7 +39,7 @@ export function changeCurrentVariant(
   e,
   optionsWithValues,
   product,
-  setCurrentVariant
+  setCurrentVariant,
 ) {
   const form = e.target.closest('form');
   if (form) {
@@ -62,7 +62,7 @@ export function changeCurrentVariant(
       (variant) =>
         variant.option1 === option1 &&
         variant.option2 === option2 &&
-        variant.option3 === option3
+        variant.option3 === option3,
     );
 
     setCurrentVariant(cVariant);

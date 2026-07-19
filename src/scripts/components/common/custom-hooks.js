@@ -9,7 +9,7 @@ import {
 export function useDebouncedCallback(
   func,
   rawWait,
-  options = { leading: false, trailing: true }
+  options = { leading: false, trailing: true },
 ) {
   const lastCallTime = useRef(undefined);
   const lastInvokeTime = useRef(0);
@@ -58,7 +58,7 @@ export function useDebouncedCallback(
       }
       return setTimeout(pendingFunc, timeout);
     },
-    [useRAF]
+    [useRAF],
   );
 
   const cancelTimer = useCallback(
@@ -69,7 +69,7 @@ export function useDebouncedCallback(
       clearTimeout(id);
       return true;
     },
-    [useRAF]
+    [useRAF],
   );
 
   const remainingWait = useCallback(
@@ -82,7 +82,7 @@ export function useDebouncedCallback(
         ? Math.min(timeWaiting, maxWait - timeSinceLastInvoke)
         : timeWaiting;
     },
-    [maxWait, maxing, wait]
+    [maxWait, maxing, wait],
   );
 
   const shouldInvoke = useCallback(
@@ -102,7 +102,7 @@ export function useDebouncedCallback(
         (maxing && timeSinceLastInvoke >= maxWait)
       );
     },
-    [maxWait, maxing, wait]
+    [maxWait, maxing, wait],
   );
 
   const trailingEdge = useCallback(
@@ -118,7 +118,7 @@ export function useDebouncedCallback(
       lastArgs.current = undefined;
       return result.current;
     },
-    [invokeFunc, trailing]
+    [invokeFunc, trailing],
   );
 
   const timerExpired = useCallback(() => {
@@ -140,7 +140,7 @@ export function useDebouncedCallback(
       // Invoke the leading edge.
       return leading ? invokeFunc(time) : result.current;
     },
-    [invokeFunc, startTimer, leading, timerExpired, wait]
+    [invokeFunc, startTimer, leading, timerExpired, wait],
   );
 
   const cancel = useCallback(() => {
@@ -157,7 +157,7 @@ export function useDebouncedCallback(
   const flush = useCallback(
     () =>
       timerId.current === undefined ? result.current : trailingEdge(Date.now()),
-    [trailingEdge]
+    [trailingEdge],
   );
 
   useEffect(() => {
@@ -199,7 +199,7 @@ export function useDebouncedCallback(
       startTimer,
       timerExpired,
       wait,
-    ]
+    ],
   );
 
   const pending = useCallback(() => timerId.current !== undefined, []);
@@ -211,7 +211,7 @@ export function useDebouncedCallback(
       flush,
       pending,
     }),
-    [debounced, cancel, flush, pending]
+    [debounced, cancel, flush, pending],
   );
 
   return debouncedState;
@@ -221,15 +221,15 @@ export function useATCForm(
   dataProduct,
   dataOptionsWithValues,
   dataSelectedOrFirstAvailableVariant,
-  tagName
+  tagName,
 ) {
   const product = JSON.parse(dataProduct);
   const optionsWithValues = JSON.parse(dataOptionsWithValues);
   const [currentVariant, setCurrentVariant] = useState(
     product.variants.find(
       (variant) =>
-        variant.id === parseInt(dataSelectedOrFirstAvailableVariant, 10)
-    )
+        variant.id === parseInt(dataSelectedOrFirstAvailableVariant, 10),
+    ),
   );
   const [quantity, setQuantity] = useState(1);
   const [status, setStatus] = useState('suspended');

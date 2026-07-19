@@ -11,7 +11,7 @@ export default function prepareCollectionNavigation() {
     link.addEventListener('click', () => {
       if (!link.classList.contains('active')) {
         const currentActiveLink = document.querySelector(
-          '.collection-titles a.active'
+          '.collection-titles a.active',
         );
         if (currentActiveLink) {
           currentActiveLink.classList.remove('active');

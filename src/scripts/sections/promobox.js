@@ -3,7 +3,7 @@ import BSN from 'bootstrap.native';
 
 export default function showModal(expires) {
   const promoboxSectionElement = document.querySelector(
-    '.index-section--promobox'
+    '.index-section--promobox',
   );
   if (promoboxSectionElement && !Cookies.get('promobox')) {
     const modalElement = promoboxSectionElement.querySelector('.modal');

@@ -1,4 +1,5 @@
 import BSN from 'bootstrap.native';
+import '../styles/theme.scss';
 import apis from './general/ajaxapis';
 import tagimages from './general/tagimages';
 import helper, { docReady, winLoad } from './general/helper';
@@ -33,7 +34,7 @@ docReady(() => {
   prepareMasonryGallery();
   preapreTestimonials();
   prepareVideoWithText(
-    window.videoWithTextVideoId ? window.videoWithTextVideoId : '_9VUPq3SxOc'
+    window.videoWithTextVideoId ? window.videoWithTextVideoId : '_9VUPq3SxOc',
   );
 
   prepareCollectionNavigation();
@@ -50,12 +51,12 @@ docReady(() => {
           window.promoboxExpires &&
             !Number.isNaN(Number(window.promoboxExpires))
             ? Number(window.promoboxExpires)
-            : 30
+            : 30,
         );
       },
       window.promoboxDelay && !Number.isNaN(Number(window.promoboxDelay * 1000))
         ? Number(window.promoboxDelay * 1000)
-        : 5000
+        : 5000,
     );
   });
 });
